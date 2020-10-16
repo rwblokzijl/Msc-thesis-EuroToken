@@ -1,1 +1,5 @@
-{% include "git+https://github.com/bloodyfool/stablecoin_thesis.git/thesis.md" %}
+This repo contains the thesis document for the stablecoin project
+
+The [thesis](thesis.md) is written in markdown and compiled to a latex pdf using
+pandoc.
+
