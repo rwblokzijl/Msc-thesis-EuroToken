@@ -1,22 +1,31 @@
 ---
-title: Stablecoin
-date: \today
+title: EuroToken
+subtitle: A Stable Digital Euro Based on TrustChain
+date: TODO
 author:
-  - name: Robert Wessel Blokzijl
-    affiliation: TU Delft
-    location: Delft, The Netherlands
-    email: R.W.Blokzijl@student.tudelft.nl
+  name: R. W. Blokzijl
+  affiliation: Technische Universiteit Delft
+  email: R.W.Blokzijl@student.tudelft.nl
+  student_number: 4269519
+defence_date: TODO
+thesis_committee:
+  - name: Dr.ir. J.A. Pouwelse,
+    role: TU Delft, supervisor
+  - name: Member 1
+    role: TU Delft
+  - name: Member 2
+    role: TU Delft
+duration:
+  from: November 11, 2020
+  to: TODO
 keywords:
   - Stablecoin
   - Blockchain
   - Cryptocurrencies
   - TrustChain
   - CBDC
-numbersections: yes
-lang: en
-babel-lang: english
-abstact: |
-    Later
+preface: |
+  TODO: Add preface
 ---
 
 # Introduction
