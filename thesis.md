@@ -30,6 +30,8 @@ preface: |
 
 # Introduction
 
+[@How_to_make_a_digital_currency_on_a_blockchain_stable]
+
 Libra bad, CBDC better.
 
 # Problem description

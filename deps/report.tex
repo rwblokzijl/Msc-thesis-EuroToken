@@ -160,7 +160,11 @@ $body$
 
 %\input{appendix-a}
 
-\bibliography{report}
+\nocite{*}
+
+$if(bibliography)$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
 
 \end{document}
 
