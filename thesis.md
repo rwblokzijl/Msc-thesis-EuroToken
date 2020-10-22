@@ -8,8 +8,9 @@ author:
   email: R.W.Blokzijl@student.tudelft.nl
   student_number: 4269519
 defence_date: TODO
+publish_date: TODO
 thesis_committee:
-  - name: Dr.ir. J.A. Pouwelse,
+  - name: Dr.ir. J.A. Pouwelse
     role: TU Delft, supervisor
   - name: Member 1
     role: TU Delft
@@ -43,7 +44,7 @@ digital currencies
 - Money, its requirements and benefits
 - problems with money and how digital money solves them
 - Problems with digital money and how bitcoin solved them
-- Problems with bitcoin and how trustchain solved them
+- Problems with bitcoin and how TrustChain solved them
 
 - Leftover discreppencies between traditional and digital money -> segue to next
 chapter
@@ -55,7 +56,7 @@ currency stable
 - What is a stablecoin
 - how to peg a currency
 - Other stablecoins in the wild
-- Vision of the future of the eurozone
+- Vision of the future of the euro zone
 
 ## Goals
 
@@ -71,6 +72,11 @@ currency stable
 # Design
 
 ## Design requirements
+
+- P2P
+- Secure
+- Open
+- Privacy aware
 
 ## System architecture
 
@@ -124,7 +130,7 @@ This involves taking payments in both tokens and euros, and payments in both
 currencies. This means the gateway needs to interface with the bank to allow a
 user to make payments in euro when creating EuroTokens, as well as a mechanism
 for paying out euro to the user when they trade in EuroTokens. On the other side
-of the gate the system needs to be able to create/send, and destroy/recieve
+of the gate the system needs to be able to create/send, and destroy/receive
 tokens on TrustChain.
 
 The gateway aims to automate and link all of this interaction, so EuroTokens can
@@ -198,7 +204,94 @@ container that also provides the frontend.
 
 ## Android Wallet
 
-### Trustchain
+In order to use the EuroToken system on a daily basis, users need a way to send
+and receive the token. Because the added value of the system is its
+decentralised nature, a way to send and receive the asset in a convenient and
+peer to peer way is needed. The TrustChain team has recently come out with an
+Android super-app[TODO, cite] that showcases some of the IPv8[TODO CITE] and
+TrustChain[TODO CITE] capabilities. This app provides the perfect platform to
+showcase the EuroToken capabilities.
+
+### PeerChat Extension
+
+The super-app already includes a number of applications, including PeerChat. A
+chat application that uses IPv8s peer to peer capabilities to communicate. In
+order to show that the EuroToken can be used in a modern context, the PeerChat
+app has been expanded to include the capacity to send money attached to a
+message.
+
+To send money, the user simply selects the option to send money, and is taken to
+a screen where a transaction can be created. The message is then sent to the
+receiver who within a few moments sees the transaction appear as a message in
+their shared chat. The transaction amount is also added to their balance.
+
+[send_money]: ../images/peerchat_send_money2.jpg
+![Attach money in PeerChat \label{send_money_label}][send_money]
+
+The capacity to send transactions as shown in Figure \ref{send_money_label} is not tied to PeerChat messaging. When money
+is sent, a transaction is created and transferred to the receiver using the
+TrustChain main community. The transaction hash is then sent as part of the
+PeerChat message. The receiver then fetches the transaction it received earlier
+via TrustChain.
+
+- [TODO diagram of TrustChain and PeerChat interaction]
+
+This implementation demonstrates the simple way in which EuroToken allows
+monetary transactions to be seamlessly and programmatically inserted into any
+application.
+
+### EuroToken app
+
+The PeerChat app is one specific use case. In reality different applications
+would simultaneously use the EuroToken system. This would leave the user with a
+splintered record of their financial life.
+
+In order to solve this, a EuroToken accounting app has been added to the
+super-app. The purpose of this is to show that the systems data can be
+reorganized in whatever way. The EuroToken app shows a history of all
+transactions, and provides another interface to the gateway.
+
+[transaction_history]: ../images/eurotoken_transaction_history.jpg
+![EuroToken Transaction History \label{transaction_history_label}][transaction_history]
+
+
+### EuroToken transactions in depth
+
+- Validation (TODO)
+    * Creation/destruction:
+        + Trust Central Bank only
+    * Transactions (prevent double spend)
+        + Trusted users (based on identity later)
+        + Validated by bank
+        + Bami double-spend protection
+
+### EuroToken Settings
+
+In addition to providing convenient services to the user, the EuroToken app has
+some configuration options to give the user control over their role in the
+EuroToken network.
+
+**Trusted Minters** - Since the network has a central component that regulates
+the creation and destruction of the tokens, a demo requires a running server.
+Since there is no party to maintain such a server indefinitely right now, an
+option is added to allow the user to specify public keys of trusted "central
+banks". If this option is enabled, the wallet in the super-app does only accepts
+blocks signed by the configured public keys.
+
+- [TODO: image of minter config]
+
+**Trusted validators** - Validation of transactions and prevention of double
+spending is unsolved in TrustChain but is an important part of any currency.
+Solving this problem in general is being worked on [TODO CITE bami] and is out
+of scope for this project. However the issue of transaction finality being
+important to a EuroToken system, a way to prevent double spending has been
+added. A transaction is not considered final until a trusted entity has signed a
+block in the senders chain that comes after the send block. This means that the
+trusted entity is responsible for the validation of the block and its
+dependencies. These validators can be configured in the app in order to make de
+demo repeatable.
+
+- [TODO: image of validator config]
 
 # Field trial
 

@@ -20,11 +20,6 @@ run:
 
 pdf:
 	cd deps && pandoc -o $(TEX_FILE).tex $(FLAGS) $(FLAGS_PDF) ../$(INPUT_FILES)
-	# sed -i 's/\\end{longtable}/\\tabularnewline\n\\end{supertabular}\n\\caption{TODO \\label{TODO}}\n\\end{center}\\end{table*}/' $(TEX_FILE)
-	# sed -i 's/\\begin{longtable}/\\begin{table*}[t]\\begin{center}\\begin{supertabular}/' $(TEX_FILE)
-	# sed -i 's/columnwidth/textwidth/' $(TEX_FILE)
-	# sed -i '/\\endhead/d' $(TEX_FILE)
-	# sed -i '/\\endfirsthead/d' $(TEX_FILE)
 	cd deps && xelatex $(TEX_FILE)
 	cd deps && bibtex $(TEX_FILE)
 	cd deps && xelatex $(TEX_FILE)
