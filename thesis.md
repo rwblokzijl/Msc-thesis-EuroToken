@@ -31,61 +31,139 @@ preface: |
 
 # Introduction
 
-[@ipv8]
-
 Libra bad, CBDC better.
 
-# Problem description
+# State of the art
 
-## Background
+Digital currencies
 
-digital currencies
+## Money, its requirements and benefits
 
-- Money, its requirements and benefits
-- problems with money and how digital money solves them
-- Problems with digital money and how bitcoin solved them
-- Problems with bitcoin and how TrustChain solved them
+## problems with money and how digital money solves them
 
-- Leftover discreppencies between traditional and digital money -> segue to next
-chapter
+## Problems with digital money and how Bitcoin solved them
 
-## Stablecoin primer
+## Problems with Bitcoin and how TrustChain solved them
 
+## Stablecoins
+
+- Intro: Leftover discrepancies between traditional and digital money (stability)
+- What is a stablecoin
 - What makes a digital currency unstable, real question: what makes a normal
 currency stable
-- What is a stablecoin
-- how to peg a currency
+- What is a peg
 - Other stablecoins in the wild
 - Vision of the future of the euro zone
 
-## Goals
+## Terms used in this report
 
-- Imagining a new accounting layer
+- Token
+- Gateway
+- Wallet
+- CBDC - Central Bank Digital Currency
 
-## Terms used
+# Problem description
 
- - Token
- - Gateway
- - Wallet
- - CBDC - Central Bank Digital Currency
+## Problem Description proper
 
-# Design
+|
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| The eurozone is missing an option for a digital currency that mirrors all features of the euro, while providing the benefits of distributed accounting and programmable money. |
 
-## Design requirements
+## Requirements for a re-imagined Euro system
 
-- P2P
+### Requirements for money
+
+In "On the Origin of Money" [@On_the_Origin_of_Money] Karl Menger describes how
+people settle on a currency as a method of exchange. He describes that the
+willingness of people to exchange their goods for a commodity depends upon:
+
+1. The ability to trade the currency for goods and services
+2. The scarcity of the commodity
+3. The uniformity, divisibility, durability and practicality of the
+   commodity.
+4. The development of the market, and how others speculate.
+5. The limitations imposed politically and socially upon exchange,
+   consumption and transfer from one period of time to another
+
+All these aspects must be managed in any successful currency. Points 1 and 4,
+the future usefulness of the currency and it's market demand, are where digital
+currencies still fall short of traditional currencies. Because of the price
+volatility there is no way to know whether the coin you have today can still be
+used to buy the same amount tomorrow.
+
+Anything that aims to replace the euro needs to be as price stable as the euro.
+Adding guarantees about the price, will make merchants more willing to accept
+the currency, thus providing the ability to trade the currency for goods.
+
+The EuroToken system needs to satisfy all 5 requirements in order to be a
+viable currency. However, points 2 and 5 are dependent on the real world
+implementation, legal guarantees and political backing. And are thus out of
+scope for this project.
+
+Point 3 is where crypto-currencies add their value, through their digital and
+distributed natures.
+
+### Requirements for digital assets
+
+The usefulness and viability of a currency is still dependent on its functional
+aspects. With traditional currencies the issues of uniformity, divisibility,
+durability and practicality have long been solved. However in digital currencies
+these aspects bring with them many sub-requirements. In "On the Origin of Money"
+[@On_the_Origin_of_Money] Menger uses the concepts of spacial and "time" limits.
+
+**Space limits** - The space limits of a currency is how costly a currency is to
+store, transport, and manage across multiple 'market places'. Because of the
+digital nature of crypto currencies, the price of storing any amount of money is
+the price of storing some data. However, the transport and transfer
+(practicality) of the currency is dependent on having access to the data and
+equipment needed to do the transfer. For many digital currencies an internet
+connection is also required to facilitate a transfer.
+
+
+**Time limits** - For digital currencies the time limits of a currency brings
+with it more complexity than physical money. While A users guarantee that their
+money is durable and will not be lost becomes a problem of IT systems, backups
+and cyber-security. As such any protocol and edge implementations need to be
+secure / securable in order for the currency to be properly durable.
+
+Finally there is one more requirement of money that needs to be maintained in
+a digital system. That is the uniformity of money, also known as the fungibility
+of money. This is the concept that any 2 individual units of the commodity are
+essentially interchangeable. This is very important and
+
 - Secure
+- Scalabile
 - Open
 - Privacy aware
 
+### Requirements for a future of money
+
+Ultimate internal conflict
+
+- P2P in nature
+- Central handle
+
+### Final thoughts on requirements
+
+Internal conflict, no right answer, new area for humanity, much opportunity, but
+much can go wrong.
+
+# Design
+
 ## System architecture
+
+
+- Central component
+- Distributed component
+
 
 ## How does this solve the requirements
 
 ## Multiple perspectives
 
 - Stablecoin or tokenised euro?
-- tokenised euro or standardised, decentralised bank ledger accounting?
+- tokenised euro or standardised, distributed bank ledger accounting?
 
 ## Theoretical expansion of the concepts
 
@@ -206,9 +284,10 @@ container that also provides the frontend.
 
 In order to use the EuroToken system on a daily basis, users need a way to send
 and receive the token. Because the added value of the system is its
-decentralised nature, a way to send and receive the asset in a convenient and
+distributed nature, a way to send and receive the asset in a convenient and
 peer to peer way is needed. The TrustChain team has recently come out with an
-Android super-app[TODO, cite] that showcases some of the IPv8[TODO CITE] and
+
+Android super-app[TODO, cite] that showcases some of the IPv8 [@ipv8] and
 TrustChain[TODO CITE] capabilities. This app provides the perfect platform to
 showcase the EuroToken capabilities.
 
