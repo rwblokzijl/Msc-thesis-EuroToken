@@ -31,7 +31,143 @@ preface: |
 
 # Introduction
 
-Libra bad, CBDC better.
+- Physical money is slow - restricted by the speed of travel
+- Digital money is less slow - restricted by the speed of human communication
+- New digital money - restricted by the speed of light (and the runtime of
+  cryptographic algorithms)
+
+# Problem description
+
+We formulate the problem description as follows:
+
+|
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| The euro zone is missing an option for a digital currency that mirrors all features of the euro, while providing the benefits of distributed accounting and programmable money. |
+
+In the historic paper "On the Origin of Money" [@On_the_Origin_of_Money] Karl
+Menger describes how people settle on a currency as a method of exchange. He
+describes that the willingness of people to exchange their goods for a commodity
+depends upon:
+
+1. The ability to trade the currency for goods and services
+2. The scarcity of the commodity
+3. The uniformity, divisibility, durability and practicality of the
+   commodity.
+4. The development of the market, and how others speculate.
+5. The limitations imposed politically and socially upon exchange,
+   consumption and transfer from one period of time to another
+
+All these aspects must be managed in any successful currency. In this chapter we
+will work out these requirements into a concrete set of requirements for the
+EuroToken system.
+
+## The general requirements for money
+
+Points 1 and 4, the future usefulness of the currency and it's market demand,
+are where digital currencies still fall short of traditional currencies. Because
+of the price volatility there is no way to know whether the coin you have today
+can still be used to buy the same amount tomorrow.
+
+Anything that aims to replace the euro needs to be as price stable as the euro.
+Adding guarantees about the price, will make merchants more willing to accept
+the currency, thus providing the ability to trade the currency for goods.
+
+The EuroToken system needs to satisfy all 5 requirements in order to be a
+viable currency. However, points 2 and 5 are dependent on the real world
+implementation, legal guarantees and political backing. And are thus out of
+scope for this project.
+
+Point 3 is where crypto-currencies add their value, through their digital and
+distributed natures.
+
+## Requirements for digital assets
+
+The usefulness and viability of a currency is still dependent on its functional
+aspects. With traditional currencies the issues of uniformity, divisibility,
+durability and practicality have long been solved. However in digital currencies
+these aspects bring with them many sub-requirements. In "On the Origin of Money"
+[@On_the_Origin_of_Money] Menger uses the concepts of spacial and "time" limits.
+
+**Space limits** - The space limits of a currency is how costly a currency is to
+store, transport, and manage across multiple 'market places'. Because of the
+digital nature of crypto currencies, the price of storing any amount of money is
+the price of storing some data. However, the transport and transfer
+(practicality) of the currency is dependent on having access to the data and
+equipment needed to do the transfer. For many digital currencies an internet
+connection is also required to facilitate a transfer. Additionally any network
+required for verification needs to have the capacity to transfer the currency
+for a sufficiently low cost.
+
+**Time limits** - For digital currencies the time limits of a currency brings
+with it more complexity than physical money. While A users guarantee that their
+money is durable and will not be lost becomes a problem of IT systems, backups
+and cyber-security. As such any protocol and edge implementations need to be
+secure / securable in order for the currency to be properly durable.
+
+Finally there is one more requirement of money that needs to be maintained in
+a digital system. That is the uniformity of money, also known as the fungibility
+of money. This is the concept that any 2 individual units of the currency have
+to be essentially interchangeable. This means that there cannot be any
+difference in value or risk based on the source of money. When building on a
+trust based, hyper-sharded system like TrustChain, by default, the risk attached
+to any money received is dependent on the trust you have in the sender of the
+money. As such there needs to be a mechanism that reduces the transaction risk
+to a negligible level.
+
+## Political requirements for a future of money
+
+The adoption of any new currency system across the euro zone will be dependent
+on many more factors than just the technical design. Even if the EuroToken
+system meets all the requirements specified in the last chapters, trust in the
+system will depend on "The limitations imposed politically and socially upon
+exchange".
+
+It is impossible, however tempting, to make any statements about how the system
+should handle a number of political issues. Instead a some trade-offs will be
+highlighted and discussed. Any value judgements will be reserved and left out of
+scope. The political considerations for any real world implementation of the
+EuroToken system, might include, but are not limited to:
+
+1. the openness of its access vs the prevention of malicious activity
+2. the privacy of its users vs the ability of the state to track malicious
+   behaviour
+3. the economic tools provided to the central bank vs the natural price
+   development of the market
+
+In the following sections each of these trade-offs will be discussed while
+specifying some requirements for different positions on the trade-off spectrum.
+
+### Openness vs Control
+
+- The openness of its access vs the prevention of malicious activity
+
+### Privacy vs Security
+
+- The privacy of its users vs the ability of the state to track malicious
+behaviour
+
+### Central control vs free market guarantees
+
+- The economic tools provided to the central bank vs the natural price
+development of the market
+
+## Summary
+
+Deriving from the fundamental requirements of money the following requirements
+for the EuroToken system have been determined:
+
+Functional
+- Secure
+- Scalabile
+- Available
+
+Political
+- Tyranny resistance
+- Privacy aware
+
+
+Internal conflict, no right answer, new area for humanity, much opportunity, but
+much can go wrong.
 
 # State of the art
 
@@ -61,93 +197,6 @@ currency stable
 - Gateway
 - Wallet
 - CBDC - Central Bank Digital Currency
-
-# Problem description
-
-## Problem Description proper
-
-|
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| The eurozone is missing an option for a digital currency that mirrors all features of the euro, while providing the benefits of distributed accounting and programmable money. |
-
-## Requirements for a re-imagined Euro system
-
-### Requirements for money
-
-In "On the Origin of Money" [@On_the_Origin_of_Money] Karl Menger describes how
-people settle on a currency as a method of exchange. He describes that the
-willingness of people to exchange their goods for a commodity depends upon:
-
-1. The ability to trade the currency for goods and services
-2. The scarcity of the commodity
-3. The uniformity, divisibility, durability and practicality of the
-   commodity.
-4. The development of the market, and how others speculate.
-5. The limitations imposed politically and socially upon exchange,
-   consumption and transfer from one period of time to another
-
-All these aspects must be managed in any successful currency. Points 1 and 4,
-the future usefulness of the currency and it's market demand, are where digital
-currencies still fall short of traditional currencies. Because of the price
-volatility there is no way to know whether the coin you have today can still be
-used to buy the same amount tomorrow.
-
-Anything that aims to replace the euro needs to be as price stable as the euro.
-Adding guarantees about the price, will make merchants more willing to accept
-the currency, thus providing the ability to trade the currency for goods.
-
-The EuroToken system needs to satisfy all 5 requirements in order to be a
-viable currency. However, points 2 and 5 are dependent on the real world
-implementation, legal guarantees and political backing. And are thus out of
-scope for this project.
-
-Point 3 is where crypto-currencies add their value, through their digital and
-distributed natures.
-
-### Requirements for digital assets
-
-The usefulness and viability of a currency is still dependent on its functional
-aspects. With traditional currencies the issues of uniformity, divisibility,
-durability and practicality have long been solved. However in digital currencies
-these aspects bring with them many sub-requirements. In "On the Origin of Money"
-[@On_the_Origin_of_Money] Menger uses the concepts of spacial and "time" limits.
-
-**Space limits** - The space limits of a currency is how costly a currency is to
-store, transport, and manage across multiple 'market places'. Because of the
-digital nature of crypto currencies, the price of storing any amount of money is
-the price of storing some data. However, the transport and transfer
-(practicality) of the currency is dependent on having access to the data and
-equipment needed to do the transfer. For many digital currencies an internet
-connection is also required to facilitate a transfer.
-
-
-**Time limits** - For digital currencies the time limits of a currency brings
-with it more complexity than physical money. While A users guarantee that their
-money is durable and will not be lost becomes a problem of IT systems, backups
-and cyber-security. As such any protocol and edge implementations need to be
-secure / securable in order for the currency to be properly durable.
-
-Finally there is one more requirement of money that needs to be maintained in
-a digital system. That is the uniformity of money, also known as the fungibility
-of money. This is the concept that any 2 individual units of the commodity are
-essentially interchangeable. This is very important and
-
-- Secure
-- Scalabile
-- Open
-- Privacy aware
-
-### Requirements for a future of money
-
-Ultimate internal conflict
-
-- P2P in nature
-- Central handle
-
-### Final thoughts on requirements
-
-Internal conflict, no right answer, new area for humanity, much opportunity, but
-much can go wrong.
 
 # Design
 
