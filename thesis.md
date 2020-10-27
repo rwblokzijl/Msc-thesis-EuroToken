@@ -109,10 +109,9 @@ a digital system. That is the uniformity of money, also known as the fungibility
 of money. This is the concept that any 2 individual units of the currency have
 to be essentially interchangeable. This means that there cannot be any
 difference in value or risk based on the source of money. When building on a
-trust based, hyper-sharded system like TrustChain, by default, the risk attached
-to any money received is dependent on the trust you have in the sender of the
-money. As such there needs to be a mechanism that reduces the transaction risk
-to a negligible level.
+trust based, by default, the risk attached to any money received is dependent on
+the trust you have in the sender of the money. As such there needs to be a
+mechanism that reduces the transaction risk to a negligible level.
 
 ## Political requirements for a future of money
 
@@ -141,33 +140,75 @@ specifying some requirements for different positions on the trade-off spectrum.
 
 - The openness of its access vs the prevention of malicious activity
 
-### Privacy vs Security
+Case for openness
 
-- The privacy of its users vs the ability of the state to track malicious
+Case for control
+
+Requirements:
+
+Openness - No central servers for the core functioning of the network. (transfer
+without saction)
+
+Control - Central rules that determine the validity of funds based on the source
+of the transaction. (identity should be verifiable)
+
+### Privacy vs Policability
+
+- The privacy of the users vs the ability of the state to track malicious
 behaviour
 
-### Central control vs free market guarantees
+Case for privacy
+
+Case for security
+
+Requirements:
+
+Privacy - Future support for encrypting transactions while allowing for
+ZK-proofs for verifying availability of funds.
+
+Policability - the ability to see information about a transaction regardless of
+the encryption
+
+Finding a balance in this is not a trivial task.
+
+### Central control vs self regulation
 
 - The economic tools provided to the central bank vs the natural price
 development of the market
+
+Case for central control based on current politics.
+
+Case for free market, new democratic backbone.
+
+Central control - Allow the minting of new coins by the central bank, akin to QE
+
+Self regulation - Build in features that guarantee market invariants, like a set
+inflation based on trackers. Or minting as a joint decision of many parties,
+possibly DAO style. Possibly a democratic system in the system, based on
+identity, separate from nation politics. Possibly deferring voting to financial
+institutions.
 
 ## Summary
 
 Deriving from the fundamental requirements of money the following requirements
 for the EuroToken system have been determined:
 
-Functional
-- Secure
-- Scalabile
-- Available
+The system must:
 
-Political
-- Tyranny resistance
-- Privacy aware
+- Allow the user to transfer funds to other users
+- Allow the user to store funds for a period of time
+- Have a mechanism to maintain the value of 1 token at 1 euro
+- Maintain the uniformity/fungibility of the token
+- Be theoretically scalable to billions of users
+- Be completely digital and automated
+- Be secure against double-spend attacks
 
+The system should be expandable to allow:
 
-Internal conflict, no right answer, new area for humanity, much opportunity, but
-much can go wrong.
+- An integrated identity mechanism that verifies users and makes them
+accountable
+- Mechanisms to hide the details of any transaction
+- Mechanisms to bind network properties and rules to a democratic mechanism
 
 # State of the art
 
@@ -179,7 +220,9 @@ Digital currencies
 
 ## Problems with digital money and how Bitcoin solved them
 
-## Problems with Bitcoin and how TrustChain solved them
+- mention ripple and why they aren't widely adopted yet
+
+## Problems with Bitcoin and how TrustChain is an alternative
 
 ## Stablecoins
 
@@ -202,10 +245,8 @@ currency stable
 
 ## System architecture
 
-
 - Central component
 - Distributed component
-
 
 ## How does this solve the requirements
 
@@ -213,12 +254,12 @@ currency stable
 
 - Stablecoin or tokenised euro?
 - tokenised euro or standardised, distributed bank ledger accounting?
+    * Transition friendly
 
 ## Theoretical expansion of the concepts
 
 - Multi bank design
 - Identity integration
--
 
 ## TrustChain as an accounting platform for financial transactions
 
