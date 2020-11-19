@@ -38,7 +38,7 @@ preface: |
 
 # Problem description
 
-We formulate the problem description as follows:
+
 
 |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -210,6 +210,13 @@ accountable
 - Mechanisms to hide the details of any transaction
 - Mechanisms to bind network properties and rules to a democratic mechanism
 
+System invariants:
+
+- The market equivalence invariant - The amount of euro + EuroToken on the
+market must never be changed because of a system transaction. (the EuroToken
+shouldn't change euro supply)
+
+
 # State of the art
 
 Digital currencies
@@ -243,29 +250,140 @@ currency stable
 
 # Design
 
+```
+TODO: Remove
+Architecture Structure:
+
+1. general ideas on keeping the currency stable
+    a. Solve with Pegging ->
+    b. Solve with Collatoral ->
+    c. Solve with central bank ->
+    d. Move to allowing central bank debt tracking
+2. Global system architecture
+    a. Money ingress and egress
+        i. Trusted Gateway(s) to mint and burn coins.
+            - Holding collateral
+    b. Money transfer using trustchain
+        i. Double spend protections
+            - Checkpointing
+3. On scalability
+    a. Multiple gateways (Central Bank)
+    b. A seperate set of trusted transaction validator nodes (Local banks)
+4. Trustchain
+    a. message types:
+        i. Transfer
+        ii. Creation
+        iii. Destruction
+        iv.  Checkpoint
+    b. User software
+    c. Bank software
+5. Scientific novelty
+    a. Move the perspective from stablecoin to europe's renewed infrastructure
+    b. Other coins that aim to do this: ripple
+    c. Our added value (to the current system and other solutions)
+        - Users get
+            * programmable money
+            * Auditability by open source software
+        - Banks get
+            * One standard for banking ledgers
+            * Added benefit of not losing central monetary policy handle.
+            * Smooth long term migration to the new system with failsafe
+```
+
+`TODO: Intro`
+
+## Pegging to the euro (Design level 1)
+
+As we have explored in chapter TODO, there are a few ways of stabilising a
+currency. Since the EuroToken system needs to function as a replacement of the
+current financial infrastructure and has to be stable with regard to the euro,
+we have chosen a direct peg to the euro. This requires a mechanism that allows
+any holder of the euro to exchange it for an equal amount of EuroTokens at all
+time.
+
+Because of the system invariant to not change the total supply of euro +
+EuroToken, every addition of a EuroToken to the system should result in the
+removal of a euro, and vice versa. Since we cannot create and destroy euros at
+will, a collateral system will be used to ensure absolute availability of euros
+and EuroTokens at any time to facilitate both directions of exchange.
+
+The collateral system will work as follows: A holder of euro will trade their
+euro for a EuroToken with a central bank certified gateway. The gateway will
+store the euro in a bank account, effectively removing it from the market. These
+gateways have the sole power of EuroToken minting and the only situation where
+EuroTokens will be minted is when a euro is provided as collateral.
+
+Firstly, this maintains the market equivalence invariant as EuroTokens only
+enter the market when a euro is removed. And secondly the collateral equivalence
+invariant, that the amount of euro held in collateral is always equal to the
+amount of EuroToken on the market.
+
+Because of this guarantee, the other direction of trade is always possible as
+well. When a EuroToken holder wants to exchange their token for a euro, it can
+always do so with a gateway. The gateway will remove the EuroToken from
+circulation while adding a euro back to the market. Thus again maintaining the
+market equivalence invariant as well as the collateral equivalence invariant.
+
 ## System architecture
 
-- Central component
-- Distributed component
+`TODO: intro 2 subsystems`
 
-## How does this solve the requirements
+### The blockchain
 
-## Multiple perspectives
+- Use of any distributed ledger is possible, but must adhere to
+    * Must solve double spending ()
+    * Must scale to planet scale with micro transactions
+    * Must be immutable
+        + To be accountable
+    * Should have identity built in
+    * Should allow for other features
 
-- Stablecoin or tokenised euro?
-- tokenised euro or standardised, distributed bank ledger accounting?
-    * Transition friendly
+### Considerations for TrustChain
 
-## Theoretical expansion of the concepts
+- Transfer using any application
+- Transfer scales infinitely
+- Transfers Require verification by trusted node
 
-- Multi bank design
-- Identity integration
+### Validators and judicial compatibility
 
-## TrustChain as an accounting platform for financial transactions
+- Verify balances and transactions to prevent fraud
+- Expandable to verify other things (terrorism prevention iff identity)
+- Scalability depends on network rules
+    * When is a node trusted
+    - What happens on validation failure (double spend)
+        * Auditability through the blockchain
+        * Accountability provided by Identity
+        * Judicial system to settle disputes with signed proof of fraud
 
-### Day to day money transfer in the 21 century
+### The gateway
 
-## System considerations
+- acts as a link between 2 assets
+    * Could be expanded
+- Is central bank certified
+
+- Scalability might require backend communication
+- Management of euros on backend is up to the central bank.
+    * Individual banks might not have enough collateral for all trades.
+    * What happens on bank failure
+        + Exit scamming
+
+## Demo specific choices
+
+### What will this thesis implement
+
+1. Single central bank
+2. Central bank is also validator
+3. Expansion on preexisting TrustChain super app to add EuroToken user
+   capacities.
+
+### TrustChain message types
+
+1. Transfer
+2. Creation
+3. Destruction
+4. Checkpoint
+
+## Extra System considerations
 
 ### Security
 
@@ -273,7 +391,9 @@ currency stable
 
 ### Usability
 
-### Audibility
+### Auditability
+
+## Scientific novelty
 
 # Implementation
 
