@@ -17,7 +17,8 @@ $if(graphics)$
 % Scale images if necessary, so that they will not overflow the page
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=1.0\maxwidth,height=0.4\maxheight,keepaspectratio}
+\let\oldfigure\figure
+\def\figure{\setkeys{Gin}{width=1.0\maxwidth,height=0.4\maxheight,keepaspectratio}\oldfigure}
 $endif$
 
 \begin{document}
