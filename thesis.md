@@ -330,19 +330,82 @@ market equivalence invariant as well as the collateral equivalence invariant.
 
 ### The blockchain
 
-- Use of any distributed ledger is possible, but must adhere to
-    * Must solve double spending ()
+```
+- Use of any distributed ledger is possible, but it:
     * Must scale to planet scale with micro transactions
     * Must be immutable
         + To be accountable
-    * Should have identity built in
+    * Must include double spending protection
+
     * Should allow for other features
+    * Should have identity built in
+
+- Incentives to keep your own chain, mirror that of the incentive to not lose
+your own cash
+```
+
+The EuroToken system can be build with any ledger technology, but the choice of
+this technology is fundamental to the well functioning of the system as a whole.
+For the EuroToken system, the following requirements for the systems should be
+considered.
+
+First, any EuroToken ledger technology **must** scale to the size of the Euro
+zone, it must allow for rapid micro-transactions to take place, while
+maintaining a negligible transaction cost. Any centrally managed database would
+practically be a centralised rebuild of the current banking system, which beside
+being incredibly expensive, would introduce a centralised point of failure
+towards which malicious behaviour like denials of service attacks and fraud
+would be directed. This is where a distributed ledger technology has its added
+value. By having standard day to day transactions happen between users directly,
+the cost of any transaction between any parties is the cost of the communication
+between these parties. For this project we therefore choose to user a
+distributed ledger technology. The issue of the security of funds in the ledger
+is now the responsibility of the owner of these funds, while only leaving the
+security of the nodes responsible for the minting and burning of EuroToken to
+the parties that manage the system.
+
+Second, transactions **must** be final, therefore users **must** have a
+indisputable, dependable and therefore immutable record of their income and
+transactions. When storing data in a distributed way, the task of keeping data
+immutable is partly solved by using a blockchain data structure that guarantees
+the immutability of all transactions before any given block in the chain.
+
+Even with a blockchain however, finality is still dependent on the availability
+of any users last transaction. Some currencies use a single distributed
+blockchain that is maintained by all participants in the network to store this
+information. However, using a solution that requires constantly updating global
+state makes maintaining a sufficiently high transaction throughput a significant
+challenge[TODO, onderbouw en citeer]. Though there are efforts to increase the
+throughput of global data networks [TODO, cite eth 2.0], in this project we will
+use a blockchain that scales first and attempt to solve transaction finality is
+alternative, less general, but viable ways.
 
 ### Considerations for TrustChain
 
 - Transfer using any application
 - Transfer scales infinitely
 - Transfers Require verification by trusted node
+
+### Double spending, accountability and identity
+
+- How to stop double spending
+- Use validators for occasional checkpoints with registered validator
+    * Every wallet has a registered validator (can change)
+    * How occasional depends on receiver
+    * Double spends will be caught by validator
+- validators must scale dynamically (bank services to users wanting to hold CBDC)
+- A CBDC should use a different, more scalable validation strategy
+    * bami
+- trusted network of transaction validators, new task for banks
+    * Either just as validators
+    * Possibly as custodians
+- trusted parties could cheat
+- Identity would be required to hold issue
+
+Third, it **should** allow authorities to inspect and regulate the markets.
+
+
+[TODO, cite bami paper]. Though this
 
 ### Validators and judicial compatibility
 
