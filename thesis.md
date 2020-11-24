@@ -380,20 +380,146 @@ throughput of global data networks [TODO, cite eth 2.0], in this project we will
 use a blockchain that scales first and attempt to solve transaction finality is
 alternative, less general, but viable ways.
 
-### Considerations for TrustChain
+### TrustChain
+
+For the reasons stated above, we choose to use TrustChain as the backend
+blockchain for the EuroToken project. TrustChain is a hyper sharded blockchain
+where every peer maintains their own blockchain. All blocks that involve a
+counterparty have a link to that chain. This mechanism entangles the chain of
+any user with the chains of everyone they interact with.
+
+[Explanation of TrustChain with pictures].
 
 - Transfer using any application
 - Transfer scales infinitely
 - Transfers Require verification by trusted node
 
-### Double spending, accountability and identity
+### Double spending prevention, accountability and identity
 
-- How to stop double spending
+```
+- How to double spend in TrustChain
+- Double spend requires a fork/mis-advertising of a block.
+- Forks can be prevented using trusted parties
+- Forks will eventually be detected and prevented using [bami].
 - Use validators for occasional checkpoints with registered validator
     * Every wallet has a registered validator (can change)
     * How occasional depends on receiver
     * Double spends will be caught by validator
 - validators must scale dynamically (bank services to users wanting to hold CBDC)
+- A CBDC should use a different, more scalable validation strategy
+    * bami
+- trusted network of transaction validators, new task for banks
+    * Either just as validators
+    * Possibly as custodians
+- trusted parties could cheat
+- Identity would be required to hold issue
+```
+
+TrustChain gives us the scalability needed for a eurozone wide currency.
+However, because of the lack of a global component a double spending attack
+would be possible.
+
+The blockchain guarantees us that given a signed block with a hash, all blocks
+before it are immutable without invalidating the chain of hashes. This allows
+any user to inspect and verify the full history of any other user. However it
+does require the inspecting user to have the last block of the counterparty.
+
+A malicious user can simply withhold information about their last transactions
+to make it seems like funds that have recently been spent are still available.
+As illustrated in Figure [TODO], this means the attacker creates a fork in their
+chain, and shows a different history to different users.
+
+[Picture of double spend fork].
+
+While there have been promising developments in TrustChain to prevent forks
+[TODO CITE bami], these are relatively recent and are not ready in time for this
+project.
+
+If we look at the implications of the double spend attack, we see a mechanism
+that is very similar to "double-entry bookkeeping" the current banking world.
+However with additional benefit of having indisputable signatures of both
+parties on any transaction. This means that any fork can be detected by anyone
+simply having both blocks in the fork, that are both signed by the attacker.
+
+If an identity system is integrated into the EuroToken system, where any user
+is identifiable and thus accountable, double spend could be considered fraud
+under the legal system, and be prosecuted by the authorities or victimised
+parties. In this case, simply having both blocks of a fork would be sufficient
+proof.
+
+However we would like to **prevent** double spending. While we cannot prevent
+any users from making a fork in their chain, we can have a mechanism that
+decides what fork is considered valid, and what forks should be discarded. In
+addition to this, a mechanism is needed to allow any user to discover whether a
+fork already exists for the block they just received.
+
+As with detection, a decision can only be made in a place where both sides of
+any for would show up. This requires all blocks of a user to end up in the same
+place eventually. While bami aims to do this dynamically by connecting all
+interested parties for every peer [TODO cite bami]. Another way is to have
+specially selected trusted parties to gather and verify all blocks for a user.
+
+### Validators
+
+```
+maybe move this to somewhere else
+```
+
+While having trusted parties is one of the things many popular crypto currencies
+are trying to avoid, the benefit of having a system of validator nodes can be a
+great benefit to the overall system.
+
+The current eurozone banking system has been using a similar system for a long
+time. Where banks are responsible for the day to day running of money transfers,
+while they're regulated and overseen by government entities such as the ECB.
+
+Beside having these institutions prevent forks, they can also serve other roles
+like large transaction validation, tax accounting, prevention and detection of
+fund transfers for criminal and terrorism purposes. If they are a bank in the
+current system they could even be allowed to hold and exchange between euros and
+EuroTokens, or leveraged lending to customers.
+
+In a system like this, EuroToken would allow a slow transition to a standardised
+accounting standard by allowing the current euro system to coexist while
+building a new monetary system for the whole eurozone. Banks will be
+incentivized to participate because it allows them to provide faster, cheaper
+and better service to their customers.
+
+### Ledger checkpointing
+
+We can prevent most double spending by simply gathering the blocks of any user
+in a simple location. When a transaction is accepted by a validator, the
+transaction can be considered "verified". We call this "checkpointing". If
+another transaction then arrives to the validator, it will be rejected and never
+verified. This means that forks will be selected on a first come first serve
+basis.
+
+Since a transaction can only be considered verified, every user that receives
+money is incentivized to send the transaction to the validator that is
+responsible for that user.
+
+### Determining validators
+
+A peer has to know where to checkpoint messages transactions for a transaction
+with a given user, in fact all peers that interact with that user need to be
+able to find the validator responsible at any time.
+
+To achieve this, a user maintains their current validator as a block on their
+chain. When the user wants to change validators, they will register another
+block, that specifies the next validator. This block will be signed by the new
+validator and be sent to the old validator as well. Anyone interacting with the
+user at this point will see the change in the chain an contact the new validator
+instead. If the block is not provided with the next peer, the old validator will
+be contacted, who will not accept the transaction as it is would be a fork
+[TODO image].
+
+### Validators in a CBDC
+
+A system of private validators by definition makes the money that is managed
+private. While validators are required to stop double spending, the system is
+unfit to be a CBDC. However, this is a feature of the backend of the system. If
+the Central Bank is the only entity able to mint new EuroTokens.
+
 - A CBDC should use a different, more scalable validation strategy
     * bami
 - trusted network of transaction validators, new task for banks
@@ -407,7 +533,6 @@ Third, it **should** allow authorities to inspect and regulate the markets.
 
 [TODO, cite bami paper]. Though this
 
-### Validators and judicial compatibility
 
 - Verify balances and transactions to prevent fraud
 - Expandable to verify other things (terrorism prevention iff identity)
