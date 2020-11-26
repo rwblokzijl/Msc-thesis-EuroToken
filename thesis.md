@@ -250,9 +250,10 @@ currency stable
 
 # Design
 
+## Global Design considerations
+
 ```
 TODO: Remove
-Architecture Structure:
 
 1. general ideas on keeping the currency stable
     a. Solve with Pegging ->
@@ -292,7 +293,7 @@ Architecture Structure:
 
 `TODO: Intro`
 
-## Pegging to the euro (Design level 1)
+### Pegging to the euro (Design level 1)
 
 As we have explored in chapter TODO, there are a few ways of stabilising a
 currency. Since the EuroToken system needs to function as a replacement of the
@@ -324,25 +325,7 @@ always do so with a gateway. The gateway will remove the EuroToken from
 circulation while adding a euro back to the market. Thus again maintaining the
 market equivalence invariant as well as the collateral equivalence invariant.
 
-## System architecture
-
-`TODO: intro 2 subsystems`
-
 ### The blockchain
-
-```
-- Use of any distributed ledger is possible, but it:
-    * Must scale to planet scale with micro transactions
-    * Must be immutable
-        + To be accountable
-    * Must include double spending protection
-
-    * Should allow for other features
-    * Should have identity built in
-
-- Incentives to keep your own chain, mirror that of the incentive to not lose
-your own cash
-```
 
 The EuroToken system can be build with any ledger technology, but the choice of
 this technology is fundamental to the well functioning of the system as a whole.
@@ -395,25 +378,6 @@ any user with the chains of everyone they interact with.
 - Transfers Require verification by trusted node
 
 ### Double spending prevention, accountability and identity
-
-```
-- How to double spend in TrustChain
-- Double spend requires a fork/mis-advertising of a block.
-- Forks can be prevented using trusted parties
-- Forks will eventually be detected and prevented using [bami].
-- Use validators for occasional checkpoints with registered validator
-    * Every wallet has a registered validator (can change)
-    * How occasional depends on receiver
-    * Double spends will be caught by validator
-- validators must scale dynamically (bank services to users wanting to hold CBDC)
-- A CBDC should use a different, more scalable validation strategy
-    * bami
-- trusted network of transaction validators, new task for banks
-    * Either just as validators
-    * Possibly as custodians
-- trusted parties could cheat
-- Identity would be required to hold issue
-```
 
 TrustChain gives us the scalability needed for a eurozone wide currency.
 However, because of the lack of a global component a double spending attack
@@ -515,35 +479,78 @@ be contacted, who will not accept the transaction as it is would be a fork
 
 ### Validators in a CBDC
 
-A system of private validators by definition makes the money that is managed
-private. While validators are required to stop double spending, the system is
-unfit to be a CBDC. However, this is a feature of the backend of the system. If
-the Central Bank is the only entity able to mint new EuroTokens.
+A system of private validators makes the money that is managed private. This
+means that the money a user has validated by them derives its value from the
+reputation of the validator [TODO, cite public vs private]. Because of this, a
+system that requires private validators is unfit to be a CBDC. Any central bank
+money, should derive its value from the reputation of the central bank, and no
+private entity should be involed. However, this is a feature of the backend of
+the system. If the Central Bank is the only entity able to mint new EuroTokens,
+and double spending is prevented by a decentralized mechanism, the stablecoin
+mechanism can still be used to introduce a CBDC that matches its value to the
+euro. This would still allow private parties to exchange the currency, just not
+guarantee its value.
 
-- A CBDC should use a different, more scalable validation strategy
-    * bami
-- trusted network of transaction validators, new task for banks
-    * Either just as validators
-    * Possibly as custodians
-- trusted parties could cheat
-- Identity would be required to hold issue
+A viable backend for a CBDC could be TrustChain with its new Bami extension
+[TODO cite].
 
-Third, it **should** allow authorities to inspect and regulate the markets.
+### Global design summary and conclusion
 
+[TODO].
 
-[TODO, cite bami paper]. Though this
+## Protocol design
 
+[TODO intro].
 
-- Verify balances and transactions to prevent fraud
-- Expandable to verify other things (terrorism prevention iff identity)
-- Scalability depends on network rules
-    * When is a node trusted
-    - What happens on validation failure (double spend)
-        * Auditability through the blockchain
-        * Accountability provided by Identity
-        * Judicial system to settle disputes with signed proof of fraud
+```
+Structure:
 
-### The gateway
+1. Needed events and how they create a working system
+    a. Creation
+        i. Created ET
+        ii. Stores Euro
+        iii. has to be validated by gateway
+        iv.  Peer to gateway interaction
+    b. Destruction
+        i. Destruction of ET
+        ii. Sends euro to payee
+        iii. Is performed only by gateway
+        iv.  Peer to gateway interaction
+    c. Checkpoint
+        i. Validates transactions
+        ii. Perfomed by the gateway
+        iii. Temporary solution to solve double spending and transaction finality
+        iv.  Peer to gateway interaction
+    d. Transfer
+        i. Basic command to send money
+        ii. Peer to peer interaction
+        iii. Balance not yet validated
+2. Creation Step by step
+3. Destruction
+4. Checkpoint
+5. Transfer
+6. Demo specific choices (maybe this should go in implementation)
+    a. TrustChain without bami
+    b. A single gateway
+    c. that acts as validator also
+```
+
+### System events
+
+In order to realise the
+
+### Demo specific choices
+
+What will this thesis implement
+
+1. Single central bank
+2. Central bank is also validator
+3. Expansion on preexisting TrustChain super app to add EuroToken user
+   capacities.
+
+### The gateway - enabling the peg
+
+In order to
 
 - acts as a link between 2 assets
     * Could be expanded
@@ -555,16 +562,7 @@ Third, it **should** allow authorities to inspect and regulate the markets.
     * What happens on bank failure
         + Exit scamming
 
-## Demo specific choices
-
-### What will this thesis implement
-
-1. Single central bank
-2. Central bank is also validator
-3. Expansion on preexisting TrustChain super app to add EuroToken user
-   capacities.
-
-### TrustChain message types
+### TrustChain message and interaction types
 
 1. Transfer
 2. Creation
