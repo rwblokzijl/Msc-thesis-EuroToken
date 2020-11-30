@@ -31,14 +31,87 @@ preface: |
 
 # Introduction
 
+When the Bitcoin [TODO cite] white paper was published in 2008, the world has
+been speculating on how decentralized ledge technologies could be used to
+restructure the financial infrastructure of the world. 9 years later, Facebook
+announced a private currency controlled by a group op corporations. 3 years
+after that the Chinese government announced that they had reached 92,771
+transactions per second with their new Central Bank Digital Currency (CBDC).
+
+The direction of crypto currencies is no longer determined by eccentric
+visionaries imagining a financial system that gave power back to the people and
+makes money open and programmable by anyone. Governments and large corporations
+are now competing to create the worlds main digital coin. The winner will be
+left controlling and overseeing all the worlds transactions, either for profit,
+or for their national interests.
+
+Currently there are no decentralized currencies that are in a position to
+challenge the upcoming central coins. The most well known crypto currencies,
+including Bitcoin and Ethereum, lack the price stability necessary to be a
+reliable store of value. There have been some attempts to create fully
+decentralized stablecoins, but none have been proven to work in practice on a
+large scale just yet.
+
+The Eurosystem is set to make a decision on whether to start a digital euro
+project in mid 2021. Whether and how they procees will have very large
+implications for the future of financial markets and the eurozone.
+
+This thesis aims to provide a design for a digital euro that utilizes mechanisms
+used by todays stablecoin in order to create a digital euro analog called
+EuroToken. EuroToken is a design for a scalable system that allows transfer
+between parties in a scalable and peer to peer way, while maintaining price
+stability through maintaining collateral euros in a bank account.
+
+We show how the EuroToken system can be used to create a scalable CBDC as well
+als serve as a private money alternative to current banks.
+
+# Problem description
+
+## random text:
+
+Once crypto currencies had been adopted by a
+significant amount of people and started to be used for real transfers of
+value, the speculators came.
+
+Cryptocurrencies like Bitcoin were rapidly growing in popularity and therefore
+price. The interest in a functional distributed currency, combined with the
+prospect of riding the rise of this new store of value, pulled in enough people
+to reach a market capitalization of 328 billion USD in late 2017. With the
+crypto bubble of December 2017 and subsequent crash in early 2018, the
+significance of these concepts had been demonstrated to the entire world.
+
+The popularity of decentralized crypto currencies is undeniable, yet they have
+failed to be gain widespread adoption in everyday use. Many crypto currencies
+are plagued by a lack of scalability, a lack of price stability as well as other
+issues. While these problems may well be solve in the future, government
+organisations are looking into CBDCs now.
+
+When the facebook connected Libra was introduced in 2017. Many big payment
+vendors like Visa and MasterCard were members of the Libra Association.
+
+The Central
+
+This
+sparked a debate on the shape of the future of money. In order
+
+Completely decentralized crypto currencies like Bitcoin have always been plagued
+by the same issue.
+
+or at least failed to die,
+
+the future
+impact of would
+
+impact that this new form of money would h
+
 - Physical money is slow - restricted by the speed of travel
 - Digital money is less slow - restricted by the speed of human communication
 - New digital money - restricted by the speed of light (and the runtime of
   cryptographic algorithms)
 
-# Problem description
+  ---
 
-
+## problem description
 
 |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
