@@ -31,30 +31,39 @@ preface: |
 
 # Introduction
 
-When the Bitcoin [TODO cite] white paper was published in 2008, the world has
+Since the Bitcoin [TODO cite] white paper was published in 2008, the world has
 been speculating on how decentralized ledge technologies could be used to
-restructure the financial infrastructure of the world. 9 years later, Facebook
-announced a private currency controlled by a group op corporations. 3 years
-after that the Chinese government announced that they had reached 92,771
-transactions per second with their new Central Bank Digital Currency (CBDC).
+restructure the financial infrastructure of the world to redistribute power
+towards the masses and away from large opaque organisations. 9 years later,
+Facebook announced a private currency controlled by a group op corporations
+[TODO cite]. 3 years after that the Chinese government announced that they had
+reached 92,771 transactions per second with their new Central Bank Digital
+Currency (CBDC) [TODO cite]. And the Eurosystem is set to make a decision on
+whether to start a digital euro project in mid 2021.
 
 The direction of crypto currencies is no longer determined by eccentric
 visionaries imagining a financial system that gave power back to the people and
 makes money open and programmable by anyone. Governments and large corporations
 are now competing to create the worlds main digital coin. The winner will be
 left controlling and overseeing all the worlds transactions, either for profit,
-or for their national interests.
+or their national interests.
 
-Currently there are no decentralized currencies that are in a position to
-challenge the upcoming central coins. The most well known crypto currencies,
-including Bitcoin and Ethereum, lack the price stability necessary to be a
-reliable store of value. There have been some attempts to create fully
-decentralized stablecoins, but none have been proven to work in practice on a
-large scale just yet.
+Currently very few decentralized currencies are in a position to challenge the
+upcoming central coins. The most well known crypto currencies, including Bitcoin
+and Ethereum, lack the price stability necessary to be a reliable store of
+value. There have been attempts to create fully decentralized stablecoins, but
+none have been proven to work in practice on a large scale just yet.
 
-The Eurosystem is set to make a decision on whether to start a digital euro
-project in mid 2021. Whether and how they procees will have very large
-implications for the future of financial markets and the eurozone.
+If fully decentralized currencies don't come up with a solution to scalability
+and stability soon. The future of the financial system might come down to a
+competition between the large governments of the world and the private sector.
+
+Whether and how these parties succeed will have large implications for the
+future of financial markets of the world, and might determine the level of
+freedom of the societies of the future. Where China and Facebook are making
+rapid progress the Eurozone is still deliberating, while they might have a vital
+role in including the democratic process in the running of the future financial
+markets.
 
 This thesis aims to provide a design for a digital euro that utilizes mechanisms
 used by todays stablecoin in order to create a digital euro analog called
@@ -63,9 +72,95 @@ between parties in a scalable and peer to peer way, while maintaining price
 stability through maintaining collateral euros in a bank account.
 
 We show how the EuroToken system can be used to create a scalable CBDC as well
-als serve as a private money alternative to current banks.
+as serve as a private money alternative to current banks and provide all the
+benefits of programmable money with the price stability of the euro.
 
 # Problem description
+
+```
+Johan notes:
+
+- specific e-Euro, not broad E-Money, e-Dollar in general
+- Discuss the ECB plans in detail to start chapter!
+- Retail (use existing banks) versus direct-consumer
+
+Structure:
+- ECB plans
+    * CBDC
+    * Deliberation for 2021
+- Stablecoin trends
+    * Bitcoin and Ether are unstable
+    * Different solutions (include from lit survey)
+        + Centralised Collatoralised (tether)
+        + Centralised Controlled (Libra)
+        + Decentralized Collatoralised (Makerdao)
+        + Decentralized Algorithmic (nubits)
+- The current day financial system
+    * Payments via banks (require connection)
+    * International settlemens slow
+    * Private money by banks
+        + 100.000 FICA insurance
+    * Public money by the Central bank
+        + Cash only
+- What we want from our financial system
+    * Intuduce my solution
+    * Requirements
+        + Scalable
+        + stable
+        + Peer to peer
+        + intagrateble with current system
+
+Possible flows:
+1. ECB CBDC plans --(why?)-> Current finsys bad --(possible solution types)->
+   Stablecoin primer --(best solution for digiEuro)-> Requirements
+2. Current finsys bad --(solution?)-> ECB plans --(how?)-> Stablecoins
+   --(best solution for Euro)-> Requirements
+3. Current finsys bad --(possible solutions)-> Stablecoins --(hybrid solution)->
+   ECB CBDC plans --(how?)-> Requirements
+```
+
+* The current finsys is
+    + digitalising and becoming more dependent on banks
+    + paying more internatially but dated and slow
+* ECB wants to modernise
+* Cryptos can have inherent global guarantees
+    + Possibly for public money
+    + Needs to be properly designed
+
+## The state of the financial system
+
+* Payments via banks (require connection)
+* International settlemens slow
+* Public money by the Central bank
+    + Cash only
+
+- Retail is growing toward digital payments
+    * safer, faster, cheaper
+    * online, bank dependent and controlled
+- dependence on banks is dangerous
+    * private money in bank failure, only 100 k guaranteed by government
+    * bank outages lead to no access to basic necessities
+    * compliance enforced by private parties with conflict of interest and
+    profit incentive
+- international settlements take multiple days
+
+## European Central Bank plans for a Digital Euro
+
+- What is a CBDC
+    * a currency that has public money guarantees and stability, while having
+    features and efficiency of digital money
+    * Also needs to be available everywhere any time like physical money
+    * privacy maintaining like physical money
+- lack of a european way of addressing current market concerns opens up europe
+to foreign currencies to displace current local payment options
+- addressed many concerns:
+    *
+
+## The state of Distributed Ledger Technologies
+
+## Fitting stablecoin technologies to the Euro
+
+---
 
 ## random text:
 
