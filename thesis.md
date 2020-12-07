@@ -32,10 +32,10 @@ preface: |
 # Introduction
 
 Since the Bitcoin [TODO cite] white paper was published in 2008, the world has
-been speculating on how decentralized ledge technologies could be used to
+been speculating on how decentralized ledger technologies could be used to
 restructure the financial infrastructure of the world to redistribute power
 towards the masses and away from large opaque organisations. 9 years later,
-Facebook announced a private currency controlled by a group op corporations
+Facebook announced a private currency controlled by a group of corporations
 [TODO cite]. 3 years after that the Chinese government announced that they had
 reached 92,771 transactions per second with their new Central Bank Digital
 Currency (CBDC) [TODO cite]. And the Eurosystem is set to make a decision on
@@ -61,7 +61,7 @@ competition between the large governments of the world and the private sector.
 Whether and how these parties succeed will have large implications for the
 future of financial markets of the world, and might determine the level of
 freedom of the societies of the future. Where China and Facebook are making
-rapid progress the Eurozone is still deliberating, while they might have a vital
+rapid progress, the Eurozone is still deliberating while they might have a vital
 role in including the democratic process in the running of the future financial
 markets.
 
@@ -99,7 +99,7 @@ Structure:
     * Payments via banks (require connection)
     * International settlemens slow
     * Private money by banks
-        + 100.000 FICA insurance
+        + 100.000 FDIC insurance
     * Public money by the Central bank
         + Cash only
 - What we want from our financial system
@@ -126,9 +126,12 @@ Possible flows:
 * Cryptos can have inherent global guarantees
     + Possibly for public money
     + Needs to be properly designed
+```
+```
 
 ## The state of the financial system
 
+```
 * Payments via banks (require connection)
 * International settlemens slow
 * Public money by the Central bank
@@ -142,19 +145,93 @@ Possible flows:
     * bank outages lead to no access to basic necessities
     * compliance enforced by private parties with conflict of interest and
     profit incentive
+    * displacement of the unbanked and vulnerable when use of cash declines
 - international settlements take multiple days
+```
+
+The world is moving from cash to cards. In the year 2000, less than 22 percent of
+transaction in the EU were card transactions. In 2019 this is over 47 percent
+[TODO cite]. While digital card payments are often more practical and safer than
+cash payments, the societal move towards digital money has some unintended side
+effects.
+
+Digital card payments require an internet connection to succeed. While this is
+often available, it is not uncommon that a bank IT outage leads to payment
+capacities being unavailable, for a period of time.
+
+When transfering money to an account with a different bank, especially across
+borders, the structure of the current system dictates a transfer time of days.
+
+Money stored in a bank account is guaranteed by the bank. If the bank is to
+fail, the money in the account is usually insured up to 100.000 euro by various
+local government funds. When banks fail, the uninsured money is gone.
+
+The move towards a bank dependent society will have the greatest impact on the
+worlds unbanked. In 2017, 3.6 percent of Europe's household had no registered
+bank account [TODO cite]. As more and more businesses become pin only. These
+people see their means of payment decrease.
+
+Central bank money, or Cash, has already solved a lot of these issues. It's
+physical nature makes offline payment trivial. Transfer is instant, and the
+value of the money is guaranteed by the Central Bank itself, with the note or
+coin itself being proof of its validity.
+
+However, due to its appeal to robbers and thieves, and its physical limitations,
+the risks associated with digital money are accepted by many as the cost of
+doing business. As a result we have two half-solutions to the problem of wealth
+storage and transfer.
 
 ## European Central Bank plans for a Digital Euro
+
+For the reasons stated above combined with the erosion of its control over its
+currency, the ECB is looking into the creation of a digital euro [TODO cite].
+While it is still in
+
+- complements current solutions
+    * another option, to reflect changing needs of people
+    * faster
+- might become essential
+    * if cash declines, help unbanked
+- alternative to foreign payment providers
+- be careful with developing
+    *
+- report specifies general requirements and requirements for a nubmer of
+scenarios
+    * `I should pick a scenarios and its requiremnts, and use it as the base
+    motivation and problem for the thesis.`
+- ECB requires a broad system that allows multiple digieuros to coexist
+    * i do this by providing "general" e-euro management and tracking.
+    * Verification could:
+        + either be a service foy/by the ECB (CBDC)
+        + or tracking of interbank IOUs to settle later among banks "regulated"
+        by the ECB
+
+With the looming threat of the Chinese CBDC, the
+
+* lack of a european way of addressing current market concerns opens up
+europe to foreign currencies to displace current local payment options ->
+strategic disadvantage
 
 - What is a CBDC
     * a currency that has public money guarantees and stability, while having
     features and efficiency of digital money
     * Also needs to be available everywhere any time like physical money
     * privacy maintaining like physical money
-- lack of a european way of addressing current market concerns opens up europe
-to foreign currencies to displace current local payment options
-- addressed many concerns:
-    *
+- What does europe want
+    * `satisfy the emerging payment needs of a modern economy by offering,
+    alongside cash, a safe digital asset with advanced functionalities.`
+    * Strategic autonomy
+    * Protection of citicens (the unbanked and vulnerable) when use of cash
+    declines
+        + Requires open access
+- What are Europe's requirements?
+    * robustness
+    * safety
+    * efficiency
+    * protection of privacy
+    * complying with relevant legislation
+        + on money laundering
+        + on financing of terrorism.
 
 ## The state of Distributed Ledger Technologies
 
