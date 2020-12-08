@@ -185,14 +185,60 @@ storage and transfer.
 
 For the reasons stated above combined with the erosion of its control over its
 currency, the ECB is looking into the creation of a digital euro [TODO cite].
-While it is still in
+While the EU is still in its exploration phase a number of scenarios and
+requirements have been worked out. Research is in progress as well, with a
+decision by the Eurosystem on whether to move forward a digital Euro planned
+mid-2021 [TODO cite].
 
-- complements current solutions
-    * another option, to reflect changing needs of people
-    * faster
-- might become essential
-    * if cash declines, help unbanked
-- alternative to foreign payment providers
+The ECB sees a number of scenarios where a digital euro is desirable, and
+sometimes necessary, and from this need, a number of requirements are specified.
+The ECB does not necessarily see only one digital euro, but is also open to a
+few different systems that work together to meet the needs and goals of the
+Eurozone.
+
+First, the ever digitalising European economy may at some point benefit from
+the features of a digital currency with advanced features. As such a new euro
+would have to provide a feature set that would provide features that are at the
+technological frontier and form the basis for the economies of the future.
+
+Second, a reduction of use of cash which threatens to leave the unbanked and
+vulnerable of Europe as well as those with a distrust in authority on the
+outside of the economy and therefore society. This opens the requirement of a
+currency with cash-like guarantees and features like offline, private and
+permissionless transfer.
+
+Third, a foreign or unregulated currency might become available that provides
+features such that the euro in its current incarnations becomes obsolete. This
+might be crypto-assets like Bitcoin, or a digital currency from other nation
+states who's interests are not necessarily aligned with that of the EU. As such
+a solution might be needed
+
+Fourth, there may come a time where a digital euro and its features becomes
+desirable or necessary from a monetary policy perspective. In this case, a fully
+digital and standardized currency can provide a direct transmission channel for
+monetary policy like a global remuneration rate.
+
+Fifth, if the current options for payment become unavailable or fall out of use
+because of large scale cyber incidents, natural disasters or a pandemic. A
+method of payment that operated over different channels than other options can
+provide a backup system for transactions.
+
+Sixth, the euro takes a role in international markets. This would require a
+payment system that is convenient to residents outside of the euro area.
+
+Seventh, the ecological footprint of the euro has to improve. A new currency
+could be organised differently and more efficiently. Simply by reducing the
+overhead of transactions, technically or organisationally would have a positive
+impact on its ecological footprint as well as reduce operational costs.
+
+Other than these scenarios that would warrant a digital currency with additional
+features, the ECB has some general requirements that any digital euro have to
+adhear to.
+
+First, the ECB requires the ability to control the total supply of digital euros
+in circulation. This is important to prevent the use of the currency as an
+investment vehicle, which would draw the money away from the banks and
+
 - be careful with developing
     *
 - report specifies general requirements and requirements for a nubmer of
@@ -209,7 +255,7 @@ scenarios
 With the looming threat of the Chinese CBDC, the
 
 * lack of a european way of addressing current market concerns opens up
-europe to foreign currencies to displace current local payment options ->
+Europe to foreign currencies to displace current local payment options ->
 strategic disadvantage
 
 - What is a CBDC
@@ -217,7 +263,7 @@ strategic disadvantage
     features and efficiency of digital money
     * Also needs to be available everywhere any time like physical money
     * privacy maintaining like physical money
-- What does europe want
+- What does Europe want
     * `satisfy the emerging payment needs of a modern economy by offering,
     alongside cash, a safe digital asset with advanced functionalities.`
     * Strategic autonomy
@@ -524,7 +570,7 @@ TODO: Remove
     b. User software
     c. Bank software
 5. Scientific novelty
-    a. Move the perspective from stablecoin to europe's renewed infrastructure
+    a. Move the perspective from stablecoin to Europe's renewed infrastructure
     b. Other coins that aim to do this: ripple
     c. Our added value (to the current system and other solutions)
         - Users get
