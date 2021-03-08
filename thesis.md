@@ -1,6 +1,6 @@
 ---
 title: EuroToken
-subtitle: A Stable Digital Euro Based on TrustChain
+subtitle: A digital extention of the Eurosystem with off-line transfer capapabilities
 date: TODO
 author:
   name: R. W. Blokzijl
@@ -27,6 +27,7 @@ keywords:
   - CBDC
 preface: |
   TODO: Add preface
+
 ---
 
 # Introduction
@@ -129,6 +130,13 @@ Possible flows:
 ```
 ```
 
+"In 2018, over 83% of payments in China were made using mobile payment methods,
+with WeChat Pay and Alipay having the major share [matts thesis]."
+
+"The Facebook app already combines not only social media, but also
+a marketplace, and soon will include mobile payments with the Project Libra 2 which aims to
+become a new global payment system [matts thesis]."
+
 ## The state of the financial system
 
 ```
@@ -172,7 +180,7 @@ bank account [TODO cite]. As more and more businesses become pin only. These
 people see their means of payment decrease.
 
 Central bank money, or Cash, has already solved a lot of these issues. It's
-physical nature makes offline payment trivial. Transfer is instant, and the
+physical nature makes off-line payment trivial. Transfer is instant, and the
 value of the money is guaranteed by the Central Bank itself, with the note or
 coin itself being proof of its validity.
 
@@ -204,7 +212,7 @@ technological frontier and form the basis for the economies of the future.
 Second, a reduction of use of cash which threatens to leave the unbanked and
 vulnerable of Europe as well as those with a distrust in authority on the
 outside of the economy and therefore society. This opens the requirement of a
-currency with cash-like guarantees and features like offline, private and
+currency with cash-like guarantees and features like off-line, private and
 permissionless transfer.
 
 Third, a foreign or unregulated currency might become available that provides
@@ -507,6 +515,19 @@ System invariants:
 market must never be changed because of a system transaction. (the EuroToken
 shouldn't change euro supply)
 
+## Research focus and stucture
+
+|
+|-------------------------------------------------------------|
+|                                                             |
+| **Can we design a digital financial platform that is:**     |
+|                                                             |
+| + Stable / Dependable                                       |
+| + Peer to Peer (minimally dependent on centralised parties) |
+| + Globally scapable                                         |
+| + Transferable off-line                                     |
+| + Accountable                                               |
+
 
 # State of the art
 
@@ -541,336 +562,212 @@ currency stable
 
 # Design
 
-## Global Design considerations
-
-```
-TODO: Remove
-
-1. general ideas on keeping the currency stable
-    a. Solve with Pegging ->
-    b. Solve with Collatoral ->
-    c. Solve with central bank ->
-    d. Move to allowing central bank debt tracking
-2. Global system architecture
-    a. Money ingress and egress
-        i. Trusted Gateway(s) to mint and burn coins.
-            - Holding collateral
-    b. Money transfer using trustchain
-        i. Double spend protections
-            - Checkpointing
-3. On scalability
-    a. Multiple gateways (Central Bank)
-    b. A seperate set of trusted transaction validator nodes (Local banks)
-4. Trustchain
-    a. message types:
-        i. Transfer
-        ii. Creation
-        iii. Destruction
-        iv.  Checkpoint
-    b. User software
-    c. Bank software
-5. Scientific novelty
-    a. Move the perspective from stablecoin to Europe's renewed infrastructure
-    b. Other coins that aim to do this: ripple
-    c. Our added value (to the current system and other solutions)
-        - Users get
-            * programmable money
-            * Auditability by open source software
-        - Banks get
-            * One standard for banking ledgers
-            * Added benefit of not losing central monetary policy handle.
-            * Smooth long term migration to the new system with failsafe
-```
-
-`TODO: Intro`
-
-### Pegging to the euro (Design level 1)
-
-As we have explored in chapter TODO, there are a few ways of stabilising a
-currency. Since the EuroToken system needs to function as a replacement of the
-current financial infrastructure and has to be stable with regard to the euro,
-we have chosen a direct peg to the euro. This requires a mechanism that allows
-any holder of the euro to exchange it for an equal amount of EuroTokens at all
-time.
-
-Because of the system invariant to not change the total supply of euro +
-EuroToken, every addition of a EuroToken to the system should result in the
-removal of a euro, and vice versa. Since we cannot create and destroy euros at
-will, a collateral system will be used to ensure absolute availability of euros
-and EuroTokens at any time to facilitate both directions of exchange.
-
-The collateral system will work as follows: A holder of euro will trade their
-euro for a EuroToken with a central bank certified gateway. The gateway will
-store the euro in a bank account, effectively removing it from the market. These
-gateways have the sole power of EuroToken minting and the only situation where
-EuroTokens will be minted is when a euro is provided as collateral.
-
-Firstly, this maintains the market equivalence invariant as EuroTokens only
-enter the market when a euro is removed. And secondly the collateral equivalence
-invariant, that the amount of euro held in collateral is always equal to the
-amount of EuroToken on the market.
-
-Because of this guarantee, the other direction of trade is always possible as
-well. When a EuroToken holder wants to exchange their token for a euro, it can
-always do so with a gateway. The gateway will remove the EuroToken from
-circulation while adding a euro back to the market. Thus again maintaining the
-market equivalence invariant as well as the collateral equivalence invariant.
-
-### The blockchain
-
-The EuroToken system can be build with any ledger technology, but the choice of
-this technology is fundamental to the well functioning of the system as a whole.
-For the EuroToken system, the following requirements for the systems should be
-considered.
-
-First, any EuroToken ledger technology **must** scale to the size of the Euro
-zone, it must allow for rapid micro-transactions to take place, while
-maintaining a negligible transaction cost. Any centrally managed database would
-practically be a centralised rebuild of the current banking system, which beside
-being incredibly expensive, would introduce a centralised point of failure
-towards which malicious behaviour like denials of service attacks and fraud
-would be directed. This is where a distributed ledger technology has its added
-value. By having standard day to day transactions happen between users directly,
-the cost of any transaction between any parties is the cost of the communication
-between these parties. For this project we therefore choose to user a
-distributed ledger technology. The issue of the security of funds in the ledger
-is now the responsibility of the owner of these funds, while only leaving the
-security of the nodes responsible for the minting and burning of EuroToken to
-the parties that manage the system.
-
-Second, transactions **must** be final, therefore users **must** have a
-indisputable, dependable and therefore immutable record of their income and
-transactions. When storing data in a distributed way, the task of keeping data
-immutable is partly solved by using a blockchain data structure that guarantees
-the immutability of all transactions before any given block in the chain.
-
-Even with a blockchain however, finality is still dependent on the availability
-of any users last transaction. Some currencies use a single distributed
-blockchain that is maintained by all participants in the network to store this
-information. However, using a solution that requires constantly updating global
-state makes maintaining a sufficiently high transaction throughput a significant
-challenge[TODO, onderbouw en citeer]. Though there are efforts to increase the
-throughput of global data networks [TODO, cite eth 2.0], in this project we will
-use a blockchain that scales first and attempt to solve transaction finality is
-alternative, less general, but viable ways.
-
-### TrustChain
-
-For the reasons stated above, we choose to use TrustChain as the backend
-blockchain for the EuroToken project. TrustChain is a hyper sharded blockchain
-where every peer maintains their own blockchain. All blocks that involve a
-counterparty have a link to that chain. This mechanism entangles the chain of
-any user with the chains of everyone they interact with.
-
-[Explanation of TrustChain with pictures].
-
-- Transfer using any application
-- Transfer scales infinitely
-- Transfers Require verification by trusted node
-
-### Double spending prevention, accountability and identity
-
-TrustChain gives us the scalability needed for a eurozone wide currency.
-However, because of the lack of a global component a double spending attack
-would be possible.
-
-The blockchain guarantees us that given a signed block with a hash, all blocks
-before it are immutable without invalidating the chain of hashes. This allows
-any user to inspect and verify the full history of any other user. However it
-does require the inspecting user to have the last block of the counterparty.
-
-A malicious user can simply withhold information about their last transactions
-to make it seems like funds that have recently been spent are still available.
-As illustrated in Figure [TODO], this means the attacker creates a fork in their
-chain, and shows a different history to different users.
-
-[Picture of double spend fork].
-
-While there have been promising developments in TrustChain to prevent forks
-[TODO CITE bami], these are relatively recent and are not ready in time for this
-project.
-
-If we look at the implications of the double spend attack, we see a mechanism
-that is very similar to "double-entry bookkeeping" the current banking world.
-However with additional benefit of having indisputable signatures of both
-parties on any transaction. This means that any fork can be detected by anyone
-simply having both blocks in the fork, that are both signed by the attacker.
-
-If an identity system is integrated into the EuroToken system, where any user
-is identifiable and thus accountable, double spend could be considered fraud
-under the legal system, and be prosecuted by the authorities or victimised
-parties. In this case, simply having both blocks of a fork would be sufficient
-proof.
-
-However we would like to **prevent** double spending. While we cannot prevent
-any users from making a fork in their chain, we can have a mechanism that
-decides what fork is considered valid, and what forks should be discarded. In
-addition to this, a mechanism is needed to allow any user to discover whether a
-fork already exists for the block they just received.
-
-As with detection, a decision can only be made in a place where both sides of
-any for would show up. This requires all blocks of a user to end up in the same
-place eventually. While bami aims to do this dynamically by connecting all
-interested parties for every peer [TODO cite bami]. Another way is to have
-specially selected trusted parties to gather and verify all blocks for a user.
-
-### Validators
-
-```
-maybe move this to somewhere else
-```
-
-While having trusted parties is one of the things many popular crypto currencies
-are trying to avoid, the benefit of having a system of validator nodes can be a
-great benefit to the overall system.
-
-The current eurozone banking system has been using a similar system for a long
-time. Where banks are responsible for the day to day running of money transfers,
-while they're regulated and overseen by government entities such as the ECB.
-
-Beside having these institutions prevent forks, they can also serve other roles
-like large transaction validation, tax accounting, prevention and detection of
-fund transfers for criminal and terrorism purposes. If they are a bank in the
-current system they could even be allowed to hold and exchange between euros and
-EuroTokens, or leveraged lending to customers.
-
-In a system like this, EuroToken would allow a slow transition to a standardised
-accounting standard by allowing the current euro system to coexist while
-building a new monetary system for the whole eurozone. Banks will be
-incentivized to participate because it allows them to provide faster, cheaper
-and better service to their customers.
-
-### Ledger checkpointing
-
-We can prevent most double spending by simply gathering the blocks of any user
-in a simple location. When a transaction is accepted by a validator, the
-transaction can be considered "verified". We call this "checkpointing". If
-another transaction then arrives to the validator, it will be rejected and never
-verified. This means that forks will be selected on a first come first serve
-basis.
-
-Since a transaction can only be considered verified, every user that receives
-money is incentivized to send the transaction to the validator that is
-responsible for that user.
-
-### Determining validators
-
-A peer has to know where to checkpoint messages transactions for a transaction
-with a given user, in fact all peers that interact with that user need to be
-able to find the validator responsible at any time.
-
-To achieve this, a user maintains their current validator as a block on their
-chain. When the user wants to change validators, they will register another
-block, that specifies the next validator. This block will be signed by the new
-validator and be sent to the old validator as well. Anyone interacting with the
-user at this point will see the change in the chain an contact the new validator
-instead. If the block is not provided with the next peer, the old validator will
-be contacted, who will not accept the transaction as it is would be a fork
-[TODO image].
-
-### Validators in a CBDC
-
-A system of private validators makes the money that is managed private. This
-means that the money a user has validated by them derives its value from the
-reputation of the validator [TODO, cite public vs private]. Because of this, a
-system that requires private validators is unfit to be a CBDC. Any central bank
-money, should derive its value from the reputation of the central bank, and no
-private entity should be involed. However, this is a feature of the backend of
-the system. If the Central Bank is the only entity able to mint new EuroTokens,
-and double spending is prevented by a decentralized mechanism, the stablecoin
-mechanism can still be used to introduce a CBDC that matches its value to the
-euro. This would still allow private parties to exchange the currency, just not
-guarantee its value.
-
-A viable backend for a CBDC could be TrustChain with its new Bami extension
-[TODO cite].
-
-### Global design summary and conclusion
-
-[TODO].
-
-## Protocol design
-
-[TODO intro].
-
-```
-Structure:
-
-1. Needed events and how they create a working system
-    a. Creation
-        i. Created ET
-        ii. Stores Euro
-        iii. has to be validated by gateway
-        iv.  Peer to gateway interaction
-    b. Destruction
-        i. Destruction of ET
-        ii. Sends euro to payee
-        iii. Is performed only by gateway
-        iv.  Peer to gateway interaction
-    c. Checkpoint
-        i. Validates transactions
-        ii. Perfomed by the gateway
-        iii. Temporary solution to solve double spending and transaction finality
-        iv.  Peer to gateway interaction
-    d. Transfer
-        i. Basic command to send money
-        ii. Peer to peer interaction
-        iii. Balance not yet validated
-2. Creation Step by step
-3. Destruction
-4. Checkpoint
-5. Transfer
-6. Demo specific choices (maybe this should go in implementation)
-    a. TrustChain without bami
-    b. A single gateway
-    c. that acts as validator also
-```
-
-### System events
-
-In order to realise the
-
-### Demo specific choices
-
-What will this thesis implement
-
-1. Single central bank
-2. Central bank is also validator
-3. Expansion on preexisting TrustChain super app to add EuroToken user
-   capacities.
-
-### The gateway - enabling the peg
-
-In order to
-
-- acts as a link between 2 assets
-    * Could be expanded
-- Is central bank certified
-
-- Scalability might require backend communication
-- Management of euros on backend is up to the central bank.
-    * Individual banks might not have enough collateral for all trades.
-    * What happens on bank failure
-        + Exit scamming
-
-### TrustChain message and interaction types
-
-1. Transfer
-2. Creation
-3. Destruction
-4. Checkpoint
-
-## Extra System considerations
-
-### Security
-
-### Scalability
-
-### Usability
-
-### Auditability
-
-## Scientific novelty
+## TrustChain: Distributed accounting and networking
+
+The possibilities and limitations of any virtual currency are dependent on its
+system of accounting. In order to facilitate the off-line and transparency
+requirements a system of distributed accounting is chosen.
+
+As its fundamental building block the EuroToken system uses a Hyper-Sharded
+personal blockchain that keeps track of every users transaction history on their
+own edge device. This opens up a possibility of off-line transaction between
+users, without any link to the outside world.
+
+As illustrated in figure \ref{trustchain_label}:, every users personal
+blockchain is structured as a chronological, one-dimentional string of "blocks".
+Every block will include the complete has identifying what block preceded it.
+Because of the trapdoor effect of the hash, this has the effect that any block
+will uniquely identify all blocks that come before it. This allows any user to
+verify the entire history of another user, given the existence and validity of
+the last block in this history.
+
+[trustchain]: ../images/trustchain.png
+![TrustChain [@TrustChain] \label{trustchain_label}][trustchain]
+
+Every block can contain a declaration by the user, or a reference to the
+declaration of another party. These declarations are digitally signed by the
+declaring party and form the base of any transaction. To do a transaction the
+sending user (Alice) will create a new block with a declaration stating "I
+transfer 1 eurotoken to Bob". In order to prevent fraudulent transactions every
+transaction is registered both Alice's chain as well as Bob's.
+
+When bob receives the block from Alice, he can accept it by creating a block in
+his own chain and returning it Alice. Before Bob accepts the block, he first
+validates the history of Alice by requesting enough of her chain make sure
+that Alice doesn't validate any of the network rules that would invalidate Bob's
+receiving of the money. Once Bob is satisfied with the correctness of Alice's
+chain he incorporates a new block declaring the acceptance of Alice's
+transaction. This block includes the hash of Alice's block, thus entangling the
+chains of Alice and Bob together. Bob now has a signed proof by Alice that the
+transaction happened, that he can use to prove the transaction as well as the
+chain of Alice at any point in the future.
+
+## Gateways: Euro to EuroToken exchange
+
+The viability of any currency as a store of value over a time frame is dependent
+on its stability over that time frame. This is an issue that has plagued
+decentralised crypto currencies from the very beginning. The hope is that the
+currency will stabilise itself when it reaches a critical adoption level.
+However even currencies like the euro and US dollar don't remain stable without
+periodic interventions of their respective central banks.
+
+The euro has long served as the infrastructure of the European economy. It has
+essentially done this using two consumer facing versions of money: the euro as a
+publicly accepted, physical item of value, and the euro as a digital, privately
+managed, unit of account. These public, and private types of money serve
+citizens in different ways. The public euro is the most stable store of value
+since its guaranteed by the central bank, it also has the advantaged of
+requiring no internet connection to use. While the private euro has digital
+advantages in usability and security, but derive their value from the
+"reliability" of private banks, and are only insured by governments up to
+100.000 euros [CITE]. With the declining usage of public money in favor of
+digital money, the need for a new type of euro to fill the gap of public money
+is getting stronger.
+
+For these reasons we present the EuroToken system as a 3rd type of money.
+Instead of reinventing the wheel of "stability" we connect the EuroToken system
+directly to the euro system, while providing extra features on top of the
+current euro system.
+
+In order to properly connect EuroTokens to the euro system, an easy and
+value-transparent method of exchange is required. Just like private and public
+euros are exchangeable though local banks, a mechanism is needed to exchange
+between euros and EuroTokens at a 1:1 ratio.
+
+We implement a "gateway" between the private euro system and the digital euro.
+This gateway implements the EuroToken protocol on the one hand, and interfaces
+with banks on the other.
+
+In our current model, the gateways are designed to be run by public parties
+connected to the central bank. But we envision a possible future where multiple
+gateways are run by existing private money institutions who perform the heavy
+lifting of day to day transactions. In this system private banks act as an
+accounting system for the EuroToken without leveraging their EuroToken position.
+The Central bank would still have the option to "limit cash reserves" of these
+institutions to disconnect the impact of a failing euro on the EuroToken in the
+same way as the value of phisical public money is currently insulated from such
+failing.
+
+This system allows for a smooth transition to a more EuroToken based euro
+system, while the established and regulated financial institutions are
+positioned properly in a place where financial services can be provided and a
+transition is smooth and beneficial to all parties.
+
+## Regulated validators: Double-spending and transaction finality
+
+In order to remain a viable store of value, a currency needs to provide
+protection against any non-sanctioned creation of that currency. If a network
+allows its users to "create" new money in any significant way, the value of the
+coin will drop as the supply increases, thus undermining one of the most
+fundamental function of the currency.
+The structure of the blockchain provides an immutable and signed history of any
+transactions, thus enabling users to prove that the funds they are attempting to
+send actually exist. However the blockchain does not inherently allow users to
+prove that they have not spent, and will not spend, the same balance again.
+In order to spend their money twice, a user has to create 2 blocks that are
+positioned in the same place in their blockchain. This is what is called a
+"double-spend attack". This attack is only detectable if both of the conflicting
+blocks are found. Since we have opted for a distributed blockchain this
+detection becomes a non-trivial problem to solve. The transactions of 2
+conflicting blocks might be re-spent many times by the time anyone sees the 2
+conflicting  blocks and notices that a double spend happened.
+
+Bitcoin and similar currencies solve this problem using a global blockchain that
+everyone has access to. This allows users to check whether a given balance has
+already been spent by inspecting the global database of transactions. However,
+the global knowledge of the Bitcoin chain is inherently un-scalable.
+Additionally, the details of the Proof of Work method of block generation leaves
+a certain measure of uncertainty with regards to the "finality" of any
+transaction in the newest blocks. This often requires users to wait up to an
+hour to be sufficiently confident their transaction really happened.
+
+A solution to this problem in a network with distributed blockchains,  starts
+with the realisation that the issue of detecting double-spending can be reduced
+to the issue of detecting "chain forking" in our network. The usage of the
+blockchain allows us to make sure that all transactions are ordered and
+consistent, this means that double-spend needs to be in 2 separate versions of
+that history. Thus requiring 2 blocks that refer back to the same historic
+block. This is a fork in the chain. We cannot "prevent" a user from creating 2
+conflicting blocks in their chain as their chain is stored on their own device.
+But we can make sure that the rest of the network only accepts one of the 2
+blocks, thus only accepting 1 "spending" of the balance. This choice between 2
+conflicting blocks needs to be consistent so anyone in the network is working
+with the "same history". Additionally, forks need to be detected and resolved
+before the balance is spent again by any of the 2 receiving parties. This way a
+double-spend will not propagate into the network and is limited to the users
+involved in the 2 transactions. To resolve the conflict between blocks we define
+the concept of "transaction finality". For a transaction to be final, it needs
+to be "validated" and "stored" in the network, while any conflicting transaction
+will be rejected by the network. Transaction finality the guarantee that a
+merchant needs before they can send their goods to a paying customer.
+
+The transaction finality problem in our network has several possible solutions.
+In [@FSWP] Brouwer presents a method of distributing blocks to a randomly and
+fairly selected list of witnesses that would probabilistically detect any
+conflicting block before the receiver would accept them. In [@Broadcast]
+Guerraoui et. al present a more theoretical method of block broadcast. These
+might be good candidates for future research. However since these solutions are
+inherently probabilistic, there is no hard guarantee that any double-spend will
+be detected in time.
+
+Currently lacking a good exact and distributed solution, we choose to utilize a
+network of trusted validators. These validators maintain the last transaction of
+users that register with them. Any user who receives money, can verify the
+non-existence of a conflicting block with the associated validator of the
+sender.
+
+In the future we envision the system to take one of three routes regarding
+transaction finality. First, system could be built on a future breakthrough in
+distributed transaction finality. Second the system could be built on a
+probabilistic but bounded transaction finality, where the rare double-spend is
+eventually detected and settled through the legal system. Or third, like in our
+solution, the system is build on trusted nodes that verify transactions for
+user. Like the gateways, these validators could be run by regulated financial
+institutions. Such a system would most resemble the current financial system,
+with the added benefits of off-line transactions, programmable money, a
+standardised system of accounting, instantaneous international transactions,
+etc.
+
+## Checkpointing: Network scalability and Off-line validation
+
+The personal blockchain gives us the ability to verify any transaction, and
+all linked transactions of a given chain. However as Alice's blockchain grows,
+the amount of processing required to validate her chain grows with it. To
+add to this, the chains of everyone she received money from should also be
+validated recursively, and the chains everyone they receieved money from, etc.
+The amount of blocks that need to be verified would eventually expand to include
+the history of everyone in the network.
+
+The way this problem has been solved in traditional blockchain systems is
+through the global blockchain and limited transactions per second. By having
+only miners or stakers maintain the whole blockchain, only a few machines have
+to be able to know the entire chain and store all that data. But this is still
+inherently not scalable.
+
+To solve this issue of validation scalability, we define a form of
+checkpointing. Using the transaction finality, we create a checkpoint block in
+our chain that includes all information of the preceding blocks that is
+relevent to validation. In our case this is:
+
+1. The balance of the user at that point in the chain
+2. A trustworthy statement that all preceding transactions are final
+3. the gateway that is responsible for this wallet.
+
+A checkpoint is validated by the gateway, and is only valid once the gateway has
+signed it. A gateway will only sign the bock if the all information is present:
+
+1. The entire chain of the user until their last checkpoint
+2. The entire chain of any user they received money from, starting at the
+    transaction, and ending at their last checkpoint with their gateway.
+
+All these blocks int the users chain have to conform to the following criteria:
+
+1. All standard TrustChain invariants are maintained
+2. The total of all sending blocks do not spend more than the balance of the
+   last checkpoint.
+3. All blocks that receive money from other chains have an associated "statement
+   of transaciton finality" from their gateway. (TODO: explain in detail in last
+   chapter)
 
 # Implementation
 
@@ -1058,8 +955,6 @@ dependencies. These validators can be configured in the app in order to make de
 demo repeatable.
 
 - [TODO: image of validator config]
-
-# Field trial
 
 # Discussion
 
