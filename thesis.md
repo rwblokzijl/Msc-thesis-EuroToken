@@ -78,84 +78,7 @@ benefits of programmable money with the price stability of the euro.
 
 # Problem description
 
-```
-Johan notes:
-
-- specific e-Euro, not broad E-Money, e-Dollar in general
-- Discuss the ECB plans in detail to start chapter!
-- Retail (use existing banks) versus direct-consumer
-
-Structure:
-- ECB plans
-    * CBDC
-    * Deliberation for 2021
-- Stablecoin trends
-    * Bitcoin and Ether are unstable
-    * Different solutions (include from lit survey)
-        + Centralised Collatoralised (tether)
-        + Centralised Controlled (Libra)
-        + Decentralized Collatoralised (Makerdao)
-        + Decentralized Algorithmic (nubits)
-- The current day financial system
-    * Payments via banks (require connection)
-    * International settlemens slow
-    * Private money by banks
-        + 100.000 FDIC insurance
-    * Public money by the Central bank
-        + Cash only
-- What we want from our financial system
-    * Intuduce my solution
-    * Requirements
-        + Scalable
-        + stable
-        + Peer to peer
-        + intagrateble with current system
-
-Possible flows:
-1. ECB CBDC plans --(why?)-> Current finsys bad --(possible solution types)->
-   Stablecoin primer --(best solution for digiEuro)-> Requirements
-2. Current finsys bad --(solution?)-> ECB plans --(how?)-> Stablecoins
-   --(best solution for Euro)-> Requirements
-3. Current finsys bad --(possible solutions)-> Stablecoins --(hybrid solution)->
-   ECB CBDC plans --(how?)-> Requirements
-```
-
-* The current finsys is
-    + digitalising and becoming more dependent on banks
-    + paying more internatially but dated and slow
-* ECB wants to modernise
-* Cryptos can have inherent global guarantees
-    + Possibly for public money
-    + Needs to be properly designed
-```
-```
-
-"In 2018, over 83% of payments in China were made using mobile payment methods,
-with WeChat Pay and Alipay having the major share [matts thesis]."
-
-"The Facebook app already combines not only social media, but also
-a marketplace, and soon will include mobile payments with the Project Libra 2 which aims to
-become a new global payment system [matts thesis]."
-
 ## The state of the financial system
-
-```
-* Payments via banks (require connection)
-* International settlemens slow
-* Public money by the Central bank
-    + Cash only
-
-- Retail is growing toward digital payments
-    * safer, faster, cheaper
-    * online, bank dependent and controlled
-- dependence on banks is dangerous
-    * private money in bank failure, only 100 k guaranteed by government
-    * bank outages lead to no access to basic necessities
-    * compliance enforced by private parties with conflict of interest and
-    profit incentive
-    * displacement of the unbanked and vulnerable when use of cash declines
-- international settlements take multiple days
-```
 
 The world is moving from cash to cards. In the year 2000, less than 22 percent of
 transaction in the EU were card transactions. In 2019 this is over 47 percent
@@ -290,8 +213,6 @@ strategic disadvantage
 ## The state of Distributed Ledger Technologies
 
 ## Fitting stablecoin technologies to the Euro
-
----
 
 ## random text:
 
@@ -529,37 +450,6 @@ shouldn't change euro supply)
 | + Accountable                                               |
 
 
-# State of the art
-
-Digital currencies
-
-## Money, its requirements and benefits
-
-## problems with money and how digital money solves them
-
-## Problems with digital money and how Bitcoin solved them
-
-- mention ripple and why they aren't widely adopted yet
-
-## Problems with Bitcoin and how TrustChain is an alternative
-
-## Stablecoins
-
-- Intro: Leftover discrepancies between traditional and digital money (stability)
-- What is a stablecoin
-- What makes a digital currency unstable, real question: what makes a normal
-currency stable
-- What is a peg
-- Other stablecoins in the wild
-- Vision of the future of the euro zone
-
-## Terms used in this report
-
-- Token
-- Gateway
-- Wallet
-- CBDC - Central Bank Digital Currency
-
 # Design
 
 ## TrustChain: Distributed accounting and networking
@@ -653,31 +543,37 @@ system, while the established and regulated financial institutions are
 positioned properly in a place where financial services can be provided and a
 transition is smooth and beneficial to all parties.
 
-## Regulated validators: Double-spending and transaction finality
+## Transaction finality and Double-spending
 
 In order to remain a viable store of value, a currency needs to provide
 protection against any non-sanctioned creation of that currency. If a network
 allows its users to "create" new money in any significant way, the value of the
 coin will drop as the supply increases, thus undermining one of the most
-fundamental function of the currency.
-The structure of the blockchain provides an immutable and signed history of any
-transactions, thus enabling users to prove that the funds they are attempting to
-send actually exist. However the blockchain does not inherently allow users to
-prove that they have not spent, and will not spend, the same balance again.
+fundamental function of the currency. The structure of the blockchain provides
+an immutable and signed history of any transactions, thus enabling users to
+prove that the funds they are attempting to send actually exist. However the
+blockchain does not inherently allow users to prove that they have not spent,
+and will not spend, the same balance again.
+
+In this section we explain how the network prevents unsanctioned creation of
+currency.
+
+### The double spending problem
+
 In order to spend their money twice, a user has to create 2 blocks that are
 positioned in the same place in their blockchain. This is what is called a
-"double-spend attack". This attack is only detectable if both of the conflicting
-blocks are found. Since we have opted for a distributed blockchain this
-detection becomes a non-trivial problem to solve. The transactions of 2
+"double-spend attack". This attack is only detectable if both of the
+conflicting blocks are found. Since we have opted for a distributed blockchain
+this detection becomes a non-trivial problem to solve. The transactions of 2
 conflicting blocks might be re-spent many times by the time anyone sees the 2
 conflicting  blocks and notices that a double spend happened.
 
-Bitcoin and similar currencies solve this problem using a global blockchain that
-everyone has access to. This allows users to check whether a given balance has
-already been spent by inspecting the global database of transactions. However,
-the global knowledge of the Bitcoin chain is inherently un-scalable.
-Additionally, the details of the Proof of Work method of block generation leaves
-a certain measure of uncertainty with regards to the "finality" of any
+Bitcoin and similar currencies solve this problem using a global blockchain
+that everyone has access to. This allows users to check whether a given balance
+has already been spent by inspecting the global database of transactions.
+However, the global knowledge of the Bitcoin chain is inherently un-scalable.
+Additionally, the details of the Proof of Work method of block generation
+leaves a certain measure of uncertainty with regards to the "finality" of any
 transaction in the newest blocks. This often requires users to wait up to an
 hour to be sufficiently confident their transaction really happened.
 
@@ -695,11 +591,11 @@ conflicting blocks needs to be consistent so anyone in the network is working
 with the "same history". Additionally, forks need to be detected and resolved
 before the balance is spent again by any of the 2 receiving parties. This way a
 double-spend will not propagate into the network and is limited to the users
-involved in the 2 transactions. To resolve the conflict between blocks we define
-the concept of "transaction finality". For a transaction to be final, it needs
-to be "validated" and "stored" in the network, while any conflicting transaction
-will be rejected by the network. Transaction finality the guarantee that a
-merchant needs before they can send their goods to a paying customer.
+involved in the 2 transactions. To resolve the conflict between blocks we
+define the concept of "transaction finality". For a transaction to be final, it
+needs to be "validated" and "stored" in the network, while any conflicting
+transaction will be rejected by the network. Transaction finality the guarantee
+that a merchant needs before they can send their goods to a paying customer.
 
 The transaction finality problem in our network has several possible solutions.
 In [@FSWP] Brouwer presents a method of distributing blocks to a randomly and
@@ -710,11 +606,97 @@ might be good candidates for future research. However since these solutions are
 inherently probabilistic, there is no hard guarantee that any double-spend will
 be detected in time.
 
+### Balance vs spendable balance
+
 Currently lacking a good exact and distributed solution, we choose to utilize a
-network of trusted validators. These validators maintain the last transaction of
-users that register with them. Any user who receives money, can verify the
-non-existence of a conflicting block with the associated validator of the
-sender.
+decentralized network of trusted validators. These validators maintain the last
+transaction of users that register with them. Any user who receives money, can
+verify the non-existence of a conflicting block with the associated validator of
+the sender.
+
+In the rest of this section, we define the concepts of "spendable balance" and
+specify the information requirements for marking a transaction as finalised.
+
+In order for Alice verify if Bob is able to send her the money he is sending,
+she needs to know that Bob has sufficient funds. For this reason a rolling a
+balance across all transactions could be maintained across all blocks. Where
+the balance $B$ for a given block with sequence $i$ ($B_i$) is:
+
+$$ B_i = B_{i-1} + C_i$$.
+
+Where $C_i$ is the change in balance for the block with sequence number $i$.
+This is negative when sending money. However the balance of a user does not
+take into account the concept of transaction finality. So instead we maintain
+the total "spendable balance" instead.
+
+### Finality statements
+
+Before Alice can add the output of a block she received from Bob to her
+"spendable balance", the transaction from Bob first has to be finalised. To
+achieve this a validation is performed with Bob's associated validator. This is
+done by sending the validator a finality proposal.
+
+Bob's validator will sign the finality proposal iff, all "receiving
+transactions" from wallets associated with this validator (including Bob's) are
+valid.
+
+Since the validation is performed by Alice, yet Bob's chain has to be verified,
+during the transaction, Alice requests all information that is required to
+validate Bob's chain. Alice will deliver this information to the validator with
+the finality proposal.
+
+Bob's validator will verify that there are no other transactions that conflict
+with the one from Alice. And if this is the case it will sign the proposal. If a
+later transaction from Bob is received that marks a fork in his chain, the form
+from Alice becomes the only accepted fork, and the other one is rejected.
+
+In the case that a different fork from Bob has arrived at the validator first,
+the fork where Alice receives money is rejected. In this case, since Alice has
+already accepted the transaction in her chain and may have built other
+transactions after it, she could be requested to roll-back this block before the
+validator will accept it. Since Alice is not permitted to spend the funds from
+Bob until it has been finalised this is the point where double spending is
+prevented.
+
+Note that the specific handling of this event might not involve a roll-back
+block. We discuss this further in the section on off-line payments and conflict
+resolution.
+
+Once the verifier has verified and finalised a number of transactions, their
+received amounts can be included in the spendable balance of Alice.
+
+### Verification
+
+For a block to be considered valid:
+
+1. All standard TrustChain invariants are maintained.
+2. All blocks preceding it are verified to be valid
+3. The total spent amount is  to be less than the spendable balance.
+
+For a transaction of a receiving block to be considered final:
+
+1. A checkpoint from from the validator of the sender has to be exist in the
+   chain of the user AFTER the transaction.
+
+By introducing checkpoints, the required information at the point of
+transactions is reduced. When Alice and Bob set transact between them, Alice
+can determine the validity of Bob's transaction by inspecting only Bob's chain,
+down do his last checkpoint. However, Alice must also request all Bob's
+information down to the last Full checkpoint, in order to
+
+### Spendable balance
+
+Once a transaction if finalised, "spendable balance" of Alice can be calculated.
+The spendable balance changes at two events, the finalisation of an earlier
+receiving transaction and when Alice spends her money. As such the spendable
+balance $SB_i$ for a given block with sequence number $i$ is:
+
+$$SB_i = SB_{i-1} + F_{i} - S_{i}  $$
+
+Where $S_{i}$ is the total amount spent in the block with sequence number $i$,
+$F_{i}$ is the total amount finalised in the block with sequence number $i$.
+
+### Conclusion
 
 In the future we envision the system to take one of three routes regarding
 transaction finality. First, system could be built on a future breakthrough in
@@ -728,46 +710,88 @@ with the added benefits of off-line transactions, programmable money, a
 standardised system of accounting, instantaneous international transactions,
 etc.
 
-## Checkpointing: Network scalability and Off-line validation
+## Checkpointing
 
-The personal blockchain gives us the ability to verify any transaction, and
-all linked transactions of a given chain. However as Alice's blockchain grows,
-the amount of processing required to validate her chain grows with it. To
-add to this, the chains of everyone she received money from should also be
-validated recursively, and the chains everyone they receieved money from, etc.
-The amount of blocks that need to be verified would eventually expand to include
-the history of everyone in the network.
+Because of transaction finality, when Alice receives the transaction from Bob,
+she can rely on the finality statements, rather than having to validate the
+chain of everyone he received money from. This reduces the validation load to
+only Bob's chain. However this still has some issues. First, Bob's chain will
+grow larger over time, thus slowly increasing the validation load. Second, all
+this information needs to be stored by Alice until it can be delivered to Bob's
+validator.
 
 The way this problem has been solved in traditional blockchain systems is
 through the global blockchain and limited transactions per second. By having
-only miners or stakers maintain the whole blockchain, only a few machines have
-to be able to know the entire chain and store all that data. But this is still
-inherently not scalable.
+only miners or stakers being required to maintain the whole blockchain, only a
+few machines have to be able to know the entire chain and store all that data.
+But this is still inherently unscalable.
+
+A second issue is one of privacy, when Bob has to send Alice all of his chain
+for verification, Alice can derive much from this information. Though we would
+like to see methods of privatization added to perhaps conceal transfered
+amounts, we still need a way to minimize the information leakage to 3rd
+parties.
 
 To solve this issue of validation scalability, we define a form of
-checkpointing. Using the transaction finality, we create a checkpoint block in
-our chain that includes all information of the preceding blocks that is
-relevent to validation. In our case this is:
+checkpointing. We periodically create a checkpoint block in a users chain that ,
+that includes a summary of the entire chain before it. This information is:
 
-1. The balance of the user at that point in the chain
-2. A trustworthy statement that all preceding transactions are final
-3. the gateway that is responsible for this wallet.
+1. The total "spendable balance" at that point in the chain
 
-A checkpoint is validated by the gateway, and is only valid once the gateway has
-signed it. A gateway will only sign the bock if the all information is present:
+2. The public key of the validator who is responsible for this wallet.
 
-1. The entire chain of the user until their last checkpoint
-2. The entire chain of any user they received money from, starting at the
-    transaction, and ending at their last checkpoint with their gateway.
+3. A statement that the validator has received all blocks before this point
 
-All these blocks int the users chain have to conform to the following criteria:
+Alice now knows the blocks that are already stored by the validator. When Alice
+is receiving money from Bob, she only requires Bob's blocks down to the his last
+checkpoint.
 
-1. All standard TrustChain invariants are maintained
-2. The total of all sending blocks do not spend more than the balance of the
-   last checkpoint.
-3. All blocks that receive money from other chains have an associated "statement
-   of transaciton finality" from their gateway. (TODO: explain in detail in last
-   chapter)
+## Deferred validation, conflict resolution and off-line transactions
+
+The EuroToken system has the intentional distinction between transactions and
+their finalisation. Because of this, transactions only require a direct
+connection between users. In theory, this allows to transact off-line, if theyr
+are willing to risk that a conflicting block already exists in the gateway.
+Of course, the  transfer of funds depends on the trustworthiness of the sending
+party.
+
+In this section we demonstrate a few ways of interacting with the system that
+allows for different risk exposure for both parties.
+
+### On-line transactions
+
+When users are connected to the internet, a real life interaction can easily
+combine the finalisation step with the transaction, only transferring goods or
+services once the transaction is finalised. We envision this as the default way
+for users to interact, especially for large transactions, and transactions with
+strangers.
+
+### Off-line transactions
+
+Since money only becomes spendable after finalisation, the receiving user is
+the one that will lose funds when a double spend happens. To lower the risk and
+damage of this, certain systems might be put in place. For this, we build on
+the fact that transactions are always signed by both parties. This makes sure
+that a proof of double-spending always exists, and is obtained no later than
+the finalisation attempt.
+
+A way to ensure a user that they will receive the funds is by allowing senders
+to register their identity with their validator. The validator would sign a
+statement that the identity of the sender is known and that they will take
+legal action in the event of a double spend. This then optionally allows the
+validator to accept the risk of the double spend. The validator would then sign
+a transaction with the receiver to invalidate the funds from the sender, and
+transfer them from the validator. The validator will then pursue legal action
+against the sender for fraud.
+
+In the meantime the validator could not allowing the sender to perform online
+transactions and checkpoints until they first settle the double spent funds.
+The details of what is both technically and legally possible here is a good
+candidate for future research.
+
+## Regulation of validators
+
+
 
 # Implementation
 
