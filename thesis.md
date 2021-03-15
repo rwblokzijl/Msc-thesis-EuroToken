@@ -1,6 +1,6 @@
 ---
 title: EuroToken
-subtitle: A digital extention of the Eurosystem with off-line transfer capapabilities
+subtitle: A Central Bank Digital Currency (CBDC) with off-line transfer capapabilities
 date: TODO
 author:
   name: R. W. Blokzijl
@@ -13,8 +13,6 @@ thesis_committee:
   - name: Dr.ir. J.A. Pouwelse
     role: TU Delft, supervisor
   - name: Member 1
-    role: TU Delft
-  - name: Member 2
     role: TU Delft
 duration:
   from: November 11, 2020
@@ -78,441 +76,109 @@ benefits of programmable money with the price stability of the euro.
 
 # Problem description
 
-## The state of the financial system
-
-The world is moving from cash to cards. In the year 2000, less than 22 percent of
-transaction in the EU were card transactions. In 2019 this is over 47 percent
-[TODO cite]. While digital card payments are often more practical and safer than
-cash payments, the societal move towards digital money has some unintended side
-effects.
-
-Digital card payments require an internet connection to succeed. While this is
-often available, it is not uncommon that a bank IT outage leads to payment
-capacities being unavailable, for a period of time.
-
-When transfering money to an account with a different bank, especially across
-borders, the structure of the current system dictates a transfer time of days.
-
-Money stored in a bank account is guaranteed by the bank. If the bank is to
-fail, the money in the account is usually insured up to 100.000 euro by various
-local government funds. When banks fail, the uninsured money is gone.
-
-The move towards a bank dependent society will have the greatest impact on the
-worlds unbanked. In 2017, 3.6 percent of Europe's household had no registered
-bank account [TODO cite]. As more and more businesses become pin only. These
-people see their means of payment decrease.
-
-Central bank money, or Cash, has already solved a lot of these issues. It's
-physical nature makes off-line payment trivial. Transfer is instant, and the
-value of the money is guaranteed by the Central Bank itself, with the note or
-coin itself being proof of its validity.
-
-However, due to its appeal to robbers and thieves, and its physical limitations,
-the risks associated with digital money are accepted by many as the cost of
-doing business. As a result we have two half-solutions to the problem of wealth
-storage and transfer.
-
-## European Central Bank plans for a Digital Euro
-
-For the reasons stated above combined with the erosion of its control over its
-currency, the ECB is looking into the creation of a digital euro [TODO cite].
-While the EU is still in its exploration phase a number of scenarios and
-requirements have been worked out. Research is in progress as well, with a
-decision by the Eurosystem on whether to move forward a digital Euro planned
-mid-2021 [TODO cite].
-
-The ECB sees a number of scenarios where a digital euro is desirable, and
-sometimes necessary, and from this need, a number of requirements are specified.
-The ECB does not necessarily see only one digital euro, but is also open to a
-few different systems that work together to meet the needs and goals of the
-Eurozone.
-
-First, the ever digitalising European economy may at some point benefit from
-the features of a digital currency with advanced features. As such a new euro
-would have to provide a feature set that would provide features that are at the
-technological frontier and form the basis for the economies of the future.
-
-Second, a reduction of use of cash which threatens to leave the unbanked and
-vulnerable of Europe as well as those with a distrust in authority on the
-outside of the economy and therefore society. This opens the requirement of a
-currency with cash-like guarantees and features like off-line, private and
-permissionless transfer.
-
-Third, a foreign or unregulated currency might become available that provides
-features such that the euro in its current incarnations becomes obsolete. This
-might be crypto-assets like Bitcoin, or a digital currency from other nation
-states who's interests are not necessarily aligned with that of the EU. As such
-a solution might be needed
-
-Fourth, there may come a time where a digital euro and its features becomes
-desirable or necessary from a monetary policy perspective. In this case, a fully
-digital and standardized currency can provide a direct transmission channel for
-monetary policy like a global remuneration rate.
-
-Fifth, if the current options for payment become unavailable or fall out of use
-because of large scale cyber incidents, natural disasters or a pandemic. A
-method of payment that operated over different channels than other options can
-provide a backup system for transactions.
-
-Sixth, the euro takes a role in international markets. This would require a
-payment system that is convenient to residents outside of the euro area.
-
-Seventh, the ecological footprint of the euro has to improve. A new currency
-could be organised differently and more efficiently. Simply by reducing the
-overhead of transactions, technically or organisationally would have a positive
-impact on its ecological footprint as well as reduce operational costs.
-
-Other than these scenarios that would warrant a digital currency with additional
-features, the ECB has some general requirements that any digital euro have to
-adhear to.
-
-First, the ECB requires the ability to control the total supply of digital euros
-in circulation. This is important to prevent the use of the currency as an
-investment vehicle, which would draw the money away from the banks and
-
-- be careful with developing
-    *
-- report specifies general requirements and requirements for a nubmer of
-scenarios
-    * `I should pick a scenarios and its requiremnts, and use it as the base
-    motivation and problem for the thesis.`
-- ECB requires a broad system that allows multiple digieuros to coexist
-    * i do this by providing "general" e-euro management and tracking.
-    * Verification could:
-        + either be a service foy/by the ECB (CBDC)
-        + or tracking of interbank IOUs to settle later among banks "regulated"
-        by the ECB
-
-With the looming threat of the Chinese CBDC, the
-
-* lack of a european way of addressing current market concerns opens up
-Europe to foreign currencies to displace current local payment options ->
-strategic disadvantage
-
-- What is a CBDC
-    * a currency that has public money guarantees and stability, while having
-    features and efficiency of digital money
-    * Also needs to be available everywhere any time like physical money
-    * privacy maintaining like physical money
-- What does Europe want
-    * `satisfy the emerging payment needs of a modern economy by offering,
-    alongside cash, a safe digital asset with advanced functionalities.`
-    * Strategic autonomy
-    * Protection of citicens (the unbanked and vulnerable) when use of cash
-    declines
-        + Requires open access
-- What are Europe's requirements?
-    * robustness
-    * safety
-    * efficiency
-    * protection of privacy
-    * complying with relevant legislation
-        + on money laundering
-        + on financing of terrorism.
-
-## The state of Distributed Ledger Technologies
-
-## Fitting stablecoin technologies to the Euro
-
-## random text:
-
-Once crypto currencies had been adopted by a
-significant amount of people and started to be used for real transfers of
-value, the speculators came.
-
-Cryptocurrencies like Bitcoin were rapidly growing in popularity and therefore
-price. The interest in a functional distributed currency, combined with the
-prospect of riding the rise of this new store of value, pulled in enough people
-to reach a market capitalization of 328 billion USD in late 2017. With the
-crypto bubble of December 2017 and subsequent crash in early 2018, the
-significance of these concepts had been demonstrated to the entire world.
-
-The popularity of decentralized crypto currencies is undeniable, yet they have
-failed to be gain widespread adoption in everyday use. Many crypto currencies
-are plagued by a lack of scalability, a lack of price stability as well as other
-issues. While these problems may well be solve in the future, government
-organisations are looking into CBDCs now.
-
-When the facebook connected Libra was introduced in 2017. Many big payment
-vendors like Visa and MasterCard were members of the Libra Association.
-
-The Central
-
-This
-sparked a debate on the shape of the future of money. In order
-
-Completely decentralized crypto currencies like Bitcoin have always been plagued
-by the same issue.
-
-or at least failed to die,
-
-the future
-impact of would
-
-impact that this new form of money would h
-
-- Physical money is slow - restricted by the speed of travel
-- Digital money is less slow - restricted by the speed of human communication
-- New digital money - restricted by the speed of light (and the runtime of
-  cryptographic algorithms)
-
-  ---
-
-## problem description
-
-|
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| The euro zone is missing an option for a digital currency that mirrors all features of the euro, while providing the benefits of distributed accounting and programmable money. |
-
-In the historic paper "On the Origin of Money" [@On_the_Origin_of_Money] Karl
-Menger describes how people settle on a currency as a method of exchange. He
-describes that the willingness of people to exchange their goods for a commodity
-depends upon:
-
-1. The ability to trade the currency for goods and services
-2. The scarcity of the commodity
-3. The uniformity, divisibility, durability and practicality of the
-   commodity.
-4. The development of the market, and how others speculate.
-5. The limitations imposed politically and socially upon exchange,
-   consumption and transfer from one period of time to another
-
-All these aspects must be managed in any successful currency. In this chapter we
-will work out these requirements into a concrete set of requirements for the
-EuroToken system.
-
-## The general requirements for money
-
-Points 1 and 4, the future usefulness of the currency and it's market demand,
-are where digital currencies still fall short of traditional currencies. Because
-of the price volatility there is no way to know whether the coin you have today
-can still be used to buy the same amount tomorrow.
-
-Anything that aims to replace the euro needs to be as price stable as the euro.
-Adding guarantees about the price, will make merchants more willing to accept
-the currency, thus providing the ability to trade the currency for goods.
-
-The EuroToken system needs to satisfy all 5 requirements in order to be a
-viable currency. However, points 2 and 5 are dependent on the real world
-implementation, legal guarantees and political backing. And are thus out of
-scope for this project.
-
-Point 3 is where crypto-currencies add their value, through their digital and
-distributed natures.
-
-## Requirements for digital assets
-
-The usefulness and viability of a currency is still dependent on its functional
-aspects. With traditional currencies the issues of uniformity, divisibility,
-durability and practicality have long been solved. However in digital currencies
-these aspects bring with them many sub-requirements. In "On the Origin of Money"
-[@On_the_Origin_of_Money] Menger uses the concepts of spacial and "time" limits.
-
-**Space limits** - The space limits of a currency is how costly a currency is to
-store, transport, and manage across multiple 'market places'. Because of the
-digital nature of crypto currencies, the price of storing any amount of money is
-the price of storing some data. However, the transport and transfer
-(practicality) of the currency is dependent on having access to the data and
-equipment needed to do the transfer. For many digital currencies an internet
-connection is also required to facilitate a transfer. Additionally any network
-required for verification needs to have the capacity to transfer the currency
-for a sufficiently low cost.
-
-**Time limits** - For digital currencies the time limits of a currency brings
-with it more complexity than physical money. While A users guarantee that their
-money is durable and will not be lost becomes a problem of IT systems, backups
-and cyber-security. As such any protocol and edge implementations need to be
-secure / securable in order for the currency to be properly durable.
-
-Finally there is one more requirement of money that needs to be maintained in
-a digital system. That is the uniformity of money, also known as the fungibility
-of money. This is the concept that any 2 individual units of the currency have
-to be essentially interchangeable. This means that there cannot be any
-difference in value or risk based on the source of money. When building on a
-trust based, by default, the risk attached to any money received is dependent on
-the trust you have in the sender of the money. As such there needs to be a
-mechanism that reduces the transaction risk to a negligible level.
-
-## Political requirements for a future of money
-
-The adoption of any new currency system across the euro zone will be dependent
-on many more factors than just the technical design. Even if the EuroToken
-system meets all the requirements specified in the last chapters, trust in the
-system will depend on "The limitations imposed politically and socially upon
-exchange".
-
-It is impossible, however tempting, to make any statements about how the system
-should handle a number of political issues. Instead a some trade-offs will be
-highlighted and discussed. Any value judgements will be reserved and left out of
-scope. The political considerations for any real world implementation of the
-EuroToken system, might include, but are not limited to:
-
-1. the openness of its access vs the prevention of malicious activity
-2. the privacy of its users vs the ability of the state to track malicious
-   behaviour
-3. the economic tools provided to the central bank vs the natural price
-   development of the market
-
-In the following sections each of these trade-offs will be discussed while
-specifying some requirements for different positions on the trade-off spectrum.
-
-### Openness vs Control
-
-- The openness of its access vs the prevention of malicious activity
-
-Case for openness
-
-Case for control
-
-Requirements:
-
-Openness - No central servers for the core functioning of the network. (transfer
-without saction)
-
-Control - Central rules that determine the validity of funds based on the source
-of the transaction. (identity should be verifiable)
-
-### Privacy vs Policability
-
-- The privacy of the users vs the ability of the state to track malicious
-behaviour
-
-Case for privacy
-
-Case for security
-
-Requirements:
-
-Privacy - Future support for encrypting transactions while allowing for
-ZK-proofs for verifying availability of funds.
-
-Policability - the ability to see information about a transaction regardless of
-the encryption
-
-Finding a balance in this is not a trivial task.
-
-### Central control vs self regulation
-
-- The economic tools provided to the central bank vs the natural price
-development of the market
-
-Case for central control based on current politics.
-
-Case for free market, new democratic backbone.
-
-Central control - Allow the minting of new coins by the central bank, akin to QE
-
-Self regulation - Build in features that guarantee market invariants, like a set
-inflation based on trackers. Or minting as a joint decision of many parties,
-possibly DAO style. Possibly a democratic system in the system, based on
-identity, separate from nation politics. Possibly deferring voting to financial
-institutions.
-
-## Summary
-
-Deriving from the fundamental requirements of money the following requirements
-for the EuroToken system have been determined:
-
-The system must:
-
-- Allow the user to transfer funds to other users
-- Allow the user to store funds for a period of time
-- Have a mechanism to maintain the value of 1 token at 1 euro
-- Maintain the uniformity/fungibility of the token
-- Be theoretically scalable to billions of users
-- Be completely digital and automated
-- Be secure against double-spend attacks
-
-The system should be expandable to allow:
-
-- An integrated identity mechanism that verifies users and makes them
-accountable
-- Mechanisms to hide the details of any transaction
-- Mechanisms to bind network properties and rules to a democratic mechanism
-
-System invariants:
-
-- The market equivalence invariant - The amount of euro + EuroToken on the
-market must never be changed because of a system transaction. (the EuroToken
-shouldn't change euro supply)
-
-## Research focus and stucture
-
-|
-|-------------------------------------------------------------|
-|                                                             |
-| **Can we design a digital financial platform that is:**     |
-|                                                             |
-| + Stable / Dependable                                       |
-| + Peer to Peer (minimally dependent on centralised parties) |
-| + Globally scapable                                         |
-| + Transferable off-line                                     |
-| + Accountable                                               |
-
-
 # Design
 
-## TrustChain: Distributed accounting and networking
+Any CBDC that aims to replace public money while being able to operate at the
+scale of the euro system needs to conform to a number of requirements. Such a
+system needs to be scalable, privacy aware, allow peer to peer transactions
+off-line. In needs to be price stable, exchangeable for euros, and most
+importantly needs to be secure and cheating resistant. In this chapter we
+explain how a distributed personal blockchain provides a good basis
+for a scalable, private, and off-line friendly transaction system. We then
+explain how we position the system in relation to the euro, how the price
+remains stable, and how the system mimics the properties of cash. We then go in
+to the details of how the system is secured, and how we prevent double spending
+while still remaining scalable and allowing off-line transactions. Finally, we
+explain how the system could be expanded upon by legal frameworks that would
+provide different risk vs privacy trade-offs and how they could be enforced in
+the system.
+
+## Distributed accounting and networking
 
 The possibilities and limitations of any virtual currency are dependent on its
-system of accounting. In order to facilitate the off-line and transparency
-requirements a system of distributed accounting is chosen.
+system of accounting. In order to conform to the off-line, scalability and
+transparency requirements a system of distributed accounting is chosen. As the
+fundamental building block for the EuroToken system we use a Hyper-Sharded
+personal blockchain that keeps track of every users transaction history on
+their own edge device. By storing all information required for transacting at
+the physical point of transaction, we create the possibility of off-line
+transaction between users, without any link to the outside world.
 
-As its fundamental building block the EuroToken system uses a Hyper-Sharded
-personal blockchain that keeps track of every users transaction history on their
-own edge device. This opens up a possibility of off-line transaction between
-users, without any link to the outside world.
+### TrustChain
 
-As illustrated in figure \ref{trustchain_label}:, every users personal
-blockchain is structured as a chronological, one-dimentional string of "blocks".
-Every block will include the complete has identifying what block preceded it.
-Because of the trapdoor effect of the hash, this has the effect that any block
-will uniquely identify all blocks that come before it. This allows any user to
-verify the entire history of another user, given the existence and validity of
-the last block in this history.
+As a technology for this "personal blockchain", we use the TrustChain system.
+As illustrated in figure \ref{trustchain_label} every users personal
+blockchain is structured as a chronological, one-dimentional string of
+"blocks". Every block will include a cryptographically secure hash identifying
+what block preceded it. Because of the trapdoor effect of the hash, this has
+the effect that any block will uniquely identify all blocks that come before
+it. This allows anyone to verify the validity of entire history of another
+user, given the last block in this history.
 
 [trustchain]: ../images/trustchain.png
 ![TrustChain [@TrustChain] \label{trustchain_label}][trustchain]
 
-Every block can contain a declaration by the user, or a reference to the
+Every block can contain a "declaration' by the user, or a reference to the
 declaration of another party. These declarations are digitally signed by the
 declaring party and form the base of any transaction. To do a transaction the
 sending user (Alice) will create a new block with a declaration stating "I
-transfer 1 eurotoken to Bob". In order to prevent fraudulent transactions every
+transfer 1 EuroToken to Bob". In order to prevent fraudulent transactions every
 transaction is registered both Alice's chain as well as Bob's.
 
-When bob receives the block from Alice, he can accept it by creating a block in
+When Bob receives the block from Alice, he can accept it by creating a block in
 his own chain and returning it Alice. Before Bob accepts the block, he first
-validates the history of Alice by requesting enough of her chain make sure
-that Alice doesn't validate any of the network rules that would invalidate Bob's
+validates the history of Alice by requesting enough of her chain make sure that
+Alice doesn't validate any of the network rules that would invalidate Bob's
 receiving of the money. Once Bob is satisfied with the correctness of Alice's
 chain he incorporates a new block declaring the acceptance of Alice's
 transaction. This block includes the hash of Alice's block, thus entangling the
 chains of Alice and Bob together. Bob now has a signed proof by Alice that the
-transaction happened, that he can use to prove the transaction as well as the
-chain of Alice at any point in the future.
+transaction happened. He can use this to prove the transaction happened at any
+point in the future.
+
+### IPv8
+
+The TrustChain implementation comes as a part of the IPv8 distributed
+networking suite. While the EuroToken system design is independent of the
+underlying communication technology, IPv8 gives us a number of features that
+are a useful addition to our design.
+
+Peer to Peer overlay networking. Firstly it provides a mechanism to discover
+the network location of users based on the same public key that is used to
+identify a TrustChain user. This allows us to almost completely abstract away
+from locating users using IP addresses and ports. As a result we only have to
+worry about maintaining a users public key to identify and communicate with
+them across time. IPv8 does not only abstract away from IP addresses, bus also
+from the IP network completely. Namely, it provides communication over
+Bluetooth without the need for any internet connection. This becomes very
+useful for demonstrating the off-line capabilities of the EuroToken system.
+
+The final aspect of IPv8 that is useful is the fact that it has an
+implementation in Kotlin. This allows us to create a mobile app to run allow
+users to maintain their wallet on a portable device and interact with the
+system in a modern way.
 
 ## Gateways: Euro to EuroToken exchange
 
-The viability of any currency as a store of value over a time frame is dependent
-on its stability over that time frame. This is an issue that has plagued
-decentralised crypto currencies from the very beginning. The hope is that the
-currency will stabilise itself when it reaches a critical adoption level.
-However even currencies like the euro and US dollar don't remain stable without
-periodic interventions of their respective central banks.
+The viability of any currency as a store of value over a given time frame is
+dependent on the stability of its price over that time frame. This is an issue
+that has plagued decentralised crypto currencies from the very beginning. The
+hope is that the currency will stabilise itself when it reaches a critical
+adoption level. However even currencies like the euro and US dollar don't
+remain stable without periodic interventions of their respective central banks.
 
-The euro has long served as the infrastructure of the European economy. It has
-essentially done this using two consumer facing versions of money: the euro as a
-publicly accepted, physical item of value, and the euro as a digital, privately
-managed, unit of account. These public, and private types of money serve
-citizens in different ways. The public euro is the most stable store of value
-since its guaranteed by the central bank, it also has the advantaged of
-requiring no internet connection to use. While the private euro has digital
-advantages in usability and security, but derive their value from the
-"reliability" of private banks, and are only insured by governments up to
-100.000 euros [CITE]. With the declining usage of public money in favor of
-digital money, the need for a new type of euro to fill the gap of public money
-is getting stronger.
+The euro has long served as the core of the financial infrastructure of the
+European economy. It has essentially done this using two consumer facing
+versions of money: the euro as a publicly accepted, physical item of value (the
+public euro), and the euro as a digital, privately managed, unit of account
+(the private euro). These public, and private types of money serve citizens in
+different ways. The public euro is the most stable store of value since its
+guaranteed by the central bank, it also has the advantaged of requiring no
+internet connection to use. While the private euro has digital advantages in
+usability and security, but derive their value from the "reliability" of
+private banks, and are only insured by governments up to 100.000 euros [CITE].
+With the declining usage of public money in favor of digital money, the need
+for a new type of euro to fill the gap of public money is getting stronger.
 
 For these reasons we present the EuroToken system as a 3rd type of money.
 Instead of reinventing the wheel of "stability" we connect the EuroToken system
@@ -522,26 +188,30 @@ current euro system.
 In order to properly connect EuroTokens to the euro system, an easy and
 value-transparent method of exchange is required. Just like private and public
 euros are exchangeable though local banks, a mechanism is needed to exchange
-between euros and EuroTokens at a 1:1 ratio.
+between euros and EuroTokens at a 1:1 ratio. To do this, we implement a
+"gateway" between the private euro system and the digital euro. This gateway
+implements the EuroToken protocol on the one hand, and interfaces with banks on
+the other.
 
-We implement a "gateway" between the private euro system and the digital euro.
-This gateway implements the EuroToken protocol on the one hand, and interfaces
-with banks on the other.
+In our current design, the gateways are designed to be run by public parties
+associated with the central bank. Any detailed speculation on the best way to
+connect such a system to the established euro is best left to economists.
+However, we envision a possible future where multiple gateways are run by
+existing private money institutions who perform the heavy lifting of day to day
+exchange. In such a system private banks would act as an accounting system for
+the EuroToken exchange without being allowed to leverage their EuroToken
+position. The Central bank would allow these private institutions to conform to
+reserve requirements in the form of EuroToken holdings rather than only cash.
+By not allowing private banks to mint new EuroTokens, but only exchange them,
+the central bank can control the amount of EuroToken in circulation in a
+similar way to current public money. This would insulate the EuroToken from
+the impact of a failing euro or bank, in the same way as physical public money
+is currently insulated from such failing.
 
-In our current model, the gateways are designed to be run by public parties
-connected to the central bank. But we envision a possible future where multiple
-gateways are run by existing private money institutions who perform the heavy
-lifting of day to day transactions. In this system private banks act as an
-accounting system for the EuroToken without leveraging their EuroToken position.
-The Central bank would still have the option to "limit cash reserves" of these
-institutions to disconnect the impact of a failing euro on the EuroToken in the
-same way as the value of phisical public money is currently insulated from such
-failing.
-
-This system allows for a smooth transition to a more EuroToken based euro
-system, while the established and regulated financial institutions are
-positioned properly in a place where financial services can be provided and a
-transition is smooth and beneficial to all parties.
+This way of connecting to the euro could allow for a smooth transition to a
+digital form of public money, while the established and regulated financial
+institutions are still positioned properly in a place where financial services
+can be provided.
 
 ## Transaction finality and Double-spending
 
@@ -598,7 +268,7 @@ transaction will be rejected by the network. Transaction finality the guarantee
 that a merchant needs before they can send their goods to a paying customer.
 
 The transaction finality problem in our network has several possible solutions.
-In [@FSWP] Brouwer presents a method of distributing blocks to a randomly and
+In [@FWSP] Brouwer presents a method of distributing blocks to a randomly and
 fairly selected list of witnesses that would probabilistically detect any
 conflicting block before the receiver would accept them. In [@Broadcast]
 Guerraoui et. al present a more theoretical method of block broadcast. These
@@ -636,34 +306,36 @@ Before Alice can add the output of a block she received from Bob to her
 achieve this a validation is performed with Bob's associated validator. This is
 done by sending the validator a finality proposal.
 
-Bob's validator will sign the finality proposal iff, all "receiving
-transactions" from wallets associated with this validator (including Bob's) are
-valid.
+The finality proposal block includes notes a list of hashes that point to
+transactions from Bob. Together with this block for the validator to sign, Alice
+will send all of Bobs blocks from the last transaction to validate to the last
+block the validator knows about. The way for Alice to determine what information
+this is, is explained in the section on checkpointing later in this chapter. In
+addition to Bob's blocks, she will also send her "accepting blocks" that include
+the transaction in her chain. This is to make sure she can only claim a
+transaction from Bob once. Bob's validator will then verify:
 
-Since the validation is performed by Alice, yet Bob's chain has to be verified,
-during the transaction, Alice requests all information that is required to
-validate Bob's chain. Alice will deliver this information to the validator with
-the finality proposal.
+1. That there are no other transactions that conflict with the one to Alice.
+2. That there are no other "accpeting blocks" already linked to this
+   transaction.
+3. That Bob's chain is valid up to the last transaction to verify.
 
-Bob's validator will verify that there are no other transactions that conflict
-with the one from Alice. And if this is the case it will sign the proposal. If a
-later transaction from Bob is received that marks a fork in his chain, the form
-from Alice becomes the only accepted fork, and the other one is rejected.
+If this is the case it will sign the proposal. If a later transaction from Bob
+is received that marks a fork in his chain, the fork from Alice becomes the only
+accepted fork, and the other one is rejected. Using this finality statements as
+proof of this, Alice is now allowed to spend the output of the transaction.
 
 In the case that a different fork from Bob has arrived at the validator first,
-the fork where Alice receives money is rejected. In this case, since Alice has
-already accepted the transaction in her chain and may have built other
-transactions after it, she could be requested to roll-back this block before the
-validator will accept it. Since Alice is not permitted to spend the funds from
-Bob until it has been finalised this is the point where double spending is
-prevented.
+the fork where Alice receives money is rejected. Since Alice has already
+accepted the transaction in her chain and may have built other transactions
+after it (though not spent the output), she could be requested to submit a new
+finality proposal without this block. Since Alice is not permitted to spend
+the funds from Bob until it has been finalised this is the point where double
+spending is handled.
 
-Note that the specific handling of this event might not involve a roll-back
-block. We discuss this further in the section on off-line payments and conflict
-resolution.
-
-Once the verifier has verified and finalised a number of transactions, their
-received amounts can be included in the spendable balance of Alice.
+Note that the specific handling of this event might not involve the forfeiture
+of a transaction. We discuss this further in the section on off-line payments
+and conflict resolution.
 
 ### Verification
 
@@ -749,14 +421,14 @@ checkpoint.
 ## Deferred validation, conflict resolution and off-line transactions
 
 The EuroToken system has the intentional distinction between transactions and
-their finalisation. Because of this, transactions only require a direct
-connection between users. In theory, this allows to transact off-line, if theyr
-are willing to risk that a conflicting block already exists in the gateway.
-Of course, the  transfer of funds depends on the trustworthiness of the sending
-party.
+their finalisation. Because of this, the first step of transactions only require
+a direct connection between users. In theory, this allows to transact off-line,
+if they're willing to risk that a conflicting block already exists in the
+validator. Of course, in this case, the transfer of funds depends on the
+trustworthiness of the sending party.
 
-In this section we demonstrate a few ways of interacting with the system that
-allows for different risk exposure for both parties.
+In this section we discuss a few ways of interacting with the system that allows
+for different risk exposure to the parties.
 
 ### On-line transactions
 
@@ -764,7 +436,7 @@ When users are connected to the internet, a real life interaction can easily
 combine the finalisation step with the transaction, only transferring goods or
 services once the transaction is finalised. We envision this as the default way
 for users to interact, especially for large transactions, and transactions with
-strangers.
+strangers, since this reduces the risk to either party to zero.
 
 ### Off-line transactions
 
@@ -779,19 +451,72 @@ A way to ensure a user that they will receive the funds is by allowing senders
 to register their identity with their validator. The validator would sign a
 statement that the identity of the sender is known and that they will take
 legal action in the event of a double spend. This then optionally allows the
-validator to accept the risk of the double spend. The validator would then sign
-a transaction with the receiver to invalidate the funds from the sender, and
-transfer them from the validator. The validator will then pursue legal action
-against the sender for fraud.
+validator to accept the risk of double spending. In the case of a double spend
+the validator would sign a special statement with the receiver, that invalidates
+the double-spent transaction, but transfers and finalises the funds from the
+validator instead. The validator will then pursue legal action against the
+sender for fraud.
 
-In the meantime the validator could not allowing the sender to perform online
+In the meantime the validator could block the sender to perform online
 transactions and checkpoints until they first settle the double spent funds.
 The details of what is both technically and legally possible here is a good
-candidate for future research.
+subject for future research.
 
 ## Regulation of validators
 
+One could argue that system hasn't solved the issues of transaction finality and
+double-spending, and that we only defer the problem to a different point. It is
+entirely conceivable that trusted validators could cheat by allowing certain
+wallets to double-spend. To add to this, using the checkpoint functionality a
+validator can specify a higher spendable balance than is actually logged in the
+chain.
 
+However, when comparing our system to the current way private institutions are
+regulated, the blockchain structure of transaction can provide a powerful
+method of maintaining the integrity of the institutions. While we cannot
+prevent fraud at the institutional level, we do provide an option for
+detection to allow for regulation.
+
+In order for a regulator to check that a validator has done their job with
+integrity, they need to be sure of 2 things:
+
+1. That all "statements" have been made consistently with the rules of the
+   network.
+2. That no other "statements" have been hidden from the regulator.
+
+"Statements" in this context, describe anything that the rest of the network
+puts their trust in. These are:
+
+1. Finality statements
+2. Checkpoints
+
+Both of these statements are created in the form of "accepting blocks" and are
+stored by users and their validators with an associated hash. We now propose a
+two round system for validating all transactions within a given time period. In
+round one, we validate that all statements have been made correctly and
+publicly store the hashes. In the second round, once we have the hashes of all
+statements available, we validate that all statements from other validators
+exist.
+
+In the first round all information in the database of the validator is
+processed for consistency. Since all statements by the validator are made in
+the form of blocks in their personal blockchain, they have an explicit order.
+The blocks of the validator, together with the blocks of all the users the
+validator is responsible for, are processed in the same way as the validator
+was responsible for processing them. This step in the process ensures that all
+statements are made correctly.
+
+In the second round, we ensure that there is no statement withheld by the
+validator. This is done by publicly publishing a signed list of the hashes of
+all statements made by the validator. This allows regulators to cross-check
+that all inter-validator statements have been reviewed by a validator. To make
+this step more efficient, we propose that when checking a validators
+consistency, regulators generate a list of statements for each distinct
+validator to increase the efficiency of distributing these hashes to relevant
+parties.
+
+A possibility also exists to allow the public access to these records to ensure
+the integrity of their institutions.
 
 # Implementation
 
@@ -979,6 +704,8 @@ dependencies. These validators can be configured in the app in order to make de
 demo repeatable.
 
 - [TODO: image of validator config]
+
+# Deployment and performance analysis
 
 # Discussion
 
