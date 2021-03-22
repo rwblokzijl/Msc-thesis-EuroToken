@@ -7,9 +7,7 @@ FLAGS = \
 	-s \
 	-f markdown \
 	--chapters \
-	--bibliography=../bibliography.bib
-	# --csl=deps/bibliography.csl \
-	# -H deps/preamble.tex
+	--natbib
 
 FLAGS_PDF = --template=report.tex
 

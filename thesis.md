@@ -76,6 +76,96 @@ benefits of programmable money with the price stability of the euro.
 
 # Problem description
 
+## The decline of cash
+
+The eurozone system relies on two main types of money. Private money, managed
+by private banks, and public money, managed by the European Central Bank ECB
+[TODO CITE public vs private money].
+
+Public money is the money we have in our physical wallets. It consists of bank
+notes and coins, or cash. Once upon a time it was possible to exchange this
+money for gold directly at the central bank of a country and thus derived its
+value from gold directly. Today however, the value of this money is guaranteed
+by the reputaion and trustworthiness of the central bank [@The_Gold_Standard].
+
+Private money is the digital money in our bank account. It derives its value
+from the banks reliability and reputation and is only usable through the bank
+itself. Without permission from the bank, storage, transfer and withdrawal are
+not possible.
+
+An person in the eurozone would weigh the risks and benefits of these two
+types of money. On the one hand the ECB is a large, historically
+trustworthy, and democratically controlled institution. The only way in which
+the persons cash would lose its value is the broad failure of the European
+government and central bank.
+
+On the other hand storing money in banks has the benefits of the digital age.
+Storing money in the form of cash opens one to the risk of having ones money
+stolen or robbed. Since both the impact and risk grow with the amount of money
+stored in physical form, the proclivity to store money in digital forms grows
+with the amount of money owned.
+
+In addition to people storing their money in private banks for security reasons,
+the digitalisation of society is a powerful motivator. Transacting with private
+money as opposed to public money is no longer bound in space. Digital money can
+be used to perform purchases online, as well as transfer money to persons far
+away.
+
+This decline of central bank money lead to a number of unfavorable
+scenarios[@ReportDigitalEuro]. The decline of open and off-line money can
+lead to financial exclusion for the unbanked and vulnerable in our society.
+Additionally the increased reliance in private institutions can leave the entire
+euro system less transparent and more vulnerable.
+
+## Rise of challengers to traditional currencies
+
+The rise of Bitcoin in 2008 [@Bitcoin] kicked off
+the race to create a currency that would solve the problems plaguing the current
+monetary system. While a complete solution has not emerged, today we see a
+number of alternatives that present various benefits and trade-offs.
+
+While Bitcoin and similar fully-decentralized currencies have proven that a
+global digital token of value can be realised, one of their main challenges
+remains the stability of the asset and the scalability of the network. To
+address the stability issue, stablecoins have risen in popularity. While
+decentralized stablecoins do exist [@MakerDAO:whitepaper], it is so called
+centralised stablecoins that gain their reputation as a digital alternatives to
+the dollar. Tether is the most prominent example of this. With a market cap of
+40 billion dollars they are the 5th largest crypto-currency by market cap
+[@Tether:whitepaper] [@TetherCap:online]. In order to achieve the stability
+and dependability of their network, Tether Holdings Limited keeps acts as a
+centralised middle-man exchanging 1 tether for 1 dollar. Centralised stablecoins
+are often seen as an intermediary solution that provides a wrapper over the old
+monetary system in order to extend it with the features of digital currencies.
+These coins are essentially financial derivatives that depend on already
+existing currencies.
+
+On June 18, 2019, a new currency conceived by a group of Facebook engineers
+was announced under the brand name "Libra" [@Diem:whitepaper]. Later renamed to
+Diem, it would be a new free floating currency managed and government by a
+consortium of large companies united under the banner of the Diem association.
+While Diem presents itself as the solution to the worlds 1.7 billion unbanked,
+it is essentially a private world currency that would be controlled by powerful
+corporations who will not be accountable to democratic processes.
+
+The battle for the future control of monetary systems is not a strictly western
+phenomenon. While groups of distributed open-source engineers are trying to
+create a system free of corruption, and private interest groups are trying to
+extend their reach, governments around the world are beginning to realise the
+threat to the established order. Governments around the world are looking into
+new digital versions of their currencies. The Federal Reserve has published
+their "Preconditions for a general-purpose central bank digital currency"
+[@FedCoin:online]. The ECB has published a report specifying a number of Reasons
+to issue a digital euro, scenarios and implied requirements
+[@ReportDigitalEuro:online]. The government that has perhaps progressed the
+farthest is the Chinese government. With successful public trails
+[@ChinaCoinTrial:online] they seem to be closest to a working digital currency.
+
+## Threats to the euro system
+
+Fears have grown amongst the public that our monetary system will fall into the
+hands of an authoritarian government or profit driven conglomerate.
+
 # Design
 
 Any CBDC that aims to replace public money while being able to operate at the
@@ -742,6 +832,4 @@ token2euro exchange.
 
 
 # Conclusion
-
-# Related Work
 
