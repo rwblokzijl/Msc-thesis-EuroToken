@@ -42,7 +42,7 @@
 \ifxetex
     \RequirePackage[xetex]{geometry}
     \RequirePackage[xetex]{graphicx}
-    \RequirePackage[xetex]{hyperref}
+    \PassOptionsToPackage{hyphens}{url}\RequirePackage[xetex]{hyperref}
     \RequirePackage{fontspec}
     \RequirePackage{xltxtra}
     \defaultfontfeatures{Ligatures=TeX}
@@ -50,11 +50,11 @@
     \ifpdf
         \RequirePackage[pdftex]{geometry}
         \RequirePackage[pdftex]{graphicx}
-        \RequirePackage[pdftex]{hyperref}
+        \PassOptionsToPackage{hyphens}{url}\RequirePackage[pdftex]{hyperref}
     \else
         \RequirePackage[dvips]{geometry}
         \RequirePackage[dvips]{graphicx}
-        \RequirePackage[hypertex]{hyperref}
+        \PassOptionsToPackage{hyphens}{url}\RequirePackage[hypertex]{hyperref}
     \fi
 \fi
 \RequirePackage{metalogo}

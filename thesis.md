@@ -30,15 +30,16 @@ preface: |
 
 # Introduction
 
-Since the Bitcoin [TODO cite] white paper was published in 2008, the world has
-been speculating on how decentralized ledger technologies could be used to
-restructure the financial infrastructure of the world to redistribute power
-towards the masses and away from large opaque organisations. 9 years later,
-Facebook announced a private currency controlled by a group of corporations
-[TODO cite]. 3 years after that the Chinese government announced that they had
-reached 92,771 transactions per second with their new Central Bank Digital
-Currency (CBDC) [TODO cite]. And the Eurosystem is set to make a decision on
-whether to start a digital euro project in mid 2021.
+Since the Bitcoin [@Bitcoin:whitepaper] white paper was published in 2008, the
+world has been speculating on how decentralized ledger technologies could be
+used to restructure the financial infrastructure of the world to redistribute
+power towards the masses and away from large opaque organisations. 9 years
+later, Facebook announced a private currency controlled by a group of
+corporations [@Diem:whitepaper]. 3 years after that the Chinese government
+announced that they had reached 92,771 transactions per second with their new
+Central Bank Digital Currency (CBDC) [@ForbesChinaCoin:online]. And the
+Eurosystem is set to make a decision on whether to start a digital euro project
+in mid 2021.
 
 The direction of crypto currencies is no longer determined by eccentric
 visionaries imagining a financial system that gave power back to the people and
@@ -76,6 +77,17 @@ benefits of programmable money with the price stability of the euro.
 
 # Problem description
 
+The financial world of 2021 finds itself in a turbulent period in history. With
+the requirements of money shifting faster than ever before, the monetary systems
+we inherited from previous generations are no longer sufficient to meet current
+demands. In response, various new forms of monetary solutions are racing to
+fill the expectations of a modernising population and acquire A position in the
+middle of the worlds money flow.
+
+In this chapter we illustrate some challenges for Central Banks have to overcome
+to maintain an inclusive economy, while staving off geopolitical challengers and
+private corporations.
+
 ## The decline of cash
 
 The eurozone system relies on two main types of money. Private money, managed
@@ -111,18 +123,23 @@ money as opposed to public money is no longer bound in space. Digital money can
 be used to perform purchases online, as well as transfer money to persons far
 away.
 
-This decline of central bank money lead to a number of unfavorable
-scenarios[@ReportDigitalEuro]. The decline of open and off-line money can
-lead to financial exclusion for the unbanked and vulnerable in our society.
-Additionally the increased reliance in private institutions can leave the entire
-euro system less transparent and more vulnerable.
+The world is moving from cash to cards. In the year 2000, less than 22 percent
+of transaction in the EU were card transactions. In 2019 this is over 47 percent
+[@CashTransactionsEuro:online]. This decline of central bank money lead to a
+number of unfavorable scenarios[@ReportDigitalEuro]. The decline of open and
+off-line money can lead to financial exclusion for the unbanked and vulnerable
+in our society. In 2017, 3.6 percent of Europe's household had no registered
+bank account [@Unbanked:online]. As more and more businesses become pin only.
+These people see their means of payment decrease. Additionally the increased
+reliance in private institutions can leave the entire euro system less
+transparent and more vulnerable.
 
 ## Rise of challengers to traditional currencies
 
-The rise of Bitcoin in 2008 [@Bitcoin] kicked off
-the race to create a currency that would solve the problems plaguing the current
-monetary system. While a complete solution has not emerged, today we see a
-number of alternatives that present various benefits and trade-offs.
+The creation of of Bitcoin in 2008 [@Bitcoin] kicked off the race to create a
+currency that would solve the problems plaguing the current monetary system.
+While a complete solution has not emerged, today we see a number of alternatives
+that present various benefits and trade-offs.
 
 While Bitcoin and similar fully-decentralized currencies have proven that a
 global digital token of value can be realised, one of their main challenges
@@ -148,7 +165,7 @@ While Diem presents itself as the solution to the worlds 1.7 billion unbanked,
 it is essentially a private world currency that would be controlled by powerful
 corporations who will not be accountable to democratic processes.
 
-The battle for the future control of monetary systems is not a strictly western
+The battle for the future control of monetary systems is a world wide
 phenomenon. While groups of distributed open-source engineers are trying to
 create a system free of corruption, and private interest groups are trying to
 extend their reach, governments around the world are beginning to realise the
@@ -161,10 +178,110 @@ to issue a digital euro, scenarios and implied requirements
 farthest is the Chinese government. With successful public trails
 [@ChinaCoinTrial:online] they seem to be closest to a working digital currency.
 
-## Threats to the euro system
+## The technical debt of traditional finance
 
-Fears have grown amongst the public that our monetary system will fall into the
-hands of an authoritarian government or profit driven conglomerate.
+People have been trading various commodities as a store of value nearly since
+6000 BC [@HistoryOfMoney:book]. In Mesopotamia records were kept in order to
+track debt as far as 3000 years BC. Since then money has taken various forms,
+slowly moving up layers of abstraction, but the function of money has always
+stayed the same: acting as a medium of exchange [@On_the_Origin_of_Money].
+
+The first known true standardised gold coins have attributed to Lydian society
+back in 640 BC. Slowly over time the gold and silver contents of the coins
+became less important, and currencies as a proxy for trust, became slowly more
+dependent trust in the system rather than the real value of the currency. In 806
+AD, this culminated in the first use of paper money in China. Since these
+events, the form of money has varied based on societal conditions.
+
+Because of its functional utility, fiat money, especially in the form of bank
+notes backed by gold has been a popular form of money that has been used in
+European society since 1440. Fiat currency, as enforced by the reputation of
+governing bodies has been the dominant way of facilitating the efficient
+exchange of goods and services for many centuries[@The_Gold_Standard].
+
+At the end of the 1900s Europe has a system of many national currencies,
+denominated per country. The value of the currency was maintained by different
+countries, often using the gold standard. Meanwhile private banks would allow
+people to store their money in a safe institution, while they could lend that
+money out. For international trade people would swap different currencies in
+exchanges when a transaction had to be made, but this was infrequent.
+
+This system worked fine in an era where most exchange was done by cash, and most
+trade was done within borders. But as the world became more connected and
+digital, different solutions had to be built on top of the old system to
+respond to the changing demands of the population. Private banks, who were once
+used only for large transactions and money storage got a more and more central
+role in day to day transactions. In effect the system as we see it today has
+accrued a lot of technical debt as the its requirements changed over time. As a
+result a number of inefficiencies have emerged from this technical debt.
+
+First, international money transfer, even within the euro-system can take up to
+a week. Second, banks as private institutions are vulnerable to bankruptcy,
+leaving their customers exposed to this risk. Third, banks as private
+institutions are prone to corruption unless properly regulated, something that
+takes a lot of effort and resources.
+
+## Requirements for a digital euro by the ECB
+
+In October 2020 the European Central Bank published a report detailing a number
+of scenarios where a new digital euro could provide a benefit
+[@ReportDigitalEuro:online]. Associated with these a number of requirements are
+provided.
+
+1. **Enhanced digital efficiency**
+2. **cash-like features**
+3. **competitive features**
+4. **monetary policy option**
+5. **back-up system**
+6. **international use**
+7. Minimise ecological footprint (cost saving and environmentally friendly)
+8. **ability to control the amount of digital euro in circulation.**
+9. cooperation with market participants
+10. compliance with the regulatory framework
+11. safety and efficiency in the fulfilment of the Eurosystem’s goals
+12. easy accessibility throughout the euro area
+13. conditional use by non-euro area residents
+
+In this project we aim to conform to these requirements as best we can and
+evaluate our solution by these requirements. We emboldened the technical
+requirements as they will are guiding in our design, while the rest will only
+be speculated on as they do not pertain to the topic of computer science and
+fall outside of our area of expertise.
+
+## Research Focus and Structure
+
+While a complete redesign of Europes monetary system is obviously out of scope
+for this thesis, the previously described problems and requirements lead us to
+the following question:
+
+---
+
+\begin{center}
+{\center \Large Can we create a digital currency that mimics the properties of Central Bank
+backed cash.
+}
+\end{center}
+
+---
+
+This document describes the motivation, design, implementation and evaluation of
+the EuroToken system. The EuroToken system is a conceptual design that aims to
+fit the requirements stated in the previous section. The structure of this work
+is as follows, in the next chapter we describe the design of the EuroToken
+system. The design is approached from the fundamental questions of a currency
+and answers the fundamental questions first. What is a digital currency, what is
+the double spending problem, and how to design a system that is scalable while
+not compromising the principle of double-spend prevention. The design aims to
+have the following features:
+
+1. Be a fully functional system of accounting
+2. Preventing unsanctioned money creation
+3. Scale to the size of the European union
+4. Be off-line transferable
+
+However, in order to not be limited in the same way as Bitcoin and similat
+currencies, we sacrifice the following feature: Decentralization. This give us
+the required leeway to create a scalable and offline-capable system.
 
 # Design
 
@@ -699,7 +816,7 @@ implemented and is done manually in the field trial.
 
 #### TrustChain
 
-Since the main implementation if the TrustChain software [@ipv8] is build on
+Since the main implementation if the TrustChain software [@PyIPv8] is build on
 python so is the gateway API. The server is provided as a single docker
 container that also provides the frontend.
 
@@ -710,7 +827,7 @@ and receive the token. Because the added value of the system is its
 distributed nature, a way to send and receive the asset in a convenient and
 peer to peer way is needed. The TrustChain team has recently come out with an
 
-Android super-app[TODO, cite] that showcases some of the IPv8 [@ipv8] and
+Android super-app[TODO, cite] that showcases some of the IPv8 [@PyIPv8] and
 TrustChain[TODO CITE] capabilities. This app provides the perfect platform to
 showcase the EuroToken capabilities.
 
@@ -795,7 +912,80 @@ demo repeatable.
 
 - [TODO: image of validator config]
 
-# Deployment and performance analysis
+# Deployment, evaluation and performance analysis
+
+In the problem description we specified the following requirements as derived
+from the ECBs report on a digital euro [@ReportDigitalEuro:online].
+
+1. **Enhanced digital efficiency**
+2. **cash-like features**
+3. **competitive features**
+4. **monetary policy option**
+5. **back-up system**
+6. **international use**
+7. Minimise ecological footprint (cost saving and environmentally friendly)
+8. **ability to control the amount of digital euro in circulation.**
+9. cooperation with market participants
+10. compliance with the regulatory framework
+11. safety and efficiency in the fulfilment of the Eurosystem’s goals
+12. easy accessibility throughout the euro area
+13. conditional use by non-euro area residents
+
+In this chapter we will evaluate our solution by these requirements. We
+emboldened the technical requirements as they will are guiding in our design,
+and we will go into more detail on how we met these requirements.
+The rest of the requirements will only be touched on lightly as they do not
+pertain to the topic of computer science and fall outside the area of expertise
+of the author.
+
+## Enhanced digital efficiency
+
+Requirements:
+
+1 **Enhanced digital efficiency**
+3 **competitive features**
+
+- Description of the benefit of edge computing
+- Instant international transfer
+- Increased efficiency in regulation due to full standardization
+- The innovation boost
+    * programmable money
+    * smart contracts
+    * new forms of money streaming
+
+## Cash-like features
+
+2 **cash-like features**
+5 **back-up system**
+
+- Offline payments
+- Peer to Peer
+- Instant transfer
+- No intermedeary to the initial transaction
+    * In the future the validator might be replaced by a more decentralised
+    system
+- Disaster mode
+    * "Once over" spending
+    * Could be expanded to include "emergency mode" where trust is increased and
+    reprocessing is performed later to find instances of double-spending
+
+## monetary policy option
+
+4 **monetary policy option**
+8 **ability to control the amount of digital euro in circulation.**
+
+- Central bank controlled supply
+- Option for "global inflation rate"
+- More granular and "smart contract based" policy enactmet
+
+## Scalability
+
+6 **international use**
+
+- Scalability is very imporant
+- TPS of the gateway
+- graphs and tables
+- Scaling limits and how to potentially mitigate
 
 # Discussion
 
