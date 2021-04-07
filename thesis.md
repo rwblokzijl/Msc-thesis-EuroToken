@@ -74,8 +74,6 @@ We show how the EuroToken system can be used to create a scalable CBDC as well
 as serve as a private money alternative to current banks and provide the
 benefits of programmable money with the price stability of the euro.
 
-# Problem description
-
 The financial world of 2021 finds itself in a turbulent period in history. With
 the requirements of money shifting faster than ever before, the monetary
 systems we inherited from previous generations are increasingly struggling to
@@ -205,7 +203,7 @@ denominated per country. The value of the currency was maintained by different
 countries, often using the gold standard[@The_Gold_Standard]. Meanwhile private
 banks would allow people to store their money in a safe institution, while they
 could lend that money out. For international and cross-currency trade, people
-would swap different currencies in exchanges when needed, but becuase of the
+would swap different currencies in exchanges when needed, but because of the
 localised nature of society this was infrequent.
 
 This system worked fine in an era where most exchange was done by cash, and most
@@ -227,6 +225,8 @@ essentials. Fourth, people are tightly coupled to their banks. While having
 multiple bank accounts is possible, a lack of standardisation and
 interoperability makes people easily dependent on their one bank and its
 features.
+
+# Problem description
 
 ## Requirements for a digital euro by the ECB
 
@@ -255,6 +255,17 @@ emboldened in the list, as they will be guiding in our design. The rest
 will only be speculated on as they do not pertain to the topic of computer
 science and fall outside of our area of expertise.
 
+
+## Scalability issues of decentralized currencies
+
+## Price stability issues
+
+## Inherent trade-offs of global networks
+
+1. Scalability
+2. Double spending
+3. Off-line capability
+
 ## Research Focus and Structure
 
 While a complete redesign of Europe's monetary system is obviously out of scope
@@ -271,26 +282,26 @@ Central Bank backed cash.
 
 ---
 
-This document describes the motivation, design, implementation and evaluation of
-the EuroToken system. The EuroToken system is a conceptual design that aims to
-fit the requirements stated in the previous section, as well as a limited proof
-of concept design testing certain aspects of the design. The structure of this
-work is as follows, in the next chapter we describe the design of the EuroToken
-system. The design is approached from the fundamental questions of a currency
-and answers the fundamental questions first. What is a digital currency? What is
-the double spending problem? And how to design a system that is scalable while
-not compromising the principle of double-spend prevention? The design aims to
-provide the following features:
+This document describes the motivation, design, implementation and evaluation
+of the EuroToken system. The EuroToken system is a conceptual design that aims
+to fit the requirements stated in the previous section, as well as a limited
+proof of concept design testing certain aspects of the design. The structure of
+this work is as follows, in the next chapter we describe the design of the
+EuroToken system. The design is approached from the fundamental questions of a
+currency and answers the fundamental questions first. What is a digital
+currency? What is the double spending problem? And how to design a system that
+is scalable while not compromising the principle of double-spend prevention?
+The design aims to provide the following features:
 
 1. Be a fully functional system of accounting
 2. Preventing unsanctioned money creation
 3. Scale to the size of the European union
 4. Be off-line transferable
 
-In order to not be limited in the same way as Bitcoin and similar currencies, we
-choose to sacrifice the following feature: Decentralization. This give us the
-required leeway to create a scalable and offline-capable system. However, we do
-attempt to provide the necessary tools to overcome the downsides of the
+In order to not be limited in the same way as Bitcoin and similar currencies,
+we choose to sacrifice the following feature: Decentralization. This give us
+the required leeway to create a scalable and offline-capable system. However,
+we do attempt to provide the necessary tools to overcome the downsides of the
 centralisation.
 
 # Design

@@ -21,7 +21,8 @@
 \ExecuteOptions{english}
 \ProcessOptions\relax
 
-\LoadClass[11pt]{book}
+\LoadClass[10pt]{book}
+%%\LoadClass[11pt]{book}
 
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
@@ -236,7 +237,8 @@
 %\fi
 
 %% We use A4 paper with slightly smaller margins than the default (scale = 0.7).
-\geometry{a4paper,hscale=0.7,vscale=0.8}
+%% \geometry{a4paper,hscale=0.7,vscale=0.8}
+\geometry{a4paper,hscale=0.75,vscale=0.8}
 
 %% Redefine the title command to accept an optional subtitle.
 \renewcommand*\title[2][tudelft-white]{%
