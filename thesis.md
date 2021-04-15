@@ -138,7 +138,7 @@ not be reliant on any private institution to function.
 
 ## Rise of challengers to traditional currencies
 
-The creation of of Bitcoin in 2008 [@Bitcoin] kicked off the race to create a
+The creation of of Bitcoin in 2008 [@Bitcoin:whitepaper] kicked off the race to create a
 currency that would solve the problems plaguing the current monetary system.
 While a complete solution has not emerged, today we see a number of alternatives
 that present various benefits and trade-offs. While Bitcoin and similar
@@ -228,6 +228,9 @@ features.
 
 # Problem description
 
+Can we create a digital currency that mimics the properties of Central Bank
+backed cash? This is one of the questions that keeps the ECB busy.
+
 ## Requirements for a digital euro by the ECB
 
 In October 2020 the European Central Bank published a report detailing a number
@@ -253,18 +256,85 @@ In this project we aim to conform to these requirements as best we can and we
 evaluate our solution by these requirements. The technical requirements are
 emboldened in the list, as they will be guiding in our design. The rest
 will only be speculated on as they do not pertain to the topic of computer
-science and fall outside of our area of expertise.
+science and fall outside of our area of expertise. Therefore a technical
+solution to these problems has to conform to the following requirements.
+
+1. Be a fully functional system of accounting
+2. Preventing unsanctioned money creation
+3. Scale to the size of the European union
+4. Disaster resilience through off-line transfer ability
+
+## The need for a competitive Euro
+
+Commerce is moving online
+- Instant transactions
+
+\begin{figure}[htp]
+\centering
+\resizebox{\textwidth}{!}{
+\includegraphics{../images/problem-ecommerce.png}
+}
+\caption{E-commerce 2010-2020 \cite{EcommerceStats:online}}
+\label{exchange}
+\end{figure}
+
+The banking system is insufficient to handle todays international trade
+- national payment systems suck
+-
+\begin{figure}[htp]
+\centering
+\resizebox{\textwidth}{!}{
+\includegraphics{../images/problem-ecommerce.png}
+}
+\caption{E-commerce 2010-2020 \cite{EcommerceStats:online}}
+\label{exchange}
+\end{figure}
 
 
-## Scalability issues of decentralized currencies
+People in other parts of the world are moving into crypto
 
-## Price stability issues
+If the eurozone does not get its own digital currency the ECB, and thus our
+democratic process, loses
 
-## Inherent trade-offs of global networks
+If decentralized currencies win, individuals become increasingly dependent on
+the
 
-1. Scalability
-2. Double spending
-3. Off-line capability
+It might lose the ability to
+
+## The scalability problem
+
+The search for a safe digital money can be traced back as far as David Chaum in
+1983 when he first released his paper on Blind Signatures for Untraceable
+Payments [@Chaum1983blind]. In this paper Chaum does not specify a design for a
+decentralized currency, but a mechanism for preserving user privacy against
+third parties in digital transactions. Since then many implementations have been
+attempted, including eCash [@1993offlineCash] [@ChaumEcommerce]. However, in its
+competition with Credit Cards, eCash went bankrupt in 1998 [@eCash1998].
+
+In 2008, Satoshi Nakamoto publised the design for Bitcoin. Bitcoin was the first
+digital curren
+removes
+third parties out of the equation by maint
+
+Since then, various attempts to create new digital currencies haev
+
+David Chaum
+since chaum in 1983
+
+[@Bitcoin:whitepaper] pow
+[@Ethereum:whitepaper]
+
+[@chaum2021]
+
+[@Nano:whitepaper]
+
+In order to create a fully functional system of accounting thea
+
+
+## Inflation or Deflation, the lesser of two evils
+
+Price stability is of grave importance
+
 
 ## Research Focus and Structure
 
