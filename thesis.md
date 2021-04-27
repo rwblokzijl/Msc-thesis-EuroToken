@@ -124,7 +124,7 @@ As a result of digitalisation, the world is moving from cash to cards. In the
 year 2000, less than 22 percent of transaction in the EU were card transactions.
 In 2019 this is over 47 percent [@CashTransactionsEuro:online]. This decline of
 central bank money lead to a number of unfavorable scenarios
-[@ReportDigitalEuro]. The decline of open and off-line money can lead to
+[@ReportDigitalEuro:online]. The decline of open and off-line money can lead to
 financial exclusion for the unranked and vulnerable in our society. In 2017, 3.6
 percent of Europe's household had no registered bank account [@Unbanked:online].
 As more and more businesses move online or become pin only. These people see
@@ -135,6 +135,43 @@ vulnerable to corruption.
 To solve these issues, an open digital coin with value guaranteed by the Central
 Bank would be needed. It needs to be open and easy to use, online capable, but
 not be reliant on any private institution to function.
+
+## The need for a competitive Euro
+
+Commerce is moving online
+- Instant transactions
+
+\begin{figure}[htp]
+\centering
+\resizebox{\textwidth}{!}{
+\includegraphics{../images/2_problem/ecommerce.png}
+}
+\caption{E-commerce 2010-2020 \cite{EcommerceStats:online}}
+\label{exchange}
+\end{figure}
+
+The banking system is insufficient to handle todays international trade
+- national payment systems suck
+-
+\begin{figure}[htp]
+\centering
+\resizebox{\textwidth}{!}{
+\includegraphics{../images/2_problem/international.png}
+}
+\caption{E-commerce 2010-2020 \cite{EcommerceStats:online}}
+\label{exchange}
+\end{figure}
+
+
+People in other parts of the world are moving into crypto
+
+If the eurozone does not get its own digital currency the ECB, and thus our
+democratic process, loses
+
+If decentralized currencies win, individuals become increasingly dependent on
+the
+
+It might lose the ability to
 
 ## Rise of challengers to traditional currencies
 
@@ -231,6 +268,59 @@ features.
 Can we create a digital currency that mimics the properties of Central Bank
 backed cash? This is one of the questions that keeps the ECB busy.
 
+## Double-spending prevention vs Scalability
+
+The search for a safe digital money can be traced back as far as David Chaum in
+1983 when he first released his paper on Blind Signatures for Untraceable
+Payments [@Chaum1983blind]. In this paper Chaum does not specify a design for a
+decentralized currency, but a mechanism for preserving user privacy against
+third parties in digital transactions. Since then many implementations have been
+attempted, including eCash [@1993offlineCash] [@ChaumEcommerce]. However, in its
+competition with Credit Cards, eCash went bankrupt in 1998 [@eCash1998:online].
+
+In 2008, Satoshi Nakamoto publised the design for Bitcoin. Bitcoin was the first
+digital curren
+removes
+third parties out of the equation by maint
+
+Since then, various attempts to create new digital currencies haev
+
+David Chaum
+since chaum in 1983
+
+[@Bitcoin:whitepaper] pow
+[@Ethereum:whitepaper]
+
+The approximated global knowledge of single blockchain networks like
+Ethereum[@Ethereum:whitepaper] and Bitcoin[@Bitcoin:whitepaper] lead to limited
+transactions per second and
+
+image tps ethereum
+
+[@chaum2021]
+
+[@Nano:whitepaper]
+
+In order to create a fully functional system of accounting thea
+
+How to prevent double spending:
+
+- How banks solved it
+    * How its not transparent nor open
+- How Bitcoin solved it
+    * How blockchain is not scalable
+- How Iota solved it
+    * How the block-DAG might work well
+- How Nano solves it
+    * How the block-lattice is great but still requires centralised nodes
+
+
+## The price stability problem
+
+- How stablecoins work
+- Why the euro is stable
+- Why bitcoin is not
+
 ## Requirements for a digital euro by the ECB
 
 In October 2020 the European Central Bank published a report detailing a number
@@ -263,78 +353,6 @@ solution to these problems has to conform to the following requirements.
 2. Preventing unsanctioned money creation
 3. Scale to the size of the European union
 4. Disaster resilience through off-line transfer ability
-
-## The need for a competitive Euro
-
-Commerce is moving online
-- Instant transactions
-
-\begin{figure}[htp]
-\centering
-\resizebox{\textwidth}{!}{
-\includegraphics{../images/problem-ecommerce.png}
-}
-\caption{E-commerce 2010-2020 \cite{EcommerceStats:online}}
-\label{exchange}
-\end{figure}
-
-The banking system is insufficient to handle todays international trade
-- national payment systems suck
--
-\begin{figure}[htp]
-\centering
-\resizebox{\textwidth}{!}{
-\includegraphics{../images/problem-ecommerce.png}
-}
-\caption{E-commerce 2010-2020 \cite{EcommerceStats:online}}
-\label{exchange}
-\end{figure}
-
-
-People in other parts of the world are moving into crypto
-
-If the eurozone does not get its own digital currency the ECB, and thus our
-democratic process, loses
-
-If decentralized currencies win, individuals become increasingly dependent on
-the
-
-It might lose the ability to
-
-## The scalability problem
-
-The search for a safe digital money can be traced back as far as David Chaum in
-1983 when he first released his paper on Blind Signatures for Untraceable
-Payments [@Chaum1983blind]. In this paper Chaum does not specify a design for a
-decentralized currency, but a mechanism for preserving user privacy against
-third parties in digital transactions. Since then many implementations have been
-attempted, including eCash [@1993offlineCash] [@ChaumEcommerce]. However, in its
-competition with Credit Cards, eCash went bankrupt in 1998 [@eCash1998].
-
-In 2008, Satoshi Nakamoto publised the design for Bitcoin. Bitcoin was the first
-digital curren
-removes
-third parties out of the equation by maint
-
-Since then, various attempts to create new digital currencies haev
-
-David Chaum
-since chaum in 1983
-
-[@Bitcoin:whitepaper] pow
-[@Ethereum:whitepaper]
-
-[@chaum2021]
-
-[@Nano:whitepaper]
-
-In order to create a fully functional system of accounting thea
-
-
-## Inflation or Deflation, the lesser of two evils
-
-Price stability is of grave importance
-
 
 ## Research Focus and Structure
 
@@ -381,7 +399,7 @@ at the scale of the euro system needs to conform to a number of requirements.
 Such a system needs to be scalable, privacy aware, allow peer to peer
 transactions off-line. In needs to be price stable, exchangeable for euros, and
 most importantly, it needs to be secure and cheating resistant. In this chapter
-we first describe how a distributed personal blockchain provides a good basis
+we first describe how a distributed block-lattice provides a good basis
 for a scalable, private, and off-line friendly transaction system. We then
 explain how we position the system in relation to the euro, how the price can
 remain stable, and how a system can mimic the properties of cash. We then go in
@@ -397,36 +415,58 @@ The possibilities and limitations of any virtual currency are dependent on its
 system of accounting. In order to conform to the off-line, scalability and
 transparency requirements, a system of distributed accounting is chosen. As the
 fundamental building block for the EuroToken system we use a Hyper-Sharded
-personal blockchain that keeps track of every users transaction history on their
+block-lattice that keeps track of every users transaction history on their
 own edge device. By storing all information required for transacting at the
 physical end points of transactions, we create the possibility of direct
 off-line transaction between users, without any link to the outside world.
 
-### TrustChain
+While the EuroToken system design is independent of the underlying
+communication technology, the off-line requirement leads to there being some
+limitations on the way users interact. Since off-line users cannot connect to
+servers we choose to work with a Peer to Peer system that allows users to find
+each-other based on personal identifiers.
 
-As a technology for this "personal blockchain", we use the TrustChain system. As
-illustrated in figure \ref{trustchain_label} every user has a personal
-blockchain structured as a chronological, one-dimensional string of "blocks".
-Every block will include a cryptographically secure hash identifying what block
-preceded it. Because of the trapdoor effect of the hash, any block will uniquely
-identify all blocks that come before it. This allows anyone to verify the
-validity of entire history of another user, given the last block in this
-history. Every block will contain a single transaction that specifies the
-transfer of funds from one user to another, as well as a reference to a
-corresponding block in the chain of the transaction counterparty. This
-effectively creates a system of double accounting.
+We build on Peer to Peer networking, that provides a mechanism to discover the
+network location of users based on the same public key that is used to identify
+their wallet. This allows us to almost completely abstract away from locating
+users using IP addresses and ports. As a result we only have to worry about
+maintaining a users public key to identify and communicate with them across
+time. Our peer to peer network does not only abstract away from IP addresses,
+bus also from the IP network completely. Namely, it provides communication over
+Bluetooth without the need for any internet connection. This becomes very
+useful for demonstrating the off-line capabilities of the EuroToken system.
 
-[trustchain]: ../images/trustchain.png
-![TrustChain [@TrustChain], interconnected personal blockchains \label{trustchain_label}][trustchain]
+## Block-lattice accounting
+
+As mentioned for our distributed accounting system we choose to build on a
+block-lattice stucture. As illustrated in figure \ref{block_lattice} every user
+has a personal blockchain structured as a chronological, one-dimensional string
+of "blocks". Every block will include a cryptographically secure hash
+identifying what block preceded it. Because of the trapdoor effect of the hash,
+any block will uniquely identify all blocks that come before it. This allows
+anyone to verify the validity of entire history of another user, given the last
+block in this history. Every block will contain a single transaction that
+specifies the transfer of funds from one user to another, as well as a
+reference to a corresponding block in the chain of the transaction
+counterparty. This effectively creates a system of double accounting.
+
+\begin{figure}[htp]
+\centering
+\resizebox{0.7\textwidth}{!}{
+\includegraphics{../images/4_implementation/trustchain_basics.png}
+}
+\caption{Block-lattice structure}
+\label{block_lattice}
+\end{figure}
 
 Every block can contains a "declaration" by the user, or a reference to the
 declaration of another party. These declarations are digitally signed by the
 declaring party and form the base of any transaction. To do a transaction the
-sending user (Alice) will create a new (half)block with a declaration stating "I
-transfer 1 EuroToken to Bob".
+sending user (Alice) will create a new (half)block with a declaration stating
+"I transfer 1 EuroToken to Bob".
 
-When Bob receives this block from Alice, he can accept it by creating a block in
-his own chain and returning it Alice. Before Bob accepts the block, he first
+When Bob receives this block from Alice, he can accept it by creating a block
+in his own chain and returning it Alice. Before Bob accepts the block, he first
 validates the history of Alice by requesting enough of her chain make sure that
 Alice doesn't validate any of the network rules that would invalidate Bob's
 receiving of the money. Once Bob is satisfied with the correctness of Alice's
@@ -435,28 +475,6 @@ Alice's transaction. This block includes the hash of Alice's block, thus
 entangling the chains of Alice and Bob together. Bob now has a signed proof by
 Alice that the transaction happened. He can use this to prove the transaction
 happened at any point in the future.
-
-### IPv8
-
-The TrustChain implementation comes as a part of the IPv8 distributed
-networking suite. While the EuroToken system design is independent of the
-underlying communication technology, IPv8 gives us a number of features that
-are a useful addition to our design. The most useful one being Peer to Peer
-overlay networking.
-
-Peer to Peer overlay networking, provides a mechanism to discover the network
-location of users based on the same public key that is used to identify a
-TrustChain user. This allows us to almost completely abstract away from locating
-users using IP addresses and ports. As a result we only have to worry about
-maintaining a users public key to identify and communicate with them across
-time. IPv8 does not only abstract away from IP addresses, bus also from the IP
-network completely. Namely, it provides communication over Bluetooth without the
-need for any internet connection. This becomes very useful for demonstrating the
-off-line capabilities of the EuroToken system.
-
-Another useful aspect of IPv8 is the fact that it has an implementation in
-Kotlin. This allows us to create a mobile app to run allow users to maintain
-their wallet on a portable device and interact with the system in a modern way.
 
 ## Gateways: Euro to EuroToken exchange
 
@@ -483,7 +501,7 @@ for a new type of euro to fill the gap of public money is getting stronger.
 \begin{figure}[htp]
 \centering
 \resizebox{\textwidth}{!}{
-\includegraphics{../images/design-exchange.png}
+\includegraphics{../images/3_design/exchange.png}
 }
 \caption{Usage flow of cash, private money, and EuroToken.}
 \label{exchange}
@@ -618,7 +636,7 @@ done by sending the validator a finality proposal.
 \begin{figure}[htp]
 \centering
 \resizebox{\textwidth}{!}{
-\includegraphics{../images/design-offline-transfer.png}
+\includegraphics{../images/3_design/offline-transfer.png}
 }
 \caption{Off-line transfer and finalisation}
 \label{offline}
@@ -661,7 +679,7 @@ and conflict resolution.
 
 For a block to be considered valid:
 
-1. All standard TrustChain invariants are maintained.
+1. All standard block-lattice invariants are maintained.
 2. All blocks preceding it are verified to be valid
 3. The total spent amount is  to be less than the spendable balance.
 
@@ -738,19 +756,19 @@ Alice now knows the blocks that are already stored by the validator. When Alice
 is receiving money from Bob, she only requires Bob's blocks down to the his last
 checkpoint.
 
-## Deferred validation, conflict resolution and off-line transactions
+## Off-line transactions and online validation
 
 The EuroToken system has the intentional distinction between transactions and
-their finalisation. Because of this, the first step of transactions only require
-a direct connection between users. In theory, this allows to transact off-line,
-if they're willing to risk that a conflicting block already exists in the
-validator. Of course, in this case, the transfer of funds depends on the
+their finalisation. Because of this, the first step of transactions only
+require a direct connection between users. In theory, this allows to transact
+off-line, if they're willing to risk that a conflicting block already exists in
+the validator. Of course, in this case, the transfer of funds depends on the
 trustworthiness of the sending party.
 
-In this section we discuss a few ways of interacting with the system that allows
-for different risk exposure to the parties.
+In this section we discuss a few ways of interacting with the system that
+allows for different risk exposure to the parties.
 
-### On-line transactions
+### Online transactions
 
 When users are connected to the internet, a real life interaction can easily
 combine the finalisation step with the transaction, only transferring goods or
@@ -840,192 +858,276 @@ the integrity of their institutions.
 
 # Implementation
 
-The implementation of the stablecoin system consists of 2 main elements: the
-wallet Android app, and the gateway REST API. A web front end for the rest API
-has also been created.
+In this section we describe the implementation of the EuroToken protocol, as
+well as the prototype we built to test and showcase the capabilities of the
+EuroToken system. The protocol is implanted on top of IPv8. In includes an
+android/kotlin implementation as well as a python implementation. We then built
+a Euro to EuroToken exchange and transaction validator on top of the python
+implementation. On top of the kotlin implementation we built a wallet app that
+is fully capable of securely transferring eurotokens between wallets, as well as
+exchange them with the EutoToken exchange.
 
-The wallet demonstrates the ability of TrustChain to handle the transfer of the
-EuroTokens peer to peer without a central entity.
+## Architecture
 
-The Gateway demonstrates how a bridge can be created between the traditional
-euro system and a blockchain based analog.
+The architecture of the EuroToken system has two main components. The gateway
+and the wallet. The gateway is managed by a central trusted party and fulfills
+two main functions from the design. These are to asynchronously validate
+transactions made by users, as well as handling the exchange between EuroToken
+and Euros. As such it maintains a bank account as well as its own wallet. The
+wallets are operated by each user, and they are fully capable of transfering
+funds between each-other without having to interact with anyone in the euro
+system.
 
-## Gateway (Central Bank API)
+\begin{figure}[htp]
+\centering
+\resizebox{\textwidth}{!}{
+\includegraphics{../images/4_implementation/architecture.png}
+}
+\caption{EuroToken architecture}
+\label{architecture}
+\end{figure}
 
-The only way tokens are created is when a central bank creates them. In our
-implementation this only happens when a user has transfered an equal amount of
-euro into the central bank account.
+In figure \ref{architecture} we model the main communication channels. Within
+the P2P EuroToken system we have all wallet to wallet, and wallet to gateway
+communication. This communication happens directly between the communicating
+nodes using Peer to Peer technology.
 
-The gateway is responsible for the exchange of euro for tokens and vice versa.
-This involves taking payments in both tokens and euros, and payments in both
-currencies. This means the gateway needs to interface with the bank to allow a
-user to make payments in euro when creating EuroTokens, as well as a mechanism
-for paying out euro to the user when they trade in EuroTokens. On the other side
-of the gate the system needs to be able to create/send, and destroy/receive
-tokens on TrustChain.
+In the Euro System, we make use of bank API's for gateway to bank
+communication. The communitcation with the ECB symbolises monatary policy
+enacted by the ECB on bank EuroToken reserve requirements or possible direct
+exchange of euro for EuroToken.
 
-The gateway aims to automate and link all of this interaction, so EuroTokens can
-be bought and sold at any time by anyone.
+Rather than implementing both an exchange as well as a validator we chose to
+implement and test these as a single entity. However, since the gateways roles
+might be split in the future the technical implementation of the gateway keeps
+the validator roles separate from the exchange roles. This results in a single
+EuroToken exchange software product, that is able to perform either or both of
+the functions.
 
-### EuroToken Creation
+## EuroToken transfer protocol
 
-When a user wants to convert a euro to a EuroToken, a creation event is
-initiated with the gateway API. The user sends their TrustChain wallet address
-and amount to convert with the request.
+The method for accounting and transferring of EuroTokens lies at the heart of
+this project. Because of this the choices regarding the implementation of the
+networking stack and blockchain technology will have a direct effect on the
+feature set and scalability of the whole EuroToken network. We need a network
+stack that allows communication both off-line directly between devices, as well
+as online across the world. Finding and connecting to any wallet without
+relying on central servers is a main requirement. In addition, the off-line
+transfer ability of the system is best demonstrated by creating an android
+client. Another requirement is therefore that an implementation is available for
+android as well.
 
-The API will then create a payment request with the associated bank for the
-specified amount, and store the information in its database. The payment link is
-returned to the user.
+One option is to implement a full blockchain protocol and associated network
+stack from the ground up to adhere to our exact requirements. This would give
+us a lot of say in the exact feature set of the network. However, since the
+science of distributed networking algorithms has mostly settled, most peer to
+peer communication technologies have already been implemented somewhere.
 
-When the user has paid the request, a transaction for the EuroTokens will be
-created using TrustChain. The gateway will create a proposal half-block which
-will be sent to the user, who will create an accepting half-block registering
-the transaction on both chains.
+The second option is then to build upon some existing peer to peer networking
+library, while implementing the blockchain protocol ourselves. This option has
+some benefits as the usage of a block-lattice is not yet very common, and thus
+is not implemented as a stand alone package anywhere. For the P2P library we
+have several options. We considered libtorrent[@libtorrent:online],
+libp2p[@libp2p:online] and IPv8[PyIPv8:online]. Libtorrent has a number of
+interesting peer to peer features like peer discovery and data transfer but
+sadly fell short when it comes discovery of peers based on public keys. It can
+be classified more as a file location protocol than a peer location protocol.
+This would mean we would have to implement a peer location system ourselves.
+Libp2p is a modular peer to peer networking stack that provides a large suite
+of p2p tools. Libp2p uses a Distributed Hash Table (DHT) to allow peer
+discovery based on a peer-id[@PeerId:online]. There is an jvm/android
+implementation available, which also makes it possible to create an android
+client. Finally we looked at IPv8. IPv8 offers direct peer discovery based on
+public key and provides a framework for interaction called Overlay networks.
+Overlays provide a context for peers to interact within with particular message
+types. Crucially, IPv8 has an implementation in kotlin[@kotlin-IPv8:online].
 
-The user is now free to send the EuroTokens to anyone they like, requiring only
-a TrustChain transaction.
+Rather than implementing the blockchain mechanism ourselves, there is a third
+option. IPv8 includes a module called TrustChain. TrustChain is in essence a
+block-lattice type distrusted ledger technology. The technology does not fully
+solve double spending they way we originally designed it, so some work is
+required to adapt TrustChain to the EuroToken system, but it would provide a
+good basis for our implementation.
 
-### EuroToken Destruction
+We choose to build on IPv8/TrustChain for this project as it allows us to
+build on their kotlin implementation for the wallet as well as the python
+implementation for the gateway.
 
-When a user wants to trade in a EuroToken for a euro the process happens in
-reverse. For the demo the user does a request to the API with the desired
-amount, their TrustChain address and an IBAN.
+### TrustChain structure
 
-The system creates a TrustChain transaction for negative the amount. This
-transaction is sent for the user to accept.
+Every user runs a *Peer* which consists of a public/private key pair as well as
+a collection of their *transaction* history in the form of their *blockchain*.
+The Peer can be uniquely identified by their public key. Every statement made
+by the peer is signed using their private key, and the validity of any
+signature can be verified using the public key of the Peer.
 
-When the user has then signed the accepting half-block. The system will
-pay out the amount to the specified IBAN.
+Every peer has a list of their own history of transactions in the form of a
+collection of *blocks*. Every block is created and signed by a Peer, and
+includes the details of the transaction as well as a cryptographically secure
+hash of the previous block signed by the user. Importantly, the hash of a block
+uniquely identifies the block, as the trapdoor effect of cryptographically
+secure hashes ensures the infeasibility of finding another block with a given
+hash. The block thus uniquely references the previous transaction of the Peer.
+Since every transaction uniquely references the block before itself, the hash
+of any one block, recursively identifies *every* transaction made before by the
+Peer. This is as long as the Peer honestly references to their previous block.
+This referencing mechanism effectively links all blocks together in a gradually
+growing chain, thus making is a *blockchain*.
+
+Every Peer in within TrustChain has their own chain, yet most transactions are
+*between* users. For this reason all transactions are made to happen in the
+chains of both users involved. In TrustChain, this is achieved by having one of
+the two parties create a proposal block. In addition to the public key of
+the Peer, their previous hash, and the contents of the statement, the proposal
+also includes the public key of the counterparty. When the counterparty
+receives the proposal and agrees to the terms in the statement, they create an
+acceptance block. This acceptance block functions includes the public key of
+the counterparty, as well as the hash of their previous block, thus placing it
+in their blockchain. In addition the acceptance includes a reference to the
+proposal, thus linking them together. Both the proposal and acceptance blocks
+are then stored by both users, so they can both prove the transaction fully
+happened.
+
+\begin{figure}[htp]
+\centering
+\resizebox{\textwidth}{!}{
+\includegraphics{../images/3_design/trustchain.png}
+\label{trustchain_label}
+}
+\caption{ TrustChain block-lattice, interconnected personal blockchains\cite{TrustChain} .}
+\label{exchange}
+\end{figure}
+
+### EuroToken extension
+
+The structure inherited from TrustChain serves us quite well as it comforms
+quite well to the block-lattice design we require. However, neither the python,
+nor the kotlin implementation includes any logic for running a currency. Before
+TrustChain can be used for EuroToken, it needs to be expanded to allow for
+value tracking and transfer.
+
+TrustChain is quite open for expansion. It allows users to define their own
+block-types as well as validation logic for these blocks. TrustChain will make
+sure blocks are valid as a chain, by enforcing typical block invariants like
+hash correctness and signature validity. TrustChain makes use of IPv8 for its
+communication and exposes an API to create and sign blocks to other peers.
+TrustChain will then handle the process of sending the blocks over the IPv8
+network.
+
+In order to create the EuroToken logic we defined a number of TrustChain block
+types to achieve our goals. In order to conform to the scalability requirements
+all EuroToken proposal blocks by a user will include the balance of that user.
+This is part of the rolling-checkpoint mechanic that allows us to scale each
+users personal blockchain indefinitely without sacrificing scalability. The
+EuroToken block subtypes are as follows:
+
+#### Transfer block
+
+The transfer block is the core of how users interact. The proposal is created by
+the sender of a transaction and the acceptance by the receiving party. The block
+includes the amount to be sent as well as the balance of the sender at that
+point. The receiver will verify that the balances of the sender are valid before
+creating the acceptance. The receiver will then calculate the spendable balance
+all the way back to the last "full" checkpoint block in order to validate
+whether the balance of the sender is even spendable.
+
+#### Checkpoint block
+
+In order to be able to spend the balance a user has received they need to proof
+that a validator has taken notice of the blocks of the senders. The checkpoint
+block serves as this proof of validator. The proposal is created by the user and
+the acceptance is created by the validator. A checkpoint block is only
+considered "full" if the both the proposal and acceptance exist. If the
+acceptance does not exist, the block is meaningless and any validation will keep
+recursing the chain until a full checkpoint is found.
+
+#### Creation block
+
+The creation is a special type of transfer that is done by a trusted exchange.
+This block is the only way in which new EuroToken are allowed to enter the
+system and will only be considered valid if it is made by a trusted party. The
+proposal is made by the exchange and the acceptance is made by a user.
+
+#### Destruction block
+
+The destruction is the opposite of a creation. The proposal is made by a user
+and acts as a transfer to an exchange. The exchange then also creates an
+acceptance block. The creation and destruction blocks are used to convert
+between Euro and EuroTokens.
+
+## Exchange
+
+For the EuroToken to be part of the Euro system a mechanism of exchange is
+required. The exchange forms the bridge between the digital EuroToken and the
+rest of the Euro systems. The exchange consists of
+
+The gateway is implemented in python, and provides the user with 2 flows
+first is the I
+ on the IPv8[@PyIPv8:online] software
+stack.
+
+The role of the exchange is to allow users to excha
+
+### Exchange flow
+
+\begin{figure}[htp]
+\centering
+\resizebox{0.7\textwidth}{!}{
+\includegraphics{../images/4_implementation/gateway/gateway_architecture.png}
+}
+\caption{EuroToken Gateway Architecture}
+\label{gateway_architecture}
+\end{figure}
 
 ### Frontend
 
-To aid everyday users in the purchase and sale of EuroTokens a web frontend is
-created where the user can interact with the API. It demonstrates the ease of
-use of the system.
+\begin{figure}[htp]
+\centering
+\resizebox{\textwidth}{!}{
+\includegraphics{../images/4_implementation/gateway/gateway_frontend.png}
+}
+\caption{EuroToken Gateway Frontend}
+\label{gateway_frontend}
+\end{figure}
 
-[Screenshots]
+### Validation
 
-### Implementation considerations
+## Wallet
 
-The design specified a general architecture for the EuroToken system. However
-in order to make an implementation possible within the constraints of the
-project some implementation trade-offs have been made.
+### Peer to Peer transfer
 
-#### Bank support
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/transfer_1.jpeg}\hfill
+\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/transfer_2.jpeg}\hfill
+\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/transfer_3.jpeg}
+\caption{Wallet transfer}
+\label{wallet_transfer}
+\end{figure}
 
-The EuroToken is designed to work with any bank account for euro collateral.
-However in this implementation we only implemented the API for ABN AMRO. Adding
-other banks is a simple as implementing the `Bank` class.
+### Interaction with the exchange
 
-#### Euro Payment Initiation
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/exchange_4.jpeg}\hfill
+\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/exchange_2.jpeg}\hfill
+\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/exchange_3.jpeg}
+\caption{Wallet exchange}
+\label{wallet_exchange}
+\end{figure}
 
-The design specifies a requirement of automatic euro payout on EuroToken
-destruction. In order to automate this, most banks (including ABN) requires
-registration and use of the PSD2 payment initiation API. This API requires a
-Payment Initiation Service Provider (PISP) licence, which in turn requires a
-banking licence. Since both of these licences require you to be a fully
-functioning bank, the payment initiation part of the ABN API has not been
-implemented and is done manually in the field trial.
+### Programmable money benefits
 
-#### TrustChain
-
-Since the main implementation if the TrustChain software [@PyIPv8] is build on
-python so is the gateway API. The server is provided as a single docker
-container that also provides the frontend.
-
-## Android Wallet
-
-In order to use the EuroToken system on a daily basis, users need a way to send
-and receive the token. Because the added value of the system is its
-distributed nature, a way to send and receive the asset in a convenient and
-peer to peer way is needed. The TrustChain team has recently come out with an
-
-Android super-app[TODO, cite] that showcases some of the IPv8 [@PyIPv8] and
-TrustChain[TODO CITE] capabilities. This app provides the perfect platform to
-showcase the EuroToken capabilities.
-
-### PeerChat Extension
-
-The super-app already includes a number of applications, including PeerChat. A
-chat application that uses IPv8s peer to peer capabilities to communicate. In
-order to show that the EuroToken can be used in a modern context, the PeerChat
-app has been expanded to include the capacity to send money attached to a
-message.
-
-To send money, the user simply selects the option to send money, and is taken to
-a screen where a transaction can be created. The message is then sent to the
-receiver who within a few moments sees the transaction appear as a message in
-their shared chat. The transaction amount is also added to their balance.
-
-[send_money]: ../images/peerchat_send_money2.jpg
-![Attach money in PeerChat \label{send_money_label}][send_money]
-
-The capacity to send transactions as shown in Figure \ref{send_money_label} is not tied to PeerChat messaging. When money
-is sent, a transaction is created and transferred to the receiver using the
-TrustChain main community. The transaction hash is then sent as part of the
-PeerChat message. The receiver then fetches the transaction it received earlier
-via TrustChain.
-
-- [TODO diagram of TrustChain and PeerChat interaction]
-
-This implementation demonstrates the simple way in which EuroToken allows
-monetary transactions to be seamlessly and programmatically inserted into any
-application.
-
-### EuroToken app
-
-The PeerChat app is one specific use case. In reality different applications
-would simultaneously use the EuroToken system. This would leave the user with a
-splintered record of their financial life.
-
-In order to solve this, a EuroToken accounting app has been added to the
-super-app. The purpose of this is to show that the systems data can be
-reorganized in whatever way. The EuroToken app shows a history of all
-transactions, and provides another interface to the gateway.
-
-[transaction_history]: ../images/eurotoken_transaction_history.jpg
-![EuroToken Transaction History \label{transaction_history_label}][transaction_history]
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/transactions.jpeg}\hfill
+\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/peerchat_send_money.jpg}
+\caption{Wallet transactions}
+\label{wallet_transactions}
+\end{figure}
 
 
-### EuroToken transactions in depth
-
-- Validation (TODO)
-    * Creation/destruction:
-        + Trust Central Bank only
-    * Transactions (prevent double spend)
-        + Trusted users (based on identity later)
-        + Validated by bank
-        + Bami double-spend protection
-
-### EuroToken Settings
-
-In addition to providing convenient services to the user, the EuroToken app has
-some configuration options to give the user control over their role in the
-EuroToken network.
-
-**Trusted Minters** - Since the network has a central component that regulates
-the creation and destruction of the tokens, a demo requires a running server.
-Since there is no party to maintain such a server indefinitely right now, an
-option is added to allow the user to specify public keys of trusted "central
-banks". If this option is enabled, the wallet in the super-app does only accepts
-blocks signed by the configured public keys.
-
-- [TODO: image of minter config]
-
-**Trusted validators** - Validation of transactions and prevention of double
-spending is unsolved in TrustChain but is an important part of any currency.
-Solving this problem in general is being worked on [TODO CITE bami] and is out
-of scope for this project. However the issue of transaction finality being
-important to a EuroToken system, a way to prevent double spending has been
-added. A transaction is not considered final until a trusted entity has signed a
-block in the senders chain that comes after the send block. This means that the
-trusted entity is responsible for the validation of the block and its
-dependencies. These validators can be configured in the app in order to make de
-demo repeatable.
-
-- [TODO: image of validator config]
-
-# Deployment, evaluation and performance analysis
+# Evaluation
 
 In the problem description we specified the following requirements as derived
 from the ECBs report on a digital euro [@ReportDigitalEuro:online].
@@ -1052,43 +1154,85 @@ pertain to the topic of computer science and fall outside the area of expertise
 of the author.
 
 We show how the EuroToken can be used to create:
-    - a scalable CBDC
-    - as well as serve as a private money alternative
-    - and provide all the benefits of programmable money
-    - with the price stability of the euro.
+- a scalable CBDC
+- and provide all the benefits of programmable money
+- with the price stability of the euro.
 
-## Enhanced digital efficiency
 
-Requirements:
+## Field trial
 
-1 **Enhanced digital efficiency**
-3 **competitive features**
+A field trail was conducted
 
-- Description of the benefit of edge computing
-- Instant international transfer
-- Increased efficiency in regulation due to full standardization
-- The innovation boost
-    * programmable money
-    * smart contracts
-    * new forms of money streaming
+\begin{figure}[htp]
+\centering
+\resizebox{0.5\textwidth}{!}{
+\includegraphics{../images/5_evaluation/5_evaluation_field_trial.jpg}
+}
+\caption{Field trial}
+\label{field_trial}
+\end{figure}
 
-## Cash-like features
+\begin{figure}[htp]
+\centering
+\resizebox{0.5\textwidth}{!}{
+\includegraphics{../images/5_evaluation/5_evaluation_offline_trial.jpg}
+}
+\caption{EuroToken off-line trial}
+\label{offline_trial}
+\end{figure}
+
+Off-line transfer
+
+Central to this project is the ability to transfer funds without an internet
+connection.
 
 2 **cash-like features**
+3 **competitive features**
 5 **back-up system**
 
 - Offline payments
 - Peer to Peer
 - Instant transfer
 - No intermedeary to the initial transaction
-    * In the future the validator might be replaced by a more decentralised
-    system
+* In the future the validator might be replaced by a more decentralised
+system
 - Disaster mode
-    * "Once over" spending
-    * Could be expanded to include "emergency mode" where trust is increased and
-    reprocessing is performed later to find instances of double-spending
+* "Once over" spending
+* Could be expanded to include "emergency mode" where trust is increased and
+reprocessing is performed later to find instances of double-spending
 
-## monetary policy option
+
+## Controlled experiments
+
+2. Scalability Experiments
+In this chapter we evaluate to what degree the system conforms to the r
+1 and 6 are met by
+the system.
+
+1 **Enhanced digital efficiency**
+6 **international use**
+
+In order to evaluate whether the EuroToken system can be deployed at a global
+scale while also
+
+- Scalability is very imporant
+- TPS of the gateway
+- graphs and tables
+- Scaling limits and how to potentially mitigate
+
+- Description of the benefit of edge computing
+- Instant international transfer
+- Increased efficiency in regulation due to full standardization
+- The innovation boost
+* programmable money
+* smart contracts
+* new forms of money streaming
+
+## Potential feature set
+
+## Real world viability
+
+## ECB requirements
 
 4 **monetary policy option**
 8 **ability to control the amount of digital euro in circulation.**
@@ -1097,48 +1241,12 @@ Requirements:
 - Option for "global inflation rate"
 - More granular and "smart contract based" policy enactmet
 
-## Scalability
+## Deployment consideration
 
-6 **international use**
+ye
 
-- Scalability is very imporant
-- TPS of the gateway
-- graphs and tables
-- Scaling limits and how to potentially mitigate
+# Conclusion and future work
 
-# Discussion
+n
 
-## System dangers
-
-### Under-collateralization
-
-Causes:
-
-- By central bank printing without collateral
-- Licenced gateway banks going bust, taking collateral with them
-
-Effects:
-
-Future bank runs could leave some token holders without their collateral, this
-makes token holders less confident in tokens. This would lower their value, but
-the direct exchange peg maintains the price. This hides the problem while
-undermining trust in the value of the tokens.
-
-Solution:
-
-- Don't print without collateral.
-- Short term:
-    * Keep collateral liquid at all times (also stops inflation)
-* long term:
-    + see system future
-
-## System future
-
-* euros are deleted by banks on euro2token exchange, and created on
-token2euro exchange.
-* Banks don't manange the collateral, only the CBDC exchange.
-* Banks get a place in trust instead of investment.
-
-
-# Conclusion
 
