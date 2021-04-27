@@ -144,10 +144,10 @@ Commerce is moving online
 \begin{figure}[htp]
 \centering
 \resizebox{\textwidth}{!}{
-\includegraphics{../images/2_problem/ecommerce.png}
+\includegraphics{./images/2_problem/ecommerce.png}
 }
 \caption{E-commerce 2010-2020 \cite{EcommerceStats:online}}
-\label{exchange}
+\label{ecommerce}
 \end{figure}
 
 The banking system is insufficient to handle todays international trade
@@ -156,10 +156,10 @@ The banking system is insufficient to handle todays international trade
 \begin{figure}[htp]
 \centering
 \resizebox{\textwidth}{!}{
-\includegraphics{../images/2_problem/international.png}
+\includegraphics{./images/2_problem/international.png}
 }
 \caption{E-commerce 2010-2020 \cite{EcommerceStats:online}}
-\label{exchange}
+\label{ecommerce_international}
 \end{figure}
 
 
@@ -237,7 +237,7 @@ a popular form of money that has been used in European society since 1440
 
 At the end of the 1900s Europe had a system of many national currencies,
 denominated per country. The value of the currency was maintained by different
-countries, often using the gold standard[@The_Gold_Standard]. Meanwhile private
+countries, often using the gold standard [@The_Gold_Standard]. Meanwhile private
 banks would allow people to store their money in a safe institution, while they
 could lend that money out. For international and cross-currency trade, people
 would swap different currencies in exchanges when needed, but because of the
@@ -292,7 +292,7 @@ since chaum in 1983
 [@Ethereum:whitepaper]
 
 The approximated global knowledge of single blockchain networks like
-Ethereum[@Ethereum:whitepaper] and Bitcoin[@Bitcoin:whitepaper] lead to limited
+Ethereum [@Ethereum:whitepaper] and Bitcoin [@Bitcoin:whitepaper] lead to limited
 transactions per second and
 
 image tps ethereum
@@ -453,7 +453,7 @@ counterparty. This effectively creates a system of double accounting.
 \begin{figure}[htp]
 \centering
 \resizebox{0.7\textwidth}{!}{
-\includegraphics{../images/4_implementation/trustchain_basics.png}
+\includegraphics{./images/4_implementation/trustchain_basics.png}
 }
 \caption{Block-lattice structure}
 \label{block_lattice}
@@ -501,10 +501,10 @@ for a new type of euro to fill the gap of public money is getting stronger.
 \begin{figure}[htp]
 \centering
 \resizebox{\textwidth}{!}{
-\includegraphics{../images/3_design/exchange.png}
+\includegraphics{./images/3_design/exchange.png}
 }
 \caption{Usage flow of cash, private money, and EuroToken.}
-\label{exchange}
+\label{monetary structure}
 \end{figure}
 
 For these reasons we present the EuroToken system as a 3rd type of money.
@@ -636,7 +636,7 @@ done by sending the validator a finality proposal.
 \begin{figure}[htp]
 \centering
 \resizebox{\textwidth}{!}{
-\includegraphics{../images/3_design/offline-transfer.png}
+\includegraphics{./images/3_design/offline-transfer.png}
 }
 \caption{Off-line transfer and finalisation}
 \label{offline}
@@ -865,7 +865,7 @@ android/kotlin implementation as well as a python implementation. We then built
 a Euro to EuroToken exchange and transaction validator on top of the python
 implementation. On top of the kotlin implementation we built a wallet app that
 is fully capable of securely transferring eurotokens between wallets, as well as
-exchange them with the EutoToken exchange.
+exchange them with the EuroToken exchange.
 
 ## Architecture
 
@@ -881,7 +881,7 @@ system.
 \begin{figure}[htp]
 \centering
 \resizebox{\textwidth}{!}{
-\includegraphics{../images/4_implementation/architecture.png}
+\includegraphics{./images/4_implementation/architecture.png}
 }
 \caption{EuroToken architecture}
 \label{architecture}
@@ -927,20 +927,20 @@ The second option is then to build upon some existing peer to peer networking
 library, while implementing the blockchain protocol ourselves. This option has
 some benefits as the usage of a block-lattice is not yet very common, and thus
 is not implemented as a stand alone package anywhere. For the P2P library we
-have several options. We considered libtorrent[@libtorrent:online],
-libp2p[@libp2p:online] and IPv8[PyIPv8:online]. Libtorrent has a number of
+have several options. We considered libtorrent [@libtorrent:online],
+libp2p [@libp2p:online] and IPv8[PyIPv8:online]. Libtorrent has a number of
 interesting peer to peer features like peer discovery and data transfer but
 sadly fell short when it comes discovery of peers based on public keys. It can
 be classified more as a file location protocol than a peer location protocol.
 This would mean we would have to implement a peer location system ourselves.
 Libp2p is a modular peer to peer networking stack that provides a large suite
 of p2p tools. Libp2p uses a Distributed Hash Table (DHT) to allow peer
-discovery based on a peer-id[@PeerId:online]. There is an jvm/android
+discovery based on a peer-id [@PeerId:online]. There is an jvm/android
 implementation available, which also makes it possible to create an android
 client. Finally we looked at IPv8. IPv8 offers direct peer discovery based on
 public key and provides a framework for interaction called Overlay networks.
 Overlays provide a context for peers to interact within with particular message
-types. Crucially, IPv8 has an implementation in kotlin[@kotlin-IPv8:online].
+types. Crucially, IPv8 has an implementation in kotlin [@kotlin-IPv8:online].
 
 Rather than implementing the blockchain mechanism ourselves, there is a third
 option. IPv8 includes a module called TrustChain. TrustChain is in essence a
@@ -991,11 +991,11 @@ happened.
 \begin{figure}[htp]
 \centering
 \resizebox{\textwidth}{!}{
-\includegraphics{../images/3_design/trustchain.png}
+\includegraphics{./images/3_design/trustchain.png}
 \label{trustchain_label}
 }
 \caption{ TrustChain block-lattice, interconnected personal blockchains\cite{TrustChain} .}
-\label{exchange}
+\label{trustchain}
 \end{figure}
 
 ### EuroToken extension
@@ -1055,77 +1055,196 @@ and acts as a transfer to an exchange. The exchange then also creates an
 acceptance block. The creation and destruction blocks are used to convert
 between Euro and EuroTokens.
 
-## Exchange
-
-For the EuroToken to be part of the Euro system a mechanism of exchange is
-required. The exchange forms the bridge between the digital EuroToken and the
-rest of the Euro systems. The exchange consists of
-
-The gateway is implemented in python, and provides the user with 2 flows
-first is the I
- on the IPv8[@PyIPv8:online] software
-stack.
-
-The role of the exchange is to allow users to excha
-
-### Exchange flow
-
-\begin{figure}[htp]
-\centering
-\resizebox{0.7\textwidth}{!}{
-\includegraphics{../images/4_implementation/gateway/gateway_architecture.png}
-}
-\caption{EuroToken Gateway Architecture}
-\label{gateway_architecture}
-\end{figure}
-
-### Frontend
-
-\begin{figure}[htp]
-\centering
-\resizebox{\textwidth}{!}{
-\includegraphics{../images/4_implementation/gateway/gateway_frontend.png}
-}
-\caption{EuroToken Gateway Frontend}
-\label{gateway_frontend}
-\end{figure}
-
-### Validation
-
 ## Wallet
 
-### Peer to Peer transfer
+The core of the EuroToken network is the wallet. The wallet allows users to
+transfer funds to any other wallet anywhere on earth over the internet, or
+directly from device to device over Bluetooth. The wallet also has the capacity
+to exchange Euro for EuroToken and vice versa.
+
+Instead of building a wallet from scratch we build on top of the TrustChain
+superapp [@SuperAppCode:online] [@SuperAppThesis]. This app was developed to
+showcase the capabilities of the kotlin implementation of IPv8
+[@kotlin-IPv8:online]. The superapp in implemented as a collection of different
+sub-apps that use the same underlying IPv8 implementation. The app includes
+multiple other projects which we can integrate with the EuroToken system.
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/transfer_1.jpeg}\hfill
-\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/transfer_2.jpeg}\hfill
-\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/transfer_3.jpeg}
-\caption{Wallet transfer}
+\includegraphics[width=.32\textwidth]{./images/4_implementation/wallet/superapp.jpg}
+\caption{TrustChain Superapp \cite{SuperAppCode:online}}
 \label{wallet_transfer}
 \end{figure}
 
-### Interaction with the exchange
+### Peer to Peer transfer
+
+The main feature to showcase is the ability to transfer the EuroTokens. Before
+a user can send money to another user, they first need to know their public
+key. While sending money directly to a user is possible as part of the app, the
+share and transfer of public keys is not very practical. For this reason we
+implemented 2 ways of handling this. The first way is by generating a money
+request with QR code. This works best when the users are in the same room, or
+can share the QR code through some other means.
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/exchange_4.jpeg}\hfill
-\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/exchange_2.jpeg}\hfill
-\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/exchange_3.jpeg}
-\caption{Wallet exchange}
-\label{wallet_exchange}
+\includegraphics[width=.32\textwidth]{./images/4_implementation/wallet/transfer_1.jpeg}\hfill
+\includegraphics[width=.32\textwidth]{./images/4_implementation/wallet/transfer_2.jpeg}\hfill
+\includegraphics[width=.32\textwidth]{./images/4_implementation/wallet/transfer_3.jpeg}
+\caption{Wallet transfer by QR}
+\label{wallet_transfer}
 \end{figure}
 
-### Programmable money benefits
+A second and more user-friendly away to send money is through the already
+existing chat app PeerChat. PeerChat allows users to add each other as contacts
+and then uses IPv8 to send public key addressed messages. Instead of
+reinventing the wheel we added EuroToken payments to PeerChat. This mirrors
+payment apps like the chineese WeChat Pay and the norwegian Vipps. We believe
+this method of payment in the most natural for users.
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/transactions.jpeg}\hfill
-\includegraphics[width=.32\textwidth]{../images/4_implementation/wallet/peerchat_send_money.jpg}
+\includegraphics[width=.32\textwidth]{./images/4_implementation/wallet/contacts.png}
+\includegraphics[width=.32\textwidth]{./images/4_implementation/wallet/contacts_menu.png}
+\includegraphics[width=.32\textwidth]{./images/4_implementation/wallet/peerchat_send_money.jpg}
+\caption{PeerChat, contacts \cite{SuperAppThesis} and pay via PeerChat}
+\label{wallet_peerchat}
+\end{figure}
+
+Regardless of how users send money, their entire transaction history is
+available within the EuroToken sub app. Here all the different transaction
+types can be seen. The transaction screen also shows debug information like
+all checkpoints that have been performed with a validator. It also shows
+information about whether an acceptance block has been received from the
+counterparty. On this screen money can be payed back as well, and blocks van be
+resent in case of network failure.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.32\textwidth]{./images/4_implementation/wallet/transactions.jpeg}
 \caption{Wallet transactions}
 \label{wallet_transactions}
 \end{figure}
 
+## Exchange
+
+For the EuroToken to be part of the Euro system a mechanism of exchange is
+required. The exchange forms the bridge between the digital EuroToken and the
+rest of the Euro systems. The exchange mechanism must support the two main
+flows of value.
+
+The first we call the creation flow. This flow handles the exchange of Euro for
+EuroToken, thus creating EuroToken. This involves the handling of payment into
+a bank account, verifying this, and paying out and equivalent amount of
+EuroToken to the users wallet. The second flow is the destruction flow. This
+flow does handles the opposite conversion. It handles a payment of EuroToken
+and pays out the equivalent amount to a IBAN bank account.
+
+To handle this flow we build the exchange node. This node exposes a web
+frontend that allows the user to exchange their money in either direction. The
+exchange is implemented in python, and is based on the python implementation of
+IPv8 [@PyIPv8:online].
+
+### Frontend
+
+The frontend of the exchange is kept as simple as possible for demonstration
+purposes. Users do not need to login, and can buy or sell their EuroTokens
+directly on the front page.
+
+\begin{figure}[htp]
+\centering
+\resizebox{\textwidth}{!}{
+\includegraphics{./images/4_implementation/gateway/gateway_frontend.png}
+}
+\caption{EuroToken Exchange Frontend}
+\label{gateway_frontend}
+\end{figure}
+
+### Exchange flow
+
+The flow of exchange is different in each direction and require different steps
+from the user.
+
+#### Creation
+
+In our prototype we user the Tikkie API to enable users to pay us Euros. The
+creation flow can be seen in figure \ref{gatewat_flow}. The creation step is
+the most complex. This is because the sending of money to a user requires the
+exchange to know the public key of the user. In order to obtain EuroTokens the
+user accesses the web interface of the exchange, which will lead it through the
+following steps:
+
+1. The user specifies the amount of EuroToken to buy. This creates a new
+   transaction. The user then scans a QR code generated by the exchange using
+   the wallet. The QR code contains the public key of the exchange, as well as
+   a payment id. The wallet will then send a special connect message to the
+   exchange over IPv8 with the payment id. When the exchange receives the
+   message, the public key of the sender of the message is stored in
+   association with the payment. This will be the public key to which the
+   EuroToken will be transfered once the transaction is complete.
+2. The exchange creates a new Tikkie payment request for the specified amount,
+   which the user is then redirected to.
+3. The exchange is alerted by Tikkie once the payment is complete.
+4. The exchange will now send the money over IPv8.
+
+\begin{figure}[htp]
+\centering
+\resizebox{0.7\textwidth}{!}{
+\includegraphics{./images/4_implementation/gateway/gateway_architecture.png}
+}
+\caption{EuroToken Creation Flow}
+\label{gatewat_flow}
+\end{figure}
+
+#### Destruction
+
+The destruction flow is a simpler process. If the user knows the public key of
+the exchange it can be performed completely in the wallet app. The user would
+simply send a destruction transaction to the exchange which includes the IBAN
+the user would like the money to be payed out to as part of the block.
+
+However if a user does not know the public key of the exchange, the interaction
+has to happen through the UI. This would involve the following flow:
+
+1. The user specifies the amount to exchange along with their iban.
+2. The exchange generates a QR code which includes their public key, as well as
+   the amount.
+3. The user scans the QR code and confirms the transaction in the app.
+
+Within the app the exchange flows are handled using the pages shown in figure
+\ref{wallet_exchange}.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.32\textwidth]{./images/4_implementation/wallet/exchange_1.jpeg}\hfill
+\includegraphics[width=.32\textwidth]{./images/4_implementation/wallet/exchange_2.jpeg}\hfill
+\includegraphics[width=.32\textwidth]{./images/4_implementation/wallet/exchange_3.jpeg}
+\caption{Wallet exchange}
+\label{wallet_exchange}
+\end{figure}
+
+## Validator
+
+Together with the exchange, the validator is one of the special nodes that
+allow the EuroToken system to function. As can be seen in
+\ref{wallet_transactions}, a validation checkpoint is automatically requested
+after a transaction has been received by a user. The checkpoint makes the
+entire balance if the user "spendable". The main task of the validator is to
+maintain the last blocks of all users in the network. This makes it impossible
+to double spend a transaction since any conflicting block has already been
+accepted by the validator. This makes the first block to arrive to the
+validator the one and only block at that position in a users chain.
+
+Since the output of a transaction is only spendable when a full checkpoint
+comes after it, the wallet automatically performs a checkpoint after every
+transaction. This keeps the amount of blocks that have to be validated during
+every transaction as low as possible. This leads to every transaction involving
+only 4 half-blocks from the perspective of the sender. A sender only needs to
+share the transaction proposal itself, the block before (which is a checkpoint
+proposal), and the associated checkpoint acceptance. The receiver then only
+needs to verify the correctness of these 3 blocks and send back the acceptance
+to the sender. This preserves the transaction privacy of the both the sender
+and the receiver, revealing only the relevant transaction.
 
 # Evaluation
 
@@ -1166,7 +1285,7 @@ A field trail was conducted
 \begin{figure}[htp]
 \centering
 \resizebox{0.5\textwidth}{!}{
-\includegraphics{../images/5_evaluation/5_evaluation_field_trial.jpg}
+\includegraphics{./images/5_evaluation/5_evaluation_field_trial.jpg}
 }
 \caption{Field trial}
 \label{field_trial}
@@ -1175,7 +1294,7 @@ A field trail was conducted
 \begin{figure}[htp]
 \centering
 \resizebox{0.5\textwidth}{!}{
-\includegraphics{../images/5_evaluation/5_evaluation_offline_trial.jpg}
+\includegraphics{./images/5_evaluation/5_evaluation_offline_trial.jpg}
 }
 \caption{EuroToken off-line trial}
 \label{offline_trial}
