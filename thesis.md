@@ -1,6 +1,6 @@
 ---
 title: EuroToken
-subtitle: A Central Bank Digital Currency (CBDC) with off-line transfer capapabilities
+subtitle: A Central Bank Digital Currency (CBDC) with off-line transfers
 date: TODO
 author:
   name: R. W. Blokzijl
@@ -376,7 +376,7 @@ solution to these problems has to conform to the following requirements.
 3. Scale to the size of the European union
 4. Disaster resilience through off-line transfer ability
 
-## Double spending vs scalability vs decentralization
+## Trade-offs around double spending, scalability and decentralisation
 
 In order to provide a good payment solution that is untethered the accounting of
 value from the specific payment silos, a source of inspiration can be found in
@@ -445,9 +445,9 @@ double-spending, scalability and decentralization.
 ## The problem of off-line digital payments
 
 The ability to provide off-line payments is a yet unsolved problem in the world
-of digital payment solutions. Solving the double spending problem in a Peer to
-Peer network is a challenge on its own. Doing so without a live connection to
-that network increases the complexity even further.
+of digital payment solutions. Solving the double spending problem in a
+Peer-to-Peer network is a challenge on its own. Doing so without a live
+connection to that network increases the complexity even further.
 
 The problem of double spending and off-line payments is best understood using
 the CAP theorem. Consider the total set of transactions to be the database, and
@@ -613,10 +613,10 @@ off-line transaction between users, without any link to the outside world.
 While the EuroToken system design is independent of the underlying
 communication technology, the off-line requirement leads to there being some
 limitations on the way users interact. Since off-line users cannot connect to
-servers we choose to work with a Peer to Peer system that allows users to find
+servers we choose to work with a Peer-to-Peer system that allows users to find
 each-other based on personal identifiers.
 
-We build on Peer to Peer networking, that provides a mechanism to discover the
+We build on Peer-to-Peer networking, that provides a mechanism to discover the
 network location of users based on the same public key that is used to identify
 their wallet. This allows us to almost completely abstract away from locating
 users using IP addresses and ports. As a result we only have to worry about
@@ -1080,7 +1080,7 @@ system.
 In figure \ref{eurotoken_architecture} we model the main communication channels.
 Within the P2P EuroToken system we have all wallet to wallet, and wallet to
 gateway communication. This communication happens directly between the
-communicating nodes using Peer to Peer technology.
+communicating nodes using Peer-to-Peer technology.
 
 In the Euro System, we make use of bank APIs for gateway to bank
 communication. The communication with the ECB symbolises monetary policy
@@ -1266,7 +1266,7 @@ multiple other projects which we can integrate with the EuroToken system.
 \label{superapp}
 \end{figure}
 
-### Peer to Peer transfer
+### Peer-to-Peer transfer
 
 The main feature to showcase is the ability to transfer the EuroTokens. Before
 a user can send money to another user, they first need to know their public
@@ -1481,6 +1481,9 @@ A field trail was conducted
 \label{field_trial}
 \end{figure}
 
+
+## Off-line trial
+
 \begin{figure}[htp]
 \centering
 \resizebox{0.5\textwidth}{!}{
@@ -1490,8 +1493,6 @@ A field trail was conducted
 \label{offline_trial}
 \end{figure}
 
-Off-line transfer
-
 Central to this project is the ability to transfer funds without an internet
 connection.
 
@@ -1500,7 +1501,7 @@ connection.
 5 **back-up system**
 
 - Off-line payments
-- Peer to Peer
+- Peer-to-Peer
 - Instant transfer
 - No intermediary to the initial transaction
 * In the future the validator might be replaced by a more decentralised

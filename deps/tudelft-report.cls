@@ -69,23 +69,22 @@
 \RequirePackage[export]{adjustbox}
 \def\@largetitlesize{96pt}
 
-\ifxetex
-    %% If the document is compiled with XeLaTeX, we load the TU Delft house
+\ifxetex %% If the document is compiled with XeLaTeX, we load the TU Delft house
     %% style fonts: Bookman Old Style (serif) for titles and Arial (sans-serif)
     %% for text. Even if the nativefonts option was specified, we need these
     %% fonts for the cover.
     \newfontfamily\tudtitlefamily[
-        Path = fonts/,
+        Path = ./fonts/,
         Extension = .ttf%,
     ]{TUDelft-UltraLight}
     \newfontfamily\tudrmfamily[
-        Path = fonts/,
+        Path = ./fonts/,
         Extension = .ttf,
         BoldFont = *_Bold,
         ItalicFont = *_Italic,
         BoldItalicFont = *_Bold_Italic]{Georgia}
     \newfontfamily\tudsffamily[
-        Path = fonts/,
+        Path = ./fonts/,
         Extension = .ttf,
         BoldFont = *_Bold,
         ItalicFont = *_Italic,
@@ -151,20 +150,20 @@
     %% and Cambria for math.
     \RequirePackage{unicode-math}
     \setmainfont[
-        Path = fonts/,
+        Path = ./fonts/,
         Extension = .ttf,
         BoldFont = *-Bold,
         ItalicFont = *-Italic,
         BoldItalicFont = *-BoldItalic
     ]{BookmanOldStyle}
     \setsansfont[
-        Path = fonts/,
+        Path = ./fonts/,
         Extension = .ttf,
         BoldFont = *_Bold,
         ItalicFont = *_Italic,
         BoldItalicFont = *_Bold_Italic]{Arial}
     \setmonofont[
-        Path = fonts/,
+        Path = ./fonts/,
         Extension = .ttf,
         UprightFont = *MT,
         BoldFont = *-BoldMT,
@@ -172,7 +171,7 @@
         BoldItalicFont = *-BoldItalicMT
     ]{CourierNewPS}
     \setmathfont[
-        Path = fonts/,
+        Path = ./fonts/,
         Extension = .ttf
     ]{CambriaMath}
     %% The default style for text is Tahoma (sans-serif).
