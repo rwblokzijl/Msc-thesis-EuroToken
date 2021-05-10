@@ -6,7 +6,7 @@ PDF = thesis.pdf
 FLAGS = \
 	-s \
 	-f markdown \
-	--chapters \
+	--top-level-division=chapter\
 	--natbib
 
 FLAGS_PDF = --template=report.tex
