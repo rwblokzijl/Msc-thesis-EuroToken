@@ -274,67 +274,72 @@ projection an unfortunate necessity. This naturally leads to institutions that
 centralise some authority in order to secure the assets.
 
 This age old solution is mirrored in the digitally accounted financial system of
-today. While the world is getting more more dependent on international
-transactions with perfect strangers, the control of access rests in the hands of
-large opaque corporations. With private banks at the heart of the financial
-system, all innovation has depended on, and thus been limited to, the current
-gatekeepers of the financial world.
+today. While the world is getting more more dependent on digital payments for
+every day transactions, the control of access rests in the hands of large opaque
+corporations. With private banks at the heart of the financial system, all
+innovation has depended on, and thus been limited to, the current gatekeepers of
+the financial world. While traditional physical currencies are still around as
+an option, the recent decline of their usage makes the need for a new open
+payment system ever more evident.
 
-Since the digital revolution, attempts to digitalise money have seen some
-success. In order to rectify the offset in the balance of power and to promote
-productive financial innovation, a new open medium of exchange is required. Such
-a currency needs to be digitally efficient, transparent, accountable, and be fit
-for global transacting in the 21st century. In this chapter we explore the
-challenges in the creation of such a currency and specify the requirements for
-such a payment system.
+In order to rectify the offset in the balance of power and to promote productive
+financial innovation, a new open medium of exchange is required. Such a currency
+needs to be digitally efficient, transparent, accountable, and be fit for global
+transacting in the 21st century. In this chapter we explore the challenges in
+the creation of such a currency and specify the requirements for such a payment
+system.
 
-## The lack of modern digital payment solutions
+## The difficulty of modern digital payment solutions
 
 The search for reliable, digital, money can be traced back as far as David Chaum
 in 1983 when he first released his paper on Blind Signatures for Untraceable
 Payments [@Chaum1983blind]. In this paper Chaum does not specify a design for a
-decentralized currency, but a mechanism for preserving user privacy against
-third parties in digital transactions. Since then many implementations have been
-attempted, including eCash [@1993offlineCash] [@ChaumEcommerce]. However, the
-financial institutions of the time had their sights set on another digital
-payment system: Credit Cards. In its competition with Credit Cards, eCash
-went bankrupt in 1998 [@eCash1998:online]. Perhaps eCash was ahead of its time.
-Regardless, the adoption of credit cards as the predominant method of online
-payment lead to a steep rise in credit card fraud [@CreditFraud]. Along with
-theft of social security numbers, theft of credit card numbers is the
-predominant form of identify theft. While we leave the issue of a digital
-identity out of scope, the inadequacy of the credit card system at protecting
-users has been proven again and again.
+fully decentralized currency, but a mechanism for preserving user privacy
+against third parties in digital transactions. Since then many implementations
+have been attempted, including Chaum's own eCash [@1993offlineCash]
+[@ChaumEcommerce]. ECash had the potential to become a standardized digital
+payment system right from the start. However, the financial institutions of the
+time had their sights set on another digital payment system: Credit Cards. The
+adoption of credit cards as the predominant method of online payment lead to a
+steep rise in credit card fraud [@CreditFraud]. Along with theft of social
+security numbers, theft of credit card numbers is the predominant form of
+identify theft. While we leave the issue of a digital identity out of scope, the
+inadequacy of the credit card system at protecting users has been proven again
+and again. In its competition with Credit Cards, eCash went bankrupt in 1998
+[@eCash1998:online].
 
-In response to the lack of good payment solutions from banks themselves, many
-alternative payment systems have been developed. Direct consumer to merchant
-payment systems like PayPal [@PayPal], Venmo [@Venmo] and Skrill
-[@Skrill:online] have emerged to fill the gap left by credit cards. These
-services are working hard to integrate their solutions with traditional banks in
-order to make the process as seamless as possible. However, since integration
-has to be done for every bank individually, users are often stuck with these
+Over the years, alternative payment systems have been developed in response to
+the lack of good payment solutions. Direct consumer to merchant payment systems
+like PayPal [@PayPal], Venmo [@Venmo] and Skrill [@Skrill:online] have emerged
+to fill the gap left by credit cards. However, the success of these services is
+dependent on the ability to integrate their solutions with traditional banks in
+order to make the payment process seamless. Because of the lack of
+standardisation in the industry, integration has to be done for every bank
+individually. When this integration is lacking, users are stuck with these
 services as an additional bank account which has to be maintained only for their
-payment capabilities. These services then lead to a similar problem as private
-banking: the tight coupling between a user and their banking/payment provider.
+payment features. These solutions don't solve the underlying problem: the tight
+coupling between a user and their banking/payment provider.
 
-This problem of tight coupling has been approached from many different angles,
-perhaps the most famous of which is Bitcoin[@Bitcoin:whitepaper]. While
-criticising a number of issues that lie at the heart of value accounting in our
-current system, the Bitcoin white paper proposed a digital currency
-infrastructure that completely redesigns the very core of value accounting to a
-distributed and open system. While the crypto-currency is extremely popular as
-an investment, any significant payment volumes have yet to be demonstrated. With
-transaction fees at around 59 US dollars [@BitcoinTransactionFees] around April
-21 2021, Bitcoin is not likely to become a direct consumer facing payment
-method.
+The problem of decoupling users from their banks has been approached from many
+different angles. Perhaps the most famous solution in recent years is Bitcoin
+[@Bitcoin:whitepaper]. While criticising a number of issues that lie at the
+heart of value accounting in our current system, the Bitcoin white paper
+proposes a digital payment infrastructure with associated currency that
+completely moves the very core of value accounting to a distributed and open
+system. 10 years after its inception the crypto-currency is extremely popular as
+an investment vehicle. Any significant payment volumes have yet to be
+demonstrated however. With transaction fees at around 59 US dollars
+[@BitcoinTransactionFees] around April 21 2021, Bitcoin is not ready to be a
+direct consumer facing payment method.
 
 Other solutions to the tight coupling problem have been successful on national
 levels. In the Netherlands the iDEAL system has succeeded in integrating most
 dutch banks under a single online payment system. In Norway a similar product
 called Vipps exists that integrates all Norwegian banks into a single payments
 app that enables users to transparently send money. Similar systems exist in
-many European countries [@EMPSA:online]. However, the problem with these
-solutions is the lack of cross border payments.
+many European countries [@EMPSA:online]. The problem with these solutions is the
+lack of cross border payments as a result of the lack of international
+standardisation.
 
 The European Union is actively trying to integrate their financial system across
 borders. With payment-integration initiatives like SEPA, PSD2 and the European
@@ -373,21 +378,28 @@ science and fall outside of our area of expertise. Therefore a technical
 solution to these problems has to conform to the following requirements.
 
 1. Be a secure system of accounting
-3. Scale to the size of the European union
-2. Preventing unsanctioned money creation
+2. Scale to the size of the European union
+3. Preventing unsanctioned money creation
 4. Price stability
 5. Disaster resilience through off-line transfer ability
 
+We aim to create a payment system that is secure, scalable, off-line
+transferable, stable, secure and digitally capable.
+
 ## Trade-offs around double spending, scalability and decentralisation
 
-We aim to create a payment system that is secure, scalable, off-line
-transferable, stable, secure and digitally capable. When looking for digital
-payment systems with the ability to transfer funds off-line we can see a lot of
-promise in peer-to-peer systems and distributed ledged technologies.
+When designing a modern digital payment systems with the ability to transfer
+funds off-line peer-to-peer systems and distributed ledger technologies are an
+worthwhile case study. Since the Bitcoin in 2009 various crypto-currencies have
+iterated on the idea of a fully decentralized currency. After 12 years of
+development a number of trade-offs are becoming visible that show the
+limitations of the technically.
 
-Ideally the system would work without central points of failure, or any point of
-centralisation period. However, keeping a currency secure from unsanctioned
-money creation is not a trivial problem.
+Ideally a payment system has no central points of control. By keeping a payment
+system decentralized the failure of one part does not affect the functioning of
+the ability of the users to make payments. Such a system also has inherent
+scalability. However, keeping a currency secure from unsanctioned money creation
+is not a trivial problem in a fully distributed system.
 
 The primary problem of unsanctioned money creation can be split into 2 different
 problems. First, for any transaction to be valid the payer has to have received
@@ -400,40 +412,51 @@ another. When receiving funds, the transaction can be trusted by verifying that
 the sender has received the money in the past from someone else. This way every
 transaction can be recursively validated back to their creation point.
 
-The second problem is called the "double spending problem" and is more difficult
-to solve. The problem is to construct a way to prove that a conflicting
-transaction does not exist or will not be accepted by anyone else. In the first
-problem a transaction can be rejected if not enough information is available to
-verify the fund availability. In the second the goal is to prove the
-non-existence of a transaction.
+The second problem is famously called the "double spending problem" and requires
+some trade-offs to solve. The goal is to construct a way to prove that for any
+given transaction, the balance of that transaction has not previously been spend
+by that user. In the first problem a transaction can be rejected if not enough
+information is available to verify the fund availability. In the second the goal
+is to prove the non-existence of a transaction.
 
-In solving the double spending problem, inspiration can be sourced from
-distributed algorithms to maintain a distributed ledger technologies. Solving
-this without a centralised party like a bank that keeps track of all historic
-transactions is a difficult task, but blockchain based systems have had
-some success. The most well known solutions like this are Ethereum
-[@Ethereum:whitepaper] and Bitcoin [@Bitcoin:whitepaper]. We call these single
-blockchain networks. Both of these networks maintain a single blockchain of
-transactions which gives transactions a total order. This blockchains groups all
-transactions into blocks. Any users transaction will refer to a previous
-transaction the user received, which proves the user has the received the money.
-If a user has spent that output before, that transaction would exist somewhere
-in the chain, thus proving the new transaction to be fraudulent. The structure
-of the blockchain gives provides approximated global knowledge, against which
-all transactions can be validated.
+Solving the double spending problem without a centralised party like a bank that
+keeps track of all historic transactions is a difficult task. Blockchain based
+systems have had some success. The most well known distributed ledger
+technologies are Ethereum [@Ethereum:whitepaper] and Bitcoin
+[@Bitcoin:whitepaper]. We will refer to these as single blockchain networks.
+Both of these networks maintain a single blockchain of transactions which gives
+transactions a total order.
 
-The problem with global blockchain systems is their inherent unscalability.
-Since the entire chain has to be checked for any conflicting transactions, the
-entire blockchain, and thus the entire history of the network, has to be kept by
-everyone who wants to validate. Additionally, this means all new blocks have to
-be distributed to all nodes in the network every time a new block is created.
-This puts a practical limit on the amount of transactions a single blockchain
-network can handle.
+Blockchain bases DLTs group all transactions into blocks, which are in turn
+organised in a linked list where every block refers to the block before it.
+Accounts are identified by a public key. Every transaction is a transfer from
+one public key to another, and is signed with the associated private key of the
+sender. Every transaction references previous transactions where the sender
+received money, thus ensuring the funds are available. Every transaction thus
+has "input" transactions. In order to allow a user to send less than the output
+of a previous transaction, a transaction can have multiple "outputs", sending to
+multiple public keys including the senders. To solve the double spending
+problem, any "output" of any transaction can only be spent once, and any
+transaction that spends an already spent output is rejected. If a user has spent
+that output before, that transaction would exist somewhere in the chain, thus
+proving the new transaction to be fraudulent.
 
-Ethereum has since realised this, and is working on a network upgrade called
-Ethereum 2.0 [@Ethereum2] which splits their blockchains into multiple shards
-which maintain data in parallel. While this does increase the capacity, the
-scalability of this solution has yet to prove itself.
+The problem with single blockchain systems is their inherent lack of
+scalability. Since the entire chain has to be checked for any conflicting
+transactions, the entire blockchain, and thus the entire history of the network,
+has to be kept by everyone that wants to validate a transaction. This means all
+new blocks have to be distributed to all nodes in the network periodically to
+redistribute the new transactions made. The speed of the network to propagate
+transactions, and the limited puts a practical limit on the amount of
+transactions a single blockchain network can handle since the whole world has to
+be informed.
+
+To improve the scalability of this system Ethereum2.0 [@Ethereum2] proposes a
+network upgrade that adds multiple parallel blockchains called shards. These
+shards will be responsible for their own fraction of the transactions on the
+network, only interacting with one another when necessary. While this does
+increase the capacity of the network, the extent of the scalability gained has
+yet to prove itself.
 
 Other attempts at a more scalable ledger exist. [@IotaTangle:whitepaper] builds
 on the concept of the Tangle. Instead of a blockchain, transactions reference
@@ -443,20 +466,20 @@ transactions before their own transaction is validated. This lowers the change
 of a double spend significantly, but requires of their users to so quite some
 work in order to be able to transact. While public nodes are available to
 validate transactions for you, these are currently run by enthusiasts and
-altruists. A common criticism is that there is no reason the altruistic
-processing of transactions will continue into the future.
+altruists. A criticism is that there is no reason the altruistic processing of
+transactions will continue into the future.
 
-Another example is Nano [@Nano:whitepaper]. Nano employs a block-lattice
-structure which assigns a personal blockchain on a per user basis. Transactions
-happen between users and are incorporated into both chains. Double spending is
-prevented by having blocks broadcast into the network and representatives nodes
-validating the transactions. These representative nodes are elected thought a
-delegated proof of stake mechanism.
+Another example is Nano [@Nano:whitepaper]. Nano employs a block DAG that
+resembles a lattice structure which assigns a personal blockchain on a per
+user basis. Transactions happen between users and are incorporated into both
+chains. Double spending is prevented by having blocks broadcast into the network
+and representatives nodes validating the transactions. These representative
+nodes are elected thought a delegated proof of stake mechanism.
 
-The double spending problem has many potential solutions, all with their own
-set of trade-offs. A payments solution that aims to scale to a global level
-using distributed technologies needs to find a careful balance between
-double-spending, scalability and decentralization.
+The double spending problem has many potential solutions, all with their own set
+of trade-offs. A payments solution that aims to scale to a global level using
+distributed technologies must careful balance double-spending, scalability and
+decentralization.
 
 ## The problem of off-line digital payments
 
