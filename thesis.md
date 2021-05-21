@@ -1514,7 +1514,7 @@ A field trail was conducted
 \begin{figure}[htp]
 \centering
 \resizebox{0.5\textwidth}{!}{
-\includegraphics{./images/5_evaluation/5_evaluation_field_trial.jpg}
+\includegraphics{./images/5_evaluation/field_trial.jpg}
 }
 \caption{Field trial}
 \label{field_trial}
@@ -1526,7 +1526,7 @@ A field trail was conducted
 \begin{figure}[htp]
 \centering
 \resizebox{0.5\textwidth}{!}{
-\includegraphics{./images/5_evaluation/5_evaluation_offline_trial.jpg}
+\includegraphics{./images/5_evaluation/offline_trial.jpg}
 }
 \caption{EuroToken off-line trial}
 \label{offline_trial}
@@ -1553,9 +1553,48 @@ reprocessing is performed later to find instances of double-spending
 
 ## Controlled experiments
 
-2. Scalability Experiments
-In this chapter we evaluate to what degree the system conforms to the
-requirements 1 and 6 are met by the EuroToken system.
+Besides real world tests we performed controlled experiments to explore whether
+the system has the properties we desire.
+
+In these experiments we ran a number of wallets and had them transact randomly
+with eachother. We then logged all relevant data on the clients. We logged:
+
+For the transactions we logged:
+- number of blocks validated by the client
+- validation time of the client
+- the users chain length at that point
+
+For the checkpoints we logged:
+- number of blocks validated by the gateway
+- total validation time of the gateway
+- the users chain length at that point
+
+We then varied:
+- The number of clients in the network
+- The number of gateways in the network
+- The frequency of checkpointing
+
+## Evaluating scalability
+
+\begin{figure}[htp]
+\centering
+\resizebox{0.5\textwidth}{!}{
+\includegraphics{./images/5_evaluation/usercount_validate_lookup.png}
+}
+\caption{EuroToken off-line trial}
+\label{offline_trial}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\resizebox{0.5\textwidth}{!}{
+\includegraphics{./images/5_evaluation/chainlength_validate_lookups.png}
+}
+\caption{EuroToken off-line trial}
+\label{offline_trial}
+\end{figure}
+
+## Evaluating checkpointing
 
 1 **Enhanced digital efficiency**
 6 **international use**
@@ -1576,9 +1615,24 @@ scale while also
 * smart contracts
 * new forms of money streaming
 
-## Potential feature set
+\begin{figure}[htp]
+\centering
+\resizebox{0.5\textwidth}{!}{
+\includegraphics{./images/5_evaluation/checkpointing_freq.png}
+}
+\caption{EuroToken off-line trial}
+\label{offline_trial}
+\end{figure}
 
-## Real world viability
+2. Scalability Experiments
+In this chapter we evaluate to what degree the system conforms to the
+requirements 1 and 6 are met by the EuroToken system.
+
+## Evaluating security
+
+Whether the system is actually secure against double spending is a difficult
+to prove in the real world. We showed how the system can be protected from
+exportation by the gateways. However this relies on the honesty of the gateways
 
 ## ECB requirements
 
@@ -1588,6 +1642,10 @@ scale while also
 - Central bank controlled supply
 - Option for "global inflation rate"
 - More granular and "smart contract based" policy enactment
+
+## Real world viability
+
+Yes
 
 ## Deployment consideration
 
