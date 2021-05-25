@@ -1509,7 +1509,19 @@ We show how the EuroToken can be used to create:
 
 ## Field trial
 
-A field trail was conducted
+The purpose of the implementation in the super app was to showcase the usability
+of such a system. In order to test the implementation and the viability of the
+protocol in the real world, a field trail was conducted. We tested the EuroToken
+system during the morning hours, at café Doerak in Delft. As showcased in figure
+\ref{field_trial}, the owner of the café generated a payment request for the
+amount of a single coffee and displayed it in the restaurant. Customers could
+then scan the code to transfer the money, and the owner who immediately see the
+money appear in their account.
+
+This trail showcases the simplicity of taking digital payments without having to
+go through the process of registering with a traditional payment provider. Using
+the EuroToken system all the owner of Doerak needed was a smartphone in order to
+participate in the modern economy.
 
 \begin{figure}[htp]
 \centering
@@ -1520,8 +1532,23 @@ A field trail was conducted
 \label{field_trial}
 \end{figure}
 
+The ability of the EuroToken system to allow the easy participation in the
+economic system, without having to go through the gatekeepers of digital
+payments, positions it in a way to conform to the following requirements as set
+by the ECB:
+
+- 1 **Enhanced digital efficiency**
+- 3 **competitive features**
 
 ## Off-line trial
+
+By building the EuroToken app on the TrustChain super app we could build on the
+bluetooth transfer features to implement the offline transfer of funds. In order
+to test this implementation and showcase the offline transfer capabilities of
+the EuroToken system, we conducted another trail away from civilisation. As
+showcased in Figure \ref{offline_trial}, in the mountains of norway, away from
+all network connectivity, we conducted a transfer of funds using the bluetooth
+connect feature of the superapp.
 
 \begin{figure}[htp]
 \centering
@@ -1532,20 +1559,46 @@ A field trail was conducted
 \label{offline_trial}
 \end{figure}
 
-Central to this project is the ability to transfer funds without an internet
-connection.
+There is room for improvement in the practicality of offline transfer of data
+between two devices. We found the process of creating a Peer-to-Peer bluetooth
+connection between two mobile devices somewhat cumbersome. And the system would
+greatly benefit in usability from proximity based data transfer via NFC.
 
-2 **cash-like features**
-3 **competitive features**
-5 **back-up system**
+Regardless of the possibilities for improvement, the trail successfully showed
+the viability of offline transfer. It shows the potential of the EuroToken
+system to act as a disaster proof payment system that remains functional at any
+distance from civilisation and during any disaster that would wipe out global
+communication infrastructure.
 
-- Off-line payments
-- Peer-to-Peer
-- Instant transfer
-- No intermediary to the initial transaction
-* In the future the validator might be replaced by a more decentralised
-system
-- Disaster mode
+The user trades the risk of defering transaction validation until they connect
+to the network again for off-line transfers which allow for an instantatious
+transfer of funds, without requiring a connection to anyone in the rest of the
+network in order to perform the initial transfer.
+
+Exploring the possibilities of reducing the transaction risk between initial
+transfer and transaction finalisation is an interesting topic for future
+research. Using reputation systems or digital identity solutions combinded with
+judicial accountability, the risk could potentially be reduced to near 0. - TODO
+work this out in more detail
+
+In order to prevent double spending, the current implementation of the protocol
+disallows the respending of transactions that have not first been finalised. In
+order to provide a full disaster mode, re-spending funds without full
+transaction validation by the network is a must. This could be achieved by
+expanding the protocol to enable the settling of multi-hop transfers. Like the
+original off-line transfer system, this would require the 2nd receiver to
+accept the risk, that both of the peers that their transation depends on have
+double spent. When performing the initial off-line transaction, they would
+receive all the blocks neccesary to finalise all transactions before it with the
+gateways of the 2 peers before them. - TODO work this out in more detail
+
+Going back to the requirements specified by the ECB, the offline transfer
+ability of the EuroToken system lays the groundwork for the following
+requirements:
+
+- 2 **Cash-like features**
+- 5 **back-up system**
+
 * "Once over" spending
 * Could be expanded to include "emergency mode" where trust is increased and
 reprocessing is performed later to find instances of double-spending
