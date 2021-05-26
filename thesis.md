@@ -1599,53 +1599,58 @@ requirements:
 - 2 **Cash-like features**
 - 5 **back-up system**
 
-* "Once over" spending
-* Could be expanded to include "emergency mode" where trust is increased and
-reprocessing is performed later to find instances of double-spending
-
-
-## Controlled experiments
-
-Besides real world tests we performed controlled experiments to explore whether
-the system has the properties we desire.
-
-In these experiments we ran a number of wallets and had them transact randomly
-with eachother. We then logged all relevant data on the clients. We logged:
-
-For the transactions we logged:
-- number of blocks validated by the client
-- validation time of the client
-- the users chain length at that point
-
-For the checkpoints we logged:
-- number of blocks validated by the gateway
-- total validation time of the gateway
-- the users chain length at that point
-
-We then varied:
-- The number of clients in the network
-- The number of gateways in the network
-- The frequency of checkpointing
-
 ## Evaluating scalability
 
-\begin{figure}[htp]
-\centering
-\resizebox{0.5\textwidth}{!}{
-\includegraphics{./images/5_evaluation/usercount_validate_lookup.png}
-}
-\caption{EuroToken off-line trial}
-\label{offline_trial}
-\end{figure}
+In order for the EuroToken system to be able to function at the scale of the
+eurozone, the ability to scale is crucial. In order to evaluate how the system
+performs as the number of users grows, we performed the following experiments.
+
+We simulated the network as it grows using the python implementation. Our
+simulated notes randomly transacted with one another, and performing check-ins
+with the gateways whenever they received a transaction. The nodes chose random
+transaction partners for each transaction performed a transfer where they fully
+validated every transaction they received. In order to asses the scalability of
+the network, we ran several experiments where we varied the number of users in
+the network. For each transaction we measured the time taken for each user to
+validate the transaction. We also measured the number of blocks the gateway
+validated for each transaction they validated.
 
 \begin{figure}[htp]
 \centering
-\resizebox{0.5\textwidth}{!}{
-\includegraphics{./images/5_evaluation/chainlength_validate_lookups.png}
-}
-\caption{EuroToken off-line trial}
-\label{offline_trial}
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/usercount_validate_lookup.png}\hfill
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/usercount_validate_time.png}
+\caption{Effect of varying network size}
+\label{usercount}
 \end{figure}
+
+As can be seen in figure \ref{usercount}, the number of users has no effect on
+the number of blocks to validate. While the variance does rise due to the
+randomness in the selection selection of trading partners, the number of blocks
+validated hovers averages out to 16 at any network size. Inspecting the time
+required to validate a transaction, we see some growth in variance starting at
+the 6 case. This is likely because of the limitations of the test setup. The
+number of blocks validated per transaction by each user is always 3, as the user
+before them always checkpoints before sending funds.
+
+Another measure of scalability is the effect of a growing chain size. In order
+to measure this effect we had each user transact up to 1000 transactions. All
+users start with the same sized chain, and transact at the same rate. This means
+that all of the chains have about the same length throughout the testing
+process. We measured both the time taken to validate a transaction, as well as
+the number of blocks validated.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_validate_time.png}\hfill
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_validate_lookups.png}
+\caption{EuroToken off-line trial}
+\label{chainlength}
+\end{figure}
+
+The results are illustrated in figure \ref{chainlength}. While initially it
+seems like chain length has an effect on validation, the number of blocks
+valiudated remains the same. We think the rise in validation time is due to the
+lookup in the database, which takes longer as the number of blocks stored grows.
 
 ## Evaluating checkpointing
 
