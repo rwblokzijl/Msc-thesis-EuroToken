@@ -1643,14 +1643,19 @@ the number of blocks validated.
 \centering
 \includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_validate_time.png}\hfill
 \includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_validate_lookups.png}
-\caption{EuroToken off-line trial}
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_validate_time_gateway.png}\hfill
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_validate_lookups_gateway.png}
+\caption{Effect of chain length on validation}
 \label{chainlength}
 \end{figure}
 
 The results are illustrated in figure \ref{chainlength}. While initially it
 seems like chain length has an effect on validation, the number of blocks
-valiudated remains the same. We think the rise in validation time is due to the
-lookup in the database, which takes longer as the number of blocks stored grows.
+validated remains the same. The rise in validation time is likely due to the
+database lookups of the block, which takes longer as the size of the database
+grows over time. Most importantly, the number of block accesses stays the same
+over time. This is a direct result of checkpointing, as users only need to
+validate blocks down to the last
 
 ## Evaluating checkpointing
 
