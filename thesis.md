@@ -360,7 +360,7 @@ provided.
 2. **Cash-like features**
 3. **Competitive features**
 4. **Monetary policy option**
-5. **Back-up system**
+5. **Disaster back-up system**
 6. **International use**
 7. Minimise ecological footprint (cost saving and environmentally friendly)
 8. **Ability to control the amount of digital euro in circulation.**
@@ -1484,7 +1484,7 @@ from the ECBs report on a digital euro [@ReportDigitalEuro:online].
 2. **Cash-like features**
 3. **Competitive features**
 4. **Monetary policy option**
-5. **Back-up system**
+5. **Disaster back-up system**
 6. **International use**
 7. Minimise ecological footprint (cost saving and environmentally friendly)
 8. **Ability to control the amount of digital euro in circulation.**
@@ -1509,14 +1509,14 @@ We show how the EuroToken can be used to create:
 
 ## Field trial
 
-The purpose of the implementation in the super app was to showcase the usability
-of such a system. In order to test the implementation and the viability of the
-protocol in the real world, a field trail was conducted. We tested the EuroToken
-system during the morning hours, at café Doerak in Delft. As showcased in figure
-\ref{field_trial}, the owner of the café generated a payment request for the
-amount of a single coffee and displayed it in the restaurant. Customers could
-then scan the code to transfer the money, and the owner who immediately see the
-money appear in their account.
+The purpose of the implementation in the super app was to demonstrate the
+features of the EuroToken system. In order to test the implementation and the
+viability of the protocol in the real world, a field trail was conducted. We
+tested the EuroToken system during the morning hours, at café Doerak in Delft.
+As showcased in figure \ref{field_trial}, the owner of the café generated a
+payment request for the amount of a single coffee and displayed it in the
+restaurant. Customers could then scan the code to transfer the money, and the
+owner who immediately see the money appear in their account.
 
 This trail showcases the simplicity of taking digital payments without having to
 go through the process of registering with a traditional payment provider. Using
@@ -1592,13 +1592,6 @@ double spent. When performing the initial off-line transaction, they would
 receive all the blocks neccesary to finalise all transactions before it with the
 gateways of the 2 peers before them. - TODO work this out in more detail
 
-Going back to the requirements specified by the ECB, the offline transfer
-ability of the EuroToken system lays the groundwork for the following
-requirements:
-
-- 2 **Cash-like features**
-- 5 **back-up system**
-
 ## Evaluating scalability
 
 In order for the EuroToken system to be able to function at the scale of the
@@ -1659,17 +1652,80 @@ validate blocks down to the last
 
 ## Evaluating checkpointing
 
-1 **Enhanced digital efficiency**
-6 **international use**
+The EuroToken derives its scalability and off-line transaction ability from the
+concept of checkpointing. The collapsing of all transactions before a given
+point into a single checkpoint block allows any counterparty to simplify the
+entire history of a user to the balance in the checkpoint block. This prevents
+the exponential growth of required validation, which allows the system to scale
+to any size. In this section we explore the effect of various checkpointing
+frequencies.
 
-In order to evaluate whether the EuroToken system can be deployed at a global
-scale while also
+We simulated a network of randomly transacting users. Every run of the
+experiment we varied the number of transactions the users would do without
+checkpointing. Each users performed over 1000 transactions each run. We then
+measured the total number of blocks their counterparties had to verify in order
+to validate their transaction. It should be noted that the entire network varied
+their checkpointing frequencies together.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpointing_freq.png}\hfill
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpoint_freq_time.png}
+\caption{Effect of checkpointing on validation}
+\label{checkpointing_freq}
+\end{figure}
+
+As illustrated in figure \ref{checkpointing_freq} the effect of the
+checkpointing frequency is significant. The relationship is exponential and
+follows the following curve:
+
+$$22.26 \times 1.19 ^ x$$
+
+The effect of checkpointing becomes relevant when the system is adapted to allow
+multiple re-spendings of transactions in a row without validating online. The
+systems ability to allow off-line transactions depends on the ability of the
+ability of the users devices to validate the necessary transactions.
+
+## ECB requirements
+
+In the problem description of this document we described the requirements of a
+digital euro as specified by the ECB. In this section we review the extent to
+which the EuroToken system conforms to the requirements. The requirements are
+summerised as follows:
+
+- 1 **Enhanced digital efficiency**
+- 2 **Cash-like features**
+- 3 **Competitive features**
+- 4 **Monetary policy option**
+- 5 **Disaster back-up system**
+- 6 **International use**
+- 7 Minimise ecological footprint (cost saving and environmentally friendly)
+- 8 **Ability to control the amount of digital euro in circulation.**
+- 9 Cooperation with market participants
+- 10 Compliance with the regulatory framework
+- 11 Safety and efficiency in the fulfilment of the Eurosystem’s goals
+- 12 Easy accessibility throughout the euro area
+- 13 Conditional use by non-euro area residents
+
+We achieve **enhanced digital efficiency** and a **competitive feature set **by
+designing EuroToken as a digital, peer-to-peer, programmable payment system. We
+achieve **cash-like features** with direct and off-line transferability without
+the need for intermediary parties. EuroToken provides the ECB with a new set of
+**monetary policy options** by having the Central Bank controlling the creation
+and destruction of EuroTokens. The off-line transaction capacity could be
+extended to make EuroToken a **disaster proof** payment system. With backing
+during deployment of the ECB, EuroToken could become the standardised digital
+currency of Europe allowing **international** with ease.
+
+The rest of the requirements are legal questions and should are left out of
+scope.
+
+# Discussion and future work
 
 - Scalability is very important
 - TPS of the gateway
 - graphs and tables
 - Scaling limits and how to potentially mitigate
-
 - Description of the benefit of edge computing
 - Instant international transfer
 - Increased efficiency in regulation due to full standardization
@@ -1677,45 +1733,11 @@ scale while also
 * programmable money
 * smart contracts
 * new forms of money streaming
-
-\begin{figure}[htp]
-\centering
-\resizebox{0.5\textwidth}{!}{
-\includegraphics{./images/5_evaluation/checkpointing_freq.png}
-}
-\caption{EuroToken off-line trial}
-\label{offline_trial}
-\end{figure}
-
-2. Scalability Experiments
-In this chapter we evaluate to what degree the system conforms to the
-requirements 1 and 6 are met by the EuroToken system.
-
-## Evaluating security
-
-Whether the system is actually secure against double spending is a difficult
-to prove in the real world. We showed how the system can be protected from
-exportation by the gateways. However this relies on the honesty of the gateways
-
-## ECB requirements
-
-4 **monetary policy option**
-8 **ability to control the amount of digital euro in circulation.**
-
-- Central bank controlled supply
+* indefinitely remain off-line with delay tolerant message passing
 - Option for "global inflation rate"
 - More granular and "smart contract based" policy enactment
 
-## Real world viability
 
-Yes
+# Conclusion
 
-## Deployment consideration
-
-Yes
-
-# Conclusion and future work
-
-Yes
-
-
+The end
