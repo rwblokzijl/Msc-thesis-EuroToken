@@ -264,59 +264,85 @@ features.
 
 # Problem description
 
-Over last century the world of finance has had to cope with significant paradigm
+Over last century the world of finance has gone through significant paradigm
 shifts. Currencies traditionally started as a bottom up distributed system based
-on some commodity of value. While currencies like this seem to need no
-institution backing them, the fact of their physical nature makes physical
-projection an unfortunate necessity. This naturally leads to institutions that
-centralise some authority in order to secure the assets.
+on some commodity of value. While these currencies seem to need no institution
+backing them, the fact of their physical nature made physical security an
+unfortunate necessity. This naturally lead to institutions that act as
+centralised authority in order to protect the monetary assets.
 
-This age old solution is mirrored in the digitally accounted financial system of
-today. While the world is getting more more dependent on digital payments for
-every day transactions, the control of access rests in the hands of large opaque
-corporations. With private banks at the heart of the financial system, all
-innovation has depended on, and thus been limited to, the current gatekeepers of
-the financial world. While traditional physical currencies are still around as
-an option, the recent decline of their usage makes the need for a new open
-payment system ever more evident.
+This age old solution to a physical problem is mirrored in the digitally
+accounted financial system of today. While the global dependence on digital
+money for every day transactions is growing, the control over many aspects of
+the system rests in the hands of large opaque corporations. These private banks,
+who form the main engine of the financial system, maintain a luxurious position
+as the creators of money. The Copenhagen Business school estimates that banks in
+the UK alone have made 182 billion pounds in seigniorage.
+
+With such a luxurious position it is no surprise that innovation in the sector
+has been slow. Innovation in payments highly depends on the current gatekeepers
+of the financial world as they hold the money of the users. Any attempt to
+innovate by other parties is dependent on the interoperability with banks.
+While traditional physical currencies are still around as an alternative, their
+usage has declined due to the increasing utility of digital money due to the
+internet. The increase in the necessity of digital payment solution, combined
+with the mismanagement of the current system, makes the need for a new open
+payment system evident.
 
 In order to rectify the offset in the balance of power and to promote productive
-financial innovation, a new open medium of exchange is required. Such a currency
-needs to be digitally efficient, transparent, accountable, and be fit for global
-transacting in the 21st century. In this chapter we explore the challenges in
-the creation of such a currency and specify the requirements for such a payment
-system.
+financial innovation, a new and open medium of exchange is required. Such a
+currency needs to be digitally efficient, transparent, accountable, and be fit
+for global transacting in the 21st century. In this chapter we explore the
+challenges in the creation of such a currency, specify the requirements for
+such a payment system and describe why a real solution is still lacking.
 
 ## The difficulty of modern digital payment solutions
 
 The search for reliable, digital, money can be traced back as far as David Chaum
 in 1983 when he first released his paper on Blind Signatures for Untraceable
-Payments [@Chaum1983blind]. In this paper Chaum does not specify a design for a
-fully decentralized currency, but a mechanism for preserving user privacy
+Payments [@Chaum1983blind]. Rather than specifying a design for a fully
+decentralized currency, Chaum describes a mechanism for preserving user privacy
 against third parties in digital transactions. Since then many implementations
 have been attempted, including Chaum's own eCash [@1993offlineCash]
 [@ChaumEcommerce]. ECash had the potential to become a standardized digital
 payment system right from the start. However, the financial institutions of the
-time had their sights set on another digital payment system: Credit Cards. The
-adoption of credit cards as the predominant method of online payment lead to a
-steep rise in credit card fraud [@CreditFraud]. Along with theft of social
+time had their sights set on another digital payment system. Normally industries
+come together to define international standards to aid interoperability and
+strengthen the market as a whole. But rather than standardise digital payments,
+the banks chose credit cards as their solution. In its competition with Credit
+Cards, eCash went bankrupt in 1998 [@eCash1998:online].
+
+The adoption of credit cards as the predominant method of online payment lead to
+a steep rise in credit card fraud [@CreditFraud]. Along with theft of social
 security numbers, theft of credit card numbers is the predominant form of
 identify theft. While we leave the issue of a digital identity out of scope, the
 inadequacy of the credit card system at protecting users has been proven again
-and again. In its competition with Credit Cards, eCash went bankrupt in 1998
-[@eCash1998:online].
+and again.
 
 Over the years, alternative payment systems have been developed in response to
 the lack of good payment solutions. Direct consumer to merchant payment systems
 like PayPal [@PayPal], Venmo [@Venmo] and Skrill [@Skrill:online] have emerged
-to fill the gap left by credit cards. However, the success of these services is
-dependent on the ability to integrate their solutions with traditional banks in
-order to make the payment process seamless. Because of the lack of
-standardisation in the industry, integration has to be done for every bank
-individually. When this integration is lacking, users are stuck with these
-services as an additional bank account which has to be maintained only for their
-payment features. These solutions don't solve the underlying problem: the tight
-coupling between a user and their banking/payment provider.
+to fill the feature gap left by credit cards. However, while these services do
+increase innovation in payments, they dont solve the underlying issue.
+Essentially, the market is generating solutions to adjust for the lack of
+innovation. However, without a deeper paradigm shift this development has 2
+outcomes. Either the world of payments converges into a few large payment
+providers, basically reverting us back to an oligopoly. Or the payment systems
+in the world stay segmented, leading to increasing complexity for users and
+merchants in supporting these,  while creating large overhead in the financial
+system.
+
+The paradigm shift that is needed in the industry is one of integration. Payment
+solutions have to integrate with traditional banks in order to allow users to
+pay from their accounts, or users have to create a seperate payment account with
+the service and transfer money over. This trend is being pushed by european
+initiatives like PSD and PSD2. But because of the lack of standardisation in the
+industry, integration of payment providers has to be done for every bank
+individually. When this integration is lacking, users are stuck with their
+financial services segmented among multiple payment providers and bank accounts.
+An issue that is worsened when wanting to make cross border payments. It is
+evident that current payment solutions don't solve the underlying problem: the
+tight coupling between a user and their banking/payment provider.
 
 The problem of decoupling users from their banks has been approached from many
 different angles. Perhaps the most famous solution in recent years is Bitcoin
@@ -324,9 +350,9 @@ different angles. Perhaps the most famous solution in recent years is Bitcoin
 heart of value accounting in our current system, the Bitcoin white paper
 proposes a digital payment infrastructure with associated currency that
 completely moves the very core of value accounting to a distributed and open
-system. 10 years after its inception the crypto-currency is extremely popular as
-an investment vehicle. Any significant payment volumes have yet to be
-demonstrated however. With transaction fees at around 59 US dollars
+system. 10 years after the publication of its whitepaper the crypto-currency is
+extremely popular as an investment vehicle. Any significant payment volumes have
+yet to be demonstrated however. With transaction fees at around 59 US dollars
 [@BitcoinTransactionFees] around April 21 2021, Bitcoin is not ready to be a
 direct consumer facing payment method.
 
@@ -342,10 +368,14 @@ standardisation.
 The European Union is actively trying to integrate their financial system across
 borders. With payment-integration initiatives like SEPA, PSD2 and the European
 Payments Council, the EU is slowly moving towards a better integrated euro zone,
-however much work is left to be done. With this research we aim to provide a
-design for a central bank backed payment solution that works across the entire
-EU. It presents a standardized payment processing back-end that opens the door
-to digital innovation in all areas of finance.
+however much work is left to be done.
+
+With this research we provide a design for EuroToken, a Central Bank Digital
+Currency designed to act as an alternative to the current privately managed
+digital euro.  It implements a blockchain based accounting system that exposes a
+generalised payment primitive that supports off-line and online digital payments
+out of the box. It provides a equal footing for financial institutions, and
+individuals alike as it makes users the gatekeeper of their own fiscal lives.
 
 ## Requirements for a digital euro by the ECB
 
