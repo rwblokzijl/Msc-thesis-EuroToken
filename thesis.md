@@ -300,7 +300,7 @@ such a payment system and describe why a real solution is still lacking.
 
 The search for reliable, digital, money can be traced back as far as David Chaum
 in 1983 when he first released his paper on Blind Signatures for Untraceable
-Payments [@Chaum1983blind]. Rather than specifying a design for a fully
+Payments [@Chaum1983blind]. Rather than specifying a full design for a
 decentralized currency, Chaum describes a mechanism for preserving user privacy
 against third parties in digital transactions. Since then many implementations
 have been attempted, including Chaum's own eCash [@1993offlineCash]
@@ -312,37 +312,39 @@ strengthen the market as a whole. But rather than standardise digital payments,
 the banks chose credit cards as their solution. In its competition with Credit
 Cards, eCash went bankrupt in 1998 [@eCash1998:online].
 
-The adoption of credit cards as the predominant method of online payment lead to
-a steep rise in credit card fraud [@CreditFraud]. Along with theft of social
-security numbers, theft of credit card numbers is the predominant form of
-identify theft. While we leave the issue of a digital identity out of scope, the
-inadequacy of the credit card system at protecting users has been proven again
-and again.
+The adoption of credit cards as the predominant method of online payment
+subsequently lead to a steep rise in credit card fraud. After with theft of
+social security numbers, theft of credit card numbers is the predominant form of
+identify theft [@CreditFraud]. While we leave the issue of a digital identity
+out of scope, the inadequacy of the credit card system at protecting users has
+been proven again and again.
 
 Over the years, alternative payment systems have been developed in response to
 the lack of good payment solutions. Direct consumer to merchant payment systems
 like PayPal [@PayPal], Venmo [@Venmo] and Skrill [@Skrill:online] have emerged
 to fill the feature gap left by credit cards. However, while these services do
-increase innovation in payments, they dont solve the underlying issue.
-Essentially, the market is generating solutions to adjust for the lack of
-innovation. However, without a deeper paradigm shift this development has 2
-outcomes. Either the world of payments converges into a few large payment
-providers, basically reverting us back to an oligopoly. Or the payment systems
-in the world stay segmented, leading to increasing complexity for users and
-merchants in supporting these,  while creating large overhead in the financial
+increase innovation in payment solutions, they don't solve the underlying issue.
+
+While the market is generating solutions to adjust for the lack of innovation,
+without a deeper paradigm shift the growth in the number of payment options will
+have one of two outcomes. Either the world of payments converges into a few
+large payment providers, basically reverting us back to an oligopoly. Or the
+payment systems stay segmented, leading to increasing complexity for users and
+merchants in supporting these, while creating large overhead in the financial
 system.
 
-The paradigm shift that is needed in the industry is one of integration. Payment
-solutions have to integrate with traditional banks in order to allow users to
-pay from their accounts, or users have to create a seperate payment account with
-the service and transfer money over. This trend is being pushed by european
-initiatives like PSD and PSD2. But because of the lack of standardisation in the
-industry, integration of payment providers has to be done for every bank
-individually. When this integration is lacking, users are stuck with their
-financial services segmented among multiple payment providers and bank accounts.
-An issue that is worsened when wanting to make cross border payments. It is
-evident that current payment solutions don't solve the underlying problem: the
-tight coupling between a user and their banking/payment provider.
+The fundamental paradigm shift that is needed in the industry is one of
+integration. Payment solutions must be able to integrate with traditional banks
+in order to allow users to pay from their accounts, or users have to create a
+separate payment account with the service and transfer money over. This trend is
+being pushed by European initiatives like PSD2. But because of the lack of
+standardisation in the industry, integration of payment providers has to be
+implemented for every bank individually. When this integration is lacking, users
+are stuck with their financial services segmented among multiple payment
+providers and bank accounts. An issue that is worsened with cross border
+payments. It is evident that current payment solutions are inadequate to solve
+the underlying problem: the tight coupling between a user and their
+banking/payment provider.
 
 The problem of decoupling users from their banks has been approached from many
 different angles. Perhaps the most famous solution in recent years is Bitcoin
@@ -350,29 +352,33 @@ different angles. Perhaps the most famous solution in recent years is Bitcoin
 heart of value accounting in our current system, the Bitcoin white paper
 proposes a digital payment infrastructure with associated currency that
 completely moves the very core of value accounting to a distributed and open
-system. 10 years after the publication of its whitepaper the crypto-currency is
-extremely popular as an investment vehicle. Any significant payment volumes have
-yet to be demonstrated however. With transaction fees at around 59 US dollars
-[@BitcoinTransactionFees] around April 21 2021, Bitcoin is not ready to be a
-direct consumer facing payment method.
+system. While 10 years after the publication of its white paper the
+crypto-currency is extremely popular as an investment vehicle, any significant
+payment volumes have yet to be demonstrated. With transaction fees at around 59
+US dollars [@BitcoinTransactionFees] around April 21 2021, Bitcoin is not ready
+to be a direct consumer facing payment method.
 
 Other solutions to the tight coupling problem have been successful on national
 levels. In the Netherlands the iDEAL system has succeeded in integrating most
 dutch banks under a single online payment system. In Norway a similar product
-called Vipps exists that integrates all Norwegian banks into a single payments
-app that enables users to transparently send money. Similar systems exist in
-many European countries [@EMPSA:online]. The problem with these solutions is the
-lack of cross border payments as a result of the lack of international
-standardisation.
+called Vipps exists that integrates all Norwegian banks. And similar systems
+exist in many European countries [@EMPSA:online]. These are all payment
+initiatives that effectively create an abstraction layer over the individual
+banks, leaving them transparent to the user. While this does create a single
+payment interface across a whole nation, the lack of international
+standardisation leads to the failure to support cross border payments. This
+makes these systems unable to properly support global e-commerce and trade.
 
 The European Union is actively trying to integrate their financial system across
 borders. With payment-integration initiatives like SEPA, PSD2 and the European
-Payments Council, the EU is slowly moving towards a better integrated euro zone,
-however much work is left to be done.
+Payments Council, the EU is slowly moving towards a better integrated euro zone.
+Recently the union has started to explore digital currency alternatives to the
+current euro [@ReportDigitalEuro]. A newly designed euro has the potential to
+act as a single payment interface for both online and off-line transactions.
 
 With this research we provide a design for EuroToken, a Central Bank Digital
 Currency designed to act as an alternative to the current privately managed
-digital euro.  It implements a blockchain based accounting system that exposes a
+digital euro. It implements a blockchain based accounting system that exposes a
 generalised payment primitive that supports off-line and online digital payments
 out of the box. It provides a equal footing for financial institutions, and
 individuals alike as it makes users the gatekeeper of their own fiscal lives.
@@ -417,8 +423,8 @@ transferable, stable, secure and digitally capable.
 ## Trade-offs around double spending, scalability and decentralisation
 
 When designing a modern digital payment systems with the ability to transfer
-funds off-line peer-to-peer systems and distributed ledger technologies are an
-worthwhile case study. Since the Bitcoin in 2009 various crypto-currencies have
+funds off-line, peer-to-peer systems and distributed ledger technologies are an
+worthwhile case study. Since Bitcoin in 2009, various crypto-currencies have
 iterated on the idea of a fully decentralized currency. After 12 years of
 development a number of trade-offs are becoming visible that show the
 limitations of the technically.
