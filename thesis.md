@@ -42,28 +42,25 @@ make a decision on whether to start a digital euro project in mid 2021.
 
 The direction of crypto currencies is no longer only determined by eccentric
 visionaries imagining a financial system that gives power back to the people.
-Governments and large corporations are joining the competition to create the
-worlds leading digital coin. Whether for profit, their national interests, or
-the good of humanity, the winner will be left controlling and overseeing all
-the worlds transactions.
+Governments and large corporations have joined the race for the worlds leading
+digital currency. Whether for profit, their national interests, or the good of
+humanity, the winner will be left controlling and overseeing a significant chunk
+of the worlds transactions.
 
 Currently very few decentralized currencies are in a position to challenge the
 upcoming central coins. The most well known crypto currencies, including Bitcoin
-and Ethereum [@Ethereum:whitepaper], lack the price stability necessary to be a
-reliable store of value. There have been attempts to create fully decentralized
-stablecoins, but none have been proven to work in practice on a large scale just
-yet.
+and Ethereum [@Ethereum:whitepaper], simply lack the price stability necessary
+to be a reliable store of value. While there have been attempts to create fully
+decentralized stablecoins, none have been proven to work in practice on a large
+scale. With the fundamental problems of money yet unsolved in distributed
+currencies, the future of the financial system might be decided by competition
+between the governments of the world and opaque proprietary alternatives.
 
-If fully decentralized currencies don't come up with a solution to scalability
-and stability soon. The future of the financial system might come down to a
-competition between the large governments of the world and the private sector.
-
-Whether and how these parties succeed will have large implications for the
-future of financial markets of the world, and might determine the level of
-freedom of the societies of the future. Where China and Facebook are making
-rapid progress. Meanwhile, the Eurozone is still deliberating while they might
-play a vital role in the future of financial markets, by including democratic
-the process.
+The winner of this race for the future of the financial system might come to
+determine level of freedom of the societies of the future down to the most basic
+aspects of our daily lives. Where China and Facebook are making rapid progress,
+the Eurozone is still deliberating. Meanwhile their presence in the race might
+be vital in incorporating the values of personal freedoms and privacy.
 
 This thesis aims to provide a design for a digital euro that builds on, and
 recombines mechanisms used by today's stablecoin, and existing Distributed
@@ -73,22 +70,11 @@ EuroToken is a prototype for a Central Bank Digital Currency. Its primary
 purpose is to implement, for the first time, a currency that is: digital,
 universally accessible, central bank issued, and peer-to-peer.
 
-The financial world of 2021 finds itself in a turbulent period in history. With
-the requirements of money shifting faster than ever before, the monetary
-systems we inherited from previous generations are increasingly struggling to
-meet current demands. In response, various new forms of monetary solutions are
-racing to fill the expectations of a modernising population and acquire A
-position in the middle of the worlds money flow.
-
-In this chapter we illustrate some challenges for Central Banks have to
-overcome to maintain an inclusive economy, while staving off geopolitical
-challengers and private corporations.
-
 ## The decline of cash
 
-The eurozone system relies on two main types of money. Private money, managed
-by private banks, and public money, managed by the European Central Bank ECB
-[TODO CITE public vs private money].
+The eurozone system of today relies on two main types of money. Private money,
+managed by private banks, and public money, managed by the European Central Bank
+(ECB).
 
 Public money is the money we have in our physical wallets. It consists of bank
 notes and coins and is often referred to as cash. Once upon a time it was
@@ -102,38 +88,46 @@ from the banks reliability and reputation and is only usable through the bank
 itself. Without permission from the bank, storage, transfer and withdrawal are
 not possible.
 
-A person in the eurozone would weigh the risks and benefits of these two types
-of money. On the one hand the ECB is a large, historically trustworthy, and
-democratically controlled institution. The only way in which the persons cash
-would lose its value is the broad failure of the European government and central
-bank. On the other hand storing money in banks has the benefits of the digital
-age. Storing money in the form of cash means exposure to the risk of having
-money stolen or being robbed. Since both the impact and the risk grow with the
-amount of money held in cash, the proclivity to store money in digital forms
-grows with the amount of money owned.
+A person in the eurozone can weigh the risks and benefits of these two types of
+money. The ECB is a large, historically trustworthy, and democratically
+controlled institution. The persons public money (or cash) would only lose its
+value in the case of the complete failure of the European economic system and
+central bank. On the other hand storing value in banks has the benefits of the
+digital age. Where keeping money in the form of cash means exposure to the risk
+of having money physically stolen, money in banks is digitally secured. Both
+impact and risk grow with the amount of money held in cash.
 
 In addition to people storing their money in private banks for security reasons,
 the digitalisation of society is a powerful motivator. Transacting using private
 money as opposed to public money allows for transfer of funds all over the
-world. Private digital money can be used to perform purchases online, as well as
-transfer money to persons far away, while public money is only useful when it
-can be physically transfered to the receiver.
+world. The ability to use private money in e-commerce, as well as the ease of
+transfer, banked money has become the predominant way people interact with their
+money.
 
 As a result of digitalisation, the world is moving from cash to cards. In the
 year 2000, less than 22 percent of transaction in the EU were card transactions.
 In 2019 this is over 47 percent [@CashTransactionsEuro:online]. This decline of
-central bank money lead to a number of unfavorable scenarios
-[@ReportDigitalEuro:online]. The decline of open and off-line money can lead to
-financial exclusion for the unranked and vulnerable in our society. In 2017, 3.6
-percent of Europe's household had no registered bank account [@Unbanked:online].
-As more and more businesses move online or become pin only. These people see
-their means of payment decrease. Additionally the increased reliance in private
-institutions can leave the entire euro system less transparent and more
-vulnerable to corruption.
+central bank money leads to a number of unfavorable scenarios
+[@ReportDigitalEuro:online]. The decline of open and off-line money contributes
+to the financial exclusion of the unbanked and vulnerable in our society. In
+2017, 3.6 percent of Europe's household had no registered bank account
+[@Unbanked:online]. As more and more businesses move online or become pin only,
+these people will see their means of participation in society decrease.
 
-To solve these issues, an open digital coin with value guaranteed by the Central
-Bank would be needed. It needs to be open and easy to use, online capable, but
-not be reliant on any private institution to function.
+Additionally the increased reliance in private institutions can leave the entire
+euro system less transparent and more vulnerable to corruption. The 2008 crisis
+revealed the reliance of the financial world on opaque profit driven
+institutions with insufficient oversight. While the industry has been
+scrutinised heavily since then, the broader economy is still not insulated from
+future failings. Various national funds insure citizens at least 90% of their
+bank deposits, up to at least 20.000 euros per person [@DepositInsurance]. But
+for many this is not sufficient to protect their lives savings. The 2008 crisis
+also showed the
+
+To solve these issues, a currency is needed with the reliability of public money
+and the feature set of private money. An open digital coin with value guaranteed
+by the Central Bank that is easy to use, online capable, but not be reliant on
+any private institution for its core function of value storage.
 
 ## The need for a competitive Euro
 
@@ -174,13 +168,13 @@ It might lose the ability to
 
 ## Rise of challengers to traditional currencies
 
-The creation of of Bitcoin in 2008 [@Bitcoin:whitepaper] kicked off the race to create a
-currency that would solve the problems plaguing the current monetary system.
-While a complete solution has not emerged, today we see a number of alternatives
-that present various benefits and trade-offs. While Bitcoin and similar
-fully-decentralized currencies have proven that a global digital token of value
-can be realised, one of their main challenges remains the price stability of the
-asset and the scalability of the network.
+The creation of of Bitcoin in 2008 [@Bitcoin:whitepaper] kicked off the race to
+create a currency that would solve the problems plaguing the current monetary
+system. While a complete solution has not emerged, today we see a number of
+alternatives that present various benefits and trade-offs. While Bitcoin and
+similar fully-decentralized currencies have proven that a global digital token
+of value can be realised, one of their main challenges remains the price
+stability of the asset and the scalability of the network.
 
 To address the stability issue, stablecoins have risen in popularity. While
 decentralized stablecoins do exist [@MakerDAO:whitepaper], it is so called
@@ -629,7 +623,7 @@ figure \ref{cbdc_features}.
 \resizebox{0.7\textwidth}{!}{
 \includegraphics{./images/2_problem/cbdc_features.png}
 }
-\caption{The money flower: a taxonomy of money \cite{ FormsOfMoney }}
+\caption{The money flower: a taxonomy of money \cite{FormsOfMoney}. }
 \label{cbdc_features}
 \end{figure}
 
@@ -787,15 +781,16 @@ remain stable without periodic interventions of their respective central banks.
 The euro has long served as the core of the financial infrastructure of the
 European economy. It has essentially done this using two consumer facing
 versions of money: the euro as a publicly accepted, physical item of value (the
-public euro), and the euro as a digital, privately managed, unit of account
-(the private euro). These public, and private types of money serve citizens in
+public euro), and the euro as a digital, privately managed, unit of account (the
+private euro). These public, and private types of money serve citizens in
 different ways. The public euro is the most stable store of value since its
 guaranteed by the central bank, it also has the advantaged of requiring no
 internet connection to use. While the private euro has digital advantages in
-usability and security, but derive their value from the "reliability" of
-private banks, and are only insured by governments up to 100.000 euros [CITE].
-With the declining usage of public money in favor of digital money, the need
-for a new type of euro to fill the gap of public money is getting stronger.
+usability and security, but derive their value from the "reliability" of private
+banks, and are typically only insured by governments up to 100.000 euros
+[@DepositInsurance]. With the declining usage of public money in favor of
+digital money, the need for a new type of euro to fill the gap of public money
+is getting stronger.
 
 \begin{figure}[htp]
 \centering
@@ -1243,10 +1238,10 @@ types. Crucially, IPv8 has an implementation in kotlin [@kotlin-IPv8:online].
 
 Rather than implementing the blockchain mechanism ourselves, there is a third
 option. IPv8 includes a module called TrustChain. TrustChain is in essence a
-block-lattice type distrusted ledger technology. The technology does not fully
-solve double spending they way we originally designed it, so some work is
-required to adapt TrustChain to the EuroToken system, but it would provide a
-good basis for our implementation.
+block-lattice type distrusted ledger technology[@TrustChain]. The technology
+does not fully solve double spending they way we originally designed it, so some
+work is required to adapt TrustChain to the EuroToken system, but it would
+provide a good basis for our implementation.
 
 We choose to build on IPv8/TrustChain for this project as it allows us to
 build on their kotlin implementation for the wallet as well as the python
@@ -1293,7 +1288,7 @@ happened.
 \includegraphics{./images/3_design/trustchain.png}
 \label{trustchain_label}
 }
-\caption{ TrustChain block-lattice, interconnected personal blockchains\cite{TrustChain} .}
+\caption{ TrustChain block-lattice, interconnected personal blockchains \cite{TrustChain}. }
 \label{trustchain}
 \end{figure}
 
@@ -1805,4 +1800,10 @@ scope.
 
 # Conclusion
 
-The end
+The financial world of 2021 finds itself in a turbulent period in history. With
+the requirements of money shifting faster than ever before, the monetary
+systems we inherited from previous generations are increasingly struggling to
+meet current demands. In response, various new forms of monetary solutions are
+racing to fill the expectations of a modernising population and acquire A
+position in the middle of the worlds money flow.
+
