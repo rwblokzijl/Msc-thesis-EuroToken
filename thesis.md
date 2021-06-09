@@ -30,37 +30,39 @@ preface: |
 
 # Introduction
 
-Since the Bitcoin [@Bitcoin:whitepaper] white paper was published in 2008, the
-world has been speculating on how decentralized ledger technologies could be
-used to restructure the financial infrastructure of the world to enhance its
-transparency, digital efficiency, and feature set. 9 years later, Facebook
-announced a private currency controlled by a group of corporations
-[@Diem:whitepaper]. 3 years after that the Chinese government announced that
-they had reached 92,771 transactions per second with their new Central Bank
-Digital Currency (CBDC) [@ForbesChinaCoin:online]. And the Eurosystem is set to
-make a decision on whether to start a digital euro project in mid 2021.
+The world has long been speculating on how the financial infrastructure of the
+world could be restructured to better serve the world. When the Bitcoin
+[@Bitcoin:whitepaper] white paper was published in 2008, it seemed decentralized
+ledger technologies could be the missing link that would finally enhance the
+transparency, digital efficiency, and feature set of our payment options. 9
+years later, Facebook announced a private currency controlled by a group of
+corporations [@Diem:whitepaper]. 3 years after that the Chinese government
+announced that they had reached 92,771 transactions per second with their new
+Central Bank Digital Currency (CBDC) [@ForbesChinaCoin:online]. And the
+Eurosystem is set to make a decision on whether to start a digital euro project
+in mid 2021.
 
-The direction of crypto currencies is no longer only determined by eccentric
+The direction of crypto currencies is no longer determined by eccentric
 visionaries imagining a financial system that gives power back to the people.
 Governments and large corporations have joined the race for the worlds leading
 digital currency. Whether for profit, their national interests, or the good of
 humanity, the winner will be left controlling and overseeing a significant chunk
 of the worlds transactions.
 
-Currently very few decentralized currencies are in a position to challenge the
-upcoming central coins. The most well known crypto currencies, including Bitcoin
-and Ethereum [@Ethereum:whitepaper], simply lack the price stability necessary
-to be a reliable store of value. While there have been attempts to create fully
-decentralized stablecoins, none have been proven to work in practice on a large
-scale. With the fundamental problems of money yet unsolved in distributed
-currencies, the future of the financial system might be decided by competition
-between the governments of the world and opaque proprietary alternatives.
+Currently no decentralized currencies are in a position to challenge the
+upcoming central coins. Even the most well known crypto currencies, including
+Bitcoin and Ethereum [@Ethereum:whitepaper], simply lack the price stability
+necessary to be a reliable store of value. While there have been attempts to
+create fully decentralized stablecoins, none have yet been proven to work in
+practice on a large scale. With the most fundamental problems of money still
+unsolved by distributed currencies, the future of the financial system might be
+decided by competition between the governments of the world and opaque
+proprietary alternatives.
 
-The winner of this race for the future of the financial system might come to
-determine level of freedom of the societies of the future down to the most basic
-aspects of our daily lives. Where China and Facebook are making rapid progress,
-the Eurozone is still deliberating. Meanwhile their presence in the race might
-be vital in incorporating the values of personal freedoms and privacy.
+The winner of this race might come to influence the most basic aspects of our
+daily lives. Where China and Facebook are making rapid progress, the Eurozone is
+still deliberating. Meanwhile their presence in the race might be vital in
+incorporating the values of personal freedoms and privacy.
 
 This thesis aims to provide a design for a digital euro that builds on, and
 recombines mechanisms used by today's stablecoin, and existing Distributed
@@ -81,12 +83,17 @@ notes and coins and is often referred to as cash. Once upon a time it was
 possible to exchange this money for gold directly at the central bank of a
 country and thus derived its value from gold directly. Today however, the value
 of this money is guaranteed by the reputation and trustworthiness of the
-central bank [@The_Gold_Standard].
+central bank [@The_Gold_Standard]. No physical euros will be created unless by
+the central bank itself, and no one can seize them unless with physical force.
+This puts it in contrast to private money.
 
 Private money is the digital money in our bank account. It derives its value
 from the banks reliability and reputation and is only usable through the bank
 itself. Without permission from the bank, storage, transfer and withdrawal are
-not possible.
+not possible. If a bank overexposes itself to the public markets, the money
+stored with them might not be payed back in full. Additionally, these banks act
+as a central point at which any individual or group ban be silenced by freezing
+their assets.
 
 A person in the eurozone can weigh the risks and benefits of these two types of
 money. The ECB is a large, historically trustworthy, and democratically
@@ -100,9 +107,18 @@ impact and risk grow with the amount of money held in cash.
 In addition to people storing their money in private banks for security reasons,
 the digitalisation of society is a powerful motivator. Transacting using private
 money as opposed to public money allows for transfer of funds all over the
-world. The ability to use private money in e-commerce, as well as the ease of
-transfer, banked money has become the predominant way people interact with their
-money.
+world. The ability to use private money in e-commerce, as well as its ease of
+transfer, has made privately banked money the predominant way people interact
+with the economy.
+
+\begin{figure}[htp]
+\centering
+\resizebox{\textwidth}{!}{
+\includegraphics{./images/1_intro/cash_decline.png}
+}
+\caption{UK Decline of cash over 2010-2020 \cite{CashDecline}}
+\label{ecommerce}
+\end{figure}
 
 As a result of digitalisation, the world is moving from cash to cards. In the
 year 2000, less than 22 percent of transaction in the EU were card transactions.
@@ -119,61 +135,59 @@ euro system less transparent and more vulnerable to corruption. The 2008 crisis
 revealed the reliance of the financial world on opaque profit driven
 institutions with insufficient oversight. While the industry has been
 scrutinised heavily since then, the broader economy is still not insulated from
-future failings. Various national funds insure citizens at least 90% of their
-bank deposits, up to at least 20.000 euros per person [@DepositInsurance]. But
-for many this is not sufficient to protect their lives savings. The 2008 crisis
-also showed the
+future failings. The EU does require national funds to insure citizens at least
+90% of their bank deposits, up to at least 20.000 euros per person
+[@DepositInsurance]. But for many this is not sufficient to protect their lives
+savings.
 
-To solve these issues, a currency is needed with the reliability of public money
-and the feature set of private money. An open digital coin with value guaranteed
+To solve these issues, a digital currency is needed with the reliability of
+public money and the feature set of private money. An open digital coin, insured
 by the Central Bank that is easy to use, online capable, but not be reliant on
 any private institution for its core function of value storage.
 
 ## The need for a competitive Euro
 
-Commerce is moving online
-- Instant transactions
+The world is moving online, and commerce is moving with it. E-commerce as a
+percentage of worldwide GCP has more than tripled in the last decade
+[@EcommerceGrowth]. With this move to online shopping, commerce also moved from
+a solely local phenomenon, to incorporating global vendors. Especially trade
+with China has seen significant growth over the last 10 years.
 
 \begin{figure}[htp]
 \centering
 \resizebox{\textwidth}{!}{
-\includegraphics{./images/2_problem/ecommerce.png}
-}
-\caption{E-commerce 2010-2020 \cite{EcommerceStats:online}}
-\label{ecommerce}
-\end{figure}
-
-The banking system is insufficient to handle todays international trade
-- national payment systems suck
--
-\begin{figure}[htp]
-\centering
-\resizebox{\textwidth}{!}{
-\includegraphics{./images/2_problem/international.png}
+\includegraphics{./images/1_intro/international.png}
 }
 \caption{E-commerce 2010-2020 \cite{EcommerceStats:online}}
 \label{ecommerce_international}
 \end{figure}
 
+While the increased globalisation brings wealth like never before, the increased
+global trade is not without its dangers to the EU. With China well underway in
+the race to the first digital currency, the digital yuan might find itself in an
+ideal position to dominate global trade. If China or any other currency can
+provide a feature set that is more friendly to global commerce than the current
+euro. The EU might see the control over their own economies fall away.
 
-People in other parts of the world are moving into crypto
+In addition to the threat of Chinese influence over European markets,
+opportunity also lies in the provision of a currency to the unbanked population
+of the world. Where the US dollar currently holds the position of the worlds
+"default" currency, this position might move to the first CBDC as people from
+all over the world can be brought into modern commerce. This can be a great
+opportunity for the EU to spread its values across the world.
 
-If the eurozone does not get its own digital currency the ECB, and thus our
-democratic process, loses
+In order to stay relevant on the global stage, and to be able to serve its
+citizens in the modern age, the eurozone needs a currency with a competitive
+feature set on the global stage.
 
-If decentralized currencies win, individuals become increasingly dependent on
-the
-
-It might lose the ability to
-
-## Rise of challengers to traditional currencies
+## Rise of insufficient challengers to traditional currencies
 
 The creation of of Bitcoin in 2008 [@Bitcoin:whitepaper] kicked off the race to
-create a currency that would solve the problems plaguing the current monetary
-system. While a complete solution has not emerged, today we see a number of
-alternatives that present various benefits and trade-offs. While Bitcoin and
-similar fully-decentralized currencies have proven that a global digital token
-of value can be realised, one of their main challenges remains the price
+create the currency to solve the problems plaguing the current monetary system.
+While a complete solution has not emerged, today we see a number of alternatives
+that present various benefits and trade-offs. While Bitcoin and similar
+fully-decentralized currencies have proven that a global digital token with some
+utility can be realised, one of their main challenges remains the price
 stability of the asset and the scalability of the network.
 
 To address the stability issue, stablecoins have risen in popularity. While
@@ -186,8 +200,8 @@ dependability of their coin, Tether Holdings Limited acts as a centralised
 middle-man exchanging 1 tether for 1 dollar. Centralised stablecoins are often
 seen as an intermediary solution that provides a wrapper over the old monetary
 system in order to extend it with the features of digital currencies. These
-coins are essentially financial derivatives that depend on already existing
-currencies.
+coins are essentially financial derivatives with the same flaws of their
+underlying currencies, except for the addition of some digital features.
 
 On June 18, 2019, a new currency conceived by a group of Facebook engineers was
 announced under the brand name "Libra" [@Diem:whitepaper]. Later renamed to
@@ -197,25 +211,35 @@ association. While Diem presents itself as a solution for the worlds 1.7 billion
 unbanked, it is essentially a private world currency that would be controlled by
 corporations who will not be accountable to democratic processes.
 
-The battle for the future control of monetary systems is a world wide
-phenomenon. While distributed open-source communities of engineers are trying to
-create a system free of corruption and private interest groups are trying to
-extend their reach, governments around the world are beginning to realise the
-threat to the established order. In order to not lose their influence of over
-their respective economies, governments around the world are looking into new
-digital versions of their currencies. The Federal Reserve has published their
-"Preconditions for a general-purpose central bank digital currency"
-[@FedCoin:online]. The ECB has published a report specifying a number of Reasons
-to issue a digital euro, scenarios and implied requirements
-[@ReportDigitalEuro:online]. Meanwhile, the government that has perhaps
-progressed the farthest is the Chinese government. With successful public trails
-[@ChinaCoinTrial:online] they seem to be closest to a working digital currency.
+These current most prominent bidders, while promising to be the future of public
+money are all but public. Solely by their being better in some area, they may
+stand a change to change the future of money. Yet because of their specific set
+of trade-offs, they are all falling short of the ideal.
+
+While distributed open-source communities of engineers are trying to create a
+system free of corruption and private interest groups are trying to extend their
+reach, governments around the world are beginning to realise the threat to the
+established order.
+
+In order to not lose their influence of over their respective economies,
+governments around the world are looking into new digital versions of their
+currencies. The Federal Reserve has published their "Preconditions for a
+general-purpose central bank digital currency" [@FedCoin:online]. The ECB has
+published a report specifying a number of Reasons to issue a digital euro,
+scenarios and implied requirements [@ReportDigitalEuro:online]. Meanwhile, the
+government that has perhaps progressed the farthest is the Chinese government.
+With successful public trails [@ChinaCoinTrial:online] they seem to be closest
+to a working digital currency.
+
+The future of the eurozone is sill anyones game, and the decision might come
+down to the next decisions of the European commission. For this reason a design
+for a CBDC in-line with the ideals on which Europe is founded is required.
 
 ## The technical debt of traditional finance
 
-People have been trading various commodities as a store of value nearly since
-6000 BC [@HistoryOfMoney:book]. Since then money has taken various forms,
-slowly moving up layers of abstraction, but the function of money has always
+People have been using various commodities as a unit of account and store of
+value since 6000 BC [@HistoryOfMoney:book]. Since then money has taken various
+forms, at various layers of abstraction, but the function of money has always
 stayed the same: acting as a medium of exchange [@On_the_Origin_of_Money].
 
 The first known true standardised gold coins have attributed to Lydian society
@@ -228,13 +252,13 @@ its functional utility, money in the form of bank notes backed by gold has been
 a popular form of money that has been used in European society since 1440
 [@The_Gold_Standard].
 
-At the end of the 1900s Europe had a system of many national currencies,
-denominated per country. The value of the currency was maintained by different
-countries, often using the gold standard [@The_Gold_Standard]. Meanwhile private
-banks would allow people to store their money in a safe institution, while they
-could lend that money out. For international and cross-currency trade, people
-would swap different currencies in exchanges when needed, but because of the
-localised nature of society this was infrequent.
+By the end of the 1900s Europe had a system of many national currencies. The
+value of these currency was maintained on a national level, often using the gold
+standard [@The_Gold_Standard]. Meanwhile private banks act as a trustworthy and
+secure institution, allowing people to store their money, while they could make
+a profit lending that money out. For international and cross-currency trade,
+people would swap different currencies in exchanges when needed, but because of
+the localised nature of society this was infrequent.
 
 This system worked fine in an era where most exchange was done by cash, and most
 trade was done within national borders. But as the world became more connected
@@ -479,7 +503,7 @@ transactions, and the limited puts a practical limit on the amount of
 transactions a single blockchain network can handle since the whole world has to
 be informed.
 
-To improve the scalability of this system Ethereum2.0 [@Ethereum2] proposes a
+To improve the scalability of this system Ethereum 2.0 [@Ethereum2] proposes a
 network upgrade that adds multiple parallel blockchains called shards. These
 shards will be responsible for their own fraction of the transactions on the
 network, only interacting with one another when necessary. While this does
