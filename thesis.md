@@ -1595,7 +1595,6 @@ The rest of the requirements will only be touched on lightly as they do not
 pertain to the topic of computer science and fall outside the area of expertise
 of the author.
 
-
 ## Field trial
 
 The purpose of the implementation in the super app was to demonstrate the
@@ -1632,8 +1631,8 @@ by the ECB:
 ## Off-line trial
 
 By building the EuroToken app on the TrustChain super app we could build on the
-bluetooth transfer features to implement the offline transfer of funds. In order
-to test this implementation and showcase the offline transfer capabilities of
+Bluetooth transfer features to implement the off-line transfer of funds. In order
+to test this implementation and showcase the off-line transfer capabilities of
 the EuroToken system, we conducted another trail away from civilisation. As
 showcased in Figure \ref{offline_trial}, in the mountains of norway, away from
 all network connectivity, we conducted a transfer of funds using the bluetooth
@@ -1648,13 +1647,13 @@ connect feature of the superapp.
 \label{offline_trial}
 \end{figure}
 
-There is room for improvement in the practicality of offline transfer of data
+There is room for improvement in the practicality of off-line transfer of data
 between two devices. We found the process of creating a Peer-to-Peer bluetooth
 connection between two mobile devices somewhat cumbersome. And the system would
 greatly benefit in usability from proximity based data transfer via NFC.
 
 Regardless of the possibilities for improvement, the trail successfully showed
-the viability of offline transfer. It shows the potential of the EuroToken
+the viability of off-line transfer. It shows the potential of the EuroToken
 system to act as a disaster proof payment system that remains functional at any
 distance from civilisation and during any disaster that would wipe out global
 communication infrastructure.
@@ -1975,61 +1974,124 @@ and any digital euro variant will have to be a part of that
 gateways can act as the point of control for the ECB to enforce monetary policy,
 to stabilise the currency and provide direction for our economy.
 
-## Interoperability with other systems
+## Interoperability
 
-Another criticism that might be levied against the EuroToken system is its
-position as a European currency. Diem, as well as Bitcoin and most other new
-crypto currencies are aiming to become global currencies. Why would the right
-level of deployment be at the European level. Why not provide a currency for the
-whole world, including all of the worlds unbanked.
+The ECB has not yet decided on the reach they want their CBDC to have. One
+option is to open the system to the world. This has the benefit of increasing
+the reach of the euro and the success of the European economy. However, there is
+some risk associated with such tight coupling to other economies as the effect
+of monetary policy at home is reduced.
 
-Currencies are inseparably tied to the economies in which they are used. Like
-all assets, the price of the euro is relative and changes with the demand in the
-European market. This is also true in reverse. Changes to monetary policy and
-other factors that affect the supply and demand on the currency have these gg
+Using the gateway as an intermediary, EuroToken provides the option to integrate
+with other CBDCs in seceral ways. The first is by allowing transfers between the
+currencies without a counterparty. A gateway could run both EuroToken and
+DollarToken and transfer between them at an exchange rate that can be set by
+agreements between the two central banks. Effectively this allows for the
+coupling of currencies with an opt out at any time.
 
+## Universal asset storage and granular monetary policy
 
-While don't specifically mind the
+The digital and peer-to-peer nature of EuroToken provides the possibility of
+anonymous users, while the gateway centered design allows for integration of
+digital identity solutions. This allows for a hybrid system where different
+rules can apply to anonymous accounts. This would allow the ECB to encourage the
+adoption of the currency domestically, while discouraging usage abroad.
 
+Additionally, the ECB can greatly increase the granularity of its monetary
+policy using differing types of EuroToken accounts. Each account can have
+different rules and regulations which are applied automatically. These become
+particularly interesting when considering that the current banking system can
+eventually be integrated.
 
-But why does the regression of the world economy not affect the US dollar?
-because its a reserver currency, not a payment system, a decline in the worlds
-economy spurs fleeing into the dollar
+Currently, banks store and reinvent the money of their customers with the
+promise that their money will return with some interest. This investment is an
+important mechanism that keeps the price of the currency stable. Even if
+economic instability encourages people to save their wealth, the amount of money
+in circulation remains mostly the same as all the money in the banks is
+re-invested into the economy on the other end.
 
-Why not go global like libra and challenge Bitcoin.
+As an alternative to the direct limitation on static EuroToken holdings with the
+ECB, the banking mechanism can be recreated in EuroToken. By creating different
+accounts at different levels of risk, users can store their money with similar
+security and features to the current banking system. On the other end, the user
+can specify other parties that are allowed to invest their money. These accounts
+can be limited in their spending to a certain frequency for less volatile
+banking.
 
-The ECB needs tools to influence the European economy
+One benefit is that the current system does not allow users to choose what their
+money is invested in. Within EuroToken, identity verification can be decoupled
+from banking and investing operations thus creating a system where users can
+quickly move their capital between banks.
 
-The rest of the world needs to NOT influence the euro, because that will affect
-the European economy.
+Additionally to currency accounts, other assets like stocks, bonds and other
+assets can also be tracked on the blockchain. As time progresses financial
+players can provide banking or investment services directly to the customer
+using the same system as their banking.
 
-There needs to be special contols possible to influence the level of engagement
-with the euro of people in other nations.
-
-Maintaining instant international transfer between systems
-
-## Future work
-
-- Increased efficiency in regulation due to full standardization
-- The innovation boost
-* programmable money
-* smart contracts
-* new forms of money streaming
-* indefinitely remain off-line with delay tolerant message passing
-- More granular and "smart contract based" policy enactment
+This effectively unites the whole financial world into one accounting system.
+Especially when combinded with e-identity, e-signatures, e-invoices, e-receipts,
+and smart-contracts this could usher in a whole new wave of innovation.
 
 # Conclusion
 
-Within this thesis we have shown a preliminary design for a scalable, off-line
-capable digital payment system that is interoperable with the
+Baring a natural disaster that wipes out the human race, the future of money
+will be digital. With commerce and banking moving online, a new modern payment
+system is required with features that fit the digital age.
 
-In this thesis we hope to have shown
 
+The future of money will be digital because the features are needed, the
+question is: who gets to decide how these currencies are designed?
 
-The financial world of 2021 finds itself in a turbulent period in history. With
-the requirements of money shifting faster than ever before, the monetary
-systems we inherited from previous generations are increasingly struggling to
-meet current demands. In response, various new forms of monetary solutions are
-racing to fill the expectations of a modernising population and acquire A
-position in the middle of the worlds money flow.
+While there are many bidders to becomer the worlds next digital currency, the
+difficulty lies in creating a currency that is (1) scalable, (2) off-line
+transferable, and (3) stable.
+
+These problems are difficult if not impossible to solve without some form of
+centralisation. Private parties like Tether and Diem are attempting to become
+this trusted third party. But if we don't want opaque corporations controlling
+our money supply we might have to centralise somewhere else. The European
+Central Bank is ideally positioned to provide the centralised control that is
+required to achieve the goals of money.
+
+In order to create a currency that is scalable we use a block dag structure
+where every user has their own personal blockchain. This system is inherently
+distributed in its data storage and control. We then centralise the validation
+of transactions in gateways. These gateways validate the validity of the
+transactions and attest to their correctness and compliance with the rules of
+the network as well as regulations.
+
+Another benefit is gained by maintaining the transaction history of each user on
+their own personal blockchain. By decoupling the transaction at the point of
+trade from the validation of the transaction we allow the transaction to happen
+off-line. This mechanism can then be expanded to a disaster proof currency that
+allows users to trade using digital money even without internet connectivity.
+
+Price stability is ensured the same way as the psychical euro. By allowing the
+currency to be exchanged for traditionally banked euros, we effectively peg the
+price of the euro to that of EuroToken. This exchange can be fully regulated and
+controlled by the central bank, and the money that is exchanged belongs fully
+to the user, without any intermediary. Even the organisation that runs the
+gateway is only responsible for validating correctness and exchanging according
+to ECB rules. This effectively creates a new digital form of public money that
+is held by the individual and backed by the European Central Bank itself.
+
+We implemented a proof of concept on top of the TrustChain blockchain. We
+created an mobile wallet that allows people to transfer the currency. We also
+created a gateway application that handles the transaction validation and
+exchange of the EuroToken.
+
+We tested our system in two field trails to make show the viability of the
+system. Users were able to scan a QR code to send money using only their phone.
+We also tested the off-line transfer capacity of the PoC in the real world.
+
+By running a simulation of multiple EuroToken wallets and gateways, we measured
+the way the network scales over time and see a linear increase in network
+capacity as the number of gateways increase. Additionally, we found our method
+of checkpointing allowed the transacting between users in constant time as the
+both the size of the network, and the size of the blockchain grows.
+
+EuroToken is a CBDC design that is scalable, price stable and off-line
+transferable. It has to potential to become the technology that becomes the
+foundation of the financial infrastructure of Europe unifying the scattered
+payment and banking system of today.
 
