@@ -1658,8 +1658,8 @@ system to act as a disaster proof payment system that remains functional at any
 distance from civilisation and during any disaster that would wipe out global
 communication infrastructure.
 
-The user trades the risk of defering transaction validation until they connect
-to the network again for off-line transfers which allow for an instantatious
+The user trades the risk of deferring transaction validation until they connect
+to the network again for off-line transfers which allow for an instantaneous
 transfer of funds, without requiring a connection to anyone in the rest of the
 network in order to perform the initial transfer.
 
@@ -1686,46 +1686,74 @@ In order for the EuroToken system to be able to function at the scale of the
 eurozone, the ability to scale is crucial. In order to evaluate how the system
 performs as the number of users grows, we performed the following experiments.
 
-We simulated the network as it grows using the python implementation. Our
-simulated notes randomly transacted with one another, and performing check-ins
-with the gateways whenever they received a transaction. The nodes chose random
-transaction partners for each transaction performed a transfer where they fully
-validated every transaction they received. In order to asses the scalability of
-the network, we ran several experiments where we varied the number of users in
-the network. For each transaction we measured the time taken for each user to
-validate the transaction. We also measured the number of blocks the gateway
+We adapted the python implementation to simulate the network as it grows. We
+configured a set number of nodes to continuously transact with one another and
+performed check-ins with their gateway whenever they had received a set number
+of transactions. The nodes chose random transaction partners for each
+transaction and check pointed with their gateway after every 4 transactions. In
+order to asses the scalability of the network, we ran several experiments where
+we varied the number of transaction nodes in the network. For each transaction
+we measured the time taken for each node to validate the transaction and how
+many transactions have been validated in order to calculate the transactions per
+second of the gateway. We also recorded the number of blocks the gateway
 validated for each transaction they validated.
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width=.5\textwidth]{./images/5_evaluation/usercount_validate_lookup.png}\hfill
-\includegraphics[width=.5\textwidth]{./images/5_evaluation/usercount_validate_time.png}
-\caption{Effect of varying network size}
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/network_lookups.png}\hfill
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/network_tps.png}
+\caption{Effect of network size on scalability}
 \label{usercount}
 \end{figure}
 
-As can be seen in figure \ref{usercount}, the number of users has no effect on
-the number of blocks to validate. While the variance does rise due to the
-randomness in the selection selection of trading partners, the number of blocks
-validated hovers averages out to 16 at any network size. Inspecting the time
-required to validate a transaction, we see some growth in variance starting at
-the 6 case. This is likely because of the limitations of the test setup. The
-number of blocks validated per transaction by each user is always 3, as the user
-before them always checkpoints before sending funds.
+The results of our experiments are illustrated in figure \ref{usercount}. While
+there initially seems to be a drop in transactions per second as an effect of
+the number of users in the network, this effect cannot be seen when looking at
+the number of blocks validated. This discrepancy can be explained by the
+circumstances of our test environment. Since all nodes are run on the same
+machine there is some competition over resources like disk access. When looking
+at the number of blocks required to validate a single transaction, the increase
+in nodes in the network, even when users have a complex transaction history, has
+no effect on the complexity of validating a single transaction for the gateway.
 
-Another measure of scalability is the effect of a growing chain size. In order
-to measure this effect we had each user transact up to 1000 transactions. All
-users start with the same sized chain, and transact at the same rate. This means
-that all of the chains have about the same length throughout the testing
-process. We measured both the time taken to validate a transaction, as well as
-the number of blocks validated.
+In addition to varying the number of transaction nodes we also wanted to test
+the effect of increasing the number of gateways. Based on our implementation we
+expect a linear relationship between the number of gateway compute power in the
+network and the transactions per second that can be validated. This is because
+there is no communication between the gateways that makes their validation
+dependent on one another. We ran 4 transacting nodes split among with 1, 2 and 4
+gateways. We then again measured the TPS of the gateways.
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_validate_time.png}\hfill
-\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_validate_lookups.png}
-\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_validate_time_gateway.png}\hfill
-\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_validate_lookups_gateway.png}
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/gatewaycount_tps.png}\hfill
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/gatewaycount_tps_total.png}
+\caption{Scalability in gateways}
+\label{gatewaycount}
+\end{figure}
+
+As illustrated in figure \ref{gatewaycount}, the number of gateways seems to
+have an effect on the per gateway transactions per second. However the number of
+blocks validated around 16 for each gateway count, we believe this to be the
+effect of the shared resources. When we then look at the transactions per second
+of the network in total, we do see an increase in TPS with a growing gateway
+count.
+
+Another point of scalability we introduced is the mitigation of the effect of a
+growing chain size.
+
+In order to measure this effect we had each user transact up
+to 1000 transactions. All users start with the same sized chain, and transact at
+the same rate. This means that all of the chains have about the same length
+throughout the testing process. We measured both the time taken to validate a
+transaction, as well as the number of blocks validated.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_lookups.png}\hfill
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_lookups_gateway.png}
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_time.png}\hfill
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_time_gateway.png}
 \caption{Effect of chain length on validation}
 \label{chainlength}
 \end{figure}
@@ -1757,8 +1785,10 @@ their checkpointing frequencies together.
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpointing_freq.png}\hfill
-\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpoint_freq_time.png}
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpointing_lookups_gateway.png}\hfill
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpointing_lookups_client.png}
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpointing_gateway_tps.png}\hfill
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpointing_gateway_time.png}
 \caption{Effect of checkpointing on validation}
 \label{checkpointing_freq}
 \end{figure}
