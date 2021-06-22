@@ -1,28 +1,28 @@
 ---
 title: EuroToken
 subtitle: A Central Bank Digital Currency (CBDC) with off-line transfers
-date: TODO
 author:
   name: R. W. Blokzijl
   affiliation: Technische Universiteit Delft
-  email: R.W.Blokzijl@student.tudelft.nl
+  email: wesselb94@gmail.com
   student_number: 4269519
-defence_date: TODO
+defence_date: July 7, 2021
 publish_date: TODO
 thesis_committee:
   - name: Dr.ir. J.A. Pouwelse
     role: TU Delft, supervisor
-  - name: Member 1
+  - name: Dr. C. Lofi
     role: TU Delft
 duration:
   from: November 11, 2020
-  to: TODO
+  to: July 7, 2021
 keywords:
   - Stablecoin
   - Blockchain
   - Cryptocurrencies
   - TrustChain
   - CBDC
+date: TODO
 preface: |
   TODO: Add preface
 
@@ -1571,29 +1571,13 @@ and the receiver, revealing only the relevant transaction.
 
 # Evaluation
 
-In the problem description we specified the following requirements as derived
-from the ECBs report on a digital euro [@ReportDigitalEuro].
-
-1. **Enhanced digital efficiency**
-2. **Cash-like features**
-3. **Competitive features**
-4. **Monetary policy option**
-5. **Disaster back-up system**
-6. **International use**
-7. Minimise ecological footprint (cost saving and environmentally friendly)
-8. **Ability to control the amount of digital euro in circulation.**
-9. Cooperation with market participants
-10. Compliance with the regulatory framework
-11. Safety and efficiency in the fulfilment of the Eurosystem’s goals
-12. Easy accessibility throughout the euro area
-13. Conditional use by non-euro area residents
-
-In this chapter we will evaluate our solution by these requirements. We
-emboldened the technical requirements as they will are guiding in our design,
-and we will go into more detail on how we met these requirements.
-The rest of the requirements will only be touched on lightly as they do not
-pertain to the topic of computer science and fall outside the area of expertise
-of the author.
+In this chapter we will evaluate our solution to the problems as explored in the
+problem description. We first describe two field trails that showed the
+proof-of-concept in action. This demonstrates how EuroToken is able to perform
+the basic functions of money and allows for off-line spending. We then describe
+some structured experiments that measure the scalability of the network and
+evaluate whether the promise of a double-spend proof but still scalable network
+has been met.
 
 ## Field trial
 
@@ -1606,11 +1590,6 @@ payment request for the amount of a single coffee and displayed it in the
 restaurant. Customers could then scan the code to transfer the money, and the
 owner who immediately see the money appear in their account.
 
-This trail showcases the simplicity of taking digital payments without having to
-go through the process of registering with a traditional payment provider. Using
-the EuroToken system all the owner of Doerak needed was a smartphone in order to
-participate in the modern economy.
-
 \begin{figure}[htp]
 \centering
 \resizebox{0.5\textwidth}{!}{
@@ -1620,13 +1599,10 @@ participate in the modern economy.
 \label{field_trial}
 \end{figure}
 
-The ability of the EuroToken system to allow the easy participation in the
-economic system, without having to go through the gatekeepers of digital
-payments, positions it in a way to conform to the following requirements as set
-by the ECB:
-
-- 1 **Enhanced digital efficiency**
-- 3 **competitive features**
+This trail showcases the simplicity of taking digital payments without having to
+go through the process of registering with a traditional payment provider. Using
+the EuroToken system all the owner of Doerak needed was a smartphone in order to
+participate in the modern economy.
 
 ## Off-line trial
 
@@ -1680,7 +1656,7 @@ double spent. When performing the initial off-line transaction, they would
 receive all the blocks neccesary to finalise all transactions before it with the
 gateways of the 2 peers before them. - TODO work this out in more detail
 
-## Evaluating scalability
+## Scalability in network size
 
 In order for the EuroToken system to be able to function at the scale of the
 eurozone, the ability to scale is crucial. In order to evaluate how the system
@@ -1735,74 +1711,100 @@ gateways. We then again measured the TPS of the gateways.
 As illustrated in figure \ref{gatewaycount}, the number of gateways seems to
 have an effect on the per gateway transactions per second. However the number of
 blocks validated around 16 for each gateway count, we believe this to be the
-effect of the shared resources. When we then look at the transactions per second
-of the network in total, we do see an increase in TPS with a growing gateway
-count.
+effect of the shared resources between the nodes. When we then look at the
+total transactions per second of the network, we do see an increase in total
+TPS with a growing gateway count. We still expect this to grow linearly in the
+real world.
 
-Another point of scalability we introduced is the mitigation of the effect of a
-growing chain size.
+## Scalability in history size
 
-In order to measure this effect we had each user transact up
-to 1000 transactions. All users start with the same sized chain, and transact at
-the same rate. This means that all of the chains have about the same length
-throughout the testing process. We measured both the time taken to validate a
-transaction, as well as the number of blocks validated.
+Another way in which EuroToken achieves scalability is by mitigation of the
+effect of a growing chain size using checkpointing. We claim that this allows
+the network to scale indefinitely as the personal chains of the users grow. In
+
+In order to validate this effect we set up a simulation where multiple users
+transacted up to 1000 transactions. All users started with an empty chain and
+transact together at the same rate. This means that all of the chains have the
+same length throughout the testing process. We measured both the time taken
+to validate a transaction, as well as the number of blocks validated.
 
 \begin{figure}[htp]
 \centering
 \includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_lookups.png}\hfill
 \includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_lookups_gateway.png}
-\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_time.png}\hfill
-\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_time_gateway.png}
-\caption{Effect of chain length on validation}
-\label{chainlength}
+\caption{Effect of chain length on number of blocks validated }
+\label{chainlength_lookups}
 \end{figure}
 
-The results are illustrated in figure \ref{chainlength}. While initially it
-seems like chain length has an effect on validation, the number of blocks
-validated remains the same. The rise in validation time is likely due to the
-database lookups of the block, which takes longer as the size of the database
-grows over time. Most importantly, the number of block accesses stays the same
-over time. This is a direct result of checkpointing, as users only need to
-validate blocks down to the last
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_time.png}\hfill
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/chainlength_time_gateway.png}
+\caption{Effect of chain length on validation time}
+\label{chainlength_time}
+\end{figure}
 
-## Evaluating checkpointing
+The results are illustrated in figure \ref{chainlength_lookups}. Here we plotted
+the number of blocks that are required to validate as a function of the number
+of transactions the user has transacted before this. This shows that the number
+of blocks a user or gateway has to validate does not change as the chains grow.
 
-The EuroToken derives its scalability and off-line transaction ability from the
+In figure \ref{chainlength_time} we show the time to validate the transaction as
+a function of the number of blocks transacted. Here we do see a gradual rise in
+the processing time as the chains grow. However, since the number of blocks
+validated seems to stay constant over time this rise in validation time is
+best explained by the rising cost of database lookups of the blocks, which takes
+longer as the size of the database grows over time. Since all blocks before the
+last checkpoint has been evaluated and are no longer required for validation in
+the future, these can be written to a longer term storage as to not
+unnecessarily increase the validation times.
+
+Most importantly, the number of block accesses stays the same over time. This is
+a direct result of checkpointing, as users only need to validate blocks down to
+the last checkpoint. This separates EuroToken from currencies like Bitcoin where
+the database of blocks is constantly growing leading to higher validation costs
+and validation times during startup.
+
+## Trade-offs in user and gateway validation times
+
+The EuroToken gets its scalability and off-line transaction ability from the
 concept of checkpointing. The collapsing of all transactions before a given
 point into a single checkpoint block allows any counterparty to simplify the
 entire history of a user to the balance in the checkpoint block. This prevents
 the exponential growth of required validation, which allows the system to scale
 to any size. In this section we explore the effect of various checkpointing
-frequencies.
+frequencies and demonstrate some trade-offs.
 
 We simulated a network of randomly transacting users. Every run of the
 experiment we varied the number of transactions the users would do without
 checkpointing. Each users performed over 1000 transactions each run. We then
-measured the total number of blocks their counterparties had to verify in order
-to validate their transaction. It should be noted that the entire network varied
-their checkpointing frequencies together.
+measured the total number of blocks their counter parties had to verify in order
+to validate their transaction. The entire network varied their checkpointing
+frequencies together.
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpointing_lookups_gateway.png}\hfill
-\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpointing_lookups_client.png}
-\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpointing_gateway_tps.png}\hfill
-\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpointing_gateway_time.png}
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpointing_lookups_client.png}\hfill
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpointing_lookups_gateway.png}
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpointing_gateway_time.png}\hfill
+\includegraphics[width=.5\textwidth]{./images/5_evaluation/checkpointing_gateway_tps.png}
 \caption{Effect of checkpointing on validation}
 \label{checkpointing_freq}
 \end{figure}
 
 As illustrated in figure \ref{checkpointing_freq} the effect of the
-checkpointing frequency is significant. The relationship is exponential and
-follows the following curve:
+checkpointing frequency is present. As the time we wait between checkpoints
+increases the effort for each transaction increases for the clients.
 
-$$22.26 \times 1.19 ^ x$$
+When looking at the effect on the gateway the image different. While the number
+of blocks the gateway has to validate does grow as well as the time taken to
+validate the transaction, the gateway has to do this much less frequently. This
+removes some overhead from the validations, allowing the gateway to validate
+more total transactions as the frequency of validation decreases.
 
-The effect of checkpointing becomes relevant when the system is adapted to allow
-multiple re-spendings of transactions in a row without validating online. The
-systems ability to allow off-line transactions depends on the ability of the
-ability of the users devices to validate the necessary transactions.
+In any implementation of EuroToken in the real world some attention should be
+dedicated to this phenomenon, as users are incentivized to checkpoint as
+frequently as possible, while this might not be optimal for the network.
 
 ## ECB requirements
 
@@ -1833,10 +1835,8 @@ the need for intermediary parties. EuroToken provides the ECB with a new set of
 and destruction of EuroTokens. The off-line transaction capacity could be
 extended to make EuroToken a **disaster proof** payment system. With backing
 during deployment of the ECB, EuroToken could become the standardised digital
-currency of Europe allowing **international** with ease.
-
-The rest of the requirements are legal questions and should are left out of
-scope.
+currency of Europe allowing **international** with ease. The rest of the
+requirements are legal questions and are left out of scope.
 
 # Discussion and future work
 
