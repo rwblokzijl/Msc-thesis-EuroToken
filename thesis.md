@@ -1184,9 +1184,9 @@ the integrity of their institutions.
 In this section we describe the implementation of the EuroToken protocol, as
 well as the prototype we built to test and showcase the capabilities of the
 EuroToken system. The protocol is implanted on top of IPv8. In includes an
-android/kotlin implementation as well as a python implementation. We then built
+Android/Kotlin implementation as well as a python implementation. We then built
 a Euro to EuroToken exchange and transaction validator on top of the python
-implementation. On top of the kotlin implementation we built a wallet app that
+implementation. On top of the Kotlin implementation we built a wallet app that
 is fully capable of securely transferring EuroTokens between wallets, as well as
 exchange them with the EuroToken exchange.
 
@@ -1236,9 +1236,9 @@ feature set and scalability of the whole EuroToken network. We need a network
 stack that allows communication both off-line directly between devices, as well
 as online across the world. Finding and connecting to any wallet without
 relying on central servers is a main requirement. In addition, the off-line
-transfer ability of the system is best demonstrated by creating an android
+transfer ability of the system is best demonstrated by creating an Android
 client. Another requirement is therefore that an implementation is available for
-android as well.
+Android as well.
 
 One option is to implement a full blockchain protocol and associated network
 stack from the ground up to adhere to our exact requirements. This would give
@@ -1251,19 +1251,19 @@ library, while implementing the blockchain protocol ourselves. This option has
 some benefits as the usage of a block-lattice is not yet very common, and thus
 is not implemented as a stand alone package anywhere. For the P2P library we
 have several options. We considered LibTorrent [@libtorrent], Libp2p [@libp2p]
-and IPv8[PyIPv8]. LibTorrent has a number of interesting peer to peer features
+and IPv8[@PyIPv8]. LibTorrent has a number of interesting peer to peer features
 like peer discovery and data transfer but sadly fell short when it comes
 discovery of peers based on public keys. It can be classified more as a file
 location protocol than a peer location protocol. This would mean we would have
 to implement a peer location system ourselves. Libp2p is a modular peer to peer
 networking stack that provides a large suite of P2P tools. Libp2p uses a
 Distributed Hash Table (DHT) to allow peer discovery based on a peer-id
-[@PeerId]. There is an JVM/android implementation available, which also makes it
-possible to create an android client. Finally we looked at IPv8. IPv8 offers
+[@PeerId]. There is an JVM/Android implementation available, which also makes it
+possible to create an Android client. Finally we looked at IPv8. IPv8 offers
 direct peer discovery based on public key and provides a framework for
 interaction called Overlay networks. Overlays provide a context for peers to
 interact within with particular message types. Crucially, IPv8 has an
-implementation in kotlin [@kotlin-IPv8].
+implementation in Kotlin [@kotlin-IPv8].
 
 Rather than implementing the blockchain mechanism ourselves, there is a third
 option. IPv8 includes a module called TrustChain. TrustChain is in essence a
@@ -1273,7 +1273,7 @@ work is required to adapt TrustChain to the EuroToken system, but it would
 provide a good basis for our implementation.
 
 We choose to build on IPv8/TrustChain for this project as it allows us to
-build on their kotlin implementation for the wallet as well as the python
+build on their Kotlin implementation for the wallet as well as the python
 implementation for the gateway.
 
 ### TrustChain structure
@@ -1325,7 +1325,7 @@ happened.
 
 The structure inherited from TrustChain serves us quite well as it conforms
 quite well to the block-lattice design we require. However, neither the python,
-nor the kotlin implementation includes any logic for running a currency. Before
+nor the Kotlin implementation includes any logic for running a currency. Before
 TrustChain can be used for EuroToken, it needs to be expanded to allow for
 value tracking and transfer.
 
@@ -1387,7 +1387,7 @@ to exchange Euro for EuroToken and vice versa.
 
 Instead of building a wallet from scratch we build on top of the TrustChain
 superapp [@SuperAppCode] [@SuperAppThesis]. This app was developed to
-showcase the capabilities of the kotlin implementation of IPv8
+showcase the capabilities of the Kotlin implementation of IPv8
 [@kotlin-IPv8]. The superapp in implemented as a collection of different
 subapps that use the same underlying IPv8 implementation. The app includes
 multiple other projects which we can integrate with the EuroToken system.
@@ -2068,11 +2068,10 @@ Baring a natural disaster that wipes out the human race, the future of money
 will be digital. With commerce and banking moving online, a new modern payment
 system is required with features that fit the digital age.
 
-
 The future of money will be digital because the features are needed, the
 question is: who gets to decide how these currencies are designed?
 
-While there are many bidders to becomer the worlds next digital currency, the
+While there are many bidders to become the worlds next digital currency, the
 difficulty lies in creating a currency that is (1) scalable, (2) off-line
 transferable, and (3) stable.
 
