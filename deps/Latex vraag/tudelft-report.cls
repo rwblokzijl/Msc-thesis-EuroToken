@@ -63,7 +63,7 @@
 \RequirePackage[noindentafter]{titlesec}
 \RequirePackage{titletoc}
 \RequirePackage[nottoc]{tocbibind}
-\RequirePackage{xcolor}
+\RequirePackage[usenames,dvipsnames]{xcolor}
 \RequirePackage{xkeyval}
 \RequirePackage[export]{adjustbox}
 
@@ -176,7 +176,7 @@
     %% The default style for text is Tahoma (sans-serif).
 %    \setlength\@largetitlesize{96pt}
     \renewcommand*\familydefault{\sfdefault}
-    %% The default style for titles is Bookman Old Style (serif). 
+    %% The default style for titles is Bookman Old Style (serif).
     \def\titlefont{\tudsffamily}
     \def\largetitlefont{\tudtitlefamily}
     \def\titleshape{}
@@ -223,7 +223,7 @@
 \def\@pagecolor{tudelft-cyan}
 %\if@whitetitle
 %  \def\titlecolor{tudelft-white}
-%\else   
+%\else
 %  \def\titlecolor{tudelft-black}
 %\fi
 
@@ -434,7 +434,7 @@
           \addtolength\@cover@fronttextheight{-4\@cover@margin}
           \coordinate (tcorner) at ($(top left)+(2\@cover@margin,-2\@cover@margin)$);
           \coordinate (front top left) at (tcorner);
-%%          \coordinate (back top left) at ($(tcorner)+(-\@cover@backboxwidth,\@cover@backboxheight)$);     
+%%          \coordinate (back top left) at ($(tcorner)+(-\@cover@backboxwidth,\@cover@backboxheight)$);
           \node at (front top left)[anchor=north west,inner sep=\@cover@margin]{
              \begin{minipage}[t][\@cover@fronttextheight]{\@cover@fronttextwidth}
                  %% Print the title and optional subtitle at the top in white.
@@ -442,16 +442,16 @@
                     \ifx\@subtitle\undefined\else
 %                     \\[3mm]
                      \vfill
-                     
+
                      {\titlefont\color{\@subtitlecolor}\fontsize{52}{52}\selectfont\@subtitle}
                    \fi
                  %% Print the author.
                    \vfill
-                  
+
                    {\titlefont\color{\@authorcolor}\fontsize{52}{52}\selectfont\@author}
                    \ifx\@cover@text\undefined\else
                      \vfill
-                     
+
                      {\titlefont\color{\@covertextcolor}\fontsize{18}{18}\selectfont\@cover@text}
                    \fi
              \end{minipage};
@@ -516,7 +516,7 @@
 %                  \end{minipage}
 %              };
 %          \fi
-         
+
        \fi
     \end{tikzpicture}
     %% Restore the margins and turn the page white again.

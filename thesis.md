@@ -6,8 +6,8 @@ author:
   affiliation: Technische Universiteit Delft
   email: wesselb94@gmail.com
   student_number: 4269519
-defence_date: July 7, 2021
-publish_date: TODO
+defence_date: July 12, 2021
+publish_date: July 13, 2021
 thesis_committee:
   - name: Dr.ir. J.A. Pouwelse
     role: TU Delft, supervisor
@@ -15,7 +15,7 @@ thesis_committee:
     role: TU Delft
 duration:
   from: November 11, 2020
-  to: July 7, 2021
+  to: July 12, 2021
 keywords:
   - Stablecoin
   - Blockchain
@@ -377,7 +377,7 @@ proposes a digital payment infrastructure with associated currency that
 completely moves the very core of value accounting to a distributed and open
 system. While 10 years after the publication of its white paper the
 crypto-currency is extremely popular as an investment vehicle, any significant
-payment volumes have yet to be demonstrated. With transaction fees at around 59
+payment volumes have yet to be demonstrated. With transaction fees peaking at 59
 US dollars [@BitcoinTransactionFees] around April 21 2021, Bitcoin is not
 ready to be a direct consumer facing payment method.
 
@@ -721,7 +721,7 @@ at the scale of the euro system needs to conform to a number of requirements.
 Such a system needs to be scalable, privacy aware, allow peer to peer
 transactions off-line. In needs to be price stable, exchangeable for euros, and
 most importantly, it needs to be secure and cheating resistant. In this chapter
-we first describe how a distributed block-lattice provides a good basis
+we first describe how a distributed block-DAG provides a good basis
 for a scalable, private, and off-line friendly transaction system. We then
 explain how we position the system in relation to the euro, how the price can
 remain stable, and how a system can mimic the properties of cash. We then go in
@@ -737,7 +737,7 @@ The possibilities and limitations of any virtual currency are dependent on its
 system of accounting. In order to conform to the off-line, scalability and
 transparency requirements, a system of distributed accounting is chosen. As the
 fundamental building block for the EuroToken system we use a Hyper-Sharded
-block-lattice that keeps track of every users transaction history on their
+block-DAG that keeps track of every users transaction history on their
 own edge device. By storing all information required for transacting at the
 physical end points of transactions, we create the possibility of direct
 off-line transaction between users, without any link to the outside world.
@@ -758,10 +758,10 @@ bus also from the IP network completely. Namely, it provides communication over
 Bluetooth without the need for any internet connection. This becomes very
 useful for demonstrating the off-line capabilities of the EuroToken system.
 
-## Block-lattice accounting
+## Block-DAG accounting
 
 As mentioned for our distributed accounting system we choose to build on a
-block-lattice structure. As illustrated in figure \ref{block_lattice} every user
+block-DAG structure. As illustrated in figure \ref{block_DAG} every user
 has a personal blockchain structured as a chronological, one-dimensional string
 of "blocks". Every block will include a cryptographically secure hash
 identifying what block preceded it. Because of the trapdoor effect of the hash,
@@ -777,8 +777,8 @@ counterparty. This effectively creates a system of double accounting.
 \resizebox{0.7\textwidth}{!}{
 \includegraphics{./images/4_implementation/trustchain_basics.png}
 }
-\caption{Block-lattice structure}
-\label{block_lattice}
+\caption{Block-DAG structure}
+\label{block_DAG}
 \end{figure}
 
 Every block can contains a "declaration" by the user, or a reference to the
@@ -897,7 +897,7 @@ leaves a certain measure of uncertainty with regards to the "finality" of any
 transaction in the newest blocks. This often requires users to wait up to an
 hour to be sufficiently confident their transaction really happened.
 
-A solution to this problem in a network with a distributed block-lattice, starts
+A solution to this problem in a network with a distributed block-DAG, starts
 with the realisation that the issue of detecting double-spending can be reduced
 to the issue of detecting "chain forking" in our network. The usage of the
 blockchain allows us to make sure that all transactions are ordered and
@@ -1002,7 +1002,7 @@ and conflict resolution.
 
 For a block to be considered valid:
 
-1. All standard block-lattice invariants are maintained.
+1. All standard block-DAG invariants are maintained.
 2. All blocks preceding it are verified to be valid
 3. The total spent amount is  to be less than the spendable balance.
 
@@ -1184,8 +1184,8 @@ the integrity of their institutions.
 In this section we describe the implementation of the EuroToken protocol, as
 well as the prototype we built to test and showcase the capabilities of the
 EuroToken system. The protocol is implanted on top of IPv8. In includes an
-Android/Kotlin implementation as well as a python implementation. We then built
-a Euro to EuroToken exchange and transaction validator on top of the python
+Android/Kotlin implementation as well as a Python implementation. We then built
+a Euro to EuroToken exchange and transaction validator on top of the Python
 implementation. On top of the Kotlin implementation we built a wallet app that
 is fully capable of securely transferring EuroTokens between wallets, as well as
 exchange them with the EuroToken exchange.
@@ -1248,7 +1248,7 @@ peer communication technologies have already been implemented somewhere.
 
 The second option is then to build upon some existing peer to peer networking
 library, while implementing the blockchain protocol ourselves. This option has
-some benefits as the usage of a block-lattice is not yet very common, and thus
+some benefits as the usage of a block-DAG is not yet very common, and thus
 is not implemented as a stand alone package anywhere. For the P2P library we
 have several options. We considered LibTorrent [@libtorrent], Libp2p [@libp2p]
 and IPv8[@PyIPv8]. LibTorrent has a number of interesting peer to peer features
@@ -1267,13 +1267,13 @@ implementation in Kotlin [@kotlin-IPv8].
 
 Rather than implementing the blockchain mechanism ourselves, there is a third
 option. IPv8 includes a module called TrustChain. TrustChain is in essence a
-block-lattice type distrusted ledger technology[@TrustChain]. The technology
+block-DAG type distrusted ledger technology[@TrustChain]. The technology
 does not fully solve double spending they way we originally designed it, so some
 work is required to adapt TrustChain to the EuroToken system, but it would
 provide a good basis for our implementation.
 
 We choose to build on IPv8/TrustChain for this project as it allows us to
-build on their Kotlin implementation for the wallet as well as the python
+build on their Kotlin implementation for the wallet as well as the Python
 implementation for the gateway.
 
 ### TrustChain structure
@@ -1317,14 +1317,14 @@ happened.
 \includegraphics{./images/3_design/trustchain.png}
 \label{trustchain_label}
 }
-\caption{ TrustChain block-lattice, interconnected personal blockchains \cite{TrustChain}. }
+\caption{ TrustChain block-DAG, interconnected personal blockchains \cite{TrustChain}. }
 \label{trustchain}
 \end{figure}
 
 ### EuroToken extension
 
 The structure inherited from TrustChain serves us quite well as it conforms
-quite well to the block-lattice design we require. However, neither the python,
+quite well to the block-DAG design we require. However, neither the Python,
 nor the Kotlin implementation includes any logic for running a currency. Before
 TrustChain can be used for EuroToken, it needs to be expanded to allow for
 value tracking and transfer.
@@ -1465,7 +1465,7 @@ and pays out the equivalent amount to a IBAN bank account.
 
 To handle this flow we build the exchange node. This node exposes a web
 frontend that allows the user to exchange their money in either direction. The
-exchange is implemented in python, and is based on the python implementation of
+exchange is implemented in Python, and is based on the Python implementation of
 IPv8 [@PyIPv8].
 
 ### Buy and sell instantly
@@ -1592,7 +1592,7 @@ owner who immediately see the money appear in their account.
 
 \begin{figure}[htp]
 \centering
-\resizebox{0.5\textwidth}{!}{
+\resizebox{0.8\textwidth}{!}{
 \includegraphics{./images/5_evaluation/field_trial.jpg}
 }
 \caption{Field trial}
@@ -1616,7 +1616,7 @@ connect feature of the superapp.
 
 \begin{figure}[htp]
 \centering
-\resizebox{0.5\textwidth}{!}{
+\resizebox{0.8\textwidth}{!}{
 \includegraphics{./images/5_evaluation/offline_trial.jpg}
 }
 \caption{EuroToken off-line trial}
@@ -1662,7 +1662,7 @@ In order for the EuroToken system to be able to function at the scale of the
 eurozone, the ability to scale is crucial. In order to evaluate how the system
 performs as the number of users grows, we performed the following experiments.
 
-We adapted the python implementation to simulate the network as it grows. We
+We adapted the Python implementation to simulate the network as it grows. We
 configured a set number of nodes to continuously transact with one another and
 performed check-ins with their gateway whenever they had received a set number
 of transactions. The nodes chose random transaction partners for each
@@ -1806,26 +1806,34 @@ In any implementation of EuroToken in the real world some attention should be
 dedicated to this phenomenon, as users are incentivized to checkpoint as
 frequently as possible, while this might not be optimal for the network.
 
-## ECB requirements
+## System evaluation and ECB requirements
 
 In the problem description of this document we described the requirements of a
 digital euro as specified by the ECB. In this section we review the extent to
 which the EuroToken system conforms to the requirements. The requirements are
 summerised as follows:
 
-- 1 **Enhanced digital efficiency**
-- 2 **Cash-like features**
-- 3 **Competitive features**
-- 4 **Monetary policy option**
-- 5 **Disaster back-up system**
-- 6 **International use**
-- 7 Minimise ecological footprint (cost saving and environmentally friendly)
-- 8 **Ability to control the amount of digital euro in circulation.**
-- 9 Cooperation with market participants
-- 10 Compliance with the regulatory framework
-- 11 Safety and efficiency in the fulfilment of the Eurosystem’s goals
-- 12 Easy accessibility throughout the euro area
-- 13 Conditional use by non-euro area residents
+Table: (ECB requirements) \label{my_table}
+
+| #  | Requirement                                                       | Conformance |
+|----|-------------------------------------------------------------------|-------------|
+| 1  | **Enhanced digital efficiency**                                   | \cmark      |
+| 2  | **Cash-like features**                                            | \cmark      |
+| 3  | **Competitive features**                                          | \cmark      |
+| 4  | **Monetary policy option**                                        | \qmark      |
+| 5  | **Disaster back-up system**                                       | \qmark      |
+| 6  | **International use**                                             | \cmark      |
+| 7  | Minimise ecological footprint                                     | \cmark      |
+| 8  | **Ability to control the amount of digital euro in circulation.** | \cmark      |
+| 9  | Cooperation with market participants                              | \umark      |
+| 10 | Compliance with the regulatory framework                          | \umark      |
+| 11 | Safety and efficiency in the fulfilment of the Eurosystem’s goals | \umark      |
+| 12 | Easy accessibility throughout the euro area                       | \cmark      |
+| 13 | Conditional use by non-euro area residents                        | \qmark      |
+
+\begin{center}
+Legend: $~$ | $~$ \cmark $~$ Possible $~$ | $~$ \qmark $~$ Future reseach $~$ | $~$ \umark $~$Out of scope
+\end{center}
 
 We achieve **enhanced digital efficiency** and a **competitive feature set **by
 designing EuroToken as a digital, peer-to-peer, programmable payment system. We

@@ -1,12 +1,18 @@
-\documentclass[whitelogo]{tudelft-report}
+\documentclass[dvipsnames,whitelogo]{tudelft-report}
 \usepackage{natbib}
 \usepackage{changes}
 \usepackage{multirow}
+\usepackage{pifont}
 \usepackage{longtable,supertabular,booktabs}
 \usepackage[noend]{algpseudocode}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\newcommand{\cmark}{\textcolor{OliveGreen}{\ding{52}}}
+\newcommand{\xmark}{\textcolor{red}{\ding{54}}}
+\newcommand{\qmark}{\textcolor{Dandelion}{\ding{108}}}
+\newcommand{\umark}{\textcolor{red}{\textbf{?}}}
 
 $if(graphics)$
 \usepackage{graphicx,grffile}
