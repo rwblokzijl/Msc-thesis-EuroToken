@@ -65,19 +65,10 @@ daily lives. Where China and Facebook are making rapid progress, the Eurozone is
 still deliberating. Meanwhile their presence in the race might be vital in
 incorporating the values of personal freedoms and privacy.
 
-This thesis provides a design for EuroToken, a prototype for a Central Bank
-Digital Currency. Its primary purpose is to implement, for the first time, a
-currency that is: digital, universally accessible, central bank issued, and
-peer-to-peer. Our unique design stems from an analysis of the fundamental
-challenges distributed technologies face today and exploring how an institution
-with the reliability, experience and reach of the European Central Bank (ECB)
-might provide solutions.
-
 ## The decline of cash
 
-Most monetary systems of today relies on two main types of money. Private money,
-managed by private banks, and public money, managed by the European Central Bank
-(ECB).
+Most monetary systems today rely on two types of money. Private money, managed
+by private banks, and public money, managed by the European Central Bank (ECB).
 
 Public money is the money we have in our physical wallets. It consists of bank
 notes and coins and is often referred to as cash. Once upon a time it was
@@ -160,7 +151,7 @@ popularity. While attempts at decentralized stablecoins do exist
 [@MakerDAO:whitepaper], it is so called centralised stablecoins that have gained
 a reputation as a digital alternatives to the dollar. Tether
 [@Tether:whitepaper] is the most prominent example of this. With a market cap of
-62 billion dollars in June 2021, they are the 3th largest crypto-currency by
+62 billion dollars in June 2021, they are the 3rd largest crypto-currency by
 market cap [@TetherCap] after Bitcoin and Ethereum. In order to achieve the
 stability and dependability of their coin, Tether Holdings Limited acts as a
 centralised middle-man exchanging 1 tether for 1 dollar. Centralised stablecoins
@@ -197,7 +188,7 @@ progressed the farthest so far is the Chinese government. With successful
 public trails [@ChinaCoinTrial] they seem to be closest to a working
 digital currency.
 
-The battle for the future of the eurozone is sill anyones game, and the outcome
+The battle for the future of the eurozone is sill anyone's game, and the outcome
 might depend on the decisions of the European commission. To avoid the euro
 being usurped by challengers from foreign nations or the private sector a design
 for a CBDC in-line with the ideals on which Europe is founded is required sooner
@@ -205,24 +196,23 @@ rather than later.
 
 ## The need for a future proof currency
 
-e-invoice, e-receipts, e-identity, and e-signatures
-
 The world is moving online, and commerce is moving with it. E-commerce as a
 percentage of worldwide GCP has more than tripled in the last decade
 [@EcommerceGrowth]. With this move to online shopping, commerce also moved from
-a solely local phenomenon, to incorporating global vendors. Especially trade
-with China has seen significant growth over the last 10 years.
+a solely local phenomenon, to incorporating global vendors. As illustrated in
+figure \ref{international_trade}. EU trade with countries around the world, and
+especially China has seen significant growth over the last 10 years.
 
 \begin{figure}[htp]
 \centering
 \resizebox{\textwidth}{!}{
 \includegraphics{./images/1_intro/international.png}
 }
-\caption{E-commerce 2010-2020 \cite{EcommerceStats}}
-\label{ecommerce_international}
+\caption{International trade 2010-2020 \cite{InternationalTrade}}
+\label{international_trade}
 \end{figure}
 
-While the increased globalisation brings wealth like never before, the increased
+While increased globalisation brings wealth like never before, the increased
 global trade is not without its dangers to the EU. With China well underway in
 the race to the first digital currency, the digital yuan might find itself in an
 ideal position to dominate global trade. If China or any other currency can
@@ -232,13 +222,12 @@ euro. The EU might see the control over their own economies fall away.
 In addition to the threat of Chinese influence over European markets,
 opportunity also lies in the provision of a currency to the unbanked population
 of the world. Where the US dollar currently holds the position of the worlds
-"default" currency, this position might move to the first CBDC as people from
-all over the world can be brought into modern commerce. This can be a great
-opportunity for the EU to spread its values across the world.
+"default" currency, this position might be taken over by the first CBDC as
+people from all over the world can be brought into modern commerce.
 
 In order to stay relevant on the global stage, and to be able to serve its
 citizens in the modern age, the eurozone needs a currency with a competitive
-feature set on the global stage.
+feature set on the global market.
 
 ## The technical debt of traditional finance
 
@@ -249,43 +238,75 @@ stayed the same: acting as a medium of exchange [@On_the_Origin_of_Money].
 
 The first known true standardised gold coins have attributed to Lydian society
 back in 640 BC. Slowly over time the gold and silver contents of the coins
-became less important, and currencies as a proxy for trust, became slowly more
-dependent trust in the system rather than the real value of the currency. In 806
-AD, this culminated in the first use of paper money in China. Since these
+became less important. Currencies as a proxy for trust, slowly became more
+dependent on trust in the system rather than the real value of the currency. In
+806 AD, this culminated in the first use of paper money in China. Since these
 events, the form of money has varied based on societal conditions. Because of
 its functional utility, money in the form of bank notes backed by gold has been
 a popular form of money that has been used in European society since 1440
 [@The_Gold_Standard].
 
-By the end of the 1900s Europe had a system of many national currencies. The
-value of these currency was maintained on a national level, often using the gold
-standard [@The_Gold_Standard]. Meanwhile private banks act as a trustworthy and
-secure institution, allowing people to store their money, while they could make
-a profit lending that money out. For international and cross-currency trade,
+By the end of the 1900s Europe had a system of many national currencies. These
+currency was maintained on a national level often ensuring its value on the gold
+standard [@The_Gold_Standard]. Meanwhile private banks act as trustworthy and
+secure institutions, allowing people to store their money while they made a
+profit lending that money out. For international and cross-currency trade,
 people would swap different currencies in exchanges when needed, but because of
-the localised nature of society this was infrequent.
+the localised nature of society this was infrequent for individuals.
 
 This system worked fine in an era where most exchange was done by cash, and most
 trade was done within national borders. But as the world became more connected
-and digital, different solutions had to be built on top of the old system to
-respond to the changing demands of the population. Private banks, who were once
-used only for large transactions and money storage, got a more and more central
-role in day to day transactions. In effect the system as we see it today has
-accrued a lot of technical debt as the its requirements changed over time. As a
-result a number of inefficiencies have emerged from this technical debt.
+and digitalised, different solutions had to be patched into the old system to be
+able to respond to the changing demands of the population. Private banks, who
+were once used only for large transactions and money storage, got a more and
+more central role in day to day transactions. In effect the system as we see it
+today has accrued a lot of technical debt as the its requirements changed over
+time. As a result a number of inefficiencies have emerged from this technical
+debt.
 
 First, international money transfer. Even within the euro-system this can often
-take up to a week. Second, banks as private institutions are vulnerable to
-bankruptcy. This makes them a "financial"on their semi-central point of failure,
-that take a good portion of the financial system with it. Third, transactions
-are dependent on bank IT systems. This makes them a "technical" semi-central
-point of failure, potentially leaving people unable to purchase their
-essentials. Fourth, people are tightly coupled to their banks. While having
-multiple bank accounts is possible, a lack of standardisation and
+take up to a week due to the way banks are interconnected, even the new SEPA
+transfers can take 1-2 business days. Second, banks as private institutions are
+vulnerable to bankruptcy. This makes them a "financial" semi-central point of
+failure, that take a good portion of the financial system with it. Third,
+transactions are dependent on bank IT systems. This makes them a "technical"
+semi-central point of failure, potentially leaving people unable to purchase
+their essentials. Fourth, people are tightly coupled to their banks. While
+having multiple bank accounts is possible, a lack of standardisation and
 interoperability makes people easily dependent on their one bank and its
-features.
+features. Finally fifth, with banks at the helm of all transactions innovation
+is limited to those who have most to lose from any form of change.
+
+With the rise of e-commerce, methods of payment that allow the user to transact
+over large distances are becoming essential. With our economies are moving
+online, our money can no longer lag behind. A new currency is needed that can
+provide near instantaneous money transfer across borders without any
+intermediary parties that needlessly increase the complexity.
+
+Additionally, the new system should allow for new innovative initiatives,
+perhaps supporting some basic financial primitives. A new digital payment system
+could be able to integrate with, or even itself implement a continent wide
+system for e-invoicing, e-receipts, e-identity, and e-signatures into one
+system. This would have a profound impact on all of international trade, tightly
+integrating most financial tools into one universal system.
+
+This thesis provides a design for EuroToken, a prototype for a Central Bank
+Digital Currency. Its primary purpose is to implement, for the first time, a
+currency that is: digital, central bank issued, universally accessible,
+peer-to-peer and price stable. Our unique design stems from an analysis of the
+fundamental challenges distributed technologies face today and exploring how an
+institution with the reliability, experience and reach of the European Central
+Bank (ECB) might provide solutions.
+
+This thesis is also accompanied by a prototype implementation [@GatewayCode]
+[@SuperAppCode] of the digital Euro. This implementation provides a
+demonstration of the feature set, including a connection to the existing
+IBAN-based banking system to allow exchange between the two types of Euro.
 
 # Problem description
+
+Can we create a digital, extensible, secure, scalable, price stable extension to
+the Euro that allows for near-instant world-wide and off-line transfer?
 
 Over last century the world of finance has gone through significant paradigm
 shifts. Currencies traditionally started as a bottom up distributed system based
@@ -317,7 +338,7 @@ financial innovation, a new and open medium of exchange is required. Such a
 currency needs to be digitally efficient, transparent, accountable, and be fit
 for global transacting in the 21st century. In this chapter we explore the
 challenges in the creation of such a currency, specify the requirements for
-such a payment system and describe why a real solution is still lacking.
+such a payment system and describe why a current solutions are still lacking.
 
 ## The difficulty of modern digital payment solutions
 
@@ -338,7 +359,7 @@ Cards, eCash went bankrupt in 1998 [@eCash1998].
 The adoption of credit cards as the predominant method of online payment
 subsequently lead to a steep rise in credit card fraud. After with theft of
 social security numbers, theft of credit card numbers is the predominant form of
-identify theft [@CreditFraud]. While we leave the issue of a digital identity
+identify theft [@CreditFraud] [@IdentityTheft]. While we leave the issue of a digital identity
 out of scope, the inadequacy of the credit card system at protecting users has
 been proven again and again.
 
@@ -408,10 +429,12 @@ individuals alike as it makes users the gatekeeper of their own fiscal lives.
 
 ## Requirements for a digital euro by the ECB
 
-In October 2020 the European Central Bank published a report detailing a number
-of scenarios where a new digital euro could provide a benefit
-[@ReportDigitalEuro]. Associated with these a number of requirements are
-provided.
+We aim to create a payment system that is secure, scalable, off-line
+transferable, price stable and digitally capable. These requirements are
+derived from a recent report by the European Central Bank (ECB). In October 2020
+the ECB published a report detailing a number of scenarios where a new digital
+euro could provide a benefit [@ReportDigitalEuro]. Associated with these a
+number of requirements are provided:
 
 1. **Enhanced digital efficiency**
 2. **Cash-like features**
@@ -427,21 +450,21 @@ provided.
 12. Easy accessibility throughout the euro area
 13. Conditional use by non-euro area residents
 
-In this project we aim to conform to these requirements as best we can and we
-evaluate our solution by these requirements. The technical requirements are
+In our evaluation of this project later we will explore to what extent our
+implementation conforms to these requirements. The technical requirements are
 emboldened in the list, as they will be guiding in our design. The rest
 will only be speculated on as they do not pertain to the topic of computer
-science and fall outside of our area of expertise. Therefore a technical
-solution to these problems has to conform to the following requirements.
+science and fall outside of our area of expertise. Because of the broad
+political and legal angle of these requirements, a technical solution to these
+problems needs to conform to more technical requirements. We compiled the top
+level requirements to the following functional requirements that this thesis
+will specifically aim to reach:
 
 1. Be a secure system of accounting
 2. Scale to the size of the European union
 3. Preventing unsanctioned money creation
 4. Price stability
 5. Disaster resilience through off-line transfer ability
-
-We aim to create a payment system that is secure, scalable, off-line
-transferable, stable, secure and digitally capable.
 
 ## Trade-offs around double spending, scalability and decentralisation
 
@@ -642,14 +665,14 @@ on the value of their collateral.
 ## Lack of real world implementations of broad featured CBDCs
 
 While many currencies aim to demonstrate and succeed on a specific set of
-features, the world is stil waiting for a currency that is sufficiently capable
-to be a CBDC. In Morten Linnemann Bech and Rodney Garratt analyse the set of
-features a CBDC needs to support. This main feature set is illustrated in
-figure \ref{cbdc_features}.
+features, the world is still waiting for a currency that is sufficiently capable
+to be a CBDC. In "Central bank cryptocurrencies" [@FormsOfMoney] Morten
+Linnemann Bech and Rodney Garratt analyse the set of features a CBDC needs to
+support. This main feature set is illustrated in figure \ref{cbdc_features}.
 
 \begin{figure}[htp]
 \centering
-\resizebox{0.7\textwidth}{!}{
+\resizebox{\textwidth}{!}{
 \includegraphics{./images/2_problem/cbdc_features.png}
 }
 \caption{The money flower: a taxonomy of money \cite{FormsOfMoney}. }
@@ -657,23 +680,33 @@ figure \ref{cbdc_features}.
 \end{figure}
 
 In recent years, the discussion around central bank digital currencies has been
-lively among central banks [@Ekrona] [@JapanCoin] [@AustraliaCoin] [@FranceCoin]
-[@IcelandCoin] [@DutchCoin] [@NorwayCoin] [@RussiaCoin] [@SwissCoin]
-[@EnglandCoin] [@IsraelCoin]. Central banks around the world are publishing
-discussion papers and roadmaps, some even dare make some design decisions. Yet,
-with the exception of China [@ChinaCoinTrial], no countries have deployed
-a real world trail. Meanwhile the currencies that do have real world trails have
-closed systems and are managed by either corporate conglomerates
-[@Diem:whitepaper] or totalitarian states.
+lively among central banks [@Ekrona] [@JapanCoin] [@AustraliaCoin]
+[@DenmarkCoin] [@FranceCoin] [@IcelandCoin] [@DutchCoin] [@NorwayCoin]
+[@RussiaCoin] [@SwissCoin] [@EnglandCoin] [@IsraelCoin]. Central banks around
+the world are publishing discussion papers and road maps, some even dare make
+some design decisions. Yet, with the exception of China [@ChinaCoinTrial], no
+countries have deployed a real world trail. Meanwhile the currencies that do
+have real world trails have closed systems and are managed by either corporate
+conglomerates [@Diem:whitepaper] or totalitarian states.
 
-While stablecoins like Tether have demonstraded the appetite in the world for
+While stablecoins like Tether have demonstrated the appetite in the world for
 digital stable currencies, their fundamental flaw is in their centralised
 nature. The Tether Holdings Limited company holds the power over the entire
 currency, thus never allowing it to become a widespread payment system.
 
+There exists theoretical work from academia, but these usually focus on double
+spending problem and the system for monetary policy. RSCoin [@RSCoin], sponsored
+by the Bank of England presents a solution that centralises a solution to the
+double-spending to nodes run by various trusted parties. This choice is
+justified by the fact that the banks of today could run these nodes for profit.
+Multi-chain models have also been proposed [@PandasCBDC], boosting the
+scalability of the system while maintaining transparency and auditability.
+However, while these consensus mechanisms are promising, they are both
+fundamentally limited to on-line transactions.
+
 EuroToken is a prototype for a Central Bank Digital Currency. Its primary
 purpose is to implement, for the first time, a currency that is: digital,
-universally accessible, central bank issued, and peer-to-peer.
+universally accessible, central bank issued, peer-to-peer and off-line capable.
 
 ## Research Focus and Structure
 
@@ -684,24 +717,24 @@ the following question:
 ---
 
 \begin{center}
-{\center \Large Can we create a digital payment system that combines the
-functionality of world-wide online payments, and local off-line payments in a
-single solution.
-}
+{\center \Large Can we create a digital, extensible, secure,
+scalable, price stable extension to the Euro that allows for near-instant
+world-wide and off-line transfer. }
 \end{center}
 
 ---
 
-This document describes the motivation, design, implementation and evaluation
-of the EuroToken system. The EuroToken system is a conceptual design that aims
-to fit the requirements stated in the previous section, as well as a limited
-proof of concept design testing certain aspects of the design. The structure of
-this work is as follows, in the next chapter we describe the design of the
-EuroToken system. The design is approached from the fundamental questions of a
-currency and answers the fundamental questions first. What is a digital
-currency? What is the double spending problem? And how to design a system that
-is scalable while not compromising the principle of double-spend prevention?
-The design aims to provide the following features:
+The rest of this document describes the design, implementation and evaluation of
+the EuroToken system. The EuroToken system is a conceptual design that aims to
+fit the requirements stated in the previous section. We include a limited proof
+of concept design testing and demonstrating certain aspects of the design.
+
+The structure of this work is as follows, in the next chapter we describe the
+design of the EuroToken system. The design is approached from the fundamental
+questions of a currency and answers the fundamental questions first. What is a
+digital currency? What is the double spending problem? And how to design a
+system that is scalable while not compromising the principle of double-spend
+prevention? The design aims to provide the following features:
 
 1. Be a fully functional system of accounting
 2. Preventing unsanctioned money creation
@@ -1061,7 +1094,7 @@ But this is still inherently unscalable.
 
 A second issue is one of privacy, when Bob has to send Alice all of his chain
 for verification, Alice can derive much from this information. Though we would
-like to see methods of privatization added to perhaps conceal transfered
+like to see methods of privatization added to perhaps conceal transferred
 amounts, we still need a way to minimize the information leakage to 3rd
 parties.
 
@@ -1081,32 +1114,51 @@ checkpoint.
 
 ## Off-line transactions and online validation
 
-The EuroToken system has the intentional distinction between transactions and
-their finalisation. Because of this, the first step of transactions only
-require a direct connection between users. In theory, this allows to transact
-off-line, if they're willing to risk that a conflicting block already exists in
-the validator. Of course, in this case, the transfer of funds depends on the
-trustworthiness of the sending party.
+An off-line transaction is a transaction where both parties have no connection
+to the rest of the network.
 
-In this section we discuss a few ways of interacting with the system that
-allows for different risk exposure to the parties.
+Because of the chronological ordering of the personal blockchains, a
+double-spend attack is only possible if conflicting blocks exist. To prevent
+these transactions from succeeding there is a need for the network to store all
+blocks and validate that they are valid and that there are no conflicts. This
+becomes the main challenge in creating a system for off-line transactions.
 
-### Online transactions
+Because of the issues discussed earlier in the section on double spending,
+scalability and decentralisation, there is no way of preventing someone from
+hiding any number of blocks from a previous transaction from the other party
+in a transaction. While these double-spendings will not propagate into the
+network.
 
-When users are connected to the internet, a real life interaction can easily
-combine the finalisation step with the transaction, only transferring goods or
-services once the transaction is finalised. We envision this as the default way
-for users to interact, especially for large transactions, and transactions with
-strangers, since this reduces the risk to either party to zero.
+To limit the scope of this problem, the EuroToken system maintains a distinction
+between transactions and their finalisation. A transaction is first signed by
+two parties locally and included in their blockchains. All information required
+to do this is already stored in the wallets of the tho parties. After the
+signing of the transaction, it is finalised with the network, storing it and
+making sure it does not conflict with any other transactions known to the
+network. During the period that a transaction is not finalised, another
+conflicting transaction might get finalised before, thus leaving us with as
+double-spend attempt.
 
-### Off-line transactions
+When users are connected to the internet the risk can be reduced to zero. An
+online interaction can simply combine the finalisation step with the
+transaction, only transferring goods or services once the transaction is
+finalised. We envision this as the default way for users to interact, especially
+for large transactions.
 
-Since money only becomes spendable after finalisation, the receiving user is
-the one that will lose funds when a double spend happens. To lower the risk and
-damage of this, certain systems might be put in place. For this, we build on
-the fact that transactions are always signed by both parties. This makes sure
-that a proof of double-spending always exists, and is obtained no later than
-the finalisation attempt.
+Using the system described so far, there are multiple approaches to handling
+this risk in off-line transactions, each with their own trade-offs.
+
+This mechanism allows the transaction to happen off-line it the receiver accepts
+the risk that once they finalise online, the transaction might be rejected
+because another conflicting transaction already exists. Of course, in this case,
+the transfer of funds depends on the trustworthiness of the sending party. This
+mechanism prevents the spread of the effects of the double spending into the
+network, and limits the risk to the receiver.
+
+To lower the risk and damage of , certain systems might be put in place. For
+this, we build on the fact that transactions are always signed by both parties.
+This makes sure that a proof of double-spending always exists, and is obtained
+no later than the finalisation attempt.
 
 A way to ensure a user that they will receive the funds is by allowing senders
 to register their identity with their validator. The validator would sign a
@@ -1364,18 +1416,18 @@ considered "full" if the both the proposal and acceptance exist. If the
 acceptance does not exist, the block is meaningless and any validation will keep
 recursing the chain until a full checkpoint is found.
 
-#### Creation block
+#### Tokenisation block
 
-The creation is a special type of transfer that is done by a trusted exchange.
+The tokenisation is a special type of transfer that is done by a trusted exchange.
 This block is the only way in which new EuroToken are allowed to enter the
 system and will only be considered valid if it is made by a trusted party. The
 proposal is made by the exchange and the acceptance is made by a user.
 
-#### Destruction block
+#### De-tokenisation block
 
-The destruction is the opposite of a creation. The proposal is made by a user
+The de-tokenisation is the opposite of a tokenisation. The proposal is made by a user
 and acts as a transfer to an exchange. The exchange then also creates an
-acceptance block. The creation and destruction blocks are used to convert
+acceptance block. The tokenisation and de-tokenisation blocks are used to convert
 between Euro and EuroTokens.
 
 ## Wallet
@@ -1451,15 +1503,16 @@ resent in case of network failure.
 
 ## Exchange
 
-For the EuroToken to be part of the Euro system a mechanism of exchange is
-required. The exchange forms the bridge between the digital EuroToken and the
-rest of the Euro systems. The exchange mechanism must support the two main
-flows of value.
+In order to ensure the stability of EuroToken it has to fully integrate with the
+existing IBAN-based banking system. To achieve this an exchange is created to be
+run and/or regulated by the ECB. This exchange forms the bridge between the
+digital EuroToken and the rest of the Euro systems and is therefore called the
+gateway. The exchange mechanism must support the two main flows of value.
 
-The first we call the creation flow. This flow handles the exchange of Euro for
+The first we call the tokenisation flow. This flow handles the exchange of Euro for
 EuroToken, thus creating EuroToken. This involves the handling of payment into
 a bank account, verifying this, and paying out and equivalent amount of
-EuroToken to the users wallet. The second flow is the destruction flow. This
+EuroToken to the users wallet. The second flow is the de-tokenisation flow. This
 flow does handles the opposite conversion. It handles a payment of EuroToken
 and pays out the equivalent amount to a IBAN bank account.
 
@@ -1488,11 +1541,11 @@ directly on the front page.
 The flow of exchange is different in each direction and require different steps
 from the user.
 
-#### Creation
+#### Tokenisation
 
-In our prototype we use the payement system API of a popular bank to enable
-users to pay us Euros. The creation flow can be seen in figure
-\ref{gatewat_flow}. The creation step is the most complex. This is because the
+In our prototype we use the payment system API of a popular bank to enable
+users to pay us Euros[@Tikkie]. The tokenisation flow can be seen in figure
+\ref{gateway_flow}. The tokenisation step is the most complex. This is because the
 sending of money to a user requires the exchange to know the public key of the
 user. In order to obtain EuroTokens the user accesses the web interface of the
 exchange, which will lead it through the following steps:
@@ -1504,7 +1557,7 @@ exchange, which will lead it through the following steps:
    exchange over IPv8 with the payment id. When the exchange receives the
    message, the public key of the sender of the message is stored in association
    with the payment. This will be the public key to which the EuroToken will be
-   transfered once the transaction is complete.
+   transferred once the transaction is complete.
 2. The exchange creates a new payment request with the bank for the specified
    amount, which the user is then redirected to.
 3. The exchange is alerted by the bank once the payment is complete.
@@ -1515,15 +1568,15 @@ exchange, which will lead it through the following steps:
 \resizebox{0.7\textwidth}{!}{
 \includegraphics{./images/4_implementation/gateway/gateway_architecture.png}
 }
-\caption{EuroToken Creation Flow}
-\label{gatewat_flow}
+\caption{EuroToken Tokenisation Flow}
+\label{gateway_flow}
 \end{figure}
 
-#### Destruction
+#### De-tokenisation
 
-The destruction flow is a simpler process. If the user knows the public key of
+The de-tokenisation flow is a simpler process. If the user knows the public key of
 the exchange it can be performed completely in the wallet app. The user would
-simply send a destruction transaction to the exchange which includes the IBAN
+simply send a de-tokenisation transaction to the exchange which includes the IBAN
 the user would like the money to be payed out to as part of the block.
 
 However if a user does not know the public key of the exchange, the interaction
@@ -1584,11 +1637,11 @@ has been met.
 The purpose of the implementation in the super app was to demonstrate the
 features of the EuroToken system. In order to test the implementation and the
 viability of the protocol in the real world, a field trail was conducted. We
-tested the EuroToken system during the morning hours, at café Doerak in Delft.
-As showcased in figure \ref{field_trial}, the owner of the café generated a
-payment request for the amount of a single coffee and displayed it in the
-restaurant. Customers could then scan the code to transfer the money, and the
-owner who immediately see the money appear in their account.
+tested the EuroToken system during the morning hours, at café Doerak in Delft
+[@DoerakTrial]. As showcased in figure \ref{field_trial}, the owner of the café
+generated a payment request for the amount of a single coffee and displayed it
+in the restaurant. Customers could then scan the code to transfer the money, and
+the owner who immediately see the money appear in their account.
 
 \begin{figure}[htp]
 \centering
@@ -1610,8 +1663,8 @@ By building the EuroToken app on the TrustChain super app we could build on the
 Bluetooth transfer features to implement the off-line transfer of funds. In order
 to test this implementation and showcase the off-line transfer capabilities of
 the EuroToken system, we conducted another trail away from civilisation. As
-showcased in Figure \ref{offline_trial}, in the mountains of norway, away from
-all network connectivity, we conducted a transfer of funds using the bluetooth
+showcased in Figure \ref{offline_trial}, in the mountains of Norway, away from
+all network connectivity, we conducted a transfer of funds using the Bluetooth
 connect feature of the superapp.
 
 \begin{figure}[htp]
@@ -1624,7 +1677,7 @@ connect feature of the superapp.
 \end{figure}
 
 There is room for improvement in the practicality of off-line transfer of data
-between two devices. We found the process of creating a Peer-to-Peer bluetooth
+between two devices. We found the process of creating a Peer-to-Peer Bluetooth
 connection between two mobile devices somewhat cumbersome. And the system would
 greatly benefit in usability from proximity based data transfer via NFC.
 
@@ -1641,20 +1694,19 @@ network in order to perform the initial transfer.
 
 Exploring the possibilities of reducing the transaction risk between initial
 transfer and transaction finalisation is an interesting topic for future
-research. Using reputation systems or digital identity solutions combinded with
-judicial accountability, the risk could potentially be reduced to near 0. - TODO
-work this out in more detail
+research. Using reputation systems or digital identity solutions combined with
+judicial accountability, the risk could potentially be reduced to near 0.
 
 In order to prevent double spending, the current implementation of the protocol
-disallows the respending of transactions that have not first been finalised. In
+disallows the re-spending of transactions that have not first been finalised. In
 order to provide a full disaster mode, re-spending funds without full
 transaction validation by the network is a must. This could be achieved by
 expanding the protocol to enable the settling of multi-hop transfers. Like the
 original off-line transfer system, this would require the 2nd receiver to
-accept the risk, that both of the peers that their transation depends on have
+accept the risk, that both of the peers that their transaction depends on have
 double spent. When performing the initial off-line transaction, they would
-receive all the blocks neccesary to finalise all transactions before it with the
-gateways of the 2 peers before them. - TODO work this out in more detail
+receive all the blocks necessary to finalise all transactions before it with the
+gateways of the 2 peers before them.
 
 ## Scalability in network size
 
@@ -1811,7 +1863,7 @@ frequently as possible, while this might not be optimal for the network.
 In the problem description of this document we described the requirements of a
 digital euro as specified by the ECB. In this section we review the extent to
 which the EuroToken system conforms to the requirements. The requirements are
-summerised as follows:
+summarised as follows:
 
 Table: (ECB requirements) \label{my_table}
 
@@ -1839,8 +1891,9 @@ We achieve **enhanced digital efficiency** and a **competitive feature set **by
 designing EuroToken as a digital, peer-to-peer, programmable payment system. We
 achieve **cash-like features** with direct and off-line transferability without
 the need for intermediary parties. EuroToken provides the ECB with a new set of
-**monetary policy options** by having the Central Bank controlling the creation
-and destruction of EuroTokens. The off-line transaction capacity could be
+**monetary policy options** by having the Central Bank controlling the
+tokenisation
+and de-tokenisation of EuroTokens. The off-line transaction capacity could be
 extended to make EuroToken a **disaster proof** payment system. With backing
 during deployment of the ECB, EuroToken could become the standardised digital
 currency of Europe allowing **international** with ease. The rest of the
@@ -2021,11 +2074,11 @@ some risk associated with such tight coupling to other economies as the effect
 of monetary policy at home is reduced.
 
 Using the gateway as an intermediary, EuroToken provides the option to integrate
-with other CBDCs in seceral ways. The first is by allowing transfers between the
-currencies without a counterparty. A gateway could run both EuroToken and
-DollarToken and transfer between them at an exchange rate that can be set by
-agreements between the two central banks. Effectively this allows for the
-coupling of currencies with an opt out at any time.
+with other CBDCs in several ways. The first is by allowing transfers between the
+currencies without a counterparty. A gateway could run both EuroToken and a
+hypothetical DollarToken and transfer between them at an exchange rate that can
+be set by agreements between the two central banks. Effectively this allows for
+the coupling of currencies with an opt out at any time.
 
 ## Universal asset storage and granular monetary policy
 
@@ -2067,7 +2120,7 @@ players can provide banking or investment services directly to the customer
 using the same system as their banking.
 
 This effectively unites the whole financial world into one accounting system.
-Especially when combinded with e-identity, e-signatures, e-invoices, e-receipts,
+Especially when combined with e-identity, e-signatures, e-invoices, e-receipts,
 and smart-contracts this could usher in a whole new wave of innovation.
 
 # Conclusion
