@@ -157,6 +157,12 @@ An electronic version of this thesis is available at \url{http://repository.tude
 
 \end{titlepage}
 
+$if(abstract)$
+\chapter*{Abstract}
+\setheader{Abstract}
+$abstract$
+$endif$
+
 $if(preface)$
 \chapter*{Preface}
 \setheader{Preface}
@@ -166,7 +172,7 @@ $preface$
 \begin{flushright}
 {\makeatletter\itshape
     \@author \\
-    Delft, $date$
+    Delft, $preface_date$
 \makeatother}
 \end{flushright}
 

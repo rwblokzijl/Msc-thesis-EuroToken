@@ -22,9 +22,75 @@ keywords:
   - Cryptocurrencies
   - TrustChain
   - CBDC
-date: TODO
+preface_date: 2021-07-03
 preface: |
-  TODO: Add preface
+
+    For my master thesis I was interested in the infrastructure that allows
+    strangers to trust eachother, namely money. When I started cryptocurrencies
+    we're a hot topic, but I did not expect them to grow in popularity as much
+    as they did. Initially this research was directed towards the scalability
+    benefits of a block-DAG system such as TrustChain by implementing a
+    stablecoin connected to the IBAN system. However, since starting this
+    thesis, many central banks have announced the development of a CBDC and by
+    change this reseach was very applicable with some redirection of focus.
+
+    This research has been done during the Covid-19 pandemic, which has lead to
+    a completely new and unstructured way of working. The falling away of the
+    structure of on-premise work and coffee-machine meetings with fellow
+    researchers, combined with a vaguely target have lead to delays in the
+    completion of this thesis. While this thesis has taken my way longer than I
+    hoped, I am thankful that my research ended up in such a hot field as it
+    did, and the lessons I learned in the management of my mental health, focus,
+    and productivity will be a with me the rest of my life.
+
+    Regardless of the struggles, I am proud of the result of this research and am happy and relieved with
+    its conclusion.
+
+    I would like to thank Dr. Johan Pouwelse for providing me with the
+    opportunity of working in such an exiting field and the feedback on the
+    direction of my thesis. Additionally, I would like to thank my family for
+    inviting me back home, and providing structure, social contact and support
+    in a time when these were hard to find.
+
+abstract: |
+
+    After the release of Bitcoin in 2008 many advances have been made in the
+    crypo space. The feature-set, scalability, transaction cost, and efficiency
+    have all improved. Yet, as the development continued, the idea of Bitcoin or
+    any other cryptocurrency as a digital payment form, stated to take a backset
+    to its utility as a store of value and investment vehicle. Missing the
+    crutial features of scalability in transactions per second and lacking basic
+    price stability, whether fully decentralized currencies can ever function as
+    a global payment system is left to be determined.
+
+    Meanwhile, the world of payments outside of the crypto-sphere is making a
+    transformation itself. With physical money being usurped by privately banked
+    "IBAN money", payment systems are going digital. With decentralized
+    cryptocurrencies lacking any promising payment solutions, centrally
+    controlled currencies like Tether and Diem, previously know as Libra, are
+    trying to fill this exact hole in the market. With banks being unreliable or
+    unavailable to many people across the world, a global digital payment system
+    may eventually belong to the first bidder. Be they decentralized, run by
+    governments, or by private, profit driven corporations.
+
+    We present EuroToken, a design for a CBDC that is focused on solving the
+    open issues in cryptocurrencies from a perspective of a trustworthy central
+    bank. By centralising some of the infrastructure required to run a
+    cryptographically secure currency, we achieve a network that can scale
+    infinitely, handle off-line transactions, yet is still price-stable and
+    guaranteed by the Central Bank.
+
+    The EuroToken system is a peer-to-peer blockchain system that has each
+    wallet store their entire history, allowing users to transact without an
+    online connection. Double-spend prevention is handled by a set of
+    centralised nodes that periodically verify the transactions of a given user
+    and condenses their chain into a single "checkpoint" block for scalability.
+    In order to maintain price stability, we peg EuroToken to the existing IBAN
+    system.
+
+    We finally present a working implementation of EuroToken including a wallet
+    and an IBAN / EuroToken exchange. And show how our system can grow to
+    an arbitrarily large scale without sacrificing efficiency.
 
 ---
 
@@ -1115,65 +1181,72 @@ checkpoint.
 ## Off-line transactions and online validation
 
 An off-line transaction is a transaction where both parties have no connection
-to the rest of the network.
+to the rest of the network. Because of the issues discussed earlier in the
+section on double spending, scalability and decentralisation, there is no way of
+preventing someone from hiding any number of blocks from a previous transaction
+from the other party in a transaction.
 
-Because of the chronological ordering of the personal blockchains, a
-double-spend attack is only possible if conflicting blocks exist. To prevent
-these transactions from succeeding there is a need for the network to store all
-blocks and validate that they are valid and that there are no conflicts. This
-becomes the main challenge in creating a system for off-line transactions.
+The problem is somewhat limited by the chronological ordering of the personal
+blockchains. A double-spend attack is only possible if conflicting blocks exist.
+To prevent these transactions from duplicating currency there is a need for the
+network to detect and prevent them. This storing all blocks, ensuring they are
+valid and verfying that are no conflicting blocks exist. This online check,
+becomes the main challenge in creating a system that supports off-line
+transactions. To limit this problem even further, the EuroToken system maintains
+a distinction between transactions and their finalisation. A transaction is
+first signed by two parties locally and included in their blockchains. All
+information required to do this is already stored in the wallets of the tho
+parties. After the signing of the transaction, it is finalised with the network,
+storing it and making sure it does not conflict with any other transactions
+known to the network.
 
-Because of the issues discussed earlier in the section on double spending,
-scalability and decentralisation, there is no way of preventing someone from
-hiding any number of blocks from a previous transaction from the other party
-in a transaction. While these double-spendings will not propagate into the
-network.
-
-To limit the scope of this problem, the EuroToken system maintains a distinction
-between transactions and their finalisation. A transaction is first signed by
-two parties locally and included in their blockchains. All information required
-to do this is already stored in the wallets of the tho parties. After the
-signing of the transaction, it is finalised with the network, storing it and
-making sure it does not conflict with any other transactions known to the
-network. During the period that a transaction is not finalised, another
-conflicting transaction might get finalised before, thus leaving us with as
-double-spend attempt.
-
-When users are connected to the internet the risk can be reduced to zero. An
-online interaction can simply combine the finalisation step with the
+During the period that a transaction is not finalised, another conflicting
+transaction might get finalised before, thus leaving us with as double-spend
+attempt. When users are connected to the internet the risk can be reduced to
+zero. An online interaction can simply combine the finalisation step with the
 transaction, only transferring goods or services once the transaction is
 finalised. We envision this as the default way for users to interact, especially
-for large transactions.
-
+for large transactions. All unfinalised money is at risk of double-spending.
 Using the system described so far, there are multiple approaches to handling
 this risk in off-line transactions, each with their own trade-offs.
 
-This mechanism allows the transaction to happen off-line it the receiver accepts
-the risk that once they finalise online, the transaction might be rejected
-because another conflicting transaction already exists. Of course, in this case,
-the transfer of funds depends on the trustworthiness of the sending party. This
-mechanism prevents the spread of the effects of the double spending into the
-network, and limits the risk to the receiver.
+The first is to hold the sender responsible for double-spending. In the case of a
+double spend, the sender is barred from checkpointing or gaining any
+attestations of trustworthiness until they repay the network. In the case that
+their debt cannot be repaid the network is on the line. In this case the
+creation of illicit money is considered an acceptable risk.
 
-To lower the risk and damage of , certain systems might be put in place. For
-this, we build on the fact that transactions are always signed by both parties.
-This makes sure that a proof of double-spending always exists, and is obtained
-no later than the finalisation attempt.
+The second and more realisic solution is to make the receiver bear the risk. In
+the case that a sender has sent the same money to 2 people only 1 can recieve
+it. This is handled at the point of checkpointing. The money simply goes to the
+receiver that finalised the transaction first. The other has to forfeit the
+received funds. At this poiunt the network can still hold the sender
+responsible, tainting their reputaion and not allowing them to transact off-line
+again. This can be achieved with a mechanism of occational attestation from
+their gateway, that no double-spends have been detected in by this user in the
+past.
 
-A way to ensure a user that they will receive the funds is by allowing senders
-to register their identity with their validator. The validator would sign a
-statement that the identity of the sender is known and that they will take
-legal action in the event of a double spend. This then optionally allows the
-validator to accept the risk of double spending. In the case of a double spend
-the validator would sign a special statement with the receiver, that invalidates
-the double-spent transaction, but transfers and finalises the funds from the
-validator instead. The validator will then pursue legal action against the
-sender for fraud.
+This system can also be expanded to full disaster proofness by allowing the
+receiver to off-line spend the money without having first finalised the
+transaction. The second receiver of this money will then have to accept that
+they are on the line if either the first receiver or the original sender end up
+double spending. At this point the choice can be made to hold the first receiver
+responsible for a double spend of the original sender or not. Potentially
+putting the first receiver in debt to the second receiver for some portion of
+the lost amount.
 
-In the meantime the validator could block the sender to perform online
-transactions and checkpoints until they first settle the double spent funds.
-The details of what is both technically and legally possible here is a good
-subject for future research.
+Note that any solution that holds anyone responsible at a later point in time is
+vulnerable to a sybil attack, thus requireing integration with some form of
+identity system. This combined with the fact that transactions are always signed
+by both parties, we ensure that a proof of double-spending always exists and is
+created no later than the finalisation attempt of the second receiver. The
+validator can then pursue legal action against the sender for fraud.
+
+Our solution takes the simplest approach of putting the receiver at rist, and
+not allowing non-finalised transactions to be double spent. Any solutions that
+allows the respending of transactions are much more complicated since a UTXO
+model should be implemented. While this is not inherently incompatible with
+EuroToken, our solution has left this out of scope.
 
 ## Regulation of validators
 
@@ -2124,6 +2197,11 @@ Especially when combined with e-identity, e-signatures, e-invoices, e-receipts,
 and smart-contracts this could usher in a whole new wave of innovation.
 
 # Conclusion
+
+We present what we believe to be the first digital Euro deployment with real
+money, offline peer-to-peer transfers with the potential for full
+disaster-proofing, and a real-time connectivity to the existing IBAN-based
+banking system, while being guaranteed by the central bank.
 
 Baring a natural disaster that wipes out the human race, the future of money
 will be digital. With commerce and banking moving online, a new modern payment
