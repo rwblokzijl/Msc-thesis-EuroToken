@@ -26,71 +26,74 @@ preface_date: 2021-07-03
 preface: |
 
     For my master thesis I was interested in the infrastructure that allows
-    strangers to trust eachother, namely money. When I started cryptocurrencies
-    we're a hot topic, but I did not expect them to grow in popularity as much
-    as they did. Initially this research was directed towards the scalability
-    benefits of a block-DAG system such as TrustChain by implementing a
-    stablecoin connected to the IBAN system. However, since starting this
-    thesis, many central banks have announced the development of a CBDC and by
-    change this reseach was very applicable with some redirection of focus.
+    strangers outsource their trust in eachother, namely money. When I started
+    cryptocurrencies we're a hot topic, but I did not expect them to grow in
+    popularity as much as they did. Initially this research was directed towards
+    the price stability benefits of a block-DAG system such as TrustChain and
+    implementing a stablecoin connected to the IBAN system allowing each user to
+    become a layer-2 bank. However, since starting this thesis, many central
+    banks have announced the development of a Central Bank Digital Currency
+    (CBDC) and this project was very applicable with some redirection of focus.
 
-    This research has been done during the Covid-19 pandemic, which has lead to
-    a completely new and unstructured way of working. The falling away of the
+    This research has been done during the Covid-19 pandemic, which enforced a
+    completely new and unstructured way of working. The falling away of the
     structure of on-premise work and coffee-machine meetings with fellow
-    researchers, combined with a vaguely target have lead to delays in the
-    completion of this thesis. While this thesis has taken my way longer than I
-    hoped, I am thankful that my research ended up in such a hot field as it
-    did, and the lessons I learned in the management of my mental health, focus,
-    and productivity will be a with me the rest of my life.
-
-    Regardless of the struggles, I am proud of the result of this research and am happy and relieved with
-    its conclusion.
+    researchers, combined with a vaguely defined target has lead to delays in
+    the completion of this thesis. While this thesis has taken my way longer
+    than I hoped, I am thankful that I got to work such a hot field. And the
+    lessons I learned in the management of my mental health, focus, and
+    productivity will be a with me the rest of my life. Regardless of the
+    struggle of completing this thesis I am proud of the result of this research
+    and am happy and relieved with its conclusion.
 
     I would like to thank Dr. Johan Pouwelse for providing me with the
-    opportunity of working in such an exiting field and the feedback on the
-    direction of my thesis. Additionally, I would like to thank my family for
+    opportunity of working in such an exiting field and for the feedback on the
+    direction of my research. Additionally, I would like to thank my family for
     inviting me back home, and providing structure, social contact and support
-    in a time when these were hard to find.
+    in a time when these were hard to come by.
 
 abstract: |
 
     After the release of Bitcoin in 2008 many advances have been made in the
     crypo space. The feature-set, scalability, transaction cost, and efficiency
     have all improved. Yet, as the development continued, the idea of Bitcoin or
-    any other cryptocurrency as a digital payment form, stated to take a backset
-    to its utility as a store of value and investment vehicle. Missing the
-    crutial features of scalability in transactions per second and lacking basic
-    price stability, whether fully decentralized currencies can ever function as
-    a global payment system is left to be determined.
+    any other cryptocurrency as a digital payment form, stated to take a
+    backseat to its utility as a store of value and investment vehicle.
+    Additionally, cryptocurrencies are missing the crutial features of
+    scalability in transactions per second and lacking basic price stability.
+    This leaves whether fully decentralized currencies can ever function as a
+    global payment system to be determined.
 
-    Meanwhile, the world of payments outside of the crypto-sphere is making a
-    transformation itself. With physical money being usurped by privately banked
-    "IBAN money", payment systems are going digital. With decentralized
-    cryptocurrencies lacking any promising payment solutions, centrally
+    Meanwhile, the world of payments outside of the crypto-sphere is also making
+    a transformation. With the use of physical money declining in favor of
+    privately banked "IBAN money", payment systems are going digital. With
+    decentralized cryptocurrencies insufficient as payment solutions, centrally
     controlled currencies like Tether and Diem, previously know as Libra, are
-    trying to fill this exact hole in the market. With banks being unreliable or
-    unavailable to many people across the world, a global digital payment system
-    may eventually belong to the first bidder. Be they decentralized, run by
-    governments, or by private, profit driven corporations.
+    trying to fill this exact hole in the market. Banks have been found
+    unreliable, unavailable to many people across the world, and unable to
+    provide the convenience and feature set of the new currencies. Consequently
+    the global digital payment system may eventually belong to the first bidder,
+    be they decentralized, run by governments, or by private, profit driven
+    corporations.
 
     We present EuroToken, a design for a CBDC that is focused on solving the
     open issues in cryptocurrencies from a perspective of a trustworthy central
     bank. By centralising some of the infrastructure required to run a
     cryptographically secure currency, we achieve a network that can scale
-    infinitely, handle off-line transactions, yet is still price-stable and
-    guaranteed by the Central Bank.
+    to arbitrary size, handle off-line transactions, and remain price-stable and
+    guaranteed in value by the Central Bank.
 
-    The EuroToken system is a peer-to-peer blockchain system that has each
-    wallet store their entire history, allowing users to transact without an
-    online connection. Double-spend prevention is handled by a set of
+    The EuroToken system is a peer-to-peer blockchain system that store every
+    wallets history on the users personal device. This allows basic transactions
+    without an online connection. Double-spend prevention is handled by a set of
     centralised nodes that periodically verify the transactions of a given user
     and condenses their chain into a single "checkpoint" block for scalability.
     In order to maintain price stability, we peg EuroToken to the existing IBAN
-    system.
+    system by allowing 1:1 exchange in either direction.
 
-    We finally present a working implementation of EuroToken including a wallet
-    and an IBAN / EuroToken exchange. And show how our system can grow to
-    an arbitrarily large scale without sacrificing efficiency.
+    We present a working implementation of EuroToken including a wallet and an
+    IBAN / EuroToken exchange. And show how our system can grow to an
+    arbitrarily large scale without sacrificing efficiency.
 
 ---
 
@@ -376,28 +379,28 @@ the Euro that allows for near-instant world-wide and off-line transfer?
 
 Over last century the world of finance has gone through significant paradigm
 shifts. Currencies traditionally started as a bottom up distributed system based
-on some commodity of value. While these currencies seem to need no institution
-backing them, the fact of their physical nature made physical security an
-unfortunate necessity. This naturally lead to institutions that act as
-centralised authority in order to protect the monetary assets.
+on some commodity of value. While these currencies might seem to need no
+institution backing them, the reality of their material nature made physical
+security an unfortunate necessity. This naturally lead to institutions that act
+as centralised authority in order to protect the monetary assets.
 
 This age old solution to a physical problem is mirrored in the digitally
 accounted financial system of today. While the global dependence on digital
 money for every day transactions is growing, the control over many aspects of
 the system rests in the hands of large opaque corporations. These private banks,
-who form the main engine of the financial system, maintain a luxurious position
+who form the main engine of the financial system, now hold a luxurious position
 as the creators of money. The Copenhagen Business school estimates that banks in
 the UK alone have made 182 billion pounds in seigniorage.
 
 With such a luxurious position it is no surprise that innovation in the sector
-has been slow. Innovation in payments highly depends on the current gatekeepers
-of the financial world as they hold the money of the users. Any attempt to
-innovate by other parties is dependent on the interoperability with banks.
-While traditional physical currencies are still around as an alternative, their
-usage has declined due to the increasing utility of digital money due to the
-internet. The increase in the necessity of digital payment solution, combined
-with the mismanagement of the current system, makes the need for a new open
-payment system evident.
+has been slow. Innovation in payments is highly dependent on the current
+gatekeepers of the financial world as they hold the money of the users. Any
+attempt to innovate by other parties is conditional on the interoperability
+provided by the banks. While traditional physical currencies are still around as
+an alternative, their usage has declined due to the increasing utility of
+digital money in the age of the internet. The increase in the use of a digital
+payment solution, combined with the mismanagement of the current banking system
+system, makes the need for a new open payment system evident.
 
 In order to rectify the offset in the balance of power and to promote productive
 financial innovation, a new and open medium of exchange is required. Such a
@@ -422,62 +425,64 @@ strengthen the market as a whole. But rather than standardise digital payments,
 the banks chose credit cards as their solution. In its competition with Credit
 Cards, eCash went bankrupt in 1998 [@eCash1998].
 
-The adoption of credit cards as the predominant method of online payment
-subsequently lead to a steep rise in credit card fraud. After with theft of
-social security numbers, theft of credit card numbers is the predominant form of
-identify theft [@CreditFraud] [@IdentityTheft]. While we leave the issue of a digital identity
-out of scope, the inadequacy of the credit card system at protecting users has
-been proven again and again.
+The adoption of credit cards as the predominant online payment method
+subsequently lead to a steep rise in credit card fraud. After theft of social
+security numbers, theft of credit card numbers is the predominant form of
+identify theft [@CreditFraud] [@IdentityTheft]. Leaving the need for a digital
+identity out of scope, the inadequacy of the credit card system at protecting
+users has been proven again and again.
 
 Over the years, alternative payment systems have been developed in response to
 the lack of good payment solutions. Direct consumer to merchant payment systems
-like PayPal [@PayPal], Venmo [@Venmo] and Skrill [@Skrill] have emerged
-to fill the feature gap left by credit cards. However, while these services do
-increase innovation in payment solutions, they don't solve the underlying issue.
+like PayPal [@PayPal], Venmo [@Venmo] and Skrill [@Skrill] have emerged to fill
+the feature gap left by credit cards. However, while these services do somewhat
+increase innovation in payment solutions, they don't solve the underlying issue
+of high coupling between users and their banks.
 
 While the market is generating solutions to adjust for the lack of innovation,
 without a deeper paradigm shift the growth in the number of payment options will
 have one of two outcomes. Either the world of payments converges into a few
-large payment providers, basically reverting us back to an oligopoly. Or the
-payment systems stay segmented, leading to increasing complexity for users and
-merchants in supporting these, while creating large overhead in the financial
-system.
+large payment providers, basically reverting us back to an oligopoly similar to
+that of the banks. Or the payment systems stay segmented, leading to increasing
+complexity for users and merchants in supporting various payment methods, while
+creating large overhead in the financial system. The fundamental paradigm shift
+that is needed in the industry is one of universal integration.
 
-The fundamental paradigm shift that is needed in the industry is one of
-integration. Payment solutions must be able to integrate with traditional banks
-in order to allow users to pay from their accounts, or users have to create a
-separate payment account with the service and transfer money over. This trend is
+More centralised solutions have attempted to ease the integration of traditional
+banks in order to allow other financial service providers to innovate. This is
 being pushed by European initiatives like PSD2. But because of the lack of
-standardisation in the industry, integration of payment providers has to be
-implemented for every bank individually. When this integration is lacking, users
-are stuck with their financial services segmented among multiple payment
-providers and bank accounts. An issue that is worsened with cross border
-payments. It is evident that current payment solutions are inadequate to solve
-the underlying problem: the tight coupling between a user and their
-banking/payment provider.
+standardisation in the industry, integration has to be implemented for every
+bank individually. When this integration is not properly implemented, users are
+stuck with their financials segmented across multiple payment providers and bank
+accounts. An issue that is worsened with cross border payments. It is evident
+that current initiatives are inadequate to solve the underlying problem: the
+tight coupling between a user and their banking/payment providers.
 
-The problem of decoupling users from their banks has been approached from many
-different angles. Perhaps the most famous solution in recent years is Bitcoin
-[@Bitcoin:whitepaper]. While criticising a number of issues that lie at the
-heart of value accounting in our current system, the Bitcoin white paper
-proposes a digital payment infrastructure with associated currency that
-completely moves the very core of value accounting to a distributed and open
-system. While 10 years after the publication of its white paper the
-crypto-currency is extremely popular as an investment vehicle, any significant
-payment volumes have yet to be demonstrated. With transaction fees peaking at 59
-US dollars [@BitcoinTransactionFees] around April 21 2021, Bitcoin is not
-ready to be a direct consumer facing payment method.
+The problem of decoupling users from individual banks has been approached from
+many different angles. Perhaps the most famous solution in recent years is
+Bitcoin [@Bitcoin:whitepaper]. While criticising a number of issues that lie at
+the heart of value accounting in our current system, the Bitcoin white paper
+proposes a digital payment infrastructure. With an associated currency it moves
+the very core of value accounting to a completely distributed and open system.
+10 years after the publication of its white paper the crypto-currency it is
+extremely popular as an investment vehicle. Yet any significant payment volumes
+have yet to be achieved. With transaction fees peaking at 59 US dollars
+[@BitcoinTransactionFees] around April 21 2021, Bitcoin is not, and perhaps
+never will be, fit to be a direct consumer facing payment system.
 
-Other solutions to the tight coupling problem have been successful on national
-levels. In the Netherlands the iDEAL system has succeeded in integrating most
-dutch banks under a single online payment system. In Norway a similar product
-called Vipps exists that integrates all Norwegian banks. And similar systems
-exist in many European countries [@EMPSA]. These are all payment
-initiatives that effectively create an abstraction layer over the individual
-banks, leaving them transparent to the user. While this does create a single
-payment interface across a whole nation, the lack of international
+Other solutions to the tight coupling problem have been marginally successful on
+national levels. In the Netherlands the iDEAL system has succeeded in
+integrating most dutch banks under a single online payment system. In Norway a
+similar product called Vipps exists that integrates all Norwegian banks. And
+similar systems exist in many European countries [@EMPSA]. All these payment
+initiatives effectively create an abstraction layer over the individual banks,
+leaving the users bank transparent to the merchant. While this does create a
+single payment interface across a whole nation, the lack of international
 standardisation leads to the failure to support cross border payments. This
 makes these systems unable to properly support global e-commerce and trade.
+Additionally, these systems serve as another hurdle to new players in the
+banking sector, ans they are still dependent on, and limited to, the feature
+sets of these systems.
 
 The European Union is actively trying to integrate their financial system across
 borders. With payment-integration initiatives like SEPA, PSD2 and the European
@@ -487,11 +492,12 @@ current euro [@ReportDigitalEuro]. A newly designed euro has the potential to
 act as a single payment interface for both online and off-line transactions.
 
 With this research we provide a design for EuroToken, a Central Bank Digital
-Currency designed to act as an alternative to the current privately managed
-digital euro. It implements a blockchain based accounting system that exposes a
+Currency designed to be an alternative to the current privately banked digital
+euro. It implements a blockchain based accounting system that exposes a
 generalised payment primitive that supports off-line and online digital payments
-out of the box. It provides a equal footing for financial institutions, and
-individuals alike as it makes users the gatekeeper of their own fiscal lives.
+out of the box. Through its open extensibility it provides an equal footing for
+financial institutions and individuals alike as it makes users the gatekeeper
+of their own fiscal lives.
 
 ## Requirements for a digital euro by the ECB
 
@@ -516,15 +522,15 @@ number of requirements are provided:
 12. Easy accessibility throughout the euro area
 13. Conditional use by non-euro area residents
 
-In our evaluation of this project later we will explore to what extent our
-implementation conforms to these requirements. The technical requirements are
-emboldened in the list, as they will be guiding in our design. The rest
-will only be speculated on as they do not pertain to the topic of computer
-science and fall outside of our area of expertise. Because of the broad
-political and legal angle of these requirements, a technical solution to these
-problems needs to conform to more technical requirements. We compiled the top
-level requirements to the following functional requirements that this thesis
-will specifically aim to reach:
+In the evaluation of this project in a later section, we will explore to what
+extent our implementation conforms to these requirements. The technical
+requirements are emboldened in the list, as they will be guiding in our design.
+The rest will only be speculated on as they do not pertain to the topic of
+computer science and fall outside of our area of expertise. Because of the broad
+nature, and political and legal angles of these requirements, a technical
+solution to these problems needs to conform to more technical requirements. For
+this reason we compiled the requirements to the following more concrete,
+functional requirements that this thesis will specifically focus on:
 
 1. Be a secure system of accounting
 2. Scale to the size of the European union
@@ -534,12 +540,12 @@ will specifically aim to reach:
 
 ## Trade-offs around double spending, scalability and decentralisation
 
-When designing a modern digital payment systems with the ability to transfer
-funds off-line, peer-to-peer systems and distributed ledger technologies are an
-worthwhile case study. Since Bitcoin in 2009, various crypto-currencies have
-iterated on the idea of a fully decentralized currency. After 12 years of
+When designing a modern digital payment system with the ability to transfer
+funds off-line, peer-to-peer systems and Distributed Ledger Technologies (DLTs)
+are an worthwhile case study. Since Bitcoin in 2008, various crypto-currencies
+have iterated on the idea of a fully decentralized currency. After 12 years of
 development a number of trade-offs are becoming visible that show the
-limitations of the technically.
+limitations of this type of system.
 
 Ideally a payment system has no central points of control. By keeping a payment
 system decentralized the failure of one part does not affect the functioning of
@@ -548,30 +554,31 @@ scalability. However, keeping a currency secure from unsanctioned money creation
 is not a trivial problem in a fully distributed system.
 
 The primary problem of unsanctioned money creation can be split into 2 different
-problems. First, for any transaction to be valid the payer has to have received
-the funds in the past. And second, they have not already spent the money.
+problems. First, for any transaction to be valid, the payer has to prove that
+they received these funds in the past. And second, they have not already spent
+the money.
 
 The first of these is relatively easy to solve. To do this all transactions
 received in the past can be digitally "signed" by the sender. The signature of
 the sender on the transaction proves the transfer of funds from one party to
 another. When receiving funds, the transaction can be trusted by verifying that
 the sender has received the money in the past from someone else. This way every
-transaction can be recursively validated back to their creation point.
+transaction can be recursively validated back to their original creation point.
 
-The second problem is famously called the "double spending problem" and requires
-some trade-offs to solve. The goal is to construct a way to prove that for any
-given transaction, the balance of that transaction has not previously been spend
-by that user. In the first problem a transaction can be rejected if not enough
-information is available to verify the fund availability. In the second the goal
-is to prove the non-existence of a transaction.
+The second problem is infamously known as the "double spending problem" and
+requires some trade-offs to solve. The goal is to construct a way to prove that
+for any given transaction, the balance of that transaction has not previously
+been spend by that user. In the first problem the validity of the funds can be
+proven by a couple signatures. In the double-spending problem the goal is
+instead to prove the non-existence of a signed transaction.
 
 Solving the double spending problem without a centralised party like a bank that
 keeps track of all historic transactions is a difficult task. Blockchain based
 systems have had some success. The most well known distributed ledger
 technologies are Ethereum [@Ethereum:whitepaper] and Bitcoin
 [@Bitcoin:whitepaper]. We will refer to these as single blockchain networks.
-Both of these networks maintain a single blockchain of transactions which gives
-transactions a total order.
+Both of these networks maintain a single ledger of transactions structured in a
+blockchaing, which gives transactions a total ordering.
 
 Blockchain bases DLTs group all transactions into blocks, which are in turn
 organised in a linked list where every block refers to the block before it.
@@ -584,7 +591,7 @@ of a previous transaction, a transaction can have multiple "outputs", sending to
 multiple public keys including the senders. To solve the double spending
 problem, any "output" of any transaction can only be spent once, and any
 transaction that spends an already spent output is rejected. If a user has spent
-that output before, that transaction would exist somewhere in the chain, thus
+that output before, that transaction will exist somewhere in the chain, thus
 proving the new transaction to be fraudulent.
 
 The problem with single blockchain systems is their inherent lack of
@@ -605,9 +612,9 @@ increase the capacity of the network, the extent of the scalability gained has
 yet to prove itself.
 
 Other attempts at a more scalable ledger exist. [@IotaTangle:whitepaper] builds
-on the concept of the Tangle. Instead of a blockchain, transactions reference
-each other in a Directed Acyclic Graph model. Users are not required to maintain
-the entire block-DAG but are required to validate a number of existing
+on the concept of the "Tangle". Instead of a blockchain, transactions reference
+each other in a Directed Acyclic Graph (DAG) model. Users are not required to
+maintain the entire DAG but are required to validate a number of existing
 transactions before their own transaction is validated. This lowers the change
 of a double spend significantly, but requires of their users to so quite some
 work in order to be able to transact. While public nodes are available to
@@ -616,11 +623,17 @@ altruists. A criticism is that there is no reason the altruistic processing of
 transactions will continue into the future.
 
 Another example is Nano [@Nano:whitepaper]. Nano employs a block DAG that
-resembles a lattice structure which assigns a personal blockchain on a per
-user basis. Transactions happen between users and are incorporated into both
-chains. Double spending is prevented by having blocks broadcast into the network
-and representatives nodes validating the transactions. These representative
-nodes are elected thought a delegated proof of stake mechanism.
+resembles a lattice structure which assigns a personal blockchain on a per user
+basis. Transactions happen between users and are incorporated into both chains.
+Double spending is prevented by having blocks broadcast into the network and
+representatives nodes validating the transactions. These representative nodes
+are elected thought a Delegated Proof of Stake (DPoS) mechanism. DPoS
+centralises the validation to some democratically elected "Delegates" that
+validate all transactions for a period of time. While very scalable, the DPoS
+validation system has been critisised for its centralisation into a few large
+nodes and the inaccessibility to start participating. Another risk is in the
+delegates forming cartels, as the weight of each users vote is proportional to
+the size of their wallet.
 
 The double spending problem has many potential solutions, all with their own set
 of trade-offs. A payments solution that aims to scale to a global level using
@@ -634,78 +647,82 @@ digital payment solutions. Solving the double spending problem in a Peer-to-Peer
 network is a challenge on its own. Doing so without a live connection to that
 network increases the complexity even further.
 
-The problem of double spending and off-line payments is best understood using
-the CAP theorem. Consider the total set of transactions to be the database, and
-reads and writes to be updates to the balances of any user. If we decide we want
-off-line payment, we implicitly choose the value of *partition tolerance*, thus
-creating a trade-off between *availability* and *consistency*. We can either
-read a users balance, **or** be sure we know the correct balance of the user.
+The problem of double spending and off-line payments is best understood in terms
+of the CAP theorem. Consider the total set of transactions to be the database,
+and reads and writes to be updates to the balances of any user. If we decide we
+want off-line payment, we implicitly choose the value of *partition tolerance*,
+thus creating a trade-off between *availability* and *consistency*. We can
+either read a users balance, **or** be sure we know the correct balance of the
+user. An off-line transaction happens in a very particular context however.
+While the 2 interacting users have no connection to the network, they do have a
+direct connection between them. This makes their histories *available* to
+validate the first half of the transaction.
 
 An "off-line transaction" is thus a transaction done without access to a
-sufficient a sufficient set of peers to validate consistency. This means that if
-any user accepts an off-line transaction is **not** possible to know whether a
-conflicting transaction exists in another part of the network.
+sufficient set of peers to validate the *consistency* of the history of the
+sender. This means that if any user accepts an off-line transaction is **not**
+possible to know whether a conflicting transaction exists in another part of the
+network.
 
 Any network wanting to prevent double spending will accept only 1 in a set of
 conflicting transactions, usually the first to arrive. Anyone accepting an
 off-line transaction is therefore at risk until they check in with the network.
-
 For this reason a transaction is usually not accepted by the receiving user
 until we have some guarantee that all conflicting transactions will be dropped
 by the rest of the network. This is the concept of transaction finality. A
-transaction is considered *final* is the rest of the world will reject all
-conflicting transactions.
+transaction is considered *final* if the rest of the world will accept your
+transaction, rejecting all conflicting transactions.
 
 Most blockchain based systems achieve this guarantee by having a globally
 distributed blockchain storing all transactions that *finalises* any transaction
 with some *eventually negligible* probability of conflict.
 
 In all of these systems, the receiving user still chooses when they accept the
-transaction. While its possible to wait until the network can be reached online
-before goods are exchanges, any users that know each other can defer the
-validation. Instead of relying on the network based, the exchange is based on
-the trust of the receiver in the sender.
+transaction. While its possible to wait until the network can be reached before
+goods are exchanges, any users that have a different basis for trust can defer
+the validation. Instead of relying on the network based, the exchange is based
+on the trust of the receiver in the sender.
 
-Of course the trust between users is hard to quantify, and shouldn't be relied
-on fully. However, increasing the trust between two transacting users in the
+Of course the trust between users is hard to quantify, and shouldn't be fully
+relied upon. However, increasing the trust between two transacting users in the
 period between the transaction and the check-in with the network is the key to
 implementing dependable off-line transactions.
 
 ## The price stability problem
 
-The primary purpose of a currency as a payment solution is to be an
-"intermediary store of value". This means that anyone that chooses to exchange
-their assets or services for a currency, can later trade it in for something
-else of a same, or similar value. If a currency cannot keep its value stable
-over time it will fail to be a good intermediary store of value. In order to
-maintain the viability of a currency as a good option for payment, the price
-thus has to remain stable over time. This concept alone eliminates nearly all
-of the new crypto currencies as good payment solutions as their price is
-dependent on daily market fluctuations.
+The primary purpose of a payment system is to be an "intermediary store of
+value". This means that anyone that chooses to exchange their assets or services
+for a currency, can later trade it in for something else of a same, or similar
+value. If a currency cannot keep its value stable over time it will fail to be a
+good intermediary store of value, thus making it a bad payment system. In order
+to maintain the viability of a currency as a good option for payment, the price
+thus has to remain stable over time. This concept alone eliminates nearly all of
+the new crypto currencies as good payment solutions as their price is dependent
+on daily market fluctuations and investor speculation.
 
 This raises the question: How do we keep a method of payment solutions truly
-price stable? This is really a question for economists to answer, however, in
-order to create a digital payment solution, we do need some method of
-stabilizing the currency.
+price stable? While this is really a question for economists to answer, in order
+to create a digital payment solution, we do need some method of stabilizing the
+currency. Stable "value" means that what you can purchase today with a unit of
+currency is about the same as you can purchase tomorrow with that same unit.
+However, the "value" of most things is constantly shifting based on what someone
+is willing to pay for it, and is thus subject to the laws of supply and demand.
+This makes the regulation of the value complex.
 
-One problem is the difficulty of measuring stability. Stability means that what
-you can purchase today is about the same as you can purchase tomorrow. However,
-tracking this is extremely difficult. The "value" of any item is constantly
-shifting based on supply and demand, thus getting any measure of the value of
-anything is very complex. This is why many stablecoins outsource the problem of
-defining value to an external system, usually an existing fiat currency. The
-system works by "pegging" the stablecoin against some collateral.
-
-Say a "token" is always directly exchangeable at central exchange A for
-the US dollar at a 1:1 ratio. The price of the token in the market will tend to
-follow the price of the dollar. When the price of the token in the market dips
-*below* 1 dollar, anyone can buy the dollar on the market, and directly
-sell it at exchange A for 1 dollar, making an instantaneous profit. This
-decreases the amount of tokens in the market. Because of this reduced supply
-the price in the market will increase. If the price int he market is *above* 1
-dollar instead, any investor can buy the token at exchange A for 1 dollar, and
+Stablecoins like Tether [@Tether:whitepaper] outsource the problem of defining
+value to an external system, usually an existing fiat currency. The system works
+by "pegging" the stablecoin against some collateral. Say a "token" is always
+directly exchangeable at central exchange $A$ for the US dollar at a 1:1 ratio.
+This will cause the price of the token in the market to follow the price of the
+dollar. If the price of the token in the market dips *below* 1 dollar, anyone
+can buy the dollar on the market, and directly sell it at exchange $A$ for 1
+dollar, making an instant profit. This decreases the amount of tokens in the
+market. Because of this reduced supply the price in the market will increase
+back in the direction of 1 dollar. If the price in the market is *above* 1
+dollar instead, any investor can buy the token at exchange $A$ for 1 dollar, and
 sell it on the market for a profit, thus increasing the supply and decreasing
-the price.
+the price back in the direction of 1 dollar. If the price in the market is
+always 1 dollar, its "value" can be also said to be 1 dollar.
 
 This principle is behind practically all stablecoins on the market. However,
 this immediately leads to the next problem: How to run a 1:1 exchange. The
@@ -720,30 +737,17 @@ private auditing firms to increase transparency, however the system remains
 centralised.
 
 Fully distributed stablecoins like MakerDAO [@MakerDAO:whitepaper] and EOSDT
-[@EOSDT] do exist. These are kept at a stable price by providing an
-exchange of 1 token for 1 dollars worth of "collateral". This collateral is some
-blockchain accounted token of value. To make sure the system does not get
-under-collateralized when the price of the collateral drops, the system is
+[@EOSDT] do exist. These are kept at a stable price by providing an exchange of
+1 token for 1 dollars worth of "collateral". This collateral is some blockchain
+accounted token of value. To make sure the system does not get
+under-collateralized when the price of the collateral changes, the system is
 over-collateralized at all times. While these systems have seem some success
-already, they derive their notion of value from the dollar, and are dependent
-on the value of their collateral.
+already, they are very dependent on the value of their collateral, there is
+still debate on whether they are able to work in a constant down market of the
+collateral. Regardless, their target for stabilisation is still some external
+thing of known stable value, in this case the US dollar.
 
 ## Lack of real world implementations of broad featured CBDCs
-
-While many currencies aim to demonstrate and succeed on a specific set of
-features, the world is still waiting for a currency that is sufficiently capable
-to be a CBDC. In "Central bank cryptocurrencies" [@FormsOfMoney] Morten
-Linnemann Bech and Rodney Garratt analyse the set of features a CBDC needs to
-support. This main feature set is illustrated in figure \ref{cbdc_features}.
-
-\begin{figure}[htp]
-\centering
-\resizebox{\textwidth}{!}{
-\includegraphics{./images/2_problem/cbdc_features.png}
-}
-\caption{The money flower: a taxonomy of money \cite{FormsOfMoney}. }
-\label{cbdc_features}
-\end{figure}
 
 In recent years, the discussion around central bank digital currencies has been
 lively among central banks [@Ekrona] [@JapanCoin] [@AustraliaCoin]
@@ -768,7 +772,22 @@ justified by the fact that the banks of today could run these nodes for profit.
 Multi-chain models have also been proposed [@PandasCBDC], boosting the
 scalability of the system while maintaining transparency and auditability.
 However, while these consensus mechanisms are promising, they are both
-fundamentally limited to on-line transactions.
+fundamentally limited to online transactions.
+
+Many currencies aim to demonstrate and try to succeed on a specific set of
+features. Yet the world is still waiting for a currency that is sufficiently
+capable to be a CBDC. In "Central bank cryptocurrencies" [@FormsOfMoney] Morten
+Linnemann Bech and Rodney Garratt analyse the set of features a CBDC needs to
+support. This main feature set is illustrated in figure \ref{cbdc_features}.
+
+\begin{figure}[htp]
+\centering
+\resizebox{\textwidth}{!}{
+\includegraphics{./images/2_problem/cbdc_features.png}
+}
+\caption{The money flower: a taxonomy of money \cite{FormsOfMoney}. }
+\label{cbdc_features}
+\end{figure}
 
 EuroToken is a prototype for a Central Bank Digital Currency. Its primary
 purpose is to implement, for the first time, a currency that is: digital,
@@ -792,15 +811,13 @@ world-wide and off-line transfer. }
 
 The rest of this document describes the design, implementation and evaluation of
 the EuroToken system. The EuroToken system is a conceptual design that aims to
-fit the requirements stated in the previous section. We include a limited proof
-of concept design testing and demonstrating certain aspects of the design.
+fit the requirements stated in the previous section. We include a limited
+proof-of-concept that tests and demonstrates the key aspects of the design.
 
 The structure of this work is as follows, in the next chapter we describe the
 design of the EuroToken system. The design is approached from the fundamental
-questions of a currency and answers the fundamental questions first. What is a
-digital currency? What is the double spending problem? And how to design a
-system that is scalable while not compromising the principle of double-spend
-prevention? The design aims to provide the following features:
+questions of a currency and answers these fundamental questions before making
+any other design choices. The design aims to provide the following features:
 
 1. Be a fully functional system of accounting
 2. Preventing unsanctioned money creation
@@ -808,10 +825,9 @@ prevention? The design aims to provide the following features:
 4. Be off-line transferable
 
 In order to not be limited in the same way as Bitcoin and similar currencies,
-we choose to sacrifice the following feature: Decentralization. This give us
-the required leeway to create a scalable and off-line capable system. However,
-we do attempt to provide the necessary tools to overcome the downsides of the
-centralisation.
+we choose to sacrifice the following feature: Decentralization. This gives: us
+the required leeway to create a scalable and off-line capable system without
+sacrificing double-spending protection.
 
 # EuroToken Design
 
@@ -1931,6 +1947,24 @@ In any implementation of EuroToken in the real world some attention should be
 dedicated to this phenomenon, as users are incentivized to checkpoint as
 frequently as possible, while this might not be optimal for the network.
 
+
+## Extensibility
+
+EuroToken is designed to run mostly on the device of the user, only
+communicating with the validator using the standardised messages of IPv8
+[@PyIPv8]. The communication protocol of EuroToken is thus completely open and
+accessible to anyone. The extensibility of the system is exemplified in the UI
+of EuroToken in the app. This allowed for EuroToken to be easily integrated into
+the PeerChat app.
+
+Another example of the extensibility of EuroToken can be seen in the
+implementation of an unrelated project. A group of students implemented a
+liquidity pool for exchange between Bitcoin and EuroToken using its API in the
+Superapp [@LiquidityPool].
+
+EuroToken is open and extensibile to any compatible usecase, giving it the
+potential to facilitate a competitive market for innovation,
+
 ## System evaluation and ECB requirements
 
 In the problem description of this document we described the requirements of a
@@ -2199,67 +2233,67 @@ and smart-contracts this could usher in a whole new wave of innovation.
 # Conclusion
 
 We present what we believe to be the first digital Euro deployment with real
-money, offline peer-to-peer transfers with the potential for full
-disaster-proofing, and a real-time connectivity to the existing IBAN-based
-banking system, while being guaranteed by the central bank.
+money, (1) offline peer-to-peer transfers with the potential for full
+disaster-proofing, (2) arbitrary scalability, (3) a real-time connectivity to
+the existing IBAN-based banking system, (4) while being guaranteed by the
+central bank.
 
 Baring a natural disaster that wipes out the human race, the future of money
 will be digital. With commerce and banking moving online, a new modern payment
-system is required with features that fit the digital age.
+system is required with features that fit the digital age. The question is: who
+gets to decide how these currencies are designed?
 
-The future of money will be digital because the features are needed, the
-question is: who gets to decide how these currencies are designed?
+The problems of scalability, price-stability and off-line spending are difficult
+if not impossible to solve without some form of centralisation. Private parties
+like Tether and Diem are attempting to become the central third party that
+provides us with a payment infrastructure at the cost of dependence. But if we
+don't want opaque corporations controlling our monetary system we must direct
+the control somewhere else. The European Central Bank is ideally positioned to
+provide the centralised control that is required to achieve the goals of money.
 
-While there are many bidders to become the worlds next digital currency, the
-difficulty lies in creating a currency that is (1) scalable, (2) off-line
-transferable, and (3) stable.
-
-These problems are difficult if not impossible to solve without some form of
-centralisation. Private parties like Tether and Diem are attempting to become
-this trusted third party. But if we don't want opaque corporations controlling
-our money supply we might have to centralise somewhere else. The European
-Central Bank is ideally positioned to provide the centralised control that is
-required to achieve the goals of money.
-
-In order to create a currency that is scalable we use a block dag structure
+In order to create a currency that is scalable we use a block-DAG structure
 where every user has their own personal blockchain. This system is inherently
 distributed in its data storage and control. We then centralise the validation
-of transactions in gateways. These gateways validate the validity of the
-transactions and attest to their correctness and compliance with the rules of
+of transactions in gateways. These gateways validate the correctness of the
+transactions and attest to their uniqueness and compliance with the rules of
 the network as well as regulations.
 
-Another benefit is gained by maintaining the transaction history of each user on
-their own personal blockchain. By decoupling the transaction at the point of
-trade from the validation of the transaction we allow the transaction to happen
-off-line. This mechanism can then be expanded to a disaster proof currency that
-allows users to trade using digital money even without internet connectivity.
+By maintaining the transaction history of each user on their own personal
+blockchain we decouple the transaction at the point of trade from the validation
+of the transaction. This allows transactions to happen off-line. This mechanism
+has the potential to be expanded to a disaster proof currency that allows users
+to trade digital currency without internet connectivity.
 
-Price stability is ensured the same way as the psychical euro. By allowing the
-currency to be exchanged for traditionally banked euros, we effectively peg the
-price of the euro to that of EuroToken. This exchange can be fully regulated and
-controlled by the central bank, and the money that is exchanged belongs fully
-to the user, without any intermediary. Even the organisation that runs the
-gateway is only responsible for validating correctness and exchanging according
-to ECB rules. This effectively creates a new digital form of public money that
-is held by the individual and backed by the European Central Bank itself.
+We ensure price stability the same way as the psychical euro. By allowing the
+currency to be exchanged for traditionally banked euros, we peg the price of
+EuroToken to that of the euro. This exchange can be fully regulated and
+controlled by the central bank, and once the money is exchanged it belongs fully
+to the user, and represents a claim on the central bank itself. The party that
+runs the exchange is only responsible for validating correctness and exchanging
+according to ECB rules and regulations. This effectively creates a new digital
+form of public money that is held by the individual and backed by the European
+Central Bank itself.
 
-We implemented a proof of concept on top of the TrustChain blockchain. We
-created an mobile wallet that allows people to transfer the currency. We also
-created a gateway application that handles the transaction validation and
-exchange of the EuroToken.
+We implemented a proof of concept on top of the TrustChain blockchain, created a
+mobile wallet that allows people to transfer the currency, and created a gateway
+application that handles the transaction validation and exchange of the
+EuroToken. We validated our implementation in two field trails and demonstrated
+the usability of the system. We enabled users to safely transact by scanning a
+QR code to send money using only their phone. We also showed the off-line
+transfer capability of the PoC in the real world.
 
-We tested our system in two field trails to make show the viability of the
-system. Users were able to scan a QR code to send money using only their phone.
-We also tested the off-line transfer capacity of the PoC in the real world.
+We validated our design by running a simulation of multiple EuroToken wallets
+and gateways. We measured how the network scales over time and showed a linear
+increase in network transaction processing capacity as the number of gateways
+increase. Additionally, we demonstrated how our method of checkpointing allowed
+the transacting between users in constant time in terms of both the size of the
+network, and the size of each users personal blockchain.
 
-By running a simulation of multiple EuroToken wallets and gateways, we measured
-the way the network scales over time and see a linear increase in network
-capacity as the number of gateways increase. Additionally, we found our method
-of checkpointing allowed the transacting between users in constant time as the
-both the size of the network, and the size of the blockchain grows.
-
-EuroToken is a CBDC design that is scalable, price stable and off-line
-transferable. It has to potential to become the technology that becomes the
-foundation of the financial infrastructure of Europe unifying the scattered
-payment and banking system of today.
+Going back to our research question, EuroToken is a digital, extensible, secure,
+scalable, price stable extension to the Euro that allows for near-instant
+world-wide and off-line transfer. It has the potential to become the basis for
+the financial infrastructure of Europe unifying the scattered payment and
+banking system of today. Most importantly EuroToken allows our money to remain
+subject to the democratic process and keeps our transaction data out of the
+hands of those we least trust.
 
