@@ -83,7 +83,7 @@ abstract: |
     to arbitrary size, handle off-line transactions, and remain price-stable and
     guaranteed in value by the Central Bank.
 
-    The EuroToken system is a peer-to-peer blockchain system that store every
+    The EuroToken system is a Peer-to-Peer blockchain system that store every
     wallets history on the users personal device. This allows basic transactions
     without an online connection. Double-spend prevention is handled by a set of
     centralised nodes that periodically verify the transactions of a given user
@@ -362,7 +362,7 @@ integrating most financial tools into one universal system.
 This thesis provides a design for EuroToken, a prototype for a Central Bank
 Digital Currency. Its primary purpose is to implement, for the first time, a
 currency that is: digital, central bank issued, universally accessible,
-peer-to-peer and price stable. Our unique design stems from an analysis of the
+Peer-to-Peer and price stable. Our unique design stems from an analysis of the
 fundamental challenges distributed technologies face today and exploring how an
 institution with the reliability, experience and reach of the European Central
 Bank (ECB) might provide solutions.
@@ -541,7 +541,7 @@ functional requirements that this thesis will specifically focus on:
 ## Trade-offs around double spending, scalability and decentralisation
 
 When designing a modern digital payment system with the ability to transfer
-funds off-line, peer-to-peer systems and Distributed Ledger Technologies (DLTs)
+funds off-line, Peer-to-Peer systems and Distributed Ledger Technologies (DLTs)
 are an worthwhile case study. Since Bitcoin in 2008, various crypto-currencies
 have iterated on the idea of a fully decentralized currency. After 12 years of
 development a number of trade-offs are becoming visible that show the
@@ -791,7 +791,7 @@ support. This main feature set is illustrated in figure \ref{cbdc_features}.
 
 EuroToken is a prototype for a Central Bank Digital Currency. Its primary
 purpose is to implement, for the first time, a currency that is: digital,
-universally accessible, central bank issued, peer-to-peer and off-line capable.
+universally accessible, central bank issued, Peer-to-Peer and off-line capable.
 
 ## Research Focus and Structure
 
@@ -833,18 +833,18 @@ sacrificing double-spending protection.
 
 Any payment system that aims to replace public money while being able to operate
 at the scale of the euro system needs to conform to a number of requirements.
-Such a system needs to be scalable, privacy aware, allow peer to peer
+Such a system needs to be scalable, privacy aware, allow Peer-to-Peer
 transactions off-line. In needs to be price stable, exchangeable for euros, and
-most importantly, it needs to be secure and cheating resistant. In this chapter
-we first describe how a distributed block-DAG provides a good basis
-for a scalable, private, and off-line friendly transaction system. We then
+most importantly, it needs to be secure and cheating resistant.
+
+In this chapter we first describe how a distributed block-DAG provides a good
+basis for a scalable, private, and off-line friendly transaction system. We then
 explain how we position the system in relation to the euro, how the price can
 remain stable, and how a system can mimic the properties of cash. We then go in
 to the details of how the system is secured, and how we prevent double spending
 while still remaining scalable and allowing off-line transactions. Finally, we
-explain how the system could be expanded upon by legal frameworks that can
-provide varying risk vs privacy trade-offs and how certain guarantees could be
-enforced in the system.
+explore how the system can be regulated and how the gateways can be audited to
+ensure their in integrity.
 
 ## Distributed accounting and networking
 
@@ -857,35 +857,38 @@ own edge device. By storing all information required for transacting at the
 physical end points of transactions, we create the possibility of direct
 off-line transaction between users, without any link to the outside world.
 
-While the EuroToken system design is independent of the underlying
-communication technology, the off-line requirement leads to there being some
-limitations on the way users interact. Since off-line users cannot connect to
-servers we choose to work with a Peer-to-Peer system that allows users to find
-each-other based on personal identifiers.
+While the EuroToken system design is independent of the underlying communication
+technology, the off-line requirement leads to some limitations on the way users
+interact. Since off-line users cannot connect to servers we choose to work with
+a Peer-to-Peer system that allows users to find each-other based on personal
+identifiers.
 
-We build on Peer-to-Peer networking, that provides a mechanism to discover the
-network location of users based on the same public key that is used to identify
-their wallet. This allows us to almost completely abstract away from locating
-users using IP addresses and ports. As a result we only have to worry about
-maintaining a users public key to identify and communicate with them across
-time. Our peer to peer network does not only abstract away from IP addresses,
-bus also from the IP network completely. Namely, it provides communication over
-Bluetooth without the need for any internet connection. This becomes very
-useful for demonstrating the off-line capabilities of the EuroToken system.
+We will build our design on a generic Peer-to-Peer networking technology that
+provides the mechanisms required for our use case. We specifically require the
+ability to discover the network location of users given their public key that is
+used to identify their wallet. This allows us to almost abstract away from
+locating users using IP addresses and ports, leaving this to specific
+implementations. As a result we only have to worry about maintaining a users
+public key to identify and communicate with them across time. Our Peer-to-Peer
+network should not only abstract away from IP addresses, bus also from the IP
+network completely. For example, it must provide communication over Bluetooth or
+NFC without the need for any internet connection. This is necessary for
+demonstrating the off-line capabilities of the EuroToken system.
 
 ## Block-DAG accounting
 
-As mentioned for our distributed accounting system we choose to build on a
-block-DAG structure. As illustrated in figure \ref{block_DAG} every user
-has a personal blockchain structured as a chronological, one-dimensional string
-of "blocks". Every block will include a cryptographically secure hash
-identifying what block preceded it. Because of the trapdoor effect of the hash,
-any block will uniquely identify all blocks that come before it. This allows
-anyone to verify the validity of entire history of another user, given the last
-block in this history. Every block will contain a single transaction that
-specifies the transfer of funds from one user to another, as well as a
-reference to a corresponding block in the chain of the transaction
-counterparty. This effectively creates a system of double accounting.
+For our distributed accounting system we choose to use on a block-DAG structure.
+As illustrated in figure \ref{block_DAG} every user has a personal blockchain
+structured as a chronological, one-dimensional string of "blocks". Every block
+will include a cryptographically secure hash identifying what block preceded it.
+Because of the collision resistance of the hash, any block will uniquely
+identify all blocks that come before it. Given the knowledge that the latest
+block in this history is valid and unique, this allows for the entire history of
+a user to trusted. Every block will also contain a single transaction that
+declares the transfer of funds from one user to another. Additionally, the block
+includes a reference to a corresponding block in the chain of the transaction
+counterparty. This effectively creates a system of double accounting, where
+every transaction is recorded by two parties.
 
 \begin{figure}[htp]
 \centering
@@ -896,22 +899,24 @@ counterparty. This effectively creates a system of double accounting.
 \label{block_DAG}
 \end{figure}
 
-Every block can contains a "declaration" by the user, or a reference to the
-declaration of another party. These declarations are digitally signed by the
-declaring party and form the base of any transaction. To do a transaction the
-sending user (Alice) will create a new (half)block with a declaration stating
-"I transfer 1 EuroToken to Bob".
+One way to view this system is that every block contains "declaration" by the
+user, or a reference to the declaration of another user. These declarations are
+digitally signed by the declaring party and form the first half of any
+transaction.
 
-When Bob receives this block from Alice, he can accept it by creating a block
-in his own chain and returning it Alice. Before Bob accepts the block, he first
-validates the history of Alice by requesting enough of her chain make sure that
-Alice doesn't validate any of the network rules that would invalidate Bob's
+In the case of a transaction this works as follows. The sending user (Alice)
+will create a new (half)block with a declaration stating "I transfer 1 EuroToken
+to Bob". We call this the "proposal" block. When Bob receives this block from
+Alice, he can accept it by creating a block in his own chain and returning it
+Alice. We call this the "acceptance" block. Before Bob accepts the block, he
+first validates the history of Alice by requesting enough of her chain make sure
+that Alice doesn't validate any of the network rules that would invalidate Bob's
 receiving of the money. Once Bob is satisfied with the correctness of Alice's
-transaction history he incorporates a new block declaring the acceptance of
-Alice's transaction. This block includes the hash of Alice's block, thus
-entangling the chains of Alice and Bob together. Bob now has a signed proof by
-Alice that the transaction happened. He can use this to prove the transaction
-happened at any point in the future.
+transaction history he creates and returns the acceptance block, finishing the
+transaction. The acceptance block includes the hash of Alice's proposal block,
+thus entangling the chains of Alice and Bob together. Bob maintains the proposal
+as a signed proof by Alice that the transaction happened. He can use this to
+prove that the declaration of Alice any point in the future.
 
 ## Gateways: Euro to EuroToken exchange
 
@@ -919,18 +924,18 @@ The viability of any currency as a store of value over a given time frame is
 dependent on the stability of its price over that time frame. This is an issue
 that has plagued decentralised crypto currencies from the very beginning. The
 hope is that the currency will stabilise itself when it reaches a critical
-adoption level. However even currencies like the euro and US dollar don't
-remain stable without periodic interventions of their respective central banks.
+adoption level. However, even currencies like the euro and US dollar don't
+remain stable without periodic interventions by their respective central banks.
 
 The euro has long served as the core of the financial infrastructure of the
 European economy. It has essentially done this using two consumer facing
-versions of money: the euro as a publicly accepted, physical item of value (the
-public euro), and the euro as a digital, privately managed, unit of account (the
-private euro). These public, and private types of money serve citizens in
-different ways. The public euro is the most stable store of value since its
+versions of money: the euro as a central back backed, physical token of value
+(the public euro), and the euro as a digital, privately managed, unit of account
+(the private euro). These public, and private types of money serve citizens in
+different ways. The public euro is the safest store of value since its
 guaranteed by the central bank, it also has the advantaged of requiring no
-internet connection to use. While the private euro has digital advantages in
-usability and security, but derive their value from the "reliability" of private
+internet connection to use. Meanwhile the private euro has digital advantages in
+usability and security, derives its value from the "reliability" of private
 banks, and are typically only insured by governments up to 100.000 euros
 [@DepositInsurance]. With the declining usage of public money in favor of
 digital money, the need for a new type of euro to fill the gap of public money
@@ -942,13 +947,14 @@ is getting stronger.
 \includegraphics{./images/3_design/exchange.png}
 }
 \caption{Usage flow of cash, private money, and EuroToken.}
-\label{monetary structure}
+\label{monetary_structure}
 \end{figure}
 
 For these reasons we present the EuroToken system as a 3rd type of money.
 Instead of reinventing the wheel of "stability" we connect the EuroToken system
 directly to the euro system, while providing extra features on top of the
-current euro system.
+current euro system. Additionally, EuroToken will create for new monetary policy
+options for the ECB to stabilise the eurozone as a whole.
 
 In order to properly connect EuroTokens to the euro system, an easy and
 value-transparent method of exchange is required. Just like private and public
@@ -960,20 +966,20 @@ the other.
 
 In our current design, the gateways are designed to be run by public parties
 associated with the central bank. Any detailed speculation on the best way to
-connect such a system to the established euro is best left to economists.
-However, we envision a possible future where multiple gateways are run by
+connect such a system to the established euro is best left to economists at the
+ECB. However, we envision a possible future where multiple gateways are run by
 existing private money institutions who perform the heavy lifting of day to day
-exchange. In such a system private banks would act as an accounting system for
-the EuroToken exchange without being allowed to leverage their EuroToken
-position. The Central bank would allow these private institutions to conform to
-reserve requirements in the form of EuroToken holdings rather than only cash.
-By not allowing private banks to mint new EuroTokens, but only exchange them,
-the central bank can control the amount of EuroToken in circulation in a
-similar way to current public money. This would insulate the EuroToken from
-the impact of a failing euro or bank, in the same way as physical public money
-is currently insulated from such failing.
+exchange. In such a system private banks would act as a validation and exchange
+system for EuroToken without being allowed to leverage their EuroToken position.
+The Central bank could allow these private institutions to conform to reserve
+requirements in the form of EuroToken holdings rather than only cash or central
+bank reserves. By not allowing private banks to mint new EuroTokens, but only
+exchange them, the central bank can control the amount of EuroToken in
+circulation in a similar way to current public money. This also allows the quick
+isolation of EuroToken from a failing euro or bank, in the same way as physical
+public money will still me limited in supply if the digital euro fails.
 
-This way of connecting to the euro could allow for a smooth transition to a
+This way of connecting to the euro also allows for a smooth transition to a
 digital form of public money, while the established and regulated financial
 institutions are still positioned properly in a place where financial services
 can be provided.
@@ -983,28 +989,39 @@ can be provided.
 In order to remain a viable store of value, a currency needs to provide
 protection against any non-sanctioned creation of that currency. If a network
 allows its users to "create" new money in any significant way, the value of the
-coin will drop as the supply increases, thus undermining one of the most
-fundamental function of the currency. The structure of the blockchain provides
-an immutable and signed history of any transactions, thus enabling users to
-prove that the funds they are attempting to send actually exist. However the
-blockchain does not inherently allow users to prove that they have not spent,
-and will not spend, the same balance again.
+coin will drop as the supply surges, thus undermining the most fundamental
+function of the currency, to be an intermediary store of value. The structure of
+the blockchain provides an immutable and signed history of any transactions,
+thus enabling users to prove that the funds they are attempting to send actually
+exist. However the blockchain does not inherently allow users to prove that they
+have not spent, and will not spend, the same balance again.
 
-In this section we explain how the network prevents unsanctioned creation of
-currency.
+In this section we explain how the EuroToken network prevents unsanctioned
+creation of currency.
 
 ### The double spending problem
 
-In order to spend their money twice, a user has to create 2 blocks that are
-positioned in the same place in their blockchain. This is what is called a
-"double-spend attack". This attack is only detectable if both of the
-conflicting blocks are found. Since we have opted for a distributed blockchain
-this detection becomes a non-trivial problem to solve. The transactions of 2
-conflicting blocks might be re-spent many times by the time anyone sees the 2
-conflicting  blocks and notices that a double spend happened.
+Spending the same money twice, in our personal blockchain system works as
+follows. An adversary, lets call her Eve, will create perform a legitimate
+transaction with Alice. This transaction will get recorded in the chain of
+Alice, as well as in the chain of Eve. If Eve now wants to spend this balance
+again with Bob, she cannot simply add the new transaction to her chain. Before
+Bob accepts a transaction he will request all required blocks to validate that
+Eve received this money in the past. Eve now has to hide the transaction with
+Alice in order to make Bob believe the balance is still available. When Eve and
+Bob then create a new transaction, the proposal block of Eve, will be in the
+same place as the block with Alice would be. They will both refer to the same
+"previous" transaction, thus creating a fork in her chain.
+
+This is what is called a "double-spend attack". This attack is only detectable
+if both of the conflicting blocks are found. Since we have opted for a
+distributed blockchain this detection becomes a non-trivial problem to solve.
+Without a mechanism to stop this the money from 2 conflicting blocks might be
+used in new transactions many times before the 2 original conflicting blocks end
+up at the same peer and a double spend is detected.
 
 Bitcoin and similar currencies solve this problem using a global blockchain
-that everyone has access to. This allows users to check whether a given balance
+that everyone can read. This allows users to check whether a given balance
 has already been spent by inspecting the global database of transactions.
 However, the global knowledge of the Bitcoin chain is inherently unscalable.
 Additionally, the details of the Proof of Work method of block generation
@@ -1016,53 +1033,51 @@ A solution to this problem in a network with a distributed block-DAG, starts
 with the realisation that the issue of detecting double-spending can be reduced
 to the issue of detecting "chain forking" in our network. The usage of the
 blockchain allows us to make sure that all transactions are ordered and
-consistent, this means that double-spend needs to be in 2 separate versions of
-that history. Thus requiring 2 blocks that refer back to the same historic
-block. This is a fork in the chain. We cannot "prevent" a user from creating 2
-conflicting blocks in their chain as their chain is stored on their own device.
-But we can make sure that the rest of the network only accepts one of the 2
-blocks, thus only accepting 1 "spending" of the balance. This choice between 2
-conflicting blocks needs to be consistent so anyone in the network is working
-with the "same history". Additionally, forks need to be detected and resolved
-before the balance is spent again by any of the 2 receiving parties. This way a
-double-spend will not propagate into the network and is limited to the users
-involved in the 2 transactions. To resolve the conflict between blocks we
-define the concept of "transaction finality". For a transaction to be final, it
-needs to be "validated" and "stored" in the network, while any conflicting
-transaction will be rejected by the network. Transaction finality the guarantee
-that a merchant needs before they can send their goods to a paying customer.
+consistent, this means that a double-spend needs to happen in the form of 2
+separate versions of the same chain. Thus requiring 2 blocks that refer back to
+the same historic block. This is a fork in the chain.
+
+We cannot prevent a user from creating 2 conflicting blocks in their chain since
+their chain is stored on their own device. But we can make sure that the rest of
+the network only accepts one of the 2 blocks, thus only accepting 1 "spending"
+of the balance. This choice between 2 conflicting blocks needs to be consistent
+so anyone in the network is working with the "same history". Additionally, forks
+need to be detected and resolved before the balance is spent again by any of the
+2 receiving parties. This way a double-spend will not propagate into the network
+and is limited to the users involved in the 2 transactions. To resolve the
+conflict between blocks we define the concept of "transaction finality": For a
+transaction to be final, it needs to be "accepted" by the network, while any
+conflicting transaction will be guaranteed to be rejected by the network.
 
 The transaction finality problem in our network has several possible solutions.
 In [@FWSP] Brouwer presents a method of distributing blocks to a randomly and
 fairly selected list of witnesses that would probabilistically detect any
 conflicting block before the receiver would accept them. In [@Broadcast]
-Guerraoui Et. Al present a more theoretical method of block broadcast. These
-might be good candidates for future research. However since these solutions are
-inherently probabilistic, there is no hard guarantee that any double-spend will
-be detected in time.
+Guerraoui Et. Al present a more theoretical method of block broadcasts. These
+might be good candidates for future research.
 
-### Balance vs spendable balance
+### Rolling balance
 
 Currently lacking a good exact and distributed solution, we choose to utilize a
-decentralized network of trusted validators. These validators maintain the last
-transaction of users that register with them. Any user who receives money, can
-verify the non-existence of a conflicting block with the associated validator of
-the sender.
+decentralized network of trusted validators. These validators maintain at least
+the last transaction of users that register with them. Any user who receives
+money, can verify the non-existence of a conflicting block with the associated
+validator of the sender.
 
 In the rest of this section, we define the concepts of "spendable balance" and
 specify the information requirements for marking a transaction as finalised.
 
 In order for Alice verify if Bob is able to send her the money he is sending,
 she needs to know that Bob has sufficient funds. For this reason a rolling a
-balance across all transactions could be maintained across all blocks. Where
-the balance $B$ for a given block with sequence $i$ ($B_i$) is:
+balance is maintained across all blocks. Where the balance $B$ for a given block
+with sequence $i$ ($B_i$) is:
 
 $$ B_i = B_{i-1} + C_i$$.
 
 Where $C_i$ is the change in balance for the block with sequence number $i$.
 This is negative when sending money. However the balance of a user does not
-take into account the concept of transaction finality. So instead we maintain
-the total "spendable balance" instead.
+take into account the concept of transaction finality. So conceptually we work
+with the "spendable balance".
 
 ### Finality statements
 
@@ -1080,8 +1095,6 @@ done by sending the validator a finality proposal.
 \label{offline}
 \end{figure}
 
-
-\ref{offline}
 The finality proposal block includes notes a list of hashes that point to
 transactions from Bob. Together with this block for the validator to sign, Alice
 will send all of Bobs blocks from the last transaction to validate to the last
@@ -1384,19 +1397,19 @@ Android as well.
 One option is to implement a full blockchain protocol and associated network
 stack from the ground up to adhere to our exact requirements. This would give
 us a lot of say in the exact feature set of the network. However, since the
-science of distributed networking algorithms has mostly settled, most peer to
-peer communication technologies have already been implemented somewhere.
+science of distributed networking algorithms has mostly settled, most
+Peer-to-Peer communication technologies have already been implemented somewhere.
 
-The second option is then to build upon some existing peer to peer networking
+The second option is then to build upon some existing Peer-to-Peer networking
 library, while implementing the blockchain protocol ourselves. This option has
 some benefits as the usage of a block-DAG is not yet very common, and thus
 is not implemented as a stand alone package anywhere. For the P2P library we
 have several options. We considered LibTorrent [@libtorrent], Libp2p [@libp2p]
-and IPv8[@PyIPv8]. LibTorrent has a number of interesting peer to peer features
+and IPv8[@PyIPv8]. LibTorrent has a number of interesting Peer-to-Peer features
 like peer discovery and data transfer but sadly fell short when it comes
 discovery of peers based on public keys. It can be classified more as a file
 location protocol than a peer location protocol. This would mean we would have
-to implement a peer location system ourselves. Libp2p is a modular peer to peer
+to implement a peer location system ourselves. Libp2p is a modular Peer-to-Peer
 networking stack that provides a large suite of P2P tools. Libp2p uses a
 Distributed Hash Table (DHT) to allow peer discovery based on a peer-id
 [@PeerId]. There is an JVM/Android implementation available, which also makes it
@@ -1995,7 +2008,7 @@ Legend: $~$ | $~$ \cmark $~$ Possible $~$ | $~$ \qmark $~$ Future reseach $~$ | 
 \end{center}
 
 We achieve **enhanced digital efficiency** and a **competitive feature set **by
-designing EuroToken as a digital, peer-to-peer, programmable payment system. We
+designing EuroToken as a digital, Peer-to-Peer, programmable payment system. We
 achieve **cash-like features** with direct and off-line transferability without
 the need for intermediary parties. EuroToken provides the ECB with a new set of
 **monetary policy options** by having the Central Bank controlling the
@@ -2189,7 +2202,7 @@ the coupling of currencies with an opt out at any time.
 
 ## Universal asset storage and granular monetary policy
 
-The digital and peer-to-peer nature of EuroToken provides the possibility of
+The digital and Peer-to-Peer nature of EuroToken provides the possibility of
 anonymous users, while the gateway centered design allows for integration of
 digital identity solutions. This allows for a hybrid system where different
 rules can apply to anonymous accounts. This would allow the ECB to encourage the
@@ -2233,7 +2246,7 @@ and smart-contracts this could usher in a whole new wave of innovation.
 # Conclusion
 
 We present what we believe to be the first digital Euro deployment with real
-money, (1) offline peer-to-peer transfers with the potential for full
+money, (1) offline Peer-to-Peer transfers with the potential for full
 disaster-proofing, (2) arbitrary scalability, (3) a real-time connectivity to
 the existing IBAN-based banking system, (4) while being guaranteed by the
 central bank.
