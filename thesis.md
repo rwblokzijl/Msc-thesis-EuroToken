@@ -1140,51 +1140,45 @@ For an acceptance block to be considered final the following is also required:
 
 ### Spendable balance
 
-Once a transaction if finalised, "spendable balance" of Alice can be calculated.
-The spendable balance changes at two events, the finalisation of an earlier
-receiving transaction and when Alice spends her money. As such the spendable
-balance $SB_i$ for a given block with sequence number $i$ is:
+Once a transaction if finalised, the "spendable balance" of Alice change. The
+spendable balance changes at two events. The first is when she spends money, and
+the second it the finalisation of an earlier receiving transaction. As such the
+spendable balance $SB_i$ for a given block with sequence number $i$ is:
 
 $$SB_i = SB_{i-1} + F_{i} - S_{i}  $$
 
 Where $S_{i}$ is the total amount spent in the block with sequence number $i$,
 $F_{i}$ is the total amount finalised in the block with sequence number $i$.
 
-### Conclusion
+### Finality without centralisation
 
 In the future we envision the system to take one of three routes regarding
-transaction finality. First, system could be built on a future breakthrough in
-distributed transaction finality. Second the system could be built on a
-probabilistic but bounded transaction finality, where the rare double-spend is
-eventually detected and settled through the legal system. Or third, like in our
-solution, the system is build on trusted nodes that verify transactions for
-user. Like the gateways, these validators could be run by regulated financial
-institutions. Such a system would most resemble the current financial system,
-with the added benefits of off-line transactions, programmable money, a
-standardised system of accounting, instantaneous international transactions,
-etc.
+transaction finality. First, the system could be built on a future breakthrough
+in distributed transaction finality, no longer requiring a central node. Second
+the system could be built on a probabilistic but bounded transaction finality,
+where the rare double-spend is eventually detected and settled through the legal
+system. Or third, like in our solution, the system is build on trusted nodes
+that verify transactions for user. Like the gateways, these validators could be
+run by regulated financial institutions. Such a system would most resemble the
+current financial system, with the added benefits of off-line transactions,
+programmable money, a standardised system of accounting, instantaneous
+international transactions, etc.
 
 ## Checkpointing
 
 Because of transaction finality, when Alice receives the transaction from Bob,
 she can rely on the finality statements, rather than having to validate the
 chain of everyone he received money from. This reduces the validation load to
-only Bob's chain. However this still has some issues. First, Bob's chain will
-grow larger over time, thus slowly increasing the validation load. Second, all
-this information needs to be stored by Alice until it can be delivered to Bob's
-validator.
+only Bob's chain. However this still has some scalability issues. First, Bob's
+chain will grow larger over time, thus slowly increasing the validation load.
+Second, all this information needs to be stored by Alice until it can be
+delivered to Bob's validator.
 
 The way this problem has been solved in traditional blockchain systems is
 through the global blockchain and limited transactions per second. By having
 only miners or stakers being required to maintain the whole blockchain, only a
-few machines have to be able to know the entire chain and store all that data.
-But this is still inherently unscalable.
-
-A second issue is one of privacy, when Bob has to send Alice all of his chain
-for verification, Alice can derive much from this information. Though we would
-like to see methods of privatization added to perhaps conceal transferred
-amounts, we still need a way to minimize the information leakage to 3rd
-parties.
+few machines have to know the entire history and store all that data. But, as
+mentioned earlier, this is still inherently unscalable.
 
 To solve this issue of validation scalability, we define a form of
 checkpointing. We periodically create a checkpoint block in a users chain that ,
@@ -1199,6 +1193,14 @@ that includes a summary of the entire chain before it. This information is:
 Alice now knows the blocks that are already stored by the validator. When Alice
 is receiving money from Bob, she only requires Bob's blocks down to the his last
 checkpoint.
+
+A second issue this solves is one of privacy, when Bob has to send Alice all of
+his chain for verification, Alice gets access to potentially sensitive
+transaction data. Since the checkpoint serves as a statement of validity for the
+entire history before that point, all privacy sensitive details can be omitted.
+When off-line, transactions cannot be checkpointed and need to be shared with
+all counterparties, for this reason a future area of research a method of
+privatization to conceal transferred amounts through homomorphic encryption.
 
 ## Off-line transactions and online validation
 
