@@ -1084,15 +1084,16 @@ with the "spendable balance".
 Before Alice can add the output of a block she received from Bob to her
 "spendable balance", the transaction from Bob first has to be finalised. To
 achieve this a validation is performed with Bob's associated validator. This is
-done by sending the validator a finality proposal.
+done by sending the validator a finality proposal. The whole transaction flow is
+illustrated in figure \ref{offline_transfer}.
 
 \begin{figure}[htp]
 \centering
 \resizebox{\textwidth}{!}{
-\includegraphics{./images/3_design/offline-transfer.png}
+\includegraphics{./images/3_design/offline-transfer-2.png}
 }
 \caption{Off-line transfer and finalisation}
-\label{offline}
+\label{offline_transfer}
 \end{figure}
 
 The finality proposal block includes notes a list of hashes that point to
