@@ -1205,24 +1205,22 @@ privatization to conceal transferred amounts through homomorphic encryption.
 ## Off-line transactions and online validation
 
 An off-line transaction is a transaction where both parties have no connection
-to the rest of the network. Because of the issues discussed earlier in the
-section on double spending, scalability and decentralisation, there is no way of
-preventing someone from hiding any number of blocks from a previous transaction
-from the other party in a transaction.
+to the rest of the network. Because of the issues discussed earlier there is no
+way of preventing someone from hiding any number of blocks from a previous
+transaction from the other party without checking with the rest of the network
+for conflicting blocks. To prevent double-spending transactions from duplicating
+currency there is a need for the network to detect and prevent them. This means
+storing all blocks, ensuring they are valid and verifying that are no
+conflicting blocks exist. This online check, becomes the main challenge in
+creating a system that supports off-line transactions.
 
-The problem is somewhat limited by the chronological ordering of the personal
-blockchains. A double-spend attack is only possible if conflicting blocks exist.
-To prevent these transactions from duplicating currency there is a need for the
-network to detect and prevent them. This storing all blocks, ensuring they are
-valid and verfying that are no conflicting blocks exist. This online check,
-becomes the main challenge in creating a system that supports off-line
-transactions. To limit this problem even further, the EuroToken system maintains
-a distinction between transactions and their finalisation. A transaction is
-first signed by two parties locally and included in their blockchains. All
-information required to do this is already stored in the wallets of the tho
-parties. After the signing of the transaction, it is finalised with the network,
-storing it and making sure it does not conflict with any other transactions
-known to the network.
+To limit the scope of this problem, the EuroToken system maintains a distinction
+between transactions and their finalisation. A transaction is first signed by
+two parties locally and included in their blockchains. All information required
+to do this is already stored in the wallets of the tho parties. After the
+signing of the transaction, it is finalised with the network, storing it and
+making sure it does not conflict with any other transactions known to the
+network.
 
 During the period that a transaction is not finalised, another conflicting
 transaction might get finalised before, thus leaving us with as double-spend
