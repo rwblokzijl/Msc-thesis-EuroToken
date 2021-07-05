@@ -64,27 +64,27 @@ abstract: |
     This leaves whether fully decentralized currencies can ever function as a
     global payment system to be determined.
 
-    Meanwhile, the world of payments outside of the crypto-sphere is also making
+    Meanwhile, the world of payments outside the crypto-sphere is also making
     a transformation. With the use of physical money declining in favor of
     privately banked "IBAN money", payment systems are going digital. With
     decentralized cryptocurrencies insufficient as payment solutions, centrally
     controlled currencies like Tether and Diem, previously know as Libra, are
     trying to fill this exact hole in the market. Banks have been found
     unreliable, unavailable to many people across the world, and unable to
-    provide the convenience and feature set of the new currencies. Consequently
+    provide the convenience and feature set of the new currencies. Consequently,
     the global digital payment system may eventually belong to the first bidder,
     be they decentralized, run by governments, or by private, profit driven
     corporations.
 
     We present EuroToken, a design for a CBDC that is focused on solving the
     open issues in cryptocurrencies from a perspective of a trustworthy central
-    bank. By centralising some of the infrastructure required to run a
+    bank. By centralising some infrastructure required to run a
     cryptographically secure currency, we achieve a network that can scale
     to arbitrary size, handle off-line transactions, and remain price-stable and
     guaranteed in value by the Central Bank.
 
     The EuroToken system is a Peer-to-Peer blockchain system that store every
-    wallets history on the users personal device. This allows basic transactions
+    wallets' history on the users personal device. This allows basic transactions
     without an online connection. Double-spend prevention is handled by a set of
     centralised nodes that periodically verify the transactions of a given user
     and condenses their chain into a single "checkpoint" block for scalability.
@@ -111,8 +111,8 @@ closed trail of their new Central Bank Digital Currency (CBDC)
 [@ForbesChinaCoin]. And the Eurosystem is set to make a decision on whether to
 start a digital euro project in mid 2021.
 
-Currently no decentralized currencies are in a position to challenge the
-upcoming "central coins". Even the most prominent crypto currencies, including
+Currently, no decentralized currencies are in a position to challenge the
+upcoming "central coins". Even the most prominent cryptocurrencies, including
 Bitcoin and Ethereum [@Ethereum:whitepaper], simply lack the scalability and
 price stability necessary to be a valid medium of exchange and reliable store of
 value. While there have been attempts to create fully decentralized stablecoins,
@@ -122,16 +122,16 @@ are still unsolved by distributed currencies. The future of the financial system
 might be decided by competition between the governments of the world and opaque
 proprietary alternatives.
 
-Its starting to become clear that the direction of crypto currencies will not be
+It's starting to become clear that the direction of crypto-currencies will not be
 determined by collections of anonymous individuals imagining a financial system
 that gives power back to the people. Governments and large corporations have
-joined the race for the worlds leading digital currency. Motivates by profit,
+joined the race for the world's leading digital currency. Motivates by profit,
 national interests, or the good of humanity, the winner will be left
 controlling and overseeing a significant chunk of the worlds transactions.
 
 The winner of this race might come to influence the most basic aspects of our
 daily lives. Where China and Facebook are making rapid progress, the Eurozone is
-still deliberating. Meanwhile their presence in the race might be vital in
+still deliberating. Meanwhile, their presence in the race might be vital in
 incorporating the values of personal freedoms and privacy.
 
 ## The decline of cash
@@ -139,10 +139,10 @@ incorporating the values of personal freedoms and privacy.
 Most monetary systems today rely on two types of money. Private money, managed
 by private banks, and public money, managed by the European Central Bank (ECB).
 
-Public money is the money we have in our physical wallets. It consists of bank
-notes and coins and is often referred to as cash. Once upon a time it was
+Public money is the money we have in our physical wallets. It consists of
+banknotes and coins and is often referred to as cash. Once upon a time it was
 possible to exchange this money for gold directly at the central bank of a
-country and thus it derived its value directly from gold. Today however, the
+country, and thus it derived its value directly from gold. Today however, the
 value of this money is guaranteed by the reputation and trustworthiness of the
 central bank [@The_Gold_Standard]. No physical euros will be created unless by
 the central bank itself, and no one can seize them unless with physical force.
@@ -154,7 +154,7 @@ the bank to transfer it. Without permission from the bank, deposits, transfers
 and withdrawals are not possible. Effectively, these banks act as a central
 point at which any individual or group ban be silenced by freezing their assets
 or withholding service. Additionally, if a bank overexposes itself to market
-forces and goes bankrupt, the money stored with them might not be payed back in
+forces and goes bankrupt, the money stored with them might not be paid back in
 full.
 
 A person in the eurozone can weigh the risks and benefits of these two types of
@@ -1333,8 +1333,8 @@ the integrity of their institutions.
 
 In this section we describe the implementation of the EuroToken protocol, as
 well as the prototype we built to test and showcase the capabilities of the
-EuroToken system. The protocol is implanted on top of IPv8. In includes an
-Android/Kotlin implementation as well as a Python implementation. We then built
+EuroToken system. The protocol is implemented on top of IPv8. In includes an
+Android/Kotlin implementation as well as a Python implementation. We built
 a Euro to EuroToken exchange and transaction validator on top of the Python
 implementation. On top of the Kotlin implementation we built a wallet app that
 is fully capable of securely transferring EuroTokens between wallets, as well as
@@ -1379,16 +1379,16 @@ the functions.
 
 ## EuroToken transfer protocol
 
-The method for accounting and transferring of EuroTokens lies at the heart of
-this project. Because of this the choices regarding the implementation of the
+The method for the accounting and transferring of EuroTokens lies at the heart
+of this project. Because of this the choices regarding the implementation of the
 networking stack and blockchain technology will have a direct effect on the
 feature set and scalability of the whole EuroToken network. We need a network
-stack that allows communication both off-line directly between devices, as well
-as online across the world. Finding and connecting to any wallet without
-relying on central servers is a main requirement. In addition, the off-line
-transfer ability of the system is best demonstrated by creating an Android
-client. Another requirement is therefore that an implementation is available for
-Android as well.
+stack that allows online communication as online across the world, as well as
+direct device to device communication. Finding and connecting to any wallet
+without relying on central servers is a main requirement. In addition, the
+off-line transfer ability of the system is best demonstrated by creating an
+Android client. Another requirement is therefore that an implementation is
+available for Android as well.
 
 One option is to implement a full blockchain protocol and associated network
 stack from the ground up to adhere to our exact requirements. This would give
@@ -1396,34 +1396,34 @@ us a lot of say in the exact feature set of the network. However, since the
 science of distributed networking algorithms has mostly settled, most
 Peer-to-Peer communication technologies have already been implemented somewhere.
 
-The second option is then to build upon some existing Peer-to-Peer networking
+The second option is to build upon some existing Peer-to-Peer networking
 library, while implementing the blockchain protocol ourselves. This option has
-some benefits as the usage of a block-DAG is not yet very common, and thus
-is not implemented as a stand alone package anywhere. For the P2P library we
-have several options. We considered LibTorrent [@libtorrent], Libp2p [@libp2p]
-and IPv8[@PyIPv8]. LibTorrent has a number of interesting Peer-to-Peer features
-like peer discovery and data transfer but sadly fell short when it comes
-discovery of peers based on public keys. It can be classified more as a file
-location protocol than a peer location protocol. This would mean we would have
-to implement a peer location system ourselves. Libp2p is a modular Peer-to-Peer
+some benefits as the usage of a block-DAG is not yet very common, and thus is
+not implemented as a stand-alone package anywhere. For the P2P library we have
+several options. We considered LibTorrent [@libtorrent], Libp2p [@libp2p] and
+IPv8[@PyIPv8]. LibTorrent has a number of interesting Peer-to-Peer features like
+peer discovery and data transfer but sadly fell short when it comes discovery of
+peers based on public keys. It can be classified more as a file location
+protocol than a peer location protocol. This would mean we would have to
+implement a peer location system ourselves. Libp2p is a modular Peer-to-Peer
 networking stack that provides a large suite of P2P tools. Libp2p uses a
 Distributed Hash Table (DHT) to allow peer discovery based on a peer-id
-[@PeerId]. There is an JVM/Android implementation available, which also makes it
-possible to create an Android client. Finally we looked at IPv8. IPv8 offers
-direct peer discovery based on public key and provides a framework for
+[@PeerId]. Libp2p dies have a JVM/Android implementation available, which also
+makes it possible to create an Android client. Finally we looked at IPv8. IPv8
+offers direct peer discovery based on public key and provides a framework for
 interaction called Overlay networks. Overlays provide a context for peers to
-interact within with particular message types. Crucially, IPv8 has an
+interact within with particular message types. Crucially, IPv8 also has an
 implementation in Kotlin [@kotlin-IPv8].
 
 Rather than implementing the blockchain mechanism ourselves, there is a third
 option. IPv8 includes a module called TrustChain. TrustChain is in essence a
-block-DAG type distrusted ledger technology[@TrustChain]. The technology
-does not fully solve double spending they way we originally designed it, so some
-work is required to adapt TrustChain to the EuroToken system, but it would
-provide a good basis for our implementation.
+block-DAG type distrusted ledger technology[@TrustChain]. The technology does
+not fully solve double spending in the way we originally designed it, so some
+work is required to adapt TrustChain to the EuroToken system, but it provides a
+good basis for our implementation.
 
-We choose to build on IPv8/TrustChain for this project as it allows us to
-build on their Kotlin implementation for the wallet as well as the Python
+We choose to build on IPv8/TrustChain for this project as it allows us to build
+on their Kotlin implementation for the wallet as well as the Python
 implementation for the gateway.
 
 ### TrustChain structure
@@ -1438,25 +1438,25 @@ Every peer has a list of their own history of transactions in the form of a
 collection of *blocks*. Every block is created and signed by a Peer, and
 includes the details of the transaction as well as a cryptographically secure
 hash of the previous block signed by the user. Importantly, the hash of a block
-uniquely identifies the block, as the trapdoor effect of cryptographically
+uniquely identifies the block, as the collision resistance of cryptographically
 secure hashes ensures the infeasibility of finding another block with a given
 hash. The block thus uniquely references the previous transaction of the Peer.
-Since every transaction uniquely references the block before itself, the hash
-of any one block, recursively identifies *every* transaction made before by the
+Since every transaction uniquely references the block before itself, the hash of
+any one block, recursively identifies *every* transaction made before by the
 Peer. This is as long as the Peer honestly references to their previous block.
 This referencing mechanism effectively links all blocks together in a gradually
 growing chain, thus making is a *blockchain*.
 
-Every Peer in within TrustChain has their own chain, yet most transactions are
+Every Peer within TrustChain has their own chain, yet most transactions are
 *between* users. For this reason all transactions are made to happen in the
 chains of both users involved. In TrustChain, this is achieved by having one of
-the two parties create a proposal block. In addition to the public key of
-the Peer, their previous hash, and the contents of the statement, the proposal
-also includes the public key of the counterparty. When the counterparty
-receives the proposal and agrees to the terms in the statement, they create an
-acceptance block. This acceptance block functions includes the public key of
-the counterparty, as well as the hash of their previous block, thus placing it
-in their blockchain. In addition the acceptance includes a reference to the
+the two parties create a proposal block. In addition to the public key of the
+Peer, their previous hash, and the contents of the statement, the proposal also
+includes the public key of the counterparty. When the counterparty receives the
+proposal and agrees to the terms in the statement, they create an acceptance
+block. This acceptance block functions includes the public key of the
+counterparty, as well as the hash of their previous block, thus placing it in
+their blockchain. In addition the acceptance includes a reference to the
 proposal, thus linking them together. Both the proposal and acceptance blocks
 are then stored by both users, so they can both prove the transaction fully
 happened.
@@ -1473,19 +1473,19 @@ happened.
 
 ### EuroToken extension
 
-The structure inherited from TrustChain serves us quite well as it conforms
-quite well to the block-DAG design we require. However, neither the Python,
-nor the Kotlin implementation includes any logic for running a currency. Before
-TrustChain can be used for EuroToken, it needs to be expanded to allow for
-value tracking and transfer.
+The structure inherited from TrustChain conforms quite well to the block-DAG
+design we want to implement. However, neither the Python, nor the Kotlin
+implementation includes any logic for running a currency. Before TrustChain can
+be used for EuroToken, it needs to be expanded to allow for value tracking and
+transfer.
 
-TrustChain is quite open for expansion. It allows users to define their own
+TrustChain is fairly open for extension. It allows users to define their own
 block-types as well as validation logic for these blocks. TrustChain will make
-sure blocks are valid as a chain, by enforcing typical block invariants like
+sure the blocks are a valid chain by enforcing basic block invariants like
 hash correctness and signature validity. TrustChain makes use of IPv8 for its
 communication and exposes an API to create and sign blocks to other peers.
-TrustChain will then handle the process of sending the blocks over the IPv8
-network.
+TrustChain will then handle the process of sending the blocks to the receiver
+over the IPv8 network.
 
 In order to create the EuroToken logic we defined a number of TrustChain block
 types to achieve our goals. In order to conform to the scalability requirements
