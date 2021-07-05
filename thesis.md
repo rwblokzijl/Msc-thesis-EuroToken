@@ -1482,14 +1482,14 @@ transfer.
 
 TrustChain is fairly open for extension. It allows users to define their own
 block-types as well as validation logic for these blocks. TrustChain will make
-sure the blocks are a valid chain by enforcing basic block invariants like
-hash correctness and signature validity. TrustChain makes use of IPv8 for its
-communication and exposes an API to create and sign blocks to other peers.
-TrustChain will then handle the process of sending the blocks to the receiver
-over the IPv8 network.
+sure the blocks are a valid chain by enforcing basic block invariants like hash
+correctness and signature validity. It makes use of IPv8 for its communication
+and exposes an API to create and sign blocks to other peers. TrustChain will
+then handle the process of sending the blocks to the receiver over the IPv8
+network.
 
-In order to create the EuroToken logic we defined a number of TrustChain block
-types to achieve our goals. In order to conform to the scalability requirements
+In order to create the EuroToken logic, we defined a number of TrustChain block
+types to achieve our goals. In order to conform to the scalability requirements,
 all EuroToken proposal blocks by a user will include the balance of that user.
 This is part of the rolling-checkpoint mechanic that allows us to scale each
 user's personal blockchain indefinitely without sacrificing scalability. The
@@ -1498,12 +1498,12 @@ EuroToken block subtypes are as follows:
 #### Transfer block
 
 The transfer block is the core of how users interact. The proposal is created by
-the sender of a transaction and the acceptance by the receiving party. The block
-includes the amount to be sent as well as the balance of the sender at that
-point. The receiver will verify that the balances of the sender are valid before
-creating the acceptance. The receiver will then calculate the spendable balance
-all the way back to the last "full" checkpoint block in order to validate
-whether the balance of the sender is even spendable.
+the sender of a transaction, and the acceptance by the receiving party. The
+block includes the amount to be sent as well as the balance of the sender at
+that point. The receiver will verify that the balances of the sender are valid
+before creating the acceptance. The receiver will then calculate the spendable
+balance all the way back to the last "full" checkpoint block in order to
+validate whether the balance of the sender is even spendable.
 
 #### Checkpoint block
 
