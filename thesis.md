@@ -1096,7 +1096,7 @@ illustrated in figure \ref{offline_transfer}.
 \label{offline_transfer}
 \end{figure}
 
-The finality proposal block includes notes a list of hashes that point to
+The finality proposal block includes a list of hashes that reference
 transactions from Bob. Together with this block for the validator to sign, Alice
 will send all of Bobs blocks from the last transaction to validate to the last
 block the validator knows about. The way for Alice to determine what information
@@ -1118,33 +1118,25 @@ proof of this, Alice is now allowed to spend the output of the transaction.
 In the case that a different fork from Bob has arrived at the validator first,
 the fork where Alice receives money is rejected. Since Alice has already
 accepted the transaction in her chain and may have built other transactions
-after it (though not spent the output), she could be requested to submit a new
+after it (though not spent the output), she is requested to submit a new
 finality proposal without this block. Since Alice is not permitted to spend
 the funds from Bob until it has been finalised this is the point where double
-spending is handled.
+spending is prevented.
 
-Note that the specific handling of this event might not involve the forfeiture
-of a transaction. We discuss this further in the section on off-line payments
+Note that the specific handling of this event might not involve Alice's forfeit
+of the funds. We discuss this further in the section on off-line payments
 and conflict resolution.
-
-### Verification
 
 For a block to be considered valid:
 
 1. All standard block-DAG invariants are maintained.
-2. All blocks preceding it are verified to be valid
-3. The total spent amount is  to be less than the spendable balance.
+2. All blocks preceding it are verified and found valid.
+3. The total spent amount is less than the spendable balance.
 
-For a transaction of a receiving block to be considered final:
+For an acceptance block to be considered final the following is also required:
 
-1. A checkpoint from from the validator of the sender has to be exist in the
-   chain of the user AFTER the transaction.
-
-By introducing checkpoints, the required information at the point of
-transactions is reduced. When Alice and Bob set transact between them, Alice
-can determine the validity of Bob's transaction by inspecting only Bob's chain,
-down do his last checkpoint. However, Alice must also request all Bob's
-information down to the last Full checkpoint, in order to
+1. A finality proposal with associated acceptance from the validator of the
+   sender has to be exist in the chain of the user AFTER the transaction.
 
 ### Spendable balance
 
