@@ -1223,52 +1223,54 @@ making sure it does not conflict with any other transactions known to the
 network.
 
 During the period that a transaction is not finalised, another conflicting
-transaction might get finalised before, thus leaving us with as double-spend
-attempt. When users are connected to the internet the risk can be reduced to
-zero. An online interaction can simply combine the finalisation step with the
+transaction might get finalised, thus leaving us with as double-spend attempt.
+When users are connected to the internet the risk can be reduced to zero. An
+online interaction can simply combine the finalisation step with the
 transaction, only transferring goods or services once the transaction is
 finalised. We envision this as the default way for users to interact, especially
-for large transactions. All unfinalised money is at risk of double-spending.
-Using the system described so far, there are multiple approaches to handling
-this risk in off-line transactions, each with their own trade-offs.
+for large transactions. Using the system described so far, there are multiple
+approaches to handling this risk in off-line transactions, each with their own
+trade-offs.
 
-The first is to hold the sender responsible for double-spending. In the case of a
-double spend, the sender is barred from checkpointing or gaining any
-attestations of trustworthiness until they repay the network. In the case that
-their debt cannot be repaid the network is on the line. In this case the
-creation of illicit money is considered an acceptable risk.
+The first is to hold the sender responsible for double-spending. In the case of
+a double spend, the sender is barred from checkpointing or gaining any
+checkpoints until they repay the network. In the case that their debt cannot be
+repaid the network is on the line. In this case the creation of illicit money is
+considered an acceptable risk.
 
-The second and more realisic solution is to make the receiver bear the risk. In
-the case that a sender has sent the same money to 2 people only 1 can recieve
-it. This is handled at the point of checkpointing. The money simply goes to the
+The second and more realistic solution is to make the receiver bear the risk. In
+the case that a sender has sent the same money to 2 people only 1 can receive
+it. This is handled at the point of finalisation. The money simply goes to the
 receiver that finalised the transaction first. The other has to forfeit the
-received funds. At this poiunt the network can still hold the sender
-responsible, tainting their reputaion and not allowing them to transact off-line
-again. This can be achieved with a mechanism of occational attestation from
-their gateway, that no double-spends have been detected in by this user in the
-past.
+received funds. At this point the network can still hold the sender responsible,
+tainting their reputation and not allowing them to transact off-line again. This
+can be achieved with a mechanism of occasional attestation from their gateway,
+that no double-spends have been detected in by this user in the past.
 
-This system can also be expanded to full disaster proofness by allowing the
+This system can also be expanded to full disaster-proofing by allowing the
 receiver to off-line spend the money without having first finalised the
 transaction. The second receiver of this money will then have to accept that
 they are on the line if either the first receiver or the original sender end up
 double spending. At this point the choice can be made to hold the first receiver
-responsible for a double spend of the original sender or not. Potentially
-putting the first receiver in debt to the second receiver for some portion of
-the lost amount.
+responsible for a double spend of the original sender. Potentially putting the
+first receiver in debt to the second receiver for some portion of the lost
+amount.
 
 Note that any solution that holds anyone responsible at a later point in time is
-vulnerable to a sybil attack, thus requireing integration with some form of
-identity system. This combined with the fact that transactions are always signed
-by both parties, we ensure that a proof of double-spending always exists and is
-created no later than the finalisation attempt of the second receiver. The
-validator can then pursue legal action against the sender for fraud.
+vulnerable to a Sybil attack and thus cannot allow permission-less and anonymous
+accounts. This would therefore require integration with some form of identity
+system. Integrated identity, combined with the fact that transactions are always
+signed by both parties, ensures that a proof of double-spending always exists.
+This proof is also discovered no later than the finalisation attempt of the
+receiver that validated second. The validator can then pursue legal action
+against the sender for fraud.
 
-Our solution takes the simplest approach of putting the receiver at rist, and
-not allowing non-finalised transactions to be double spent. Any solutions that
-allows the respending of transactions are much more complicated since a UTXO
-model should be implemented. While this is not inherently incompatible with
-EuroToken, our solution has left this out of scope.
+Our solution takes the simplest approach. We put the receiver at risk while a
+transaction is not finalised. We also do not allow non-finalised transactions to
+be sent again. Any solutions that allows the responding of unfinalised
+transactions are much more complicated since a UTXO model would likely need to
+be implemented. While this is not inherently incompatible with EuroToken, our
+solution has left this out of scope.
 
 ## Regulation of validators
 
