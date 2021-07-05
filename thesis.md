@@ -1274,18 +1274,19 @@ solution has left this out of scope.
 
 ## Regulation of validators
 
-One could argue that system hasn't solved the issues of transaction finality and
-double-spending, and that we only defer the problem to a different point. It is
-entirely conceivable that trusted validators could cheat by allowing certain
+While we take the trustworthiness of validators for granted in this thesis. It
+is entirely conceivable that trusted validators could cheat by allowing certain
 wallets to double-spend. To add to this, using the checkpoint functionality a
 validator can specify a higher spendable balance than is actually logged in the
-chain.
+chain, thus having another way to create money. Without going into too much
+detail we would like to give our perspective on the regulation of validators.
 
-However, when comparing our system to the current way private institutions are
-regulated, the blockchain structure of transaction can provide a powerful
-method of maintaining the integrity of the institutions. While we cannot
-prevent fraud at the institutional level, we do provide an option for
-detection to allow for regulation.
+Our solution is similar to the present banking system. When comparing our system
+to the current way private institutions are regulated, the blockchain structure
+of transaction can provide a powerful method of maintaining the integrity of the
+institutions. While we cannot prevent fraud at the institutional level,
+EuroToken does provide an opportunity to standardise the detection of fraud to
+allow for easy regulation.
 
 In order for a regulator to check that a validator has done their job with
 integrity, they need to be sure of 2 things:
@@ -1300,30 +1301,30 @@ puts their trust in. These are:
 1. Finality statements
 2. Checkpoints
 
-Both of these statements are created in the form of "accepting blocks" and are
+Both of these statements are made in the form of "accepting blocks" and are
 stored by users and their validators with an associated hash. We now propose a
-two round system for validating all transactions within a given time period. In
+two round system for validating all statements within a given time period. In
 round one, we validate that all statements have been made correctly and
 publicly store the hashes. In the second round, once we have the hashes of all
 statements available, we validate that all statements from other validators
 exist.
 
-In the first round all information in the database of the validator is
-processed for consistency. Since all statements by the validator are made in
-the form of blocks in their personal blockchain, they have an explicit order.
-The blocks of the validator, together with the blocks of all the users the
-validator is responsible for, are processed in the same way as the validator
-was responsible for processing them. This step in the process ensures that all
-statements are made correctly.
+In the first round all information in the database of the validator is processed
+for consistency. Since all statements by the validator are made in the form of
+blocks in their personal blockchain, they have an explicit order, in which they
+can be "replayed". The blocks of the validator, together with the blocks of all
+the users the validator is responsible for, are processed in the same way as the
+validator was responsible for processing them. This step in the process ensures
+that all statements are made correctly.
 
 In the second round, we ensure that there is no statement withheld by the
 validator. This is done by publicly publishing a signed list of the hashes of
-all statements made by the validator. This allows regulators to cross-check
-that all inter-validator statements have been reviewed by a validator. To make
-this step more efficient, we propose that when checking a validators
-consistency, regulators generate a list of statements for each distinct
-validator to increase the efficiency of distributing these hashes to relevant
-parties.
+all statements made by the validator. This allows regulators to cross-check that
+all inter-validator statements have been reviewed by a validator. To make this
+step more efficient, we propose that when checking a validators consistency,
+regulators generate a list of statements for each distinct validator they
+interacted with to increase the efficiency of distributing these hashes to
+relevant parties.
 
 A possibility also exists to allow the public access to these records to ensure
 the integrity of their institutions.
