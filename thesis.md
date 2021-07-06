@@ -1,6 +1,6 @@
 ---
 title: EuroToken
-subtitle: A Central Bank Digital Currency (CBDC) with off-line transfers
+subtitle: A offline capable Central Bank Digital Currency (CBDC)
 author:
   name: R. W. Blokzijl
   affiliation: Technische Universiteit Delft
@@ -17,11 +17,10 @@ duration:
   from: November 11, 2020
   to: July 12, 2021
 keywords:
-  - Stablecoin
-  - Blockchain
-  - Cryptocurrencies
-  - TrustChain
   - CBDC
+  - Block-DAG
+  - Offline transfer
+  - Cryptocurrencies
 preface_date: 2021-07-03
 preface: |
 
@@ -80,7 +79,7 @@ abstract: |
     open issues in cryptocurrencies from a perspective of a trustworthy central
     bank. By centralising some infrastructure required to run a
     cryptographically secure currency, we achieve a network that can scale
-    to arbitrary size, handle off-line transactions, and remain price-stable and
+    to arbitrary size, handle offline transactions, and remain price-stable and
     guaranteed in value by the Central Bank.
 
     The EuroToken system is a Peer-to-Peer blockchain system that store every
@@ -186,7 +185,7 @@ As a result of digitalisation, the world is moving from cash to cards. In the
 year 2000, less than 22 percent of transaction in the EU were done by card.
 In 2019 this is over 47 percent [@CashTransactionsEuro]. This decline of
 central bank money leads to a number of unfavorable scenarios
-[@ReportDigitalEuro]. The decline of open and off-line money contributes
+[@ReportDigitalEuro]. The decline of open and offline money contributes
 to the financial exclusion of the unbanked and vulnerable in our society. In
 2017, 3.6 percent of Europe's household had no registered bank account
 [@Unbanked]. As more and more businesses move online or become pin only,
@@ -375,7 +374,7 @@ IBAN-based banking system to allow exchange between the two types of Euro.
 # Problem description
 
 Can we create a digital, extensible, secure, scalable, price stable extension to
-the Euro that allows for near-instant world-wide and off-line transfer?
+the Euro that allows for near-instant world-wide and offline transfer?
 
 Over last century the world of finance has gone through significant paradigm
 shifts. Currencies traditionally started as a bottom up distributed system based
@@ -489,19 +488,19 @@ borders. With payment-integration initiatives like SEPA, PSD2 and the European
 Payments Council, the EU is slowly moving towards a better integrated euro zone.
 Recently the union has started to explore digital currency alternatives to the
 current euro [@ReportDigitalEuro]. A newly designed euro has the potential to
-act as a single payment interface for both online and off-line transactions.
+act as a single payment interface for both online and offline transactions.
 
 With this research we provide a design for EuroToken, a Central Bank Digital
 Currency designed to be an alternative to the current privately banked digital
 euro. It implements a blockchain based accounting system that exposes a
-generalised payment primitive that supports off-line and online digital payments
+generalised payment primitive that supports offline and online digital payments
 out of the box. Through its open extensibility it provides an equal footing for
 financial institutions and individuals alike as it makes users the gatekeeper
 of their own fiscal lives.
 
 ## Requirements for a digital euro by the ECB
 
-We aim to create a payment system that is secure, scalable, off-line
+We aim to create a payment system that is secure, scalable, offline
 transferable, price stable and digitally capable. These requirements are
 derived from a recent report by the European Central Bank (ECB). In October 2020
 the ECB published a report detailing a number of scenarios where a new digital
@@ -536,12 +535,12 @@ functional requirements that this thesis will specifically focus on:
 2. Scale to the size of the European Union
 3. Preventing unsanctioned money creation
 4. Price stability
-5. Disaster resilience through off-line transfer ability
+5. Disaster resilience through offline transfer ability
 
 ## Trade-offs around double spending, scalability and decentralisation
 
 When designing a modern digital payment system with the ability to transfer
-funds off-line, Peer-to-Peer systems and Distributed Ledger Technologies (DLTs)
+funds offline, Peer-to-Peer systems and Distributed Ledger Technologies (DLTs)
 are a worthwhile case study. Since Bitcoin in 2008, various crypto-currencies
 have iterated on the idea of a fully decentralized currency. After 12 years of
 development a number of trade-offs are becoming visible that show the
@@ -640,33 +639,33 @@ of trade-offs. A payment solution that aims to scale to a global level using
 distributed technologies must careful balance double-spending, scalability and
 decentralisation.
 
-## The problem of off-line digital payments
+## The problem of offline digital payments
 
-The ability to provide off-line payments is an unsolved problem in the world of
+The ability to provide offline payments is an unsolved problem in the world of
 digital payment solutions. Solving the double spending problem in a Peer-to-Peer
 network is a challenge on its own. Doing so without a live connection to that
 network increases the complexity even further.
 
-The problem of double spending and off-line payments is best understood in terms
+The problem of double spending and offline payments is best understood in terms
 of the CAP theorem. Consider the total set of transactions to be the database,
 and reads and writes to be updates to the balances of any user. If we decide we
-want off-line payment, we implicitly choose the value of *partition tolerance*,
+want offline payment, we implicitly choose the value of *partition tolerance*,
 thus creating a trade-off between *availability* and *consistency*. We can
 either read a users balance, **or** be sure we know the correct balance of the
-user. An off-line transaction happens in a very particular context, however.
+user. An offline transaction happens in a very particular context, however.
 While the 2 interacting users have no connection to the network, they do have a
 direct connection between them. This makes their histories *available* to
 validate the first half of the transaction.
 
-An "off-line transaction" is thus a transaction done without access to a
+An "offline transaction" is thus a transaction done without access to a
 sufficient set of peers to validate the *consistency* of the history of the
-sender. This means that if any user accepts an off-line transaction is **not**
+sender. This means that if any user accepts an offline transaction is **not**
 possible to know whether a conflicting transaction exists in another part of the
 network.
 
 Any network wanting to prevent double spending will accept only 1 in a set of
 conflicting transactions, usually the first to arrive. Anyone accepting an
-off-line transaction is therefore at risk until they check in with the network.
+offline transaction is therefore at risk until they check in with the network.
 For this reason a transaction is usually not accepted by the receiving user
 until we have some guarantee that all conflicting transactions will be dropped
 by the rest of the network. This is the concept of transaction finality. A
@@ -686,7 +685,7 @@ on the trust of the receiver in the sender.
 Of course the trust between users is hard to quantify, and shouldn't be fully
 relied upon. However, increasing the trust between two transacting users in the
 period between the transaction and the check-in with the network is the key to
-implementing dependable off-line transactions.
+implementing dependable offline transactions.
 
 ## The price stability problem
 
@@ -791,7 +790,7 @@ support. This main feature set is illustrated in figure \ref{cbdc_features}.
 
 EuroToken is a prototype for a Central Bank Digital Currency. Its primary
 purpose is to implement, for the first time, a currency that is: digital,
-universally accessible, central bank issued, Peer-to-Peer and off-line capable.
+universally accessible, central bank issued, Peer-to-Peer and offline capable.
 
 ## Research Focus and Structure
 
@@ -804,7 +803,7 @@ the following question:
 \begin{center}
 {\center \Large Can we create a digital, extensible, secure,
 scalable, price stable extension to the Euro that allows for near-instant
-world-wide and off-line transfer. }
+world-wide and offline transfer. }
 \end{center}
 
 ---
@@ -822,11 +821,11 @@ any other design choices. The design aims to provide the following features:
 1. Be a fully functional system of accounting
 2. Preventing unsanctioned money creation
 3. Scale to the size of the European Union
-4. Be off-line transferable
+4. Be offline transferable
 
 In order to not be limited in the same way as Bitcoin and similar currencies,
 we choose to sacrifice the following feature: Decentralisation. This gives: us
-the required leeway to create a scalable and off-line capable system without
+the required leeway to create a scalable and offline capable system without
 sacrificing double-spending protection.
 
 # EuroToken Design
@@ -834,32 +833,32 @@ sacrificing double-spending protection.
 Any payment system that aims to replace public money while being able to operate
 at the scale of the euro system needs to conform to a number of requirements.
 Such a system needs to be scalable, privacy aware, allow Peer-to-Peer
-transactions off-line. In needs to be price stable, exchangeable for euros, and
+transactions offline. In needs to be price stable, exchangeable for euros, and
 most importantly, it needs to be secure and cheating resistant.
 
 In this chapter we first describe how a distributed block-DAG provides a good
-basis for a scalable, private, and off-line friendly transaction system. We then
+basis for a scalable, private, and offline friendly transaction system. We then
 explain how we position the system in relation to the euro, how the price can
 remain stable, and how a system can mimic the properties of cash. We then go in
 to the details of how the system is secured, and how we prevent double spending
-while still remaining scalable and allowing off-line transactions. Finally, we
+while still remaining scalable and allowing offline transactions. Finally, we
 explore how the system can be regulated and how the gateways can be audited to
 ensure their in integrity.
 
 ## Distributed accounting and networking
 
 The possibilities and limitations of any virtual currency are dependent on its
-system of accounting. In order to conform to the off-line, scalability and
+system of accounting. In order to conform to the offline, scalability and
 transparency requirements, a system of distributed accounting is chosen. As the
 fundamental building block for the EuroToken system we use a Hyper-Sharded
 block-DAG that keeps track of every users' transaction history on their
 own edge device. By storing all information required for transacting at the
 physical end points of transactions, we create the possibility of direct
-off-line transaction between users, without any link to the outside world.
+offline transaction between users, without any link to the outside world.
 
 While the EuroToken system design is independent of the underlying communication
-technology, the off-line requirement leads to some limitations on the way users
-interact. Since off-line users cannot connect to servers we choose to work with
+technology, the offline requirement leads to some limitations on the way users
+interact. Since offline users cannot connect to servers we choose to work with
 a Peer-to-Peer system that allows users to find each-other based on personal
 identifiers.
 
@@ -873,7 +872,7 @@ public key to identify and communicate with them across time. Our Peer-to-Peer
 network should not only abstract away from IP addresses, bus also from the IP
 network completely. For example, it must provide communication over Bluetooth or
 NFC without the need for any internet connection. This is necessary for
-demonstrating the off-line capabilities of the EuroToken system.
+demonstrating the offline capabilities of the EuroToken system.
 
 ## Block-DAG accounting
 
@@ -1093,7 +1092,7 @@ illustrated in figure \ref{offline_transfer}.
 \resizebox{\textwidth}{!}{
 \includegraphics{./images/3_design/offline-transfer-2.png}
 }
-\caption{Off-line transfer and finalisation}
+\caption{Offline transfer and finalisation}
 \label{offline_transfer}
 \end{figure}
 
@@ -1125,7 +1124,7 @@ the funds from Bob until it has been finalised this is the point where double
 spending is prevented.
 
 Note that the specific handling of this event might not involve Alice's forfeit
-of the funds. We discuss this further in the section on off-line payments
+of the funds. We discuss this further in the section on offline payments
 and conflict resolution.
 
 For a block to be considered valid:
@@ -1161,7 +1160,7 @@ where the rare double-spend is eventually detected and settled through the legal
 system. Or third, like in our solution, the system is build on trusted nodes
 that verify transactions for user. Like the gateways, these validators could be
 run by regulated financial institutions. Such a system would most resemble the
-current financial system, with the added benefits of off-line transactions,
+current financial system, with the added benefits of offline transactions,
 programmable money, a standardised system of accounting, instantaneous
 international transactions, etc.
 
@@ -1199,13 +1198,13 @@ A second issue this solves is one of privacy, when Bob has to send Alice all of
 his chain for verification, Alice gets access to potentially sensitive
 transaction data. Since the checkpoint serves as a statement of validity for the
 entire history before that point, all privacy-sensitive details can be omitted.
-When off-line, transactions cannot be checkpointed and need to be shared with
+When offline, transactions cannot be checkpointed and need to be shared with
 all counterparties, for this reason a future area of research a method of
 privatization to conceal transferred amounts through homomorphic encryption.
 
-## Off-line transactions and online validation
+## Offline transactions and online validation
 
-An off-line transaction is a transaction where both parties have no connection
+An offline transaction is a transaction where both parties have no connection
 to the rest of the network. Because of the issues discussed earlier there is no
 way of preventing someone from hiding any number of blocks from a previous
 transaction from the other party without checking with the rest of the network
@@ -1213,7 +1212,7 @@ for conflicting blocks. To prevent double-spending transactions from duplicating
 currency there is a need for the network to detect and prevent them. This means
 storing all blocks, ensuring they are valid and verifying that are no
 conflicting blocks exist. This online check, becomes the main challenge in
-creating a system that supports off-line transactions.
+creating a system that supports offline transactions.
 
 To limit the scope of this problem, the EuroToken system maintains a distinction
 between transactions and their finalisation. A transaction is first signed by
@@ -1230,7 +1229,7 @@ online interaction can simply combine the finalisation step with the
 transaction, only transferring goods or services once the transaction is
 finalised. We envision this as the default way for users to interact, especially
 for large transactions. Using the system described so far, there are multiple
-approaches to handling this risk in off-line transactions, each with their own
+approaches to handling this risk in offline transactions, each with their own
 trade-offs.
 
 The first is to hold the sender responsible for double-spending. In the case of
@@ -1244,12 +1243,12 @@ the case that a sender has sent the same money to 2 people only 1 can receive
 it. This is handled at the point of finalisation. The money simply goes to the
 receiver that finalised the transaction first. The other has to forfeit the
 received funds. At this point the network can still hold the sender responsible,
-tainting their reputation and not allowing them to transact off-line again. This
+tainting their reputation and not allowing them to transact offline again. This
 can be achieved with a mechanism of occasional attestation from their gateway,
 that no double-spends have been detected in by this user in the past.
 
 This system can also be expanded to full disaster-proofing by allowing the
-receiver to off-line spend the money without having first finalised the
+receiver to offline spend the money without having first finalised the
 transaction. The second receiver of this money will then have to accept that
 they are on the line if either the first receiver or the original sender end up
 double spending. At this point the choice can be made to hold the first receiver
@@ -1387,7 +1386,7 @@ feature set and scalability of the whole EuroToken network. We need a network
 stack that allows online communication as online across the world, as well as
 direct device to device communication. Finding and connecting to any wallet
 without relying on central servers is a main requirement. In addition, the
-off-line transfer ability of the system is best demonstrated by creating an
+offline transfer ability of the system is best demonstrated by creating an
 Android client. Another requirement is therefore that an implementation is
 available for Android as well.
 
@@ -1733,7 +1732,7 @@ frequencies later.
 In this chapter we will evaluate our solution to the problems as explored in the
 problem description. We first describe two field trails that showed the
 proof-of-concept in action. This demonstrates how EuroToken is able to perform
-the basic functions of money and allows for off-line transfers. We then describe
+the basic functions of money and allows for offline transfers. We then describe
 some structured experiments that measure the scalability of the network and
 evaluate whether the promise of a double-spend proof but still scalable network
 has been met. Finally, we evaluate the extensibility and feature set as a whole,
@@ -1764,11 +1763,11 @@ go through the process of registering with a traditional payment provider or
 credit card reseller. Using the EuroToken system all the owner of Doerak needed
 was a smartphone in order to participate in the modern economy.
 
-## Off-line trial
+## Offline trial
 
 By building the EuroToken app on IPv8 we could build on the Bluetooth transfer
-features to implement the off-line transfer of funds. In order to test this
-implementation and showcase the off-line transfer capabilities of the EuroToken
+features to implement the offline transfer of funds. In order to test this
+implementation and showcase the offline transfer capabilities of the EuroToken
 system, we conducted a trail away from civilisation. As showcased in Figure
 \ref{offline_trial}, in the mountains of Norway, away from all network
 connectivity, we conducted a transfer of funds using the Bluetooth connect
@@ -1779,24 +1778,24 @@ feature of the superapp.
 \resizebox{0.8\textwidth}{!}{
 \includegraphics{./images/5_evaluation/offline_trial.jpg}
 }
-\caption{EuroToken off-line trial}
+\caption{EuroToken offline trial}
 \label{offline_trial}
 \end{figure}
 
-There is some room for improvement in the practicality of off-line transfer of
+There is some room for improvement in the practicality of offline transfer of
 data between two devices. We found the process of creating a Peer-to-Peer
 Bluetooth connection between two mobile devices somewhat cumbersome. And the
 system would greatly benefit in usability from proximity based data transfer via
 NFC.
 
 Regardless of the possibilities for improvement, the trail successfully showed
-the viability of off-line transfer. It shows the potential of the EuroToken
+the viability of offline transfer. It shows the potential of the EuroToken
 system to act as a disaster proof payment system that remains functional far
 away from civilisation and during any disaster that would wipe out global
 communication infrastructure.
 
 The user trades the risk of deferring transaction validation until they connect
-to the network again for off-line transfers. This allows for instantaneous
+to the network again for offline transfers. This allows for instantaneous
 transfer of funds, without requiring a connection to anyone in the rest of the
 network in order to perform the initial transfer. Possibilities of reducing the
 transaction risk between initial transfer and transaction finalisation is an
@@ -1929,7 +1928,7 @@ higher validation costs and validation times especially during startup.
 
 ## Trade-offs in user and gateway validation times
 
-The EuroToken derives its scalability and off-line transaction ability from the
+The EuroToken derives its scalability and offline transaction ability from the
 application of checkpointing. The collapsing of all transactions before a given
 point into a single checkpoint block allows any counterparty to simplify the
 entire history of a user to only the balance in the checkpoint block. This
@@ -2012,11 +2011,11 @@ Legend: $~$ | $~$ \cmark $~$ Provided $~$ | $~$ \qmark $~$ Partial / Future rese
 
 We achieve **enhanced digital efficiency** and a **competitive feature set **by
 designing EuroToken as a digital, Peer-to-Peer, programmable payment system. We
-achieve **cash-like features** with direct and off-line transferability without
+achieve **cash-like features** with direct and offline transferability without
 the need for intermediary parties. EuroToken provides the ECB with a new set of
 **monetary policy options** by having the Central Bank **controlling the amount
 of digital euro in circulation** through the control of the tokenisation and
-de-tokenisation of EuroTokens. The off-line transaction capacity could be
+de-tokenisation of EuroTokens. The offline transaction capacity could be
 extended to make EuroToken a **disaster proof** payment system. With backing
 during deployment of the ECB, EuroToken could become the standardised digital
 currency of Europe allowing **international** with ease. The rest of the
@@ -2032,19 +2031,19 @@ EuroToken makes, their limitations and their possibilities for improvement. We
 then more generally discuss the ability of EuroToken to conform to the
 requirements set forward by the ECB and what issues are still left to address.
 
-## Trade-offs between anonymity and off-line transactions
+## Trade-offs between anonymity and offline transactions
 
-EuroToken achieves off-line transactions by making every transaction a signed
+EuroToken achieves offline transactions by making every transaction a signed
 statement by the sender that transfers their funds to the receiver. This
 statement is cryptographically linked to the wallet of the sender and can be
 used by the receiver at any time to prove that the transaction happened. This
 allows us to hold the sender accountable to their statement. While we provide
 a mechanism for the receiver to ensure that the sender has the funds available,
-we do not provide a mechanism to prevent the sender from off-line spending a
+we do not provide a mechanism to prevent the sender from offline spending a
 second time.
 
-The main limitation of our method of off-line transfers, and perhaps all methods
-of off-line payments, is that double spending is only prevented and addressed
+The main limitation of our method of offline transfers, and perhaps all methods
+of offline payments, is that double spending is only prevented and addressed
 when interacting with the network online. While this does prevent illicit
 creation of currency, it still leaves some risk with the receiver. We see
 potential solutions to this problem in 2 areas. The first is at the point of
@@ -2076,7 +2075,7 @@ EuroToken has been left to future research.
 
 ## Scalability without centralisation
 
-In order to be scalable, price stable and off-line transferable, we have made a
+In order to be scalable, price stable and offline transferable, we have made a
 trade-off in decentralisation. The original promise of a decentralized currency
 with the three aforementioned features, while promising, might never come to
 fruition.
@@ -2253,7 +2252,7 @@ transactions and attest to their uniqueness and compliance with the rules of the
 network and regulations. By maintaining the transaction history of each user on
 their own personal blockchain we decouple the transaction at the point of trade
 from the validation of the transaction. This allows transactions to happen
-off-line, with the potential to be expanded to a disaster proof currency that
+offline, with the potential to be expanded to a disaster proof currency that
 allows users to trade digital currency without internet connectivity.
 
 We ensure price stability the same way as the psychical euro. By allowing the
@@ -2271,7 +2270,7 @@ mobile wallet that allows people to transfer the currency, and implemented a
 gateway application that handles the transaction validation and exchange of
 EuroToken. We demonstrated our implementation in two field trails and verified
 the usability of the system. We enabled users to safely transact by scanning a
-QR code to send money using only their phone. We also showed the off-line
+QR code to send money using only their phone. We also showed the offline
 transfer capability of the EuroToken in the real world.
 
 We validated our design by running a simulation of multiple EuroToken wallets
@@ -2283,7 +2282,7 @@ network, and the size of each user's personal blockchain.
 
 Going back to our research question, EuroToken is a digital, extensible, secure,
 scalable, price stable extension to the Euro that allows for near-instant
-world-wide and off-line transfer. EuroToken allows our money to remain subject
+world-wide and offline transfer. EuroToken allows our money to remain subject
 to the democratic process and keeps our transaction data out of the hands of
 those who are not incentivized to protect us. It has the potential to become the
 basis for the financial infrastructure of Europe unifying the scattered payment
