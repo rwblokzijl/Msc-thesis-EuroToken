@@ -2081,7 +2081,7 @@ trade-off in decentralisation. The original promise of a decentralized currency
 with the three aforementioned features, while promising, might never come to
 fruition.
 
-Our design currently relies on trusted central gateways to solve the main issues
+Our design currently relies on trusted central validators to solve the main issues
 of digital currencies. In a decentralized system this role is usually performed
 by a blockchain or similar information store, combined with some consensus
 algorithm to determine what gets written. Our solution has a different concept
@@ -2091,15 +2091,15 @@ validator if a double spend has happened. Consensus in our model, is thus
 delegated completely to the validator.
 
 One possible criticism of this solution is that by its reliance on central
-gateways, the problem of network-level double spending prevention only moves to
-the level of the gateways.
+validators, the problem of network-level double spending prevention only moves to
+the level of the validators.
 
 In the context of decentralized finance (DeFi) this would disqualify the system
 entirely, but in the context of a trans European payment system, some level of
 centralisation can be tolerated and might even be desirable. Institutions have
 been the daily drivers of our monetary system for a very long time, and while
 not without its issues, the system has overall been successful. The issue of the
-auditing of the gateways can also be solved in the same method at it has been in
+auditing of the validators can also be solved in the same method at it has been in
 traditional systems. The digitally standardised nature of the system, would make
 this process much easier, and be nearly automatic.
 
@@ -2174,7 +2174,7 @@ This is only one example where the ECB needs direct control over its currency.
 The ECB is directly responsible for maintaining the price stability of the euro,
 and any digital euro variant will have to be a part of that
 [@ReportDigitalEuro]. Because of this the centralised nature of the EuroToken
-gateways can act as the point of control for the ECB to enforce monetary policy,
+validators can act as the point of control for the ECB to enforce monetary policy,
 to stabilize the currency and our economy.
 
 ## Interoperability
@@ -2185,9 +2185,9 @@ the reach of the euro and easing the participation in the European economy.
 However, there is some risk associated with such tight coupling to other
 economies as the effect of monetary policy at home is reduced.
 
-Using the gateway as an intermediary, EuroToken provides the option to integrate
+Using the validator as an intermediary, EuroToken provides the option to integrate
 with other CBDCs in several ways. The first is by creating a mechanism for
-exchange between the CBDCs without a counterparty. A gateway could run both
+exchange between the CBDCs without a counterparty. A validator could run both
 EuroToken and a hypothetical DollarToken and exchange between them at a rate
 that can be set by agreements between the two central banks. Effectively this
 allows for the coupling of currencies with an opt-out at any time.
@@ -2235,62 +2235,57 @@ offline Peer-to-Peer transfers with the potential for full disaster-proofing,
 (2) arbitrary scalability, (3) a real-time connectivity to the existing
 IBAN-based banking system, while (4) being guaranteed by the central bank.
 
-Baring a natural disaster that wipes out the human race, the future of money
-will be digital. With commerce and banking moving online, a new modern payment
-system is required with features fit for the digital age. The question is: who
-gets to decide how these currencies are designed?
-
-The problems of scalability, price-stability and off-line spending are difficult
-if not impossible to solve without some form of centralisation. Private parties
-like Tether and Diem are attempting to become the central third party that
-provides us with a payment infrastructure at the cost of dependence. But if we
-don't want opaque corporations controlling our monetary system we must direct
-the control somewhere else. The European Central Bank is ideally positioned to
-provide the centralised control that is required to achieve the goals of money.
+The future of money will be digital. With commerce and banking moving online, a
+new modern payment system is required with features fit for the digital age. The
+question is: who gets to decide how these currencies are designed? Private
+parties like Tether and Diem are attempting to become the central third party
+that provides us with a payment infrastructure, but at the cost of our
+dependence. If we don't want opaque corporations controlling our monetary
+system we must direct the control somewhere else. The European Central Bank is
+ideally positioned to provide the centralised control that is required to
+achieve the goals of money, while remaining accountable to its users.
 
 In order to create a currency that is scalable we use a block-DAG structure
 where every user has their own personal blockchain. This system is inherently
 distributed in its data storage and control. We then centralise the validation
-of transactions in gateways. These gateways validate the correctness of the
-transactions and attest to their uniqueness and compliance with the rules of
-the network as well as regulations.
-
-By maintaining the transaction history of each user on their own personal
-blockchain we decouple the transaction at the point of trade from the validation
-of the transaction. This allows transactions to happen off-line. This mechanism
-has the potential to be expanded to a disaster proof currency that allows users
-to trade digital currency without internet connectivity.
+of transactions in validators. These validators verify the correctness of the
+transactions and attest to their uniqueness and compliance with the rules of the
+network and regulations. By maintaining the transaction history of each user on
+their own personal blockchain we decouple the transaction at the point of trade
+from the validation of the transaction. This allows transactions to happen
+off-line, with the potential to be expanded to a disaster proof currency that
+allows users to trade digital currency without internet connectivity.
 
 We ensure price stability the same way as the psychical euro. By allowing the
-currency to be exchanged for traditionally banked euros, we peg the price of
-EuroToken to that of the euro. This exchange can be fully regulated and
-controlled by the central bank, and once the money is exchanged it belongs fully
-to the user, and represents a claim on the central bank itself. The party that
-runs the exchange is only responsible for validating correctness and exchanging
-according to ECB rules and regulations. This effectively creates a new digital
-form of public money that is held by the individual and backed by the European
-Central Bank itself.
+currency to be exchanged for traditionally banked euros, through an exchange.
+This is how we peg the price of EuroToken to that of the euro. The exchange can
+be fully regulated and controlled by the central bank, and once the money is
+tokenised it belongs fully to the user, and represents a claim on the central
+bank itself. The party that runs the exchange is only responsible for validating
+correctness and exchanging euro and EuroToken according to ECB rules and
+regulations. This effectively creates a new digital form of public money that is
+owned by the individual and backed by the European Central Bank itself.
 
 We implemented a proof of concept on top of the TrustChain blockchain, created a
-mobile wallet that allows people to transfer the currency, and created a gateway
-application that handles the transaction validation and exchange of the
-EuroToken. We validated our implementation in two field trails and demonstrated
+mobile wallet that allows people to transfer the currency, and implemented a
+gateway application that handles the transaction validation and exchange of
+EuroToken. We demonstrated our implementation in two field trails and verified
 the usability of the system. We enabled users to safely transact by scanning a
 QR code to send money using only their phone. We also showed the off-line
-transfer capability of the PoC in the real world.
+transfer capability of the EuroToken in the real world.
 
 We validated our design by running a simulation of multiple EuroToken wallets
-and gateways. We measured how the network scales over time and showed a linear
-increase in network transaction processing capacity as the number of gateways
-increase. Additionally, we demonstrated how our method of checkpointing allowed
-the transacting between users in constant time in terms of both the size of the
+and validators. We measured how the network scales over time and found a linear
+increase in network transaction processing capacity as the number of validators
+increases. Additionally, we demonstrated how our method of checkpointing allowed
+for transactions between users in constant time in terms of both the size of the
 network, and the size of each user's personal blockchain.
 
 Going back to our research question, EuroToken is a digital, extensible, secure,
 scalable, price stable extension to the Euro that allows for near-instant
-world-wide and off-line transfer. It has the potential to become the basis for
-the financial infrastructure of Europe unifying the scattered payment and
-banking system of today. Most importantly EuroToken allows our money to remain
-subject to the democratic process and keeps our transaction data out of the
-hands of those we trust the least.
+world-wide and off-line transfer. EuroToken allows our money to remain subject
+to the democratic process and keeps our transaction data out of the hands of
+those who are not incentivized to protect us. It has the potential to become the
+basis for the financial infrastructure of Europe unifying the scattered payment
+and banking system of today, opening the door to a whole new wave of innovation.
 
