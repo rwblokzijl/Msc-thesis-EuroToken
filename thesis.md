@@ -1409,7 +1409,7 @@ protocol than a peer location protocol. This would mean we would have to
 implement a peer location system ourselves. Libp2p is a modular Peer-to-Peer
 networking stack that provides a large suite of P2P tools. Libp2p uses a
 Distributed Hash Table (DHT) to allow peer discovery based on a peer-id
-[@PeerId]. Libp2p dies have a JVM/Android implementation available, which also
+[@PeerId]. Libp2p does have a JVM/Android implementation available, which also
 makes it possible to create an Android client. Finally, we looked at IPv8. IPv8
 offers direct peer discovery based on public key and provides a framework for
 interaction called Overlay networks. Overlays provide a context for peers to
@@ -1481,19 +1481,17 @@ be used for EuroToken, it needs to be expanded to allow for value tracking and
 transfer.
 
 TrustChain is fairly open for extension. It allows users to define their own
-block-types as well as validation logic for these blocks. TrustChain will make
-sure the blocks are a valid chain by enforcing basic block invariants like hash
-correctness and signature validity. It makes use of IPv8 for its communication
-and exposes an API to create and sign blocks to other peers. TrustChain will
-then handle the process of sending the blocks to the receiver over the IPv8
-network.
+block-types as well as validation logic for these blocks. TrustChain ensures the
+chain is valid by enforcing basic block invariants like hash correctness and
+signature validity. It makes use of IPv8 for its communication and exposes an
+API to create and sign blocks to other peers. TrustChain will then handle the
+process of sending the blocks to the receiver over the IPv8 network.
 
-In order to create the EuroToken logic, we defined a number of TrustChain block
-types to achieve our goals. In order to conform to the scalability requirements,
-all EuroToken proposal blocks by a user will include the balance of that user.
-This is part of the rolling-checkpoint mechanic that allows us to scale each
-user's personal blockchain indefinitely without sacrificing scalability. The
-EuroToken block subtypes are as follows:
+To create the EuroToken logic, we define 4 TrustChain block types. In order to
+conform to the scalability requirements, all EuroToken proposal blocks by a user
+will include the balance of that user. This is part of the rolling-checkpoint
+mechanic that allows us to scale each user's personal blockchain indefinitely
+without sacrificing scalability. The EuroToken block subtypes are as follows:
 
 #### Transfer block
 
@@ -1502,8 +1500,8 @@ the sender of a transaction, and the acceptance by the receiving party. The
 block includes the amount to be sent as well as the balance of the sender at
 that point. The receiver will verify that the balances of the sender are valid
 before creating the acceptance. The receiver will then calculate the spendable
-balance all the way back to the last "full" checkpoint block in order to
-validate whether the balance of the sender is even spendable.
+balance all the way back to the last checkpoint block in order to validate
+whether the balance of the sender is spendable.
 
 #### Checkpoint block
 
@@ -1511,30 +1509,31 @@ In order to be able to spend the balance a user has received they need to proof
 that a validator has taken notice of the blocks of the senders. The checkpoint
 block serves as this proof of validator. The proposal is created by the user and
 the acceptance is created by the validator. A checkpoint block is only
-considered "full" if the both the proposal and acceptance exist. If the
+considered valid if the both the proposal and acceptance exist. If the
 acceptance does not exist, the block is meaningless and any validation will keep
-recursing the chain until a full checkpoint is found.
+recursing the chain until a checkpoint with associated acceptance is found.
 
 #### Tokenisation block
 
-The tokenisation is a special type of transfer that is done by a trusted exchange.
-This block is the only way in which new EuroToken are allowed to enter the
-system and will only be considered valid if it is made by a trusted party. The
-proposal is made by the exchange and the acceptance is made by a user.
+A tokenisation is a special type of transfer that is done by a Central Bank
+exchange. This block is the only way in which new EuroToken are allowed to enter
+the system and will only be considered valid if it is signed by a designated
+party. The proposal is made by the exchange and the acceptance is made by a
+user.
 
 #### De-tokenisation block
 
-The de-tokenisation is the opposite of a tokenisation. The proposal is made by a user
-and acts as a transfer to an exchange. The exchange then also creates an
-acceptance block. The tokenisation and de-tokenisation blocks are used to convert
-between Euro and EuroTokens.
+The de-tokenisation is the opposite of a tokenisation. The proposal is made by a
+user and acts as a transfer to an exchange. The exchange then also creates an
+acceptance block, completing the transfer. The tokenisation and de-tokenisation
+blocks are used to convert between Euro and EuroTokens.
 
 ## Wallet
 
-The core of the EuroToken network is the wallet. The wallet allows users to
-transfer funds to any other wallet anywhere on earth over the internet, or
-directly from device to device over Bluetooth. The wallet also has the capacity
-to exchange Euro for EuroToken and vice versa.
+The main user facing implementation of the EuroToken network is the wallet. The
+wallet allows users to transfer funds to any other wallet anywhere on earth over
+the internet, or directly from device to device over Bluetooth. The wallet also
+has the capacity to exchange Euro for EuroToken and vice versa.
 
 Instead of building a wallet from scratch we build on top of the TrustChain
 superapp [@SuperAppCode] [@SuperAppThesis]. This app was developed to
@@ -1552,11 +1551,11 @@ multiple other projects which we can integrate with the EuroToken system.
 
 ### Peer-to-Peer transfer
 
-The main feature to showcase is the ability to transfer the EuroTokens. Before
-a user can send money to another user, they first need to know their public
-key. While sending money directly to a user is possible as part of the app, the
-share and transfer of public keys is not very practical. For this reason we
-implemented 2 ways of handling this. The first way is by generating a money
+The main feature of the wallety is its ability to transfer EuroTokens. Before a
+user can send money to another user, they first need to know their public key.
+While sending blocks directly to a user is possible as part of the IPv8
+implementation, the sharing of public keys is left to us. For this reason we
+implemented 2 ways of handling this. The first way is by generating a payment
 request with QR code. This works best when the users are in the same room, or
 can share the QR code through some other means.
 
@@ -1572,16 +1571,17 @@ can share the QR code through some other means.
 A second and more user-friendly away to send money is through the already
 existing chat app PeerChat. PeerChat allows users to add each other as contacts
 and then uses IPv8 to send public key addressed messages. Instead of
-reinventing the wheel we added EuroToken payments to PeerChat. This mirrors
-payment apps like the Chinese WeChat Pay and the Norwegian Vipps. We believe
-this method of payment in the most natural for users.
+reimplementing contact management, we added EuroToken payments to PeerChat. The
+integration of payments into a chat application mirrors apps like the Chinese
+WeChat Pay and the Norwegian Vipps. We believe this method of payment in the
+most natural for users.
 
 \begin{figure}[htp]
 \centering
 \includegraphics[width=.32\textwidth]{./images/4_implementation/wallet/contacts.png}
 \includegraphics[width=.32\textwidth]{./images/4_implementation/wallet/contacts_menu.png}
 \includegraphics[width=.32\textwidth]{./images/4_implementation/wallet/peerchat_send_money.jpg}
-\caption{PeerChat, contacts \cite{SuperAppThesis} and pay via PeerChat}
+\caption{Contacts \cite{SuperAppThesis} and payments via PeerChat}
 \label{wallet_peerchat}
 \end{figure}
 
@@ -1604,16 +1604,16 @@ resent in case of network failure.
 
 In order to ensure the stability of EuroToken it has to fully integrate with the
 existing IBAN-based banking system. To achieve this an exchange is created to be
-run and/or regulated by the ECB. This exchange forms the bridge between the
-digital EuroToken and the rest of the Euro systems and is therefore called the
-gateway. The exchange mechanism must support the two main flows of value.
+run or regulated by the ECB. This exchange forms the bridge between the digital
+EuroToken and the rest of the Euro systems and is therefore called the gateway.
+The exchange mechanism must support the two main flows of value.
 
-The first we call the tokenisation flow. This flow handles the exchange of Euro for
-EuroToken, thus creating EuroToken. This involves the handling of payment into
-a bank account, verifying this, and paying out and equivalent amount of
-EuroToken to the users' wallet. The second flow is the de-tokenisation flow. This
-flow does handle the opposite conversion. It handles a payment of EuroToken
-and pays out the equivalent amount to a IBAN bank account.
+The first we call the tokenisation flow. This flow handles the exchange of Euro
+for EuroToken, thus minting new EuroToken. This involves the handling of
+payments into a bank account, verifying this, and paying out and equivalent
+amount of EuroToken to the users' wallet. The second flow is the de-tokenisation
+flow. This flow does handle the opposite conversion. It handles a payment of
+EuroToken and pays out the equivalent amount to a IBAN bank account.
 
 To handle this flow we build the exchange node. This node exposes a web
 frontend that allows the user to exchange their money in either direction. The
@@ -1642,25 +1642,25 @@ from the user.
 
 #### Tokenisation
 
-In our prototype we use the payment system API of a popular bank to enable
-users to pay us Euros[@Tikkie]. The tokenisation flow can be seen in figure
-\ref{gateway_flow}. The tokenisation step is the most complex. This is because the
-sending of money to a user requires the exchange to know the public key of the
-user. In order to obtain EuroTokens the user accesses the web interface of the
-exchange, which will lead it through the following steps:
+In our prototype we use the payment system API of a popular bank to enable users
+to pay us Euros[@Tikkie]. The tokenisation flow can be seen in figure
+\ref{gateway_flow}. The tokenisation step is the most complex. This is because
+the sending of money to a user requires the exchange to know the public key of
+the user. In order to obtain EuroTokens the user accesses the web interface of
+the exchange, which will lead it through the following steps:
 
 1. The user specifies the amount of EuroToken to buy. This creates a new
    transaction. The user then scans a QR code generated by the exchange using
-   the wallet. The QR code contains the public key of the exchange, as well as a
-   payment ID. The wallet will then send a special connect message to the
+   the wallet. The QR code contains the IPv8 public key of the exchange, as well
+   as a payment ID. The wallet will then send a special connect message to the
    exchange over IPv8 with the payment ID. When the exchange receives the
    message, the public key of the sender of the message is stored in association
    with the payment. This will be the public key to which the EuroToken will be
    transferred once the transaction is complete.
 2. The exchange creates a new payment request with the bank for the specified
-   amount, which the user is then redirected to.
+   amount, towards which the user is then redirected.
 3. The exchange is alerted by the bank once the payment is complete.
-4. The exchange will now send the money over IPv8.
+4. The exchange will now send the money over IPv8 to the account from step 1.
 
 \begin{figure}[htp]
 \centering
@@ -1678,13 +1678,15 @@ the exchange it can be performed completely in the wallet app. The user would
 simply send a de-tokenisation transaction to the exchange which includes the IBAN
 the user would like the money to be paid out to as part of the block.
 
-However, if a user does not know the public key of the exchange, the interaction
-has to happen through the UI. This would involve the following flow:
+However, if the user does not know the public key of the exchange, the
+interaction has to happen through the exchange web UI. This would involve the
+following flow:
 
-1. The user specifies the amount to exchange along with their IBAN.
-2. The exchange generates a QR code which includes their public key, as well as
-   the amount.
-3. The user scans the QR code and confirms the transaction in the app.
+1. The user inputs the amount to exchange along with their IBAN.
+2. The exchange generates a QR code which includes their public key, a payment
+   ID, as well as the amount to be paid.
+3. The user scans the QR code and transfers the amount in the app. The gateway
+   then validates the transaction and pays out the Euro to the IBAN.
 
 Within the app the exchange flows are handled using the pages shown in figure
 \ref{wallet_exchange}.
@@ -1700,26 +1702,31 @@ Within the app the exchange flows are handled using the pages shown in figure
 
 ## Validator
 
-Together with the exchange, the validator is one of the special nodes that
-allow the EuroToken system to function. As can be seen in
-\ref{wallet_transactions}, a validation checkpoint is automatically requested
-after a transaction has been received by a user. The checkpoint makes the
-entire balance if the user "spendable". The main task of the validator is to
-maintain the last blocks of all users in the network. This makes it impossible
-to double spend a transaction since any conflicting block has already been
-accepted by the validator. This makes the first block to arrive to the
-validator the one and only block at that position in a users chain.
+Along with the exchange, the validator is one of the special nodes that allow
+the EuroToken system to function. As shown in figure \ref{wallet_transactions},
+a validation checkpoint is automatically requested after a transaction has been
+received by a user. For our implementation we merge the concept of the
+checkpoint and the transaction finality statement. As such, the checkpoint makes
+the entire balance of the user "spendable".
 
-Since the output of a transaction is only spendable when a full checkpoint
-comes after it, the wallet automatically performs a checkpoint after every
-transaction. This keeps the amount of blocks that have to be validated during
-every transaction as low as possible. This leads to every transaction involving
-only 4 half-blocks from the perspective of the sender. A sender only needs to
-share the transaction proposal itself, the block before (which is a checkpoint
-proposal), and the associated checkpoint acceptance. The receiver then only
-needs to verify the correctness of these 3 blocks and send back the acceptance
-to the sender. This preserves the transaction privacy of the both the sender
-and the receiver, revealing only the relevant transaction.
+The main task of the validator is to maintain the last blocks of all users in
+the network. This makes it impossible to double-spend in the network since any
+conflicting block has already been accepted by the validator. This makes the
+first block to arrive to the validator the one and only block at that position
+in a users chain.
+
+Since the output of a transaction is only spendable when a checkpoint exists
+after it in the chain, the wallet automatically performs a checkpoint after
+every transaction. This keeps the amount of blocks that have to be validated
+during every transaction as low as possible. This leads to every transaction
+involving only 4 half-blocks from the perspective of the sender. A sender only
+needs to share the transaction proposal itself, the block before (which is a
+checkpoint proposal), and the associated checkpoint acceptance. The receiver
+then only needs to verify the correctness of these 3 blocks and send back the
+acceptance to the sender. This preserves the transaction privacy of the both the
+sender and the receiver, revealing only the relevant transaction. We do have the
+option to vary the checkpoint frequency and we explore the trade-offs of various
+frequencies later.
 
 # Evaluation
 
