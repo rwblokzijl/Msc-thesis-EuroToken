@@ -522,7 +522,7 @@ number of requirements are provided:
 12. Easy accessibility throughout the euro area
 13. Conditional use by non-euro area residents
 
-In the evaluation of this project in a later section, we will explore to what
+In the evaluation of this project in a later chapter, we will explore to what
 extent our implementation conforms to these requirements. The technical
 requirements are emboldened in the list, as they will be guiding in our design.
 The rest will only be speculated on as they do not pertain to the topic of
@@ -1332,7 +1332,7 @@ the integrity of their institutions.
 
 # EuroToken Implementation
 
-In this section we describe the implementation of the EuroToken protocol, as
+In this chapter we describe the implementation of the EuroToken protocol, as
 well as the prototype we built to test and showcase the capabilities of the
 EuroToken system. The protocol is implemented on top of IPv8. In includes an
 Android/Kotlin implementation as well as a Python implementation. We built
@@ -1733,45 +1733,46 @@ frequencies later.
 In this chapter we will evaluate our solution to the problems as explored in the
 problem description. We first describe two field trails that showed the
 proof-of-concept in action. This demonstrates how EuroToken is able to perform
-the basic functions of money and allows for off-line spending. We then describe
+the basic functions of money and allows for off-line transfers. We then describe
 some structured experiments that measure the scalability of the network and
 evaluate whether the promise of a double-spend proof but still scalable network
-has been met.
+has been met. Finally, we evaluate the extensibility and feature set as a whole,
+and discuss whether they meet the ECB requirements specified in chapter 2.
 
 ## Field trial
 
 The purpose of the implementation in the super app was to demonstrate the
 features of the EuroToken system. In order to test the implementation and the
 viability of the protocol in the real world, a field trail was conducted. We
-tested the EuroToken system during the morning hours, at café Doerak in Delft
-[@DoerakTrial]. As showcased in figure \ref{field_trial}, the owner of the café
-generated a payment request for the amount of a single coffee and displayed it
-in the restaurant. Customers could then scan the code to transfer the money, and
-the owner who immediately see the money appear in their account.
+tested the EuroToken system at café Doerak in Delft [@DoerakTrial]. As showcased
+in figure \ref{field_trial}, the owner of the café generated a payment request
+for the amount of a single coffee and displayed it in the restaurant. Customers
+could then scan the code to transfer the money. The owner would immediately see
+the money appear in their EuroToken account in the app.
 
 \begin{figure}[htp]
 \centering
-\resizebox{0.8\textwidth}{!}{
+\resizebox{0.7\textwidth}{!}{
 \includegraphics{./images/5_evaluation/field_trial.jpg}
 }
 \caption{Field trial}
 \label{field_trial}
 \end{figure}
 
-This trail showcases the simplicity of taking digital payments without having to
-go through the process of registering with a traditional payment provider. Using
-the EuroToken system all the owner of Doerak needed was a smartphone in order to
-participate in the modern economy.
+This trail showcased the simplicity of taking digital payments without having to
+go through the process of registering with a traditional payment provider or
+credit card reseller. Using the EuroToken system all the owner of Doerak needed
+was a smartphone in order to participate in the modern economy.
 
 ## Off-line trial
 
-By building the EuroToken app on the TrustChain super app we could build on the
-Bluetooth transfer features to implement the off-line transfer of funds. In order
-to test this implementation and showcase the off-line transfer capabilities of
-the EuroToken system, we conducted another trail away from civilisation. As
-showcased in Figure \ref{offline_trial}, in the mountains of Norway, away from
-all network connectivity, we conducted a transfer of funds using the Bluetooth
-connect feature of the superapp.
+By building the EuroToken app on PyIPv8 we could build on the Bluetooth transfer
+features to implement the off-line transfer of funds. In order to test this
+implementation and showcase the off-line transfer capabilities of the EuroToken
+system, we conducted a trail away from civilisation. As showcased in Figure
+\ref{offline_trial}, in the mountains of Norway, away from all network
+connectivity, we conducted a transfer of funds using the Bluetooth connect
+feature of the superapp.
 
 \begin{figure}[htp]
 \centering
@@ -1782,49 +1783,47 @@ connect feature of the superapp.
 \label{offline_trial}
 \end{figure}
 
-There is room for improvement in the practicality of off-line transfer of data
-between two devices. We found the process of creating a Peer-to-Peer Bluetooth
-connection between two mobile devices somewhat cumbersome. And the system would
-greatly benefit in usability from proximity based data transfer via NFC.
+There is some room for improvement in the practicality of off-line transfer of
+data between two devices. We found the process of creating a Peer-to-Peer
+Bluetooth connection between two mobile devices somewhat cumbersome. And the
+system would greatly benefit in usability from proximity based data transfer via
+NFC.
 
 Regardless of the possibilities for improvement, the trail successfully showed
 the viability of off-line transfer. It shows the potential of the EuroToken
-system to act as a disaster proof payment system that remains functional at any
-distance from civilisation and during any disaster that would wipe out global
+system to act as a disaster proof payment system that remains functional far
+away from civilisation and during any disaster that would wipe out global
 communication infrastructure.
 
 The user trades the risk of deferring transaction validation until they connect
-to the network again for off-line transfers which allow for an instantaneous
+to the network again for off-line transfers. This allows for instantaneous
 transfer of funds, without requiring a connection to anyone in the rest of the
-network in order to perform the initial transfer.
-
-Exploring the possibilities of reducing the transaction risk between initial
-transfer and transaction finalisation is an interesting topic for future
-research. Using reputation systems or digital identity solutions combined with
-judicial accountability, the risk could potentially be reduced to near 0.
+network in order to perform the initial transfer. Possibilities of reducing the
+transaction risk between initial transfer and transaction finalisation is an
+interesting topic for future research. Using reputation systems or digital
+identity solutions combined with judicial accountability, the risk could
+potentially be reduced significantly.
 
 In order to prevent double spending, the current implementation of the protocol
 disallows the re-spending of transactions that have not first been finalised. In
 order to provide a full disaster mode, re-spending funds without full
 transaction validation by the network is a must. This could be achieved by
-expanding the protocol to enable the settling of multi-hop transfers. Like the
-original off-line transfer system, this would require the 2nd receiver to
-accept the risk, that both of the peers that their transaction depends on have
-double spent. When performing the initial off-line transaction, they would
-receive all the blocks necessary to finalise all transactions before it with the
-gateways of the 2 peers before them.
+expanding the protocol to enable the settling of multi-hop transfers. This would
+require the each consecutive receiver to accept more risk than the one before,
+as they are vulnerable to the double spending of all unfinalised transactions
+before.
 
 ## Scalability in network size
 
 In order for the EuroToken system to be able to function at the scale of the
 eurozone, the ability to scale is crucial. In order to evaluate how the system
-performs as the number of users grows, we performed the following experiments.
+performs as the number of users grows, we performed a number of experiments.
 
-We adapted the Python implementation to simulate the network as it grows. We
-configured a set number of nodes to continuously transact with one another and
-performed check-ins with their gateway whenever they had received a set number
-of transactions. The nodes chose random transaction partners for each
-transaction and check pointed with their gateway after every 4 transactions. In
+We adapted the Python implementation to simulate the network at various sizes.
+We configured a set number of nodes to continuously transact with one another
+and perform checkpoints with their validator whenever they had received a set
+number of transactions. The nodes chose random transaction partners for each
+transaction and checkpointed with their gateway after every 4 transactions. In
 order to assess the scalability of the network, we ran several experiments where
 we varied the number of transaction nodes in the network. For each transaction
 we measured the time taken for each node to validate the transaction and how
@@ -1842,20 +1841,20 @@ validated for each transaction they validated.
 
 The results of our experiments are illustrated in figure \ref{usercount}. While
 there initially seems to be a drop in transactions per second as an effect of
-the number of users in the network, this effect cannot be seen when looking at
-the number of blocks validated. This discrepancy can be explained by the
-circumstances of our test environment. Since all nodes are run on the same
+the number of users in the network, this effect is crucially missing when
+looking at the number of blocks read. This discrepancy can be explained by
+the circumstances of our test environment. Since all nodes are run on the same
 machine there is some competition over resources like disk access. When looking
-at the number of blocks required to validate a single transaction, the increase
+at the number of blocks read to validate a single transaction, the increase
 in nodes in the network, even when users have a complex transaction history, has
 no effect on the complexity of validating a single transaction for the gateway.
 
-In addition to varying the number of transaction nodes we also wanted to test
+In addition to varying the number of transaction nodes, we also wanted to test
 the effect of increasing the number of gateways. Based on our implementation we
 expect a linear relationship between the number of gateway compute power in the
 network and the transactions per second that can be validated. This is because
 there is no communication between the gateways that makes their validation
-dependent on one another. We ran 4 transacting nodes split among with 1, 2 and 4
+dependent on one another. We ran 4 transacting nodes split among 1, 2 or 4
 gateways. We then again measured the TPS of the gateways.
 
 \begin{figure}[htp]
@@ -1867,24 +1866,26 @@ gateways. We then again measured the TPS of the gateways.
 \end{figure}
 
 As illustrated in figure \ref{gatewaycount}, the number of gateways seems to
-have an effect on the per gateway transactions per second. However, the number of
-blocks validated around 16 for each gateway count, we believe this to be the
-effect of the shared resources between the nodes. When we then look at the
-total transactions per second of the network, we do see an increase in total
-TPS with a growing gateway count. We still expect this to grow linearly in the
-real world.
+have some effect on the per gateway transactions per second. However, the number
+of blocks validated per transaction for each gateway is always 16. We believe
+the drop in TPS to be caused by the shared resources between the nodes in our
+test environment. When we look at the total transactions per second of the
+network, we do see an increase in total network TPS with a growing gateway
+count. We expect this to grow linearly in the real world, when resources do not
+have to be shared among gateways.
 
 ## Scalability in history size
 
-Another way in which EuroToken achieves scalability is by mitigation of the
-effect of a growing chain size using checkpointing. We claim that this allows
-the network to scale indefinitely as the personal chains of the users grow. In
+Another way in which EuroToken achieves scalability is by using checkpointing to
+mitigate the effect of a growing chain size. We claimed that this allows the
+network to scale indefinitely as the personal chains of the users grow.
 
-In order to validate this effect we set up a simulation where multiple users
-transacted up to 1000 transactions. All users started with an empty chain and
-transact together at the same rate. This means that all the chains have the
-same length throughout the testing process. We measured both the time taken
-to validate a transaction, and the number of blocks validated.
+In order to measure the real effect of checkpointing we set up a simulation
+where multiple users transacted until they had performed 1000 transactions on
+their chain. All users started with an empty chain and transact together at the
+same rate. This means that all the chains have the same length throughout the
+testing process. We measured both the time taken to validate a transaction, and
+the number of blocks validated.
 
 \begin{figure}[htp]
 \centering
@@ -1903,42 +1904,44 @@ to validate a transaction, and the number of blocks validated.
 \end{figure}
 
 The results are illustrated in figure \ref{chainlength_lookups}. Here we plotted
-the number of blocks that are required to validate as a function of the number
-of transactions the user has transacted before this. This shows that the number
-of blocks a user or gateway has to validate does not change as the chains grow.
+the number of blocks required to validate a transaction as a function of the
+number of transactions the user has sent before this. This shows that the number
+of blocks a user or gateway has to validate does not change as the size of the
+chains increase.
 
-In figure \ref{chainlength_time} we show the time to validate the transaction as
-a function of the number of blocks transacted. Here we do see a gradual rise in
-the processing time as the chains grow. However, since the number of blocks
-validated seems to stay constant over time this rise in validation time is
-best explained by the rising cost of database lookups of the blocks, which takes
-longer as the size of the database grows over time. Since all blocks before the
-last checkpoint has been evaluated and are no longer required for validation in
-the future, these can be written to a longer term storage as to not
-unnecessarily increase the validation times.
+In figure \ref{chainlength_time} we show the time it takes to validate a
+transaction as a function of the number of transactions in the users history.
+Here we do see a gradual rise in the processing time as the chains grow.
+However, since the number of blocks validated seems to stay constant over time
+this rise in validation time is best explained by the rising cost of database
+lookups of the blocks, which takes longer as the size of the sqllight database
+grows over time. This can easily be mitigated in a real world solution using
+more efficient block storage. Since all blocks before the last checkpoint has
+been evaluated and are no longer required for validation in the future, these
+can be written to a longer term storage as to not unnecessarily increase the
+validation times.
 
-Most importantly, the number of block accesses stays the same over time. This is
-a direct result of checkpointing, as users only need to validate blocks down to
-the last checkpoint. This separates EuroToken from currencies like Bitcoin where
-the database of blocks is constantly growing leading to higher validation costs
-and validation times during startup.
+Most importantly, the number of block required to validate stays constant over
+time. This is a direct result of checkpointing, as users only need to validate
+blocks down to the last checkpoint. This separates EuroToken from currencies
+like Bitcoin where the database of blocks is constantly growing leading to
+higher validation costs and validation times especially during startup.
 
 ## Trade-offs in user and gateway validation times
 
-The EuroToken gets its scalability and off-line transaction ability from the
-concept of checkpointing. The collapsing of all transactions before a given
+The EuroToken derives its scalability and off-line transaction ability from the
+application of checkpointing. The collapsing of all transactions before a given
 point into a single checkpoint block allows any counterparty to simplify the
-entire history of a user to the balance in the checkpoint block. This prevents
-the exponential growth of required validation, which allows the system to scale
-to any size. In this section we explore the effect of various checkpointing
-frequencies and demonstrate some trade-offs.
+entire history of a user to only the balance in the checkpoint block. This
+prevents the exponential growth in blocks required to validate, which allows the
+system to remain efficient over time. In this section we explore the effect of
+various checkpointing frequencies and demonstrate its trade-offs.
 
-We simulated a network of randomly transacting users. Every run of the
-experiment we varied the number of transactions the users would do without
-checkpointing. Each user performed over 1000 transactions each run. We then
-measured the total number of blocks their counterparties had to verify in order
-to validate their transaction. The entire network varied their checkpointing
-frequencies together.
+We simulated a network of randomly transacting users. We varied the number of
+transactions the users performed between checkpoints. Each user executed over
+1000 transactions each run. We measured the total number of blocks their
+counterparties had to read in order to validate the transaction. The entire
+network varied their checkpointing frequencies together.
 
 \begin{figure}[htp]
 \centering
@@ -1950,43 +1953,39 @@ frequencies together.
 \label{checkpointing_freq}
 \end{figure}
 
-As illustrated in figure \ref{checkpointing_freq} the effect of the
-checkpointing frequency is present. As the time we wait between checkpoints
-increases the effort for each transaction increases for the clients.
+The effect of checkpoint frequency is illustrated in figure
+\ref{checkpointing_freq}. As the time we wait between checkpoints increases the
+effort for each transaction increases for the clients.
 
-When looking at the effect on the gateway the image different. While the number
-of blocks the gateway has to validate does grow as well as the time taken to
-validate the transaction, the gateway has to do this much less frequently. This
-removes some overhead from the validations, allowing the gateway to validate
-more total transactions as the frequency of validation decreases.
+When we look at the effect on the gateway, we get a different image. While the
+number of blocks the gateway has to validate does grow with the transactions
+between checkpoints, the gateway has to do this less frequently. This removes
+overhead from the validations, allowing the gateway to validate more
+transactions as the frequency of validation decreases.
 
-In any implementation of EuroToken in the real world some attention should be
-dedicated to this phenomenon, as users are incentivized to checkpoint as
-frequently as possible, while this might not be optimal for the network.
-
+When implementating EuroToken in the real world, some attention should be
+dedicated to this. Users are incentivized to checkpoint as frequently as
+possible, while this might not be optimal for the network.
 
 ## Extensibility
 
 EuroToken is designed to run mostly on the device of the user, only
 communicating with the validator using the standardised messages of IPv8
 [@PyIPv8]. The communication protocol of EuroToken is thus completely open and
-accessible to anyone. The extensibility of the system is exemplified in the UI
-of EuroToken in the app. This allowed for EuroToken to be easily integrated into
-the PeerChat app.
-
-Another example of the extensibility of EuroToken can be seen in the
-implementation of an unrelated project. A group of students implemented a
-liquidity pool for exchange between Bitcoin and EuroToken using its API in the
-Superapp [@LiquidityPool].
-
-EuroToken is open and extensibile to any compatible usecase, giving it the
-potential to facilitate a competitive market for innovation,
+accessible to anyone. The extensibility of the system is exemplified in the
+TrustChain superapp. The modular implementation allowed for EuroToken to be
+easily integrated into the PeerChat app. Another example of the extensibility of
+EuroToken can be seen in the implementation of an unrelated project. A group of
+students implemented a liquidity pool for exchange between Bitcoin and EuroToken
+using its API in the Superapp [@LiquidityPool]. EuroToken is open and
+extensibile to any compatible usecase, giving it the potential to facilitate a
+competitive market for innovation,
 
 ## System evaluation and ECB requirements
 
 In the problem description of this document we described the requirements of a
 digital euro as specified by the ECB. In this section we review the extent to
-which the EuroToken system conforms to the requirements. The requirements are
+which the EuroToken system conforms to these requirements. The requirements are
 summarised as follows:
 
 Table: (ECB requirements) \label{my_table}
@@ -1996,7 +1995,7 @@ Table: (ECB requirements) \label{my_table}
 | 1  | **Enhanced digital efficiency**                                   | \cmark      |
 | 2  | **Cash-like features**                                            | \cmark      |
 | 3  | **Competitive features**                                          | \cmark      |
-| 4  | **Monetary policy option**                                        | \qmark      |
+| 4  | **Monetary policy option**                                        | \cmark      |
 | 5  | **Disaster back-up system**                                       | \qmark      |
 | 6  | **International use**                                             | \cmark      |
 | 7  | Minimise ecological footprint                                     | \cmark      |
@@ -2008,16 +2007,16 @@ Table: (ECB requirements) \label{my_table}
 | 13 | Conditional use by non-euro area residents                        | \qmark      |
 
 \begin{center}
-Legend: $~$ | $~$ \cmark $~$ Possible $~$ | $~$ \qmark $~$ Future reseach $~$ | $~$ \umark $~$Out of scope
+Legend: $~$ | $~$ \cmark $~$ Provided $~$ | $~$ \qmark $~$ Partial / Future reseach $~$ | $~$ \umark $~$Out of scope
 \end{center}
 
 We achieve **enhanced digital efficiency** and a **competitive feature set **by
 designing EuroToken as a digital, Peer-to-Peer, programmable payment system. We
 achieve **cash-like features** with direct and off-line transferability without
 the need for intermediary parties. EuroToken provides the ECB with a new set of
-**monetary policy options** by having the Central Bank controlling the
-tokenisation
-and de-tokenisation of EuroTokens. The off-line transaction capacity could be
+**monetary policy options** by having the Central Bank **controlling the amount
+of digital euro in circulation** through the control of the tokenisation and
+de-tokenisation of EuroTokens. The off-line transaction capacity could be
 extended to make EuroToken a **disaster proof** payment system. With backing
 during deployment of the ECB, EuroToken could become the standardised digital
 currency of Europe allowing **international** with ease. The rest of the
@@ -2030,7 +2029,7 @@ one master thesis. There are many challenges left to solve before we have a
 distributed currency that has the features necessary to serve the payment needs
 of the entire eurozone.
 
-In this section we go over the three main contributions EuroToken makes, their
+In this chapter we go over the three main contributions EuroToken makes, their
 limitations and their possibilities for improvement. We then more generally
 discuss the ability of EuroToken to conform to the requirements set forward by
 the ECB and what issues are still left to address.
