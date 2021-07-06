@@ -578,7 +578,7 @@ systems have had some success. The most well known distributed ledger
 technologies are Ethereum [@Ethereum:whitepaper] and Bitcoin
 [@Bitcoin:whitepaper]. We will refer to these as single blockchain networks.
 Both of these networks maintain a single ledger of transactions structured in a
-blockchaing, which gives transactions a total ordering.
+blockchain, which gives transactions a total ordering.
 
 Blockchain bases DLTs group all transactions into blocks, which are in turn
 organised in a linked list where every block refers to the block before it.
@@ -1106,8 +1106,8 @@ addition to Bob's blocks, she will also send her "accepting blocks" that include
 the transaction in her chain. This is to make sure she can only claim a
 transaction from Bob once. Bob's validator will then verify that:
 
-1. there are no other transactions that conflict with the one to Alice.
-2. there are no other "accepting blocks" already linked to this
+1. There are no other transactions that conflict with the one to Alice.
+2. There are no other "accepting blocks" already linked to this
    transaction.
 3. Bob's chain is valid up to the last transaction to verify.
 
@@ -1268,7 +1268,7 @@ against the sender for fraud.
 
 Our solution takes the simplest approach. We put the receiver at risk while a
 transaction is not finalised. We also do not allow non-finalised transactions to
-be sent again. Any solutions that allows the re-spending of unfinalised
+be sent again. Any solution that permits the re-spending of unfinalised
 transactions are much more complicated since a UTXO model would likely need to
 be implemented. While this is not inherently incompatible with EuroToken, our
 solution has left this out of scope.
@@ -1393,7 +1393,7 @@ available for Android as well.
 
 One option is to implement a full blockchain protocol and associated network
 stack from the ground up to adhere to our exact requirements. This would give
-us a lot of say in the exact feature set of the network. However, since the
+us a lot of control over the exact feature set of the network. However, since the
 science of distributed networking algorithms has mostly settled, most
 Peer-to-Peer communication technologies have already been implemented somewhere.
 
@@ -1551,7 +1551,7 @@ multiple other projects which we can integrate with the EuroToken system.
 
 ### Peer-to-Peer transfer
 
-The main feature of the wallety is its ability to transfer EuroTokens. Before a
+The main feature of the wallet is its ability to transfer EuroTokens. Before a
 user can send money to another user, they first need to know their public key.
 While sending blocks directly to a user is possible as part of the IPv8
 implementation, the sharing of public keys is left to us. For this reason we
@@ -1623,7 +1623,7 @@ IPv8 [@PyIPv8].
 ### Buy and sell instantly
 
 The frontend of the exchange is kept as simple as possible for demonstration
-purposes. Users do not need to login, and can buy or sell their EuroTokens
+purposes. Users do not need to log in, and can buy or sell their EuroTokens
 directly on the front page.
 
 \begin{figure}[htp]
@@ -1725,7 +1725,7 @@ checkpoint proposal), and the associated checkpoint acceptance. The receiver
 then only needs to verify the correctness of these 3 blocks and send back the
 acceptance to the sender. This preserves the transaction privacy of the both the
 sender and the receiver, revealing only the relevant transaction. We do have the
-option to vary the checkpoint frequency and we explore the trade-offs of various
+option to vary the checkpoint frequency, and we explore the trade-offs of various
 frequencies later.
 
 # Evaluation
@@ -1766,7 +1766,7 @@ was a smartphone in order to participate in the modern economy.
 
 ## Off-line trial
 
-By building the EuroToken app on PyIPv8 we could build on the Bluetooth transfer
+By building the EuroToken app on IPv8 we could build on the Bluetooth transfer
 features to implement the off-line transfer of funds. In order to test this
 implementation and showcase the off-line transfer capabilities of the EuroToken
 system, we conducted a trail away from civilisation. As showcased in Figure
@@ -1809,7 +1809,7 @@ disallows the re-spending of transactions that have not first been finalised. In
 order to provide a full disaster mode, re-spending funds without full
 transaction validation by the network is a must. This could be achieved by
 expanding the protocol to enable the settling of multi-hop transfers. This would
-require the each consecutive receiver to accept more risk than the one before,
+require each consecutive receiver to accept more risk than the one before,
 as they are vulnerable to the double spending of all unfinalised transactions
 before.
 
@@ -1910,11 +1910,11 @@ of blocks a user or gateway has to validate does not change as the size of the
 chains increase.
 
 In figure \ref{chainlength_time} we show the time it takes to validate a
-transaction as a function of the number of transactions in the users history.
+transaction as a function of the number of transactions in the users' history.
 Here we do see a gradual rise in the processing time as the chains grow.
 However, since the number of blocks validated seems to stay constant over time
 this rise in validation time is best explained by the rising cost of database
-lookups of the blocks, which takes longer as the size of the sqllight database
+lookups of the blocks, which takes longer as the size of the SQLite database
 grows over time. This can easily be mitigated in a real world solution using
 more efficient block storage. Since all blocks before the last checkpoint has
 been evaluated and are no longer required for validation in the future, these
@@ -1963,7 +1963,7 @@ between checkpoints, the gateway has to do this less frequently. This removes
 overhead from the validations, allowing the gateway to validate more
 transactions as the frequency of validation decreases.
 
-When implementating EuroToken in the real world, some attention should be
+When implementing EuroToken in the real world, some attention should be
 dedicated to this. Users are incentivized to checkpoint as frequently as
 possible, while this might not be optimal for the network.
 
@@ -1978,7 +1978,7 @@ easily integrated into the PeerChat app. Another example of the extensibility of
 EuroToken can be seen in the implementation of an unrelated project. A group of
 students implemented a liquidity pool for exchange between Bitcoin and EuroToken
 using its API in the Superapp [@LiquidityPool]. EuroToken is open and
-extensibile to any compatible usecase, giving it the potential to facilitate a
+extensible to any compatible use case, giving it the potential to facilitate a
 competitive market for innovation,
 
 ## System evaluation and ECB requirements
@@ -2060,7 +2060,7 @@ checkpoints after the detection.
 The validator could also include a reputation for the sender in every
 checkpoint, this can then be provided to future receivers at the point of
 transaction in order to give an indication of trustworthiness. The checkpoint
-could also include a statement regarding to what degree the identity of the
+could also include a statement specifying to what degree the identity of the
 sender is known to the validator. At the point of transaction the receiver can
 then verify these details about the sender. The receiver could choose not to
 interact with wallets that have been created very recently, have a poor
@@ -2113,7 +2113,7 @@ storage problem can be found. When this happens, the EuroToken system can start
 to rely on a decentralized method of consensus.
 
 While the promise of decentralized finance has merit, another problem is the
-correction of illicit tranactions. Stolen Bitcoin can never be retrieved,
+correction of illicit transactions. Stolen Bitcoin can never be retrieved,
 judgements to pay damages cannot be enforced, assets cannot be frozen,
 collection agencies cannot lay claim on distributed assets, etc. While some of
 these practices are considered by many to be cruel and outdated, they do stem
@@ -2155,11 +2155,11 @@ becomes the only viable investment and the economy grinds to a halt. Anyone with
 open loans is forced to default, investment dries up, prices and wages drop, and
 the currency seizes to be a good denomination of value.
 
-Even an inflationaty currency is not immune from this phenomenon. A constant but
+Even an inflationary currency is not immune from this phenomenon. A constant but
 low inflation can be seen as an acceptable investment to some people. If this
 happens on any significant scale, the managed inflation of the ECB will be
 counteracted by people storing euro. In times of economic turmoil, the euro will
-be the safest store of wrealth leading to lower investment in the economy right
+be the safest store of wealth leading to lower investment in the economy right
 when invest is most needed. Currently, both private and public money are
 fundamentally bad at storing large amounts of money. Holding a lot of physical
 cash is impractical and dangerous, meanwhile storing large amounts in the bank
