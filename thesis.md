@@ -1,7 +1,7 @@
 ---
 title: EuroToken
 subtitle: A offline capable Central Bank Digital Currency (CBDC)
-coverimg: cover1.jpg
+coverimg: cover3.jpg
 author:
   name: R. W. Blokzijl
   affiliation: Technische Universiteit Delft
