@@ -44,7 +44,12 @@ $if(author)$
 \author[tudelft-white]{$author.name$}
 \affiliation{$author.affiliation$}
 $endif$
+
+$if(coverimg)$
+\coverimage{$coverimg$}
+$else$
 \coverimage{tank.jpg}
+$endif$
 
 $if(keywords)$
 \covertext[tudelft-white]{
