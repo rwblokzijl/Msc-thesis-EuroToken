@@ -2027,116 +2027,103 @@ requirements are legal questions and are left out of scope.
 The process of designing a digital currency is not something that can be done in
 one master thesis. There are many challenges left to solve before we have a
 distributed currency that has the features necessary to serve the payment needs
-of the entire eurozone.
-
-In this chapter we go over the three main contributions EuroToken makes, their
-limitations and their possibilities for improvement. We then more generally
-discuss the ability of EuroToken to conform to the requirements set forward by
-the ECB and what issues are still left to address.
+of the entire eurozone. In this chapter we go over the three main contributions
+EuroToken makes, their limitations and their possibilities for improvement. We
+then more generally discuss the ability of EuroToken to conform to the
+requirements set forward by the ECB and what issues are still left to address.
 
 ## Trade-offs between anonymity and off-line transactions
 
 EuroToken achieves off-line transactions by making every transaction a signed
-statement by the sender that transfers their funds to the receiver. Regardless
-of any action by the sender, this statement is cryptographically linked to their
-wallet and can be used by the receiver at any time to prove that the transaction
-happened. This can then be used to keep the sender accountable to their
-statement. While we provide the mechanism for the receiver to ensure that the
-sender has the funds available, we do not provide a mechanism to prevent the
-sender from off-line spending a second time.
+statement by the sender that transfers their funds to the receiver. This
+statement is cryptographically linked to the wallet of the sender and can be
+used by the receiver at any time to prove that the transaction happened. This
+allows us to hold the sender accountable to their statement. While we provide
+a mechanism for the receiver to ensure that the sender has the funds available,
+we do not provide a mechanism to prevent the sender from off-line spending a
+second time.
 
 The main limitation of our method of off-line transfers, and perhaps all methods
 of off-line payments, is that double spending is only prevented and addressed
-when interacting with online with the network. This does keep the currency from
-inflating, but still leaves some risk with the receiver.
+when interacting with the network online. While this does prevent illicit
+creation of currency, it still leaves some risk with the receiver. We see
+potential solutions to this problem in 2 areas. The first is at the point of
+transaction, and the second at the point of double-spend detection at the
+gateways.
 
-Here we address some solutions to prevent, disincentivize, and limit the
-recurrence of off-line double spending fraud. We see potential solutions to this
-problem in 2 areas. The first is at the point of transaction, and the second at
-the point of double-spend detection at the gateways.
+At the point of detection the validator learns that one of their associated
+wallets has cheated. If the identity of the sender is known to the validator,
+they can block the sender from doing any online transactions until the
+double-spend has been resolved. The validator can refuse the signal of any
+checkpoints after the detection.
 
-At the point of detection the gateway learns that one of their associated
-wallets has cheated. If the identity of the sender is known to the gateway, they
-can block the sender from doing any online transactions until the double-spend
-has been resolved. The gateway can refuse the signal of any checkpoints after
-the detection.
-
-The gateway could also include a reputation for the sender in every checkpoint,
-so this becomes visible to future receivers at the point of transaction. The
-checkpoint could also include a statement as to what degree the identity of the
-sender has been verified by the gateway.
-
-Then at the point of transaction the receiver can verify some details about the
-sender. The receiver could choose not to interact with wallets that have been
-created very recently, have a poor reputation, hasn't checked in with the
-gateway for a long time, or doesn't have their identity registered with the
-gateway.
+The validator could also include a reputation for the sender in every
+checkpoint, this can then be provided to future receivers at the point of
+transaction in order to give an indication of trustworthiness. The checkpoint
+could also include a statement regarding to what degree the identity of the
+sender is known to the validator. At the point of transaction the receiver can
+then verify these details about the sender. The receiver could choose not to
+interact with wallets that have been created very recently, have a poor
+reputation, hasn't checked in with the validator for a long time, or that don't
+have their identity registered with the validator.
 
 Of course these solutions rely on the identity of the sender being known to the
-gateway, something that may have negative implications on privacy. For this
+validator, something that may have negative implications on privacy. For this
 reason the identity itself could be registered with an identity provider that
 maintains all the personal information of the sender and only uses this in the
-event of overt cheating. The design of such a system and its integration with
+event of detected cheating. The design of such a system and its integration with
 EuroToken has been left to future research.
 
 ## Scalability without centralisation
 
-In order to allow for the features of scalability, price stability and off-line
-transfer, the main trade-off has been in decentralisation. The original promise
-of a decentralized currency that also has the three aforementioned feature,
-while promising, might never come to fruition.
+In order to be scalable, price stable and off-line transferable, we have made a
+trade-off in decentralisation. The original promise of a decentralized currency
+with the three aforementioned features, while promising, might never come to
+fruition.
 
 Our design currently relies on trusted central gateways to solve the main issues
-of digital currencies. In decentralized system this role is usually performed by
-a blockchain or similar store, combined with some consensus algorithm to
-determine what gets written. Our solution has a different concept of consensus
-by allowing anyone to make any transaction on their own chain. By storing at
-least the last few transactions of a user, anyone can ask the gateway if a
-double spend has happened. Consensus is thus delegated completely to the
-gateway.
+of digital currencies. In a decentralized system this role is usually performed
+by a blockchain or similar information store, combined with some consensus
+algorithm to determine what gets written. Our solution has a different concept
+of consensus by allowing anyone to make any transaction on their chain. By
+storing at least the last few transactions of a user, anyone can ask the
+validator if a double spend has happened. Consensus in our model, is thus
+delegated completely to the validator.
 
 One possible criticism of this solution is that by its reliance on central
-gateways the problem of network-level double spending prevention only moves to
+gateways, the problem of network-level double spending prevention only moves to
 the level of the gateways.
 
 In the context of decentralized finance (DeFi) this would disqualify the system
 entirely, but in the context of a trans European payment system, some level of
-centralisation can be tolerated if not desirable. Institutions have been the
-daily runners of our monetary system for a very long time, and while not without
-its issues, the system has been overall successful.
+centralisation can be tolerated and might even be desirable. Institutions have
+been the daily drivers of our monetary system for a very long time, and while
+not without its issues, the system has overall been successful. The issue of the
+auditing of the gateways can also be solved in the same method at it has been in
+traditional systems. The digitally standardised nature of the system, would make
+this process much easier, and be nearly automatic.
 
-The issue of the auditing of the gateways can then also be solved in the same
-method at it has been so far. Only this time, the bookkeeping is not only done
-by both the sending and receiving banks, but also the customers themselves.
-Additionally, the digitally standardised nature of the system, would make this
-process much easier, and be nearly automatic.
+While the risks that are associated with the centralisation of EuroToken are no
+worse than those of the current economic system, a system that does not rely on
+this should always be preferred. While not quite ready to be global payment
+systems, the decentralized currencies of the world have made significant
+progress over the last decade, especially in the efficiency of consensus
+protocols. The possibility still exists that a scalable solution to the global
+storage problem can be found. When this happens, the EuroToken system can start
+to rely on a decentralized method of consensus.
 
-While the risks that are associated with centralisation are no worse than those
-of the current economic system, a system that does not rely on this should
-always be preferred. While not quite ready to be global payment systems, the
-decentralized currencies of the world have made significant progress over the
-last decade, especially in the efficiency of consensus protocols. The
-possibility still exists that a scalable solution to the global storage problem
-can be found. When this happens, the EuroToken system can start to rely on other
-methods of consensus.
-
-One of the challenges that remains in that area is the decentralized method of
-double-spending settlement. This would involve the global storage of a persons
-double-spend history for a period of time, limiting their future spending
-capabilities. This still requires identity solutions, something that will
-likely always require some real world verification by some party.
-
-While the promise of decentralized finance has some merit to it. The main
-problem is the correction of mistakes. Stolen Bitcoin can never be retrieved,
+While the promise of decentralized finance has merit, another problem is the
+correction of illicit tranactions. Stolen Bitcoin can never be retrieved,
 judgements to pay damages cannot be enforced, assets cannot be frozen,
-collection agencies cannot lay claim on digital assets, etc. While some of these
-practices are considered by many to be cruel and outdated, they do stem from the
-general option of society on how the world and economy should be run. The
-mechanisms by which government sanctioned parties can intervene in our financial
-lives have been serving some human driven purpose. Any system that removes the
-ability to intervene needs to also solve these issues.
+collection agencies cannot lay claim on distributed assets, etc. While some of
+these practices are considered by many to be cruel and outdated, they do stem
+from the general opinion of society on how the world and economy should be run,
+and our societies do rely on them. The mechanisms by which government sanctioned
+parties can intervene in our financial lives have been serving some human driven
+purpose. Any system that removes the ability of an authority to intervene needs
+to also solve these issues.
 
-Ideally these rules have been set by society through the democratic process. Any
+Ideally, these rules have been set by society through the democratic process. Any
 system that is completely disconnected from this mechanism will likely grow out
 of sync with the needs of the people. The utility of having some centralised,
 but highly scrutinised parties should not be underestimated.
@@ -2248,15 +2235,14 @@ and smart-contracts this could usher in a whole new wave of innovation.
 
 # Conclusion
 
-We present what we believe to be the first digital Euro deployment with real
-money, (1) offline Peer-to-Peer transfers with the potential for full
-disaster-proofing, (2) arbitrary scalability, (3) a real-time connectivity to
-the existing IBAN-based banking system, (4) while being guaranteed by the
-central bank.
+We present what we believe to be the first digital Euro deployment with (1)
+offline Peer-to-Peer transfers with the potential for full disaster-proofing,
+(2) arbitrary scalability, (3) a real-time connectivity to the existing
+IBAN-based banking system, while (4) being guaranteed by the central bank.
 
 Baring a natural disaster that wipes out the human race, the future of money
 will be digital. With commerce and banking moving online, a new modern payment
-system is required with features that fit the digital age. The question is: who
+system is required with features fit for the digital age. The question is: who
 gets to decide how these currencies are designed?
 
 The problems of scalability, price-stability and off-line spending are difficult
