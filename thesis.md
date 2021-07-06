@@ -1,6 +1,6 @@
 ---
 title: EuroToken
-subtitle: A offline capable Central Bank Digital Currency (CBDC)
+subtitle: An offline capable Central Bank Digital Currency
 coverimg: cover3.jpg
 author:
   name: R. W. Blokzijl

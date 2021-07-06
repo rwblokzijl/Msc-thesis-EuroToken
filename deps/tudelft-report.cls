@@ -391,7 +391,7 @@
                   \includegraphics{cover/logo_black}
               };
           \else
-              \node at (current page.south west)[anchor=south west,inner sep=20pt]{
+              \node at (current page.south east)[anchor=south east,inner sep=20pt]{
                   \includegraphics{cover/logo_black}
               };
           \fi
