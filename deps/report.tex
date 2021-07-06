@@ -58,9 +58,6 @@ $if(keywords)$
     	- $keywords$ \\
 	$endfor$
     \vfill
-	$if(author)$
-		$author.email$
-	$endif$
 }
 $endif$
 \setpagecolor{tudelft-cyan}
@@ -148,6 +145,10 @@ $endif$
 \bigskip
 An electronic version of this thesis is available at \url{http://repository.tudelft.nl/}.
 %\\[1cm]
+
+$if(author)$
+The contact information of the author is available at \url{$contact$}.
+$endif$
 
 %\centering{\includegraphics{cover/logo_black}}
 
