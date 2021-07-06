@@ -2132,63 +2132,65 @@ but highly scrutinised parties should not be underestimated.
 
 The price stability of EuroToken is derived directly from the euro. By having
 the central bank guarantee the exchange between EuroToken and Euro both ways,
-the system is able to keep the price stable.
+the system is able to keep the price stable. This is not the whole story,
+however. EuroToken can derive its value from the euro if and only if the euro
+remains stable. EuroToken will effectively become an extension of the current
+euro, rather than a currency itself. While the euro is unlikely to negatively
+influence EuroToken, opposite influences also need to be addressed. This is also
+why double-spending prevention is so important. If some method of unsanctioned
+money creation is possible the hyperinflation that would take EuroToken down
+could take the entire euro system with it.
 
-This is not the whole story, however. EuroToken can derive its value from the
-euro if and only if the euro remains stable. EuroToken will effectively become
-an extension of the current euro, rather than a currency itself. While the euro
-is unlikely to negatively influence EuroToken, the other way around also needs
-to be addressed. This is also why double-spending prevention is so important. If
-some method of unsanctioned money creation is possible the hyperinflation
-that would take EuroToken down would take the entire euro with it.
-
-While preventing double spending is a technical and policy problem, economic
-problems with the EuroToken system can also threaten the euro system as a whole.
-On example of this is the concept of deflationary currencies. While Bitcoin
-intentionally built in deflation in its currency and sells it as a feature, the
-ECB of intentionally maintain a steady inflation of the euro. This is done for
-the express purpose of discouraging people from storing their funds as euros,
+While preventing double spending is a technical problem, economic problems with
+the EuroToken system can also threaten the euro system as a whole. An example of
+this is the concept of deflationary currencies. While Bitcoin intentionally
+built in deflation in its currency and sells it as a feature, the ECB of
+intentionally maintain a steady inflation of the euro. This is done for the
+express purpose of discouraging people from storing their funds as euros,
 thereby encouraging money to be invested in relevant ventures. Any form of
 deflation would make the euro an investment. This would lead people to passively
 store the currency, thus decreasing supply, driving up the price, making it an
-even better investment. This positive feedback loop continues until the economy
-grinds to a halt. Anyone with loads is forced to default, investment dries up,
-prices and wages drop, and the currency seizes to be a good denomination of
-value.
+even better investment. This positive feedback loop continues until the euro
+becomes the only viable investment and the economy grinds to a halt. Anyone with
+open loans is forced to default, investment dries up, prices and wages drop, and
+the currency seizes to be a good denomination of value.
 
-Even then, a set inflation can be acceptable to some people. If this happens on
-any significant scale, the managed inflation of the ECB will be counteracted. In
-times of economic turmoil, the euro will be the safest option leading to drops
-in investment right when they are needed most. Currently, both our private and
-public money are fundamentally bad at storing large amounts. Holding a lot of
+Even an inflationaty currency is not immune from this phenomenon. A constant but
+low inflation can be seen as an acceptable investment to some people. If this
+happens on any significant scale, the managed inflation of the ECB will be
+counteracted by people storing euro. In times of economic turmoil, the euro will
+be the safest store of wrealth leading to lower investment in the economy right
+when invest is most needed. Currently, both private and public money are
+fundamentally bad at storing large amounts of money. Holding a lot of physical
 cash is impractical and dangerous, meanwhile storing large amounts in the bank
 leads to exposure to the risk of bank failure, something that is extra likely in
-hasher economic times. The failing of the euro to be a good store of value is
-an important aspect. The ECB has been speculating on some solutions to this
-problem. One way is to simply limit the amount of money they can hold in digital
-form, or to charge interest above a limit [@3000Limit].
+hasher economic times. The ability of a currency to be too good a store of value
+is an important consideration in the design of any currency. In the context of
+CBDC, the ECB has been speculating on some solutions to this problem. One way is
+to simply limit the amount of CBDC people are allowed to hold, or to charge
+interest above a certain limit [@3000Limit].
 
 This is only one example where the ECB needs direct control over its currency.
 The ECB is directly responsible for maintaining the price stability of the euro,
 and any digital euro variant will have to be a part of that
 [@ReportDigitalEuro]. Because of this the centralised nature of the EuroToken
 gateways can act as the point of control for the ECB to enforce monetary policy,
-to stabilize the currency and provide direction for our economy.
+to stabilize the currency and our economy.
 
 ## Interoperability
 
 The ECB has not yet decided on the reach they want their CBDC to have. One
 option is to open the system to the world. This has the benefit of increasing
-the reach of the euro and the success of the European economy. However, there is
-some risk associated with such tight coupling to other economies as the effect
-of monetary policy at home is reduced.
+the reach of the euro and easing the participation in the European economy.
+However, there is some risk associated with such tight coupling to other
+economies as the effect of monetary policy at home is reduced.
 
 Using the gateway as an intermediary, EuroToken provides the option to integrate
-with other CBDCs in several ways. The first is by allowing transfers between the
-currencies without a counterparty. A gateway could run both EuroToken and a
-hypothetical DollarToken and transfer between them at an exchange rate that can
-be set by agreements between the two central banks. Effectively this allows for
-the coupling of currencies with an opt-out at any time.
+with other CBDCs in several ways. The first is by creating a mechanism for
+exchange between the CBDCs without a counterparty. A gateway could run both
+EuroToken and a hypothetical DollarToken and exchange between them at a rate
+that can be set by agreements between the two central banks. Effectively this
+allows for the coupling of currencies with an opt-out at any time.
 
 ## Universal asset storage and granular monetary policy
 
