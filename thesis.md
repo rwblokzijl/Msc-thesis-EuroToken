@@ -2195,45 +2195,38 @@ allows for the coupling of currencies with an opt-out at any time.
 ## Universal asset storage and granular monetary policy
 
 The digital and Peer-to-Peer nature of EuroToken provides the possibility of
-anonymous users, while the gateway centered design allows for integration of
-digital identity solutions. This allows for a hybrid system where different
-rules can apply to anonymous accounts. This would allow the ECB to encourage the
-adoption of the currency domestically, while discouraging usage abroad.
+anonymous users, while the validator centered design allows for integration of
+digital identity solutions. This can potentially allow for a system where
+different rules can apply to anonymous accounts. This would allow the ECB to
+encourage the adoption of the currency domestically, while discouraging usage
+abroad.
 
 Additionally, the ECB can greatly increase the granularity of its monetary
-policy using differing types of EuroToken accounts. Each account can have
-different rules and regulations which are applied automatically. These become
-particularly interesting when considering that the current banking system can
-eventually be integrated.
+policy by defining different types of EuroToken accounts. Each account type can
+have different rules, risks and benefits which can be enforced automatically.
+These become particularly interesting when considering that the current banking
+system can eventually be integrated.
 
 Currently, banks store and reinvent the money of their customers with the
 promise that their money will return with some interest. This investment is an
-important mechanism that keeps the price of the currency stable. Even if
-economic instability encourages people to save their wealth, the amount of money
-in circulation remains mostly the same as all the money in the banks is
-re-invested into the economy on the other end.
+important mechanism that keeps the price of the currency stable and money
+flowing. Even if economic instability encourages people to save their wealth,
+the amount of money in circulation remains mostly the same as all the money in
+the banks is re-invested into the economy on the other end. This banking
+mechanism can be recreated in EuroToken. By creating different accounts at
+different levels of risk, users can store their money with similar risks and
+benefits to the current banking system. On the other end of this wallet, the
+user can specify other parties that are allowed to reinvest their money.
 
-As an alternative to the direct limitation on static EuroToken holdings with the
-ECB, the banking mechanism can be recreated in EuroToken. By creating different
-accounts at different levels of risk, users can store their money with similar
-security and features to the current banking system. On the other end, the user
-can specify other parties that are allowed to invest their money. These accounts
-can be limited in their spending to a certain frequency for less volatile
-banking.
-
-One benefit is that the current system does not allow users to choose what their
-money is invested in. Within EuroToken, identity verification can be decoupled
+The current banking system does not give their users a choice in what their
+money is invested in. Within EuroToken, wallets and identity can be decoupled
 from banking and investing operations thus creating a system where users can
-quickly move their capital between banks.
+cheaply move their capital between banks, investors, and the ECB.
 
-Additionally, to currency accounts, other assets like stocks, bonds and other
-assets can also be tracked on the blockchain. As time progresses financial
-players can provide banking or investment services directly to the customer
-using the same system as their banking.
-
-This effectively unites the whole financial world into one accounting system.
-Especially when combined with e-identity, e-signatures, e-invoices, e-receipts,
-and smart-contracts this could usher in a whole new wave of innovation.
+This effectively unites the whole financial world into one accounting system,
+while leaving the market open. Especially when combined with e-identity,
+e-signatures, e-invoices, e-receipts, and smart-contracts this could usher in a
+whole new wave of innovation.
 
 # Conclusion
 
